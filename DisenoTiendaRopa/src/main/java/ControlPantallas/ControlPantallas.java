@@ -14,7 +14,16 @@ import DisenoGUIs.GUIPagoTransferencia;
 import DisenoGUIs.GUIProducto;
 import DisenoGUIs.GUISeleccionMetodoPago;
 import DisenoGUIs.GUIVenderPrenda;
-import Interfaz.IEscanearProducto;
+import com.mycompany.aumentarventaempleado.Fachada.FachadaAumentarVentaEmpleado;
+import com.mycompany.aumentarventaempleado.Interfaz.IAumentarVentaEmpleado;
+import com.mycompany.escanearproductosubsystem.FachadaEscanearProducto;
+import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
+import com.mycompany.metodopagosubsystem.FachadaMetodoPago;
+import com.mycompany.metodopagosubsystem.Interfaz.IMetodoPago;
+import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import com.mycompany.objetosnegocio.dto.ProductoDTO;
+import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
+import com.mycompany.realizarventasubsystem.FachadaRealizarVenta;
 import javax.swing.JFrame;
 
 /**
@@ -24,11 +33,18 @@ import javax.swing.JFrame;
 public class ControlPantallas {
 
     private static ControlPantallas instancia;
-    private static IEscanearProducto escaneer;
-
+    private static IEscanearProducto escanerSistema;
+    private static IRealizarVenta realizarVentaSistema;
+    private static IMetodoPago metodoPagoSistema;
+    private static IAumentarVentaEmpleado EmpleadoSistema;
+    
     public static synchronized ControlPantallas getInstase() {
         if (instancia == null) {
             instancia = new ControlPantallas();
+            escanerSistema = new FachadaEscanearProducto();
+            realizarVentaSistema = new FachadaRealizarVenta();
+            metodoPagoSistema = new FachadaMetodoPago();
+            EmpleadoSistema = new FachadaAumentarVentaEmpleado();
         }
         return instancia;
     }
@@ -39,21 +55,21 @@ public class ControlPantallas {
         }
     }
 
-    public void navegarMenuPrincipal(JFrame frameActual) {
+    public void navegarMenuPrincipal(JFrame frameActual, EmpleadoDTO empleado) {
         cerrarFrameActual(frameActual);
-        GUIMenu menu = new GUIMenu();
+        GUIMenu menu = new GUIMenu(empleado);
         menu.setVisible(true);
     }
 
-    public void navegarCodigoProducto(JFrame frameActual) {
+    public void navegarCodigoProducto(JFrame frameActual, EmpleadoDTO empleado) {
         cerrarFrameActual(frameActual);
-        GUICodigoProducto cp = new GUICodigoProducto();
+        GUICodigoProducto cp = new GUICodigoProducto(empleado);
         cp.setVisible(true);
     }
 
-    public void navegarProducto(JFrame frameActual) {
+    public void navegarProducto(JFrame frameActual,EmpleadoDTO empleado, ProductoDTO productodto) {
         cerrarFrameActual(frameActual);
-        GUIProducto producto = new GUIProducto();
+        GUIProducto producto = new GUIProducto(empleado, productodto);
         producto.setVisible(true);
     }
 
@@ -99,4 +115,27 @@ public class ControlPantallas {
         smp.setVisible(true);
     }
 
+    public ControlPantallas getInstancia() {
+        return instancia;
+    }
+
+    public IEscanearProducto getEscanerSistema() {
+        return escanerSistema;
+    }
+
+    public IRealizarVenta getRealizarVentaSistema() {
+        return realizarVentaSistema;
+    }
+
+    public  IMetodoPago getMetodoPagoSistema() {
+        return metodoPagoSistema;
+    }
+
+    public IAumentarVentaEmpleado getEmpleadoSistema() {
+        return EmpleadoSistema;
+    }
+    
+    
+    
+    
 }

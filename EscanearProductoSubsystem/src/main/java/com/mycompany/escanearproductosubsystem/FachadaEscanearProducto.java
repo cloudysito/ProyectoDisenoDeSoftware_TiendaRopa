@@ -4,7 +4,7 @@
  */
 package com.mycompany.escanearproductosubsystem;
 
-import Interfaz.IEscanearProducto;
+import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
 
 /**

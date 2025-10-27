@@ -5,6 +5,8 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import com.mycompany.objetosnegocio.dto.ProductoDTO;
 
 /**
  *
@@ -15,12 +17,17 @@ public class GUIProducto extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
-    public GUIProducto() {
+    private EmpleadoDTO empleado;
+    private ProductoDTO producto;
+    
+    public GUIProducto(EmpleadoDTO empleado, ProductoDTO producto) {
+        this.empleado = empleado;
+        this.producto = producto;
         initComponents();
         configurarNavegacionPerfil();
         setLocationRelativeTo(null);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -520,40 +527,6 @@ public class GUIProducto extends javax.swing.JFrame {
         dialogo.setVisible(true);
     }//GEN-LAST:event_btnCambiarTallaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIProducto().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton L;
@@ -593,10 +566,23 @@ public class GUIProducto extends javax.swing.JFrame {
     private javax.swing.JPanel panelPrenda;
     // End of variables declaration//GEN-END:variables
 
+     private void llenarProducto(){
+         lblNombreEmpleado.setText(empleado.getNombreCompleto());
+         lblNombreProducto.setText(producto.getNombreArticulo());
+         lblPrecioPrenda.setText("235.00$");
+         lblDescPrenda.setText("Una muy buena prendaaa woooooo");
+         lblTemporadaPrenda.setText("Otoño");
+         lblMarcaPrenda.setText("Supreme");
+         lblMaterialPrenda.setText("Tela");
+         
+    
+    }
+
+    
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnCancelar != null) {
-            btnCancelar.addActionListener(evt -> navegador.navegarCodigoProducto(this));
+            btnCancelar.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado));
         }
         if (btnVender != null) {
             btnVender.addActionListener(evt -> navegador.navegarVenderPrenda(this));

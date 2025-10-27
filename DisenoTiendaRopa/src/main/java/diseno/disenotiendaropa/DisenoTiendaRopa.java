@@ -4,6 +4,8 @@
 
 package diseno.disenotiendaropa;
 
+import DisenoGUIs.GUIInicioSesion;
+
 /**
  *
  * @author emiim
@@ -11,6 +13,6 @@ package diseno.disenotiendaropa;
 public class DisenoTiendaRopa {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        GUIInicioSesion inicioSesion = new  GUIInicioSesion();
     }
 }

@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 
 /**
  *
@@ -192,7 +193,11 @@ public class GUIInicioSesion extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnAcceder != null) {
-            btnAcceder.addActionListener(evt -> navegador.navegarMenuPrincipal(this));
+             String usuario = textFEmpleado.getText();
+             EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario);
+            if(empleado != null){
+                btnAcceder.addActionListener(evt -> navegador.navegarMenuPrincipal(this, empleado));
+            }
         }
 }
     }
