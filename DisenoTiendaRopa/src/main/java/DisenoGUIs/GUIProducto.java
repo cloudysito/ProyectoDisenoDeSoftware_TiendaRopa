@@ -24,6 +24,7 @@ public class GUIProducto extends javax.swing.JFrame {
         this.empleado = empleado;
         this.producto = producto;
         initComponents();
+        llenarProducto();
         configurarNavegacionPerfil();
         setLocationRelativeTo(null);
     }

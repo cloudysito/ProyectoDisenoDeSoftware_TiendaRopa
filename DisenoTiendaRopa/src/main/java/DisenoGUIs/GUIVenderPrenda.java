@@ -17,6 +17,7 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
      */
     public GUIVenderPrenda() {
         initComponents();
+        LlenarPrendar();
         setLocationRelativeTo(null);
         configurarNavegacionPerfil();
     }
@@ -383,6 +384,13 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
     private javax.swing.JLabel lblTotal;
     // End of variables declaration//GEN-END:variables
 
+    private void LlenarPrendar(){
+        lblNombreEmpleado.setText("Luis Martinez");
+        lblNombrePrenda.setText("Playera basica");
+        lblPrecio.setText("235.00");
+        lblTalla.setText("M");
+        lblTotal.setText("235.00");
+    }
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnVender != null) {

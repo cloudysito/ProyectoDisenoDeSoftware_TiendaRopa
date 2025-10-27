@@ -173,7 +173,7 @@ public class GUICompraRealizada extends javax.swing.JFrame {
         lbl1.setText("ID Compra:");
 
         lblIDCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblIDCompra.setText("id");
+        lblIDCompra.setText("2");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

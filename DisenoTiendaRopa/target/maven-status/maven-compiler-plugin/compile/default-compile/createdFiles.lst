@@ -29,7 +29,6 @@ DisenoGUIs\GUICodigoProducto$1.class
 DisenoGUIs\GUISeleccionMetodoPago$3.class
 DisenoGUIs\GUICambiarTalla.class
 DisenoGUIs\GUIPagoTarjeta$5.class
-DisenoGUIs\GUICodigoProducto$5.class
 DisenoGUIs\GUIProducto$3.class
 DisenoGUIs\GUIVenderPrenda$1.class
 DisenoGUIs\GUICambiarTalla$4.class
@@ -68,7 +67,6 @@ DisenoGUIs\GUIPagoEfectivo$8.class
 DisenoGUIs\GUISeleccionMetodoPago$9.class
 DisenoGUIs\GUIPagoPaypal$4.class
 DisenoGUIs\GUIPagoTarjeta$9.class
-DisenoGUIs\GUIProducto$15.class
 diseno\disenotiendaropa\DisenoTiendaRopa.class
 DisenoGUIs\GUICodigoProducto$4.class
 DisenoGUIs\GUIProducto$2.class
@@ -99,7 +97,6 @@ DisenoGUIs\GUICambiarTalla$11$1.class
 DisenoGUIs\GUIVenderPrenda$5.class
 DisenoGUIs\GUIPagoTarjeta$2.class
 DisenoGUIs\GUISeleccionMetodoPago$6.class
-DisenoGUIs\GUIMenu$7.class
 DisenoGUIs\GUIProducto$11.class
 ControlPantallas\ControlPantallas.class
 DisenoGUIs\GUIPagoEfectivo$4.class
