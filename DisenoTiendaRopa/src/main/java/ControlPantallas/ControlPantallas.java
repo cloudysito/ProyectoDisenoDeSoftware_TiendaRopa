@@ -14,6 +14,7 @@ import DisenoGUIs.GUIPagoTransferencia;
 import DisenoGUIs.GUIProducto;
 import DisenoGUIs.GUISeleccionMetodoPago;
 import DisenoGUIs.GUIVenderPrenda;
+import Interfaz.IEscanearProducto;
 import javax.swing.JFrame;
 
 /**
@@ -23,6 +24,7 @@ import javax.swing.JFrame;
 public class ControlPantallas {
 
     private static ControlPantallas instancia;
+    private static IEscanearProducto escaneer;
 
     public static synchronized ControlPantallas getInstase() {
         if (instancia == null) {
