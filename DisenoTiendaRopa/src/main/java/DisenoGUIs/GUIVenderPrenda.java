@@ -18,6 +18,7 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
     public GUIVenderPrenda() {
         initComponents();
         setLocationRelativeTo(null);
+        configurarNavegacionPerfil();
     }
 
     /**
@@ -229,6 +230,11 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
         btnVender.setBackground(new java.awt.Color(226, 115, 150));
         btnVender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVender.setText("Vender");
+        btnVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVenderActionPerformed(evt);
+            }
+        });
 
         btnAgregarPrenda.setBackground(new java.awt.Color(226, 115, 150));
         btnAgregarPrenda.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -313,6 +319,10 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLibroActionPerformed
+
+    private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVenderActionPerformed
 
     /**
      * @param args the command line arguments
