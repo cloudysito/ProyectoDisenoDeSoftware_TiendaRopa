@@ -110,9 +110,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Cuidado con el Kitten"/>
           </Properties>
         </Component>
@@ -128,9 +125,6 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre Empleado"/>
           </Properties>
@@ -157,43 +151,39 @@
                           <Component id="btnVender" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblNombreProducto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                              <Component id="lblPrecioPrenda" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="panelPrenda" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDescPrenda" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblMaterialPrenda" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblMarcaPrenda" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblTemporadaPrenda" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="lblNombreProducto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="lblPrecioPrenda" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="panelPrenda" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDescPrenda" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblMaterialPrenda" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="223" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblMarcaPrenda" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblTemporadaPrenda" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jPanel4" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace pref="223" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jPanel4" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -212,9 +202,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="panelPrenda" max="32767" attributes="0"/>
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -235,9 +224,10 @@
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTemporadaPrenda" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnVender" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -251,7 +241,7 @@
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fc" green="d7" red="fc" type="rgb"/>
+              <Color blue="e2" green="de" red="b3" type="rgb"/>
             </Property>
           </Properties>
 
@@ -299,9 +289,6 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="cf" red="ef" type="rgb"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Calcular talla"/>
               </Properties>
               <Events>
@@ -313,9 +300,6 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="cf" red="ef" type="rgb"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Enviar sugerencia"/>
               </Properties>
               <Events>
@@ -326,9 +310,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="cf" red="ef" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Devolver prendas"/>
               </Properties>
@@ -390,7 +371,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                       <Component id="lblFotoPrenda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
@@ -412,17 +393,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Descripcion prenda:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDescPrenda">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="bla bla bla"/>
           </Properties>
         </Component>
@@ -431,17 +406,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Material:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMaterialPrenda">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Seda"/>
           </Properties>
         </Component>
@@ -450,17 +419,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Marca:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMarcaPrenda">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Pollos"/>
           </Properties>
         </Component>
@@ -468,9 +431,6 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Temporada:"/>
           </Properties>
@@ -480,9 +440,6 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Verano"/>
           </Properties>
         </Component>
@@ -490,9 +447,6 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="96" green="73" red="e2" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
@@ -504,9 +458,6 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="96" green="73" red="e2" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Vender"/>
           </Properties>
@@ -573,9 +524,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="XXS"/>
               </Properties>
               <Events>
@@ -589,9 +537,6 @@
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="XS"/>
               </Properties>
@@ -607,9 +552,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="S"/>
               </Properties>
               <Events>
@@ -623,9 +565,6 @@
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="M"/>
@@ -642,9 +581,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="L"/>
               </Properties>
               <Events>
@@ -658,9 +594,6 @@
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="XL"/>
               </Properties>
@@ -676,9 +609,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="XXL"/>
               </Properties>
               <Events>
@@ -689,9 +619,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="cf" red="ef" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cambiar talla"/>
               </Properties>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -139,47 +143,72 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnRegresar" min="-2" pref="83" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnVender" min="-2" pref="83" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblNombreProducto" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNombreTitular" min="-2" pref="323" max="-2" attributes="0"/>
+                              <Component id="txtNumTarjeta" min="-2" pref="323" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="140" pref="159" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFechaVencimiento" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="121" max="-2" attributes="0"/>
-                              <Component id="btnContinuar" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCVV" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="84" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="jPanel3" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <Component id="lblNombreProducto" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtNumTarjeta" min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtNombreTitular" min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtFechaVencimiento" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="btnRegresar" min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnContinuar" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCVV" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnVender" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -199,12 +228,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnCalcularTalla" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnDevolverPrenda" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnEnviarSugerencia" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnDevolverPrenda" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnEnviarSugerencia" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -217,31 +246,20 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="btnDevolverPrenda" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnCalcularTalla" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnEnviarSugerencia" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="101" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnLibro" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnDevolverPrenda">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e3" green="cf" red="ef" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Devolver prendas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolverPrendaActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="btnCalcularTalla">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -264,6 +282,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviarSugerenciaActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnDevolverPrenda">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e3" green="cf" red="ef" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Devolver prendas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolverPrendaActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="btnLibro">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -276,7 +305,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="lblNombreProducto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -284,56 +313,95 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="96" green="73" red="e2" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Introducir codigo del producto:"/>
+            <Property name="text" type="java.lang.String" value="Pago con tarjeta"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel4">
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Funcion camara"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
+        <Component class="javax.swing.JButton" name="btnRegresar">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="96" green="73" red="e2" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\garfi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DisenoTiendaRopa\src\main\resources\flecha.png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegresarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero de la tarjeta:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Nombre del titular:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnVender">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="96" green="73" red="e2" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Vender"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVenderActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNombreTitular">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNumTarjeta">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Fecha de vencimiento:"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Escribir codigo:"/>
+            <Property name="text" type="java.lang.String" value="CVV:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
-        </Component>
-        <Component class="javax.swing.JButton" name="btnContinuar">
+        <Component class="javax.swing.JTextField" name="txtFechaVencimiento">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e3" green="cf" red="ef" type="rgb"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Continuar"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="MM/AA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFechaVencimientoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCVV">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCVVActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

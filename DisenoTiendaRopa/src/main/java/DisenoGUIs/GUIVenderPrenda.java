@@ -4,6 +4,8 @@
  */
 package DisenoGUIs;
 
+import ControlPantallas.ControlPantallas;
+
 /**
  *
  * @author emiim
@@ -56,14 +58,12 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gatoLogo.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cuidado con el Kitten");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usuario.png"))); // NOI18N
         jLabel3.setText("\n");
 
         lblNombreEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreEmpleado.setText("Nombre Empleado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -106,10 +106,9 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 238, 242));
 
-        jPanel3.setBackground(new java.awt.Color(252, 215, 252));
+        jPanel3.setBackground(new java.awt.Color(179, 222, 226));
 
         btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnDevolverPrenda.setForeground(new java.awt.Color(0, 0, 0));
         btnDevolverPrenda.setText("Devolver prendas");
         btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +117,6 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
         });
 
         btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
-        btnCalcularTalla.setForeground(new java.awt.Color(0, 0, 0));
         btnCalcularTalla.setText("Calcular talla");
         btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +125,6 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
         });
 
         btnEnviarSugerencia.setBackground(new java.awt.Color(239, 207, 227));
-        btnEnviarSugerencia.setForeground(new java.awt.Color(0, 0, 0));
         btnEnviarSugerencia.setText("Enviar sugerencia");
         btnEnviarSugerencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,14 +180,11 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/camisaPequeña.png"))); // NOI18N
 
         lblNombrePrenda.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombrePrenda.setForeground(new java.awt.Color(0, 0, 0));
         lblNombrePrenda.setText("Nombre prenda");
 
         lblPrecio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPrecio.setForeground(new java.awt.Color(0, 0, 0));
         lblPrecio.setText("Precio");
 
-        lblTalla.setForeground(new java.awt.Color(0, 0, 0));
         lblTalla.setText("Talla");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -230,17 +224,14 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
         lblNombreProducto1.setText("Total:");
 
         lblTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblTotal.setForeground(new java.awt.Color(0, 0, 0));
         lblTotal.setText("total");
 
         btnVender.setBackground(new java.awt.Color(226, 115, 150));
         btnVender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnVender.setForeground(new java.awt.Color(0, 0, 0));
         btnVender.setText("Vender");
 
         btnAgregarPrenda.setBackground(new java.awt.Color(226, 115, 150));
         btnAgregarPrenda.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnAgregarPrenda.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarPrenda.setText("Agregar +");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -381,4 +372,11 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
     private javax.swing.JLabel lblTalla;
     private javax.swing.JLabel lblTotal;
     // End of variables declaration//GEN-END:variables
+
+    private void configurarNavegacionPerfil() {
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+        if (btnVender != null) {
+            btnVender.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this));
+        }
+    }
 }

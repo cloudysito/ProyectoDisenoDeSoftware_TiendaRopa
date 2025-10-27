@@ -73,14 +73,12 @@ public class GUIProducto extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gatoLogo.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cuidado con el Kitten");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usuario.png"))); // NOI18N
         jLabel3.setText("\n");
 
         lblNombreEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreEmpleado.setText("Nombre Empleado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -123,10 +121,9 @@ public class GUIProducto extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 238, 242));
 
-        jPanel3.setBackground(new java.awt.Color(252, 215, 252));
+        jPanel3.setBackground(new java.awt.Color(179, 222, 226));
 
         btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
-        btnCalcularTalla.setForeground(new java.awt.Color(0, 0, 0));
         btnCalcularTalla.setText("Calcular talla");
         btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +132,6 @@ public class GUIProducto extends javax.swing.JFrame {
         });
 
         btnEnviarSugerencia.setBackground(new java.awt.Color(239, 207, 227));
-        btnEnviarSugerencia.setForeground(new java.awt.Color(0, 0, 0));
         btnEnviarSugerencia.setText("Enviar sugerencia");
         btnEnviarSugerencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +140,6 @@ public class GUIProducto extends javax.swing.JFrame {
         });
 
         btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnDevolverPrenda.setForeground(new java.awt.Color(0, 0, 0));
         btnDevolverPrenda.setText("Devolver prendas");
         btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,42 +209,33 @@ public class GUIProducto extends javax.swing.JFrame {
         panelPrendaLayout.setVerticalGroup(
             panelPrendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrendaLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(lblFotoPrenda)
                 .addGap(28, 28, 28))
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Descripcion prenda:");
 
-        lblDescPrenda.setForeground(new java.awt.Color(0, 0, 0));
         lblDescPrenda.setText("bla bla bla");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Material:");
 
-        lblMaterialPrenda.setForeground(new java.awt.Color(0, 0, 0));
         lblMaterialPrenda.setText("Seda");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Marca:");
 
-        lblMarcaPrenda.setForeground(new java.awt.Color(0, 0, 0));
         lblMarcaPrenda.setText("Pollos");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Temporada:");
 
         lblTemporadaPrenda.setBackground(new java.awt.Color(0, 0, 0));
-        lblTemporadaPrenda.setForeground(new java.awt.Color(0, 0, 0));
         lblTemporadaPrenda.setText("Verano");
 
         btnCancelar.setBackground(new java.awt.Color(226, 115, 150));
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,7 +244,6 @@ public class GUIProducto extends javax.swing.JFrame {
         });
 
         btnVender.setBackground(new java.awt.Color(226, 115, 150));
-        btnVender.setForeground(new java.awt.Color(0, 0, 0));
         btnVender.setText("Vender");
         btnVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,7 +255,6 @@ public class GUIProducto extends javax.swing.JFrame {
 
         XXS.setBackground(new java.awt.Color(239, 207, 227));
         buttonGroup1.add(XXS);
-        XXS.setForeground(new java.awt.Color(0, 0, 0));
         XXS.setText("XXS");
         XXS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,7 +264,6 @@ public class GUIProducto extends javax.swing.JFrame {
 
         XS.setBackground(new java.awt.Color(239, 207, 227));
         buttonGroup1.add(XS);
-        XS.setForeground(new java.awt.Color(0, 0, 0));
         XS.setText("XS");
         XS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,7 +273,6 @@ public class GUIProducto extends javax.swing.JFrame {
 
         S.setBackground(new java.awt.Color(239, 207, 227));
         buttonGroup1.add(S);
-        S.setForeground(new java.awt.Color(0, 0, 0));
         S.setText("S");
         S.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,7 +282,6 @@ public class GUIProducto extends javax.swing.JFrame {
 
         M.setBackground(new java.awt.Color(239, 207, 227));
         buttonGroup1.add(M);
-        M.setForeground(new java.awt.Color(0, 0, 0));
         M.setSelected(true);
         M.setText("M");
         M.addActionListener(new java.awt.event.ActionListener() {
@@ -311,7 +292,6 @@ public class GUIProducto extends javax.swing.JFrame {
 
         L.setBackground(new java.awt.Color(239, 207, 227));
         buttonGroup1.add(L);
-        L.setForeground(new java.awt.Color(0, 0, 0));
         L.setText("L");
         L.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,7 +301,6 @@ public class GUIProducto extends javax.swing.JFrame {
 
         XL.setBackground(new java.awt.Color(239, 207, 227));
         buttonGroup1.add(XL);
-        XL.setForeground(new java.awt.Color(0, 0, 0));
         XL.setText("XL");
         XL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,7 +310,6 @@ public class GUIProducto extends javax.swing.JFrame {
 
         XXL.setBackground(new java.awt.Color(239, 207, 227));
         buttonGroup1.add(XXL);
-        XXL.setForeground(new java.awt.Color(0, 0, 0));
         XXL.setText("XXL");
         XXL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -340,7 +318,6 @@ public class GUIProducto extends javax.swing.JFrame {
         });
 
         btnCambiarTalla.setBackground(new java.awt.Color(239, 207, 227));
-        btnCambiarTalla.setForeground(new java.awt.Color(0, 0, 0));
         btnCambiarTalla.setText("Cambiar talla");
         btnCambiarTalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -400,35 +377,33 @@ public class GUIProducto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVender)
                         .addGap(122, 122, 122))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(lblNombreProducto)
-                            .addGap(110, 110, 110)
-                            .addComponent(lblPrecioPrenda)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(panelPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(lblDescPrenda)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblMaterialPrenda))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblMarcaPrenda))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblTemporadaPrenda))))
-                            .addContainerGap(223, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(28, 28, 28)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblNombreProducto)
+                        .addGap(110, 110, 110)
+                        .addComponent(lblPrecioPrenda)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(panelPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(lblDescPrenda)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblMaterialPrenda))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblMarcaPrenda))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTemporadaPrenda)))
+                        .addContainerGap(223, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,9 +417,8 @@ public class GUIProducto extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(panelPrenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -461,7 +435,8 @@ public class GUIProducto extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(lblTemporadaPrenda))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnVender))

@@ -10,12 +10,12 @@ import ControlPantallas.ControlPantallas;
  *
  * @author emiim
  */
-public class GUICodigoProducto extends javax.swing.JFrame {
+public class GUIPagoPaypal extends javax.swing.JFrame {
 
     /**
-     * Creates new form GUICodigoProducto
+     * Creates new form GUIProducto
      */
-    public GUICodigoProducto() {
+    public GUIPagoPaypal() {
         initComponents();
         configurarNavegacionPerfil();
         setLocationRelativeTo(null);
@@ -30,6 +30,7 @@ public class GUICodigoProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -37,16 +38,17 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         lblNombreEmpleado = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        btnDevolverPrenda = new javax.swing.JButton();
         btnCalcularTalla = new javax.swing.JButton();
         btnEnviarSugerencia = new javax.swing.JButton();
+        btnDevolverPrenda = new javax.swing.JButton();
         btnLibro = new javax.swing.JButton();
+        lblNombreProducto = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        btnContinuar = new javax.swing.JButton();
+        btnVender = new javax.swing.JButton();
+        txtContraseña = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,14 +107,6 @@ public class GUICodigoProducto extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(179, 222, 226));
 
-        btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnDevolverPrenda.setText("Devolver prendas");
-        btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolverPrendaActionPerformed(evt);
-            }
-        });
-
         btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
         btnCalcularTalla.setText("Calcular talla");
         btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +120,14 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         btnEnviarSugerencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarSugerenciaActionPerformed(evt);
+            }
+        });
+
+        btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
+        btnDevolverPrenda.setText("Devolver prendas");
+        btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolverPrendaActionPerformed(evt);
             }
         });
 
@@ -144,11 +146,11 @@ public class GUICodigoProducto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCalcularTalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDevolverPrenda)
-                            .addComponent(btnEnviarSugerencia))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btnDevolverPrenda, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(btnLibro)
@@ -156,45 +158,43 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addComponent(btnDevolverPrenda)
                 .addGap(18, 18, 18)
                 .addComponent(btnCalcularTalla)
                 .addGap(18, 18, 18)
                 .addComponent(btnEnviarSugerencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLibro))
         );
 
+        lblNombreProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreProducto.setForeground(new java.awt.Color(226, 115, 150));
+        lblNombreProducto.setText("Pago con Paypal");
+
+        btnRegresar.setBackground(new java.awt.Color(226, 115, 150));
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Users\\garfi\\OneDrive\\Documentos\\GitHub\\ProyectoDisenoDeSoftware_TiendaRopa\\DisenoTiendaRopa\\src\\main\\resources\\flecha.png")); // NOI18N
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(226, 115, 150));
-        jLabel4.setText("Introducir codigo del producto:");
+        jLabel4.setText("Correo Electronico:");
 
-        jLabel5.setText("Funcion camara");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("Contraseña");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Escribir codigo:");
-
-        btnContinuar.setBackground(new java.awt.Color(239, 207, 227));
-        btnContinuar.setText("Continuar");
+        btnVender.setBackground(new java.awt.Color(226, 115, 150));
+        btnVender.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVender.setText("Vender");
+        btnVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVenderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -202,38 +202,41 @@ public class GUICodigoProducto extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel4))
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnContinuar))))
-                .addGap(0, 84, Short.MAX_VALUE))
+                            .addComponent(lblNombreProducto)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(140, 159, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(13, 13, 13)
+                .addComponent(lblNombreProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnContinuar))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,21 +257,29 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDevolverPrendaActionPerformed
-
-    private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCalcularTallaActionPerformed
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
+    private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCalcularTallaActionPerformed
+
+    private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDevolverPrendaActionPerformed
+
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLibroActionPerformed
+
+    private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVenderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,49 +298,69 @@ public class GUICodigoProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICodigoProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIPagoPaypal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICodigoProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIPagoPaypal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICodigoProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIPagoPaypal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICodigoProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIPagoPaypal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUICodigoProducto().setVisible(true);
+                new GUIPagoPaypal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcularTalla;
-    private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnDevolverPrenda;
     private javax.swing.JButton btnEnviarSugerencia;
     private javax.swing.JButton btnLibro;
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnVender;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblNombreEmpleado;
+    private javax.swing.JLabel lblNombreProducto;
+    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
-        if (btnContinuar != null) {
-            btnContinuar.addActionListener(evt -> navegador.navegarProducto(this));
+        if (btnRegresar != null) {
+            btnRegresar.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this));
         }
-}
-}
+        if (btnVender != null) {
+            btnVender.addActionListener(evt -> navegador.navegarCompraRealizada(this));
+        }
+    }
 
+}

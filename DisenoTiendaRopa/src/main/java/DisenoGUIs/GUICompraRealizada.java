@@ -10,12 +10,12 @@ import ControlPantallas.ControlPantallas;
  *
  * @author emiim
  */
-public class GUICodigoProducto extends javax.swing.JFrame {
+public class GUICompraRealizada extends javax.swing.JFrame {
 
     /**
-     * Creates new form GUICodigoProducto
+     * Creates new form GUIProducto
      */
-    public GUICodigoProducto() {
+    public GUICompraRealizada() {
         initComponents();
         configurarNavegacionPerfil();
         setLocationRelativeTo(null);
@@ -30,6 +30,7 @@ public class GUICodigoProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -37,16 +38,13 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         lblNombreEmpleado = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        btnDevolverPrenda = new javax.swing.JButton();
         btnCalcularTalla = new javax.swing.JButton();
         btnEnviarSugerencia = new javax.swing.JButton();
+        btnDevolverPrenda = new javax.swing.JButton();
         btnLibro = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        btnContinuar = new javax.swing.JButton();
+        lblNombreProducto = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
+        lblIDCompra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,14 +103,6 @@ public class GUICodigoProducto extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(179, 222, 226));
 
-        btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnDevolverPrenda.setText("Devolver prendas");
-        btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolverPrendaActionPerformed(evt);
-            }
-        });
-
         btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
         btnCalcularTalla.setText("Calcular talla");
         btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +116,14 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         btnEnviarSugerencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarSugerenciaActionPerformed(evt);
+            }
+        });
+
+        btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
+        btnDevolverPrenda.setText("Devolver prendas");
+        btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolverPrendaActionPerformed(evt);
             }
         });
 
@@ -144,11 +142,11 @@ public class GUICodigoProducto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCalcularTalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDevolverPrenda)
-                            .addComponent(btnEnviarSugerencia))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btnDevolverPrenda, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(btnLibro)
@@ -156,45 +154,26 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addComponent(btnDevolverPrenda)
                 .addGap(18, 18, 18)
                 .addComponent(btnCalcularTalla)
                 .addGap(18, 18, 18)
                 .addComponent(btnEnviarSugerencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(btnLibro))
         );
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(226, 115, 150));
-        jLabel4.setText("Introducir codigo del producto:");
+        lblNombreProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreProducto.setForeground(new java.awt.Color(226, 115, 150));
+        lblNombreProducto.setText("Compra realizada");
 
-        jLabel5.setText("Funcion camara");
+        lbl1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl1.setText("ID Compra:");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Escribir codigo:");
-
-        btnContinuar.setBackground(new java.awt.Color(239, 207, 227));
-        btnContinuar.setText("Continuar");
+        lblIDCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblIDCompra.setText("id");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -202,38 +181,27 @@ public class GUICodigoProducto extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombreProducto)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnContinuar))))
-                .addGap(0, 84, Short.MAX_VALUE))
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblIDCompra)))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel4)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnContinuar))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(lblNombreProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl1)
+                    .addComponent(lblIDCompra))
+                .addGap(14, 218, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,17 +222,17 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
+    private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDevolverPrendaActionPerformed
+    }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
-    private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
+    private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
+    }//GEN-LAST:event_btnDevolverPrendaActionPerformed
 
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
@@ -287,49 +255,107 @@ public class GUICodigoProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICodigoProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUICompraRealizada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICodigoProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUICompraRealizada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICodigoProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUICompraRealizada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICodigoProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUICompraRealizada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUICodigoProducto().setVisible(true);
+                new GUICompraRealizada().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcularTalla;
-    private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnDevolverPrenda;
     private javax.swing.JButton btnEnviarSugerencia;
     private javax.swing.JButton btnLibro;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lblIDCompra;
     private javax.swing.JLabel lblNombreEmpleado;
+    private javax.swing.JLabel lblNombreProducto;
     // End of variables declaration//GEN-END:variables
 
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
-        if (btnContinuar != null) {
-            btnContinuar.addActionListener(evt -> navegador.navegarProducto(this));
-        }
-}
-}
+    }
 
+}
