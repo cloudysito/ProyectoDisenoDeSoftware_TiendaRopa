@@ -22,8 +22,11 @@ public class GUICodigoProducto extends javax.swing.JFrame {
     public GUICodigoProducto(EmpleadoDTO empleado) {
         initComponents();
         this.empleado = empleado;
+        
         configurarNavegacionPerfil();
+        llenarEmpleado();
         setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -275,6 +278,9 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLibroActionPerformed
 
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombreCompleto());
+    }
     /**
      * @param args the command line arguments
      */

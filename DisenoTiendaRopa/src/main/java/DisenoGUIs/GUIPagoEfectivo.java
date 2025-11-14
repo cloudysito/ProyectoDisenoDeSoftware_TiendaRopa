@@ -325,6 +325,8 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVenderActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
