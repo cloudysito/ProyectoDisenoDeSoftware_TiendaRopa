@@ -4,6 +4,7 @@
  */
 package com.mycompany.escanearproductosubsystem.Interfaz;
 
+import com.mycompany.objetosnegocio.dominio.RopaTalla;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
 
 /**
@@ -14,5 +15,5 @@ public interface IEscanearProducto {
   
     public abstract String escanearCodigo();
     
-    public abstract ProductoDTO encontrarProducto(String codigo);
+    public abstract RopaTalla encontrarProducto(String codigo);
 }

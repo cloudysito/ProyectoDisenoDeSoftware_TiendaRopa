@@ -20,6 +20,7 @@ import com.mycompany.escanearproductosubsystem.FachadaEscanearProducto;
 import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
 import com.mycompany.metodopagosubsystem.FachadaMetodoPago;
 import com.mycompany.metodopagosubsystem.Interfaz.IMetodoPago;
+import com.mycompany.objetosnegocio.dominio.RopaTalla;
 import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
@@ -67,7 +68,7 @@ public class ControlPantallas {
         cp.setVisible(true);
     }
 
-    public void navegarProducto(JFrame frameActual,EmpleadoDTO empleado, ProductoDTO productodto) {
+    public void navegarProducto(JFrame frameActual,EmpleadoDTO empleado, RopaTalla productodto) {
         cerrarFrameActual(frameActual);
         GUIProducto producto = new GUIProducto(empleado, productodto);
         producto.setVisible(true);

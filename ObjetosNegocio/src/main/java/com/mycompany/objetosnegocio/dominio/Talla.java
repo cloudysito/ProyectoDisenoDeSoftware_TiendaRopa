@@ -15,8 +15,7 @@ public class Talla {
 
     public Talla() {}
 
-    public Talla(int idTalla, String nombreTalla, String descripcion) {
-        this.idTalla = idTalla;
+    public Talla( String nombreTalla, String descripcion) {
         this.nombreTalla = nombreTalla;
         this.descripcion = descripcion;
     }

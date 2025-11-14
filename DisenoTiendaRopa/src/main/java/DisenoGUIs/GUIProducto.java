@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dominio.RopaTalla;
 import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
 
@@ -18,9 +19,9 @@ public class GUIProducto extends javax.swing.JFrame {
      * Creates new form GUIProducto
      */
     private EmpleadoDTO empleado;
-    private ProductoDTO producto;
+    private RopaTalla producto;
     
-    public GUIProducto(EmpleadoDTO empleado, ProductoDTO producto) {
+    public GUIProducto(EmpleadoDTO empleado, RopaTalla producto) {
         this.empleado = empleado;
         this.producto = producto;
         initComponents();
@@ -569,12 +570,13 @@ public class GUIProducto extends javax.swing.JFrame {
 
      private void llenarProducto(){
          lblNombreEmpleado.setText(empleado.getNombreCompleto());
-         lblNombreProducto.setText(producto.getNombreArticulo());
-         lblPrecioPrenda.setText("235.00$");
-         lblDescPrenda.setText("Una muy buena prendaaa woooooo");
-         lblTemporadaPrenda.setText("Otoño");
-         lblMarcaPrenda.setText("Supreme");
-         lblMaterialPrenda.setText("Tela");
+         lblNombreProducto.setText(producto.getRopa().getNombreArticulo());
+         lblPrecioPrenda.setText(Double.toString( producto.getRopa().getPrecio()));
+         lblDescPrenda.setText(producto.getRopa().getDescripcion());
+         lblTemporadaPrenda.setText(producto.getRopa().getTemporada());
+         lblMarcaPrenda.setText(producto.getRopa().getMarca());
+         lblMaterialPrenda.setText(producto.getRopa().getMaterial());
+         
          
     
     }

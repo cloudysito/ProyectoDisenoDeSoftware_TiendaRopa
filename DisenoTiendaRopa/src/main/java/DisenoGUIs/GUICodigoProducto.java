@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dominio.RopaTalla;
 import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
 
@@ -302,7 +303,7 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnContinuar != null) {
             String codigoProducto = navegador.getEscanerSistema().escanearCodigo();
-            ProductoDTO producto = navegador.getEscanerSistema().encontrarProducto(codigoProducto);
+            RopaTalla producto = navegador.getEscanerSistema().encontrarProducto(codigoProducto);
             btnContinuar.addActionListener(evt -> navegador.navegarProducto(this, empleado, producto));
         }
 }
