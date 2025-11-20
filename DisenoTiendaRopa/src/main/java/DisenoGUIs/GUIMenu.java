@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dominio.Empleado;
 import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 
 /**
@@ -16,9 +17,9 @@ public class GUIMenu extends javax.swing.JFrame {
     /**
      * Creates new form GUIMenu
      */
-    private EmpleadoDTO empleado;
+    private Empleado empleado;
     
-    public GUIMenu(EmpleadoDTO empleado) {
+    public GUIMenu(Empleado empleado) {
         initComponents();
         this.empleado = empleado;
         configurarNavegacionPerfil();
@@ -275,7 +276,7 @@ public class GUIMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
      private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombreCompleto());
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
     
     /**

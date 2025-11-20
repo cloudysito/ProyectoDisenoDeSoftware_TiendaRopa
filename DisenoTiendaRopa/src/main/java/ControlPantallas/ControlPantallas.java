@@ -20,6 +20,7 @@ import com.mycompany.escanearproductosubsystem.FachadaEscanearProducto;
 import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
 import com.mycompany.metodopagosubsystem.FachadaMetodoPago;
 import com.mycompany.metodopagosubsystem.Interfaz.IMetodoPago;
+import com.mycompany.objetosnegocio.dominio.Empleado;
 import com.mycompany.objetosnegocio.dominio.RopaTalla;
 import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
@@ -56,61 +57,61 @@ public class ControlPantallas {
         }
     }
 
-    public void navegarMenuPrincipal(JFrame frameActual, EmpleadoDTO empleado) {
+    public void navegarMenuPrincipal(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIMenu menu = new GUIMenu(empleado);
         menu.setVisible(true);
     }
 
-    public void navegarCodigoProducto(JFrame frameActual, EmpleadoDTO empleado) {
+    public void navegarCodigoProducto(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUICodigoProducto cp = new GUICodigoProducto(empleado);
         cp.setVisible(true);
     }
 
-    public void navegarProducto(JFrame frameActual,EmpleadoDTO empleado, RopaTalla productodto) {
+    public void navegarProducto(JFrame frameActual,Empleado empleado, RopaTalla productodto) {
         cerrarFrameActual(frameActual);
         GUIProducto producto = new GUIProducto(empleado, productodto);
         producto.setVisible(true);
     }
 
-    public void navegarVenderPrenda(JFrame frameActual) {
+    public void navegarVenderPrenda(JFrame frameActual,Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIVenderPrenda vp = new GUIVenderPrenda();
         vp.setVisible(true);
     }
 
-    public void navegarCompraRealizada(JFrame frameActual) {
+    public void navegarCompraRealizada(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUICompraRealizada cr = new GUICompraRealizada();
         cr.setVisible(true);
     }
 
-    public void navegarPagoEfectivo(JFrame frameActual) {
+    public void navegarPagoEfectivo(JFrame frameActual,Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIPagoEfectivo efectivo = new GUIPagoEfectivo();
         efectivo.setVisible(true);
     }
 
-    public void navegarPagoPaypal(JFrame frameActual) {
+    public void navegarPagoPaypal(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIPagoPaypal paypal = new GUIPagoPaypal();
         paypal.setVisible(true);
     }
 
-    public void navegarPagoTarjeta(JFrame frameActual) {
+    public void navegarPagoTarjeta(JFrame frameActual,Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIPagoTarjeta tarjeta = new GUIPagoTarjeta();
         tarjeta.setVisible(true);
     }
 
-    public void navegarPagoTransferencia(JFrame frameActual) {
+    public void navegarPagoTransferencia(JFrame frameActual,Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIPagoTransferencia transferencia = new GUIPagoTransferencia();
         transferencia.setVisible(true);
     }
 
-    public void navegarSeleccionMetodoPago(JFrame frameActual) {
+    public void navegarSeleccionMetodoPago(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUISeleccionMetodoPago smp = new GUISeleccionMetodoPago();
         smp.setVisible(true);

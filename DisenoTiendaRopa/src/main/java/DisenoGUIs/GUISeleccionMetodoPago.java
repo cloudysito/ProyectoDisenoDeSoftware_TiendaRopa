@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dominio.Empleado;
 
 /**
  *
@@ -15,6 +16,9 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
+    
+    private Empleado empleado;
+
     public GUISeleccionMetodoPago() {
         initComponents();
         configurarNavegacionPerfil();
@@ -412,22 +416,22 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnRegresar != null) {
-            btnRegresar.addActionListener(evt -> navegador.navegarVenderPrenda(this));
+            btnRegresar.addActionListener(evt -> navegador.navegarVenderPrenda(this, empleado));
         }
        if (btnEfectivo != null) {
-            btnEfectivo.addActionListener(evt -> navegador.navegarPagoEfectivo(this));
+            btnEfectivo.addActionListener(evt -> navegador.navegarPagoEfectivo(this, empleado));
         }
        if (btnCredito != null) {
-            btnCredito.addActionListener(evt -> navegador.navegarPagoTarjeta(this));
+            btnCredito.addActionListener(evt -> navegador.navegarPagoTarjeta(this, empleado));
         }
        if (btnDebito != null) {
-            btnDebito.addActionListener(evt -> navegador.navegarPagoTarjeta(this));
+            btnDebito.addActionListener(evt -> navegador.navegarPagoTarjeta(this, empleado));
         }
        if (btnTransferencia != null) {
-            btnTransferencia.addActionListener(evt -> navegador.navegarPagoTransferencia(this));
+            btnTransferencia.addActionListener(evt -> navegador.navegarPagoTransferencia(this, empleado));
         }
        if (btnPaypal != null) {
-            btnPaypal.addActionListener(evt -> navegador.navegarPagoPaypal(this));
+            btnPaypal.addActionListener(evt -> navegador.navegarPagoPaypal(this, empleado));
         }
 }
 

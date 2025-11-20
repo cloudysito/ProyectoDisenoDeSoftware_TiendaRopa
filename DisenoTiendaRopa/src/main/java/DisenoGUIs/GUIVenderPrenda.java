@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dominio.Empleado;
 
 /**
  *
@@ -15,6 +16,9 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
     /**
      * Creates new form GUIVenderPrenda
      */
+    
+    private Empleado empleado;
+
     public GUIVenderPrenda() {
         initComponents();
         LlenarPrendar();
@@ -394,7 +398,7 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnVender != null) {
-            btnVender.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this));
+            btnVender.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado));
         }
     }
 }

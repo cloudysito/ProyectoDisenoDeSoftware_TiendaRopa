@@ -15,8 +15,9 @@ public class Empleado {
     private String nombre;
     private String apellidos;
     private String puesto;
-    private int telefono;
+    private String telefono;
     private String email;
+    private String contrasenia;
     private int salario;
     private Date fechaContratacion;
     private String rfc;
@@ -24,7 +25,7 @@ public class Empleado {
     public Empleado() {}
 
     public Empleado(int idEmpleado, String nombre, String apellidos, String puesto,
-                    int telefono, String email, int salario, Date fechaContratacion, String rfc) {
+                    String telefono, String email, int salario, Date fechaContratacion, String rfc, String contrasenia) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -34,6 +35,7 @@ public class Empleado {
         this.salario = salario;
         this.fechaContratacion = fechaContratacion;
         this.rfc = rfc;
+        this.contrasenia = contrasenia;
     }
 
     public int getIdEmpleado() { return idEmpleado; }
@@ -48,8 +50,8 @@ public class Empleado {
     public String getPuesto() { return puesto; }
     public void setPuesto(String puesto) { this.puesto = puesto; }
 
-    public int getTelefono() { return telefono; }
-    public void setTelefono(int telefono) { this.telefono = telefono; }
+    public String getTelefono() { return telefono; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }

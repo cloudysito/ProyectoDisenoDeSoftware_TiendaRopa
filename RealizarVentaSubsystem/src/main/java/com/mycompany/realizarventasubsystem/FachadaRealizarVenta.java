@@ -4,10 +4,15 @@
  */
 package com.mycompany.realizarventasubsystem;
 
+import com.mycompany.objetosnegocio.dominio.DetalleVenta;
+import com.mycompany.objetosnegocio.dominio.Empleado;
+import com.mycompany.objetosnegocio.dominio.RopaTalla;
+import com.mycompany.objetosnegocio.dominio.Venta;
 import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
 import com.mycompany.objetosnegocio.dto.VentaDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,25 +21,28 @@ import java.util.Date;
  * @author santi
  */
 public class FachadaRealizarVenta implements IRealizarVenta {
+
     @Override
-    public VentaDTO crearVenta(EmpleadoDTO empleado, String metodoPago) {
-        return new VentaDTO(1001, new Date(), 500, metodoPago, empleado.getIdEmpleado(), new ArrayList<>());
+    public Venta crearVenta(Venta venta) {
+        venta.setFechaHoraVenta(Date.from(Instant.MIN));
+        venta.setFolioVenta(23);
+        return venta;
+        
     }
 
     @Override
-    public ProductoDTO reducirStock(ProductoDTO producto, int cantidad) {
-        producto.setCantidadDisponible(producto.getCantidadDisponible() - cantidad);
+    public DetalleVenta reducirStock(DetalleVenta detalleVenta) {
+        return detalleVenta;
+    }
+
+    @Override
+    public DetalleVenta cambiarTallaDisponible(DetalleVenta producto) {
         return producto;
     }
 
     @Override
-    public ProductoDTO cambiarTallaDisponible(ProductoDTO producto) {
-        producto.setTalla("L");
-        return producto;
-    }
-
-    @Override
-    public boolean registrarVenta(VentaDTO venta) {
+    public boolean registrarVenta(Venta venta) {
         return true;
     }
+   
 }

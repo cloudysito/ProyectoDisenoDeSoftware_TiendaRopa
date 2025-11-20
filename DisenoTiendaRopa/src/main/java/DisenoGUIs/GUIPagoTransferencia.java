@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dominio.Empleado;
 
 /**
  *
@@ -15,6 +16,10 @@ public class GUIPagoTransferencia extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
+        
+    private Empleado empleado;
+
+    
     public GUIPagoTransferencia() {
         initComponents();
         configurarNavegacionPerfil();
@@ -394,10 +399,10 @@ public class GUIPagoTransferencia extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnRegresar != null) {
-            btnRegresar.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this));
+            btnRegresar.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado));
         }
         if (btnVender != null) {
-            btnVender.addActionListener(evt -> navegador.navegarCompraRealizada(this));
+            
         }
     }
 

@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dominio.Empleado;
 import com.mycompany.objetosnegocio.dominio.RopaTalla;
 import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
@@ -18,8 +19,8 @@ public class GUICodigoProducto extends javax.swing.JFrame {
     /**
      * Creates new form GUICodigoProducto
      */
-    private EmpleadoDTO empleado;
-    public GUICodigoProducto(EmpleadoDTO empleado) {
+    private Empleado empleado;
+    public GUICodigoProducto(Empleado empleado) {
         initComponents();
         this.empleado = empleado;
         
@@ -279,7 +280,7 @@ public class GUICodigoProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombreCompleto());
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
     /**
      * @param args the command line arguments

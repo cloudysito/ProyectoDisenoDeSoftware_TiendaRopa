@@ -5,6 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.objetosnegocio.dominio.Empleado;
 import com.mycompany.objetosnegocio.dominio.RopaTalla;
 import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 import com.mycompany.objetosnegocio.dto.ProductoDTO;
@@ -18,10 +19,10 @@ public class GUIProducto extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
-    private EmpleadoDTO empleado;
+    private Empleado empleado;
     private RopaTalla producto;
     
-    public GUIProducto(EmpleadoDTO empleado, RopaTalla producto) {
+    public GUIProducto(Empleado empleado, RopaTalla producto) {
         this.empleado = empleado;
         this.producto = producto;
         initComponents();
@@ -569,7 +570,7 @@ public class GUIProducto extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
      private void llenarProducto(){
-         lblNombreEmpleado.setText(empleado.getNombreCompleto());
+         lblNombreEmpleado.setText(empleado.getNombre());
          lblNombreProducto.setText(producto.getRopa().getNombreArticulo());
          lblPrecioPrenda.setText(Double.toString( producto.getRopa().getPrecio()));
          lblDescPrenda.setText(producto.getRopa().getDescripcion());
@@ -588,7 +589,7 @@ public class GUIProducto extends javax.swing.JFrame {
             btnCancelar.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado));
         }
         if (btnVender != null) {
-            btnVender.addActionListener(evt -> navegador.navegarVenderPrenda(this));
+            btnVender.addActionListener(evt -> navegador.navegarVenderPrenda(this, empleado));
         }
 }
 

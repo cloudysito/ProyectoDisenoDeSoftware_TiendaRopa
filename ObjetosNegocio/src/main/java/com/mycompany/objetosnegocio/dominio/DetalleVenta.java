@@ -12,14 +12,14 @@ public class DetalleVenta {
     private int  id;
     private RopaTalla ropaTalla;
     private int cantidadVendida;
-    private int subtotal;
+    private double subtotal;
 
     public DetalleVenta() {}
 
-    public DetalleVenta(RopaTalla ropaTalla, int cantidadVendida, int subtotal) {
+    public DetalleVenta(RopaTalla ropaTalla, int cantidadVendida) {
         this.ropaTalla = ropaTalla;
         this.cantidadVendida = cantidadVendida;
-        this.subtotal = subtotal;
+        this.subtotal = ropaTalla.getRopa().getPrecio() * this.cantidadVendida;
     }
 
     public int getId() {
@@ -29,8 +29,6 @@ public class DetalleVenta {
     public void setId(int id) {
         this.id = id;
     }
-
-    
     
     public RopaTalla getRopaTalla() { return ropaTalla; }
     public void setRopaTalla(RopaTalla ropaTalla) { this.ropaTalla = ropaTalla; }
@@ -38,8 +36,8 @@ public class DetalleVenta {
     public int getCantidadVendida() { return cantidadVendida; }
     public void setCantidadVendida(int cantidadVendida) { this.cantidadVendida = cantidadVendida; }
 
-    public int getSubtotal() { return subtotal; }
-    public void setSubtotal(int subtotal) { this.subtotal = subtotal; }
+    public double getSubtotal() { return subtotal; }
+    public void setSubtotal(double subtotal) { this.subtotal = subtotal; }
 
     @Override
     public String toString() {
