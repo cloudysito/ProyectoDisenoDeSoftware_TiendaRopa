@@ -10,10 +10,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
-import com.mongodb.client.result.DeleteResult;
-import com.mongodb.client.result.UpdateResult;
-import java.util.ArrayList;
-import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -25,14 +22,54 @@ public class RopaDAO implements IRopaDAO {
 
     private static final String NOMBRE_COLLECTION = "Ropa";
     private final ConnectionMongoDB connection;
+    private final RopaMapper mapper;
 
     public RopaDAO() {
         this.connection = new ConnectionMongoDB();
+        this.mapper = new RopaMapper();
     }
 
     private MongoCollection<Ropa> getCollection(MongoClient client) {
         MongoDatabase database = client.getDatabase(ConnectionMongoDB.NOMBRE_DB);
-        return database.getCollection(NOMBRE_COLLECTION, Ropa.class);
+        return database.getCollection(NOMBRE_COLLECTION);
+    }
+
+    @Override
+    private Document dtoToEntity(RopaDTO dto) {
+        if (dto == null) return null;
+        
+        Document doc = new Document();
+        if (dto.getId() != null && !dto.getId().isEmpty()) {
+            doc.append("_id", new ObjectId(dto.getId()));
+        }
+        doc.append("codigoBarras", dto.getCodigoBarras());
+        doc.append("nombreArticulo", dto.getNombreArticulo());
+        doc.append("precio", dto.getPrecio());
+        doc.append("descripcion", dto.getDescripcion());
+        doc.append("temporada", dto.getTemporada());
+        doc.append("marca", dto.getMarca());
+        doc.append("material", dto.getMaterial());
+        return doc;
+    }
+
+    
+    @Override
+    private RopaDTO entityToDTO(Document doc) {
+        if (doc == null) return null;
+        
+        RopaDTO dto = new RopaDTO();
+        if (doc.containsKey("_id")) {
+            dto.setId(doc.getObjectId("_id").toHexString());
+        }
+        dto.setCodigoBarras(doc.getString("codigoBarras"));
+        dto.setNombreArticulo(doc.getString("nombreArticulo"));
+        Double precio = doc.getDouble("precio");
+        dto.setPrecio(precio != null ? precio : 0.0);
+        dto.setDescripcion(doc.getString("descripcion"));
+        dto.setTemporada(doc.getString("temporada"));
+        dto.setMarca(doc.getString("marca"));
+        dto.setMaterial(doc.getString("material"));
+        return dto;
     }
 
     @Override
@@ -40,10 +77,19 @@ public class RopaDAO implements IRopaDAO {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
             MongoCollection<Ropa> collection = getCollection(client);
-
-            collection.insertOne(ropa);
-            System.out.println("Ropa insertada con éxito.");
-
+            RopaDTO dto = mapper.toDTO(ropa);
+            Document doc = dtoToEntity(dto);
+            
+            if(doc.get("_id")==null) {
+                doc.remove("_id");
+            }
+            
+            collection.insertOne(doc);
+            
+            ObjectId id = doc.getObjectId("_id");
+            ropa.setId(id.toHexString());
+            
+            System.out.println("Ropa insertada con exito.");
             return ropa;
 
         } catch (MongoException e) {
@@ -59,103 +105,12 @@ public class RopaDAO implements IRopaDAO {
 
             Bson filtroCodigoBarras = eq("codigoBarras", codigoBarras);
 
-            Ropa ropaEncontrada = collection.find(filtroCodigoBarras).first();
+            Document doc = collection.find(filtroCodigoBarras).first();
 
-            return ropaEncontrada;
+            return mapper.toEntity(entityToDTO(doc));
 
         } catch (MongoException e) {
             throw new MongoException("Error al buscar ropa por código de barras: " + codigoBarras, e.getCause());
-        }
-    }
-
-    @Override
-    public Ropa buscarPorId(String idRopa) throws MongoException {
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Ropa> collection = getCollection(client);
-
-            Bson filtroId = eq("_id", new ObjectId(idRopa));
-
-            Ropa ropaEncontrada = collection.find(filtroId).first();
-
-            return ropaEncontrada;
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al buscar ropa por ID: " + idRopa, e.getCause());
-        }
-    }
-
-    @Override
-    public List<Ropa> buscarTodas() throws MongoException {
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Ropa> collection = getCollection(client);
-
-            List<Ropa> listaRopa = new ArrayList<>();
-            collection.find().into(listaRopa);
-
-            System.out.println("Se encontraron " + listaRopa.size() + " prendas.");
-
-            return listaRopa;
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al buscar todas las prendas.", e.getCause());
-        }
-    }
-
-    @Override
-    public void actualizarRopa(Ropa ropa) throws MongoException {
-
-        if (ropa.getId() == null) {
-            throw new MongoException("No se puede actualizar una prenda sin su ID.");
-        }
-
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Ropa> collection = getCollection(client);
-
-            Bson filtroId = eq("_id", new ObjectId(ropa.getId()));
-
-            UpdateResult resultado = collection.replaceOne(filtroId, ropa);
-
-            if (resultado.getModifiedCount() == 0) {
-                if (resultado.getMatchedCount() == 0) {
-                    throw new MongoException("No se encontró ninguna prenda con el ID: " + ropa.getId() + " para actualizar.");
-                }
-            } else {
-                System.out.println("Se actualizó la prenda con ID: " + ropa.getId());
-            }
-
-        } catch (IllegalArgumentException e) {
-            throw new MongoException("El ID de la prenda a actualizar no tiene el formato correcto.", e);
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al actualizar la prenda: " + ropa.getId(), e.getCause());
-        }
-    }
-
-    @Override
-    public void eliminarRopa(String idRopa) throws MongoException {
-
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Ropa> collection = getCollection(client);
-
-            Bson filtroId = eq("_id", new ObjectId(idRopa));
-
-            DeleteResult resultado = collection.deleteOne(filtroId);
-
-            if (resultado.getDeletedCount() == 0) {
-                throw new MongoException("No se encontró la prenda con ID: " + idRopa + " para eliminar.");
-            } else {
-                System.out.println("Se eliminó la prenda con ID: " + idRopa + " exitosamente.");
-            }
-
-        } catch (IllegalArgumentException e) {
-            throw new MongoException("El ID de la prenda a eliminar no tiene el formato correcto.", e);
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al eliminar la prenda con ID: " + idRopa, e.getCause());
         }
     }
 

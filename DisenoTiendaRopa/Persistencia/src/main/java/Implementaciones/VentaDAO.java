@@ -14,6 +14,7 @@ import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -25,14 +26,50 @@ public class VentaDAO implements IVentaDAO {
 
     private static final String NOMBRE_COLLECTION = "Venta";
     private final ConnectionMongoDB connection;
+    private final VentaMapper mapper;
 
     public VentaDAO() {
         this.connection = new ConnectionMongoDB();
+        this.mapper = new VentaMapper();
     }
 
     private MongoCollection<Venta> getCollection(MongoClient client) {
         MongoDatabase database = client.getDatabase(ConnectionMongoDB.NOMBRE_DB);
-        return database.getCollection(NOMBRE_COLLECTION, Venta.class);
+        return database.getCollection(NOMBRE_COLLECTION);
+    }
+    
+    @Override
+    private Document dtoToEntity(VentaDTO dto) {
+        if (dto == null) return null;
+        
+        Document doc = new Document();
+        if (dto.getId() != null && !dto.getId().isEmpty()) {
+            doc.append("_id", new ObjectId(dto.getId()));
+        }
+        doc.append("folioVenta", dto.getFolioVenta());
+        doc.append("fechaHoraVenta", dto.getFechaHoraVenta());
+        doc.append("totalVenta", dto.getTotalVenta());
+        doc.append("metodoPago", dto.getMetodoPago());
+        doc.append("idEmpleado", dto.getIdEmpleado());
+        doc.append("detalles", dto.getDetalles());
+        return doc;
+    }
+    
+    @Override
+    private VentaDTO entityToDTO(Document doc) {
+        if (doc == null) return null;
+        
+        VentaDTO dto = new VentaDTO();
+        if (doc.containsKey("_id")) {
+            dto.setId(doc.getObjectId("_id").toHexString());
+        }
+        dto.setFolioVenta(doc.getInteger("folioVenta"));
+        dto.setFechaHoraVenta(doc.getDate("fechaHoraVenta"));
+        dto.setTotalVenta(doc.getInteger("totalVenta"));
+        dto.setMetodoPago(doc.getString("metodoPago"));
+        dto.setIdEmpleado(doc.getString("idEmpleado"));
+        dto.setDetalles(doc.getList("detalles", DetalleVentaDTO.class));
+        return dto;
     }
 
     @Override
@@ -40,8 +77,14 @@ public class VentaDAO implements IVentaDAO {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
             MongoCollection<Venta> collection = getCollection(client);
+            VentaDTO dto = mapper.toDTO(venta);
+            Document doc = dtoToEntity(dto);
+            
+            if(doc.get("_id")==null) {
+                doc.remove("_id");
+            }
 
-            collection.insertOne(venta);
+            collection.insertOne(doc);
             System.out.println("Venta insertada con éxito.");
 
             return venta;
@@ -59,84 +102,12 @@ public class VentaDAO implements IVentaDAO {
 
             Bson filtroId = eq("_id", new ObjectId(idVenta));
 
-            Venta ventaEncontrada = collection.find(filtroId).first();
+            Document doc = collection.find(filtroId).first();
 
-            return ventaEncontrada;
+            return mapper.toEntity(entityToDTO(doc));
 
         } catch (MongoException e) {
             throw new MongoException("Error al buscar venta por ID: " + idVenta, e.getCause());
-        }
-    }
-
-    @Override
-    public List<Venta> buscarTodas() throws MongoException {
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Venta> collection = getCollection(client);
-
-            List<Venta> listaVenta = new ArrayList<>();
-            collection.find().into(listaVenta);
-
-            System.out.println("Se encontraron " + listaVenta.size() + " ventas.");
-
-            return listaVenta;
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al buscar todas las ventas.", e.getCause());
-        }
-    }
-
-    @Override
-    public void actualizarVenta(Venta venta) throws MongoException {
-        if (venta.getId() == null) {
-            throw new MongoException("No se puede actualizar una venta sin su ID.");
-        }
-
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Venta> collection = getCollection(client);
-
-            Bson filtroId = eq("_id", new ObjectId(venta.getId()));
-
-            UpdateResult resultado = collection.replaceOne(filtroId, venta);
-
-            if (resultado.getModifiedCount() == 0) {
-                if (resultado.getMatchedCount() == 0) {
-                    throw new MongoException("No se encontró ninguna venta con el ID: " + venta.getId() + " para actualizar.");
-                }
-            } else {
-                System.out.println("Se actualizó la venta con ID: " + venta.getId());
-            }
-
-        } catch (IllegalArgumentException e) {
-            throw new MongoException("El ID de la venta a actualizar no tiene el formato correcto.", e);
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al actualizar venta: " + venta.getId(), e.getCause());
-        }
-    }
-
-    @Override
-    public void eliminarVenta(String idVenta) throws MongoException {
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Venta> collection = getCollection(client);
-
-            Bson filtroId = eq("_id", new ObjectId(idVenta));
-
-            DeleteResult resultado = collection.deleteOne(filtroId);
-
-            if (resultado.getDeletedCount() == 0) {
-                throw new MongoException("No se encontró la venta con ID: " + idVenta + " para eliminar.");
-            } else {
-                System.out.println("Se eliminó la venta con ID: " + idVenta + " exitosamente.");
-            }
-
-        } catch (IllegalArgumentException e) {
-            throw new MongoException("El ID de la venta a eliminar no tiene el formato correcto.", e);
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al eliminar venta con ID: " + idVenta, e.getCause());
         }
     }
 

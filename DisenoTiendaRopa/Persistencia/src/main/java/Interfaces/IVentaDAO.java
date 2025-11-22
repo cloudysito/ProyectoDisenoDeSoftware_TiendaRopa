@@ -13,14 +13,12 @@ import java.util.List;
  */
 public interface IVentaDAO {
     
+    Document dtoToEntity(VentaDTO dto);
+    
+    VentaDTO entityToDTO(Document doc);
+    
     Venta guardarVenta(Venta venta) throws MongoException;
     
     Venta buscarPorId(String idVenta) throws MongoException;
-
-    List<Venta> buscarTodas() throws MongoException;
-
-    void actualizarVenta(Venta empleado) throws MongoException;
-
-    void eliminarVenta(String idVenta) throws MongoException;
     
 }

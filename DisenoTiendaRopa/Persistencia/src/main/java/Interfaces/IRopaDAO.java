@@ -5,23 +5,20 @@
 package Interfaces;
 
 import Exceptions.MongoException;
-import java.util.List;
+
 
 /**
  *
  * @author garfi
  */
 public interface IRopaDAO {
+    
+    Document dtoToEntity(RopaDTO dto);
+    
+    RopaDTO entityToDTO(Document doc);
 
     Ropa guardarRopa(Ropa ropa) throws MongoException;
 
     Ropa buscarPorCodigoBarras(String codigoBarras) throws MongoException;
     
-    Ropa buscarPorId(String idRopa) throws MongoException;
-
-    List<Ropa> buscarTodas() throws MongoException;
-
-    void actualizarRopa(Ropa ropa) throws MongoException;
-
-    void eliminarRopa(String idRopa) throws MongoException;
 }

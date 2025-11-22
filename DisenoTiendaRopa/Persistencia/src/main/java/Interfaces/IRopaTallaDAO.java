@@ -12,6 +12,10 @@ import Exceptions.MongoException;
  */
 public interface IRopaTallaDAO {
     
+    Document dtoToEntity(RopaTallaDTO dto);
+    
+    RopaTallaDTO entityToDTO(Document doc);
+    
     RopaTalla guardar(RopaTalla rt) throws MongoException;
     
     RopaTalla buscarPorId(String id) throws MongoException;

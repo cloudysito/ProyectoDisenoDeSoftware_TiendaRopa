@@ -14,6 +14,7 @@ import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -25,23 +26,61 @@ public class TallaDAO implements ITallaDAO{
     
     private static final String NOMBRE_COLLECTION = "Talla";
     private final ConnectionMongoDB connection;
+    private final TallaMapper mapper;
 
     public TallaDAO() {
         this.connection = new ConnectionMongoDB();
+        this.mapper = new TallaMapper();
     }
 
     private MongoCollection<Talla> getCollection(MongoClient client) {
         MongoDatabase database = client.getDatabase(ConnectionMongoDB.NOMBRE_DB);
-        return database.getCollection(NOMBRE_COLLECTION, Talla.class);
+        return database.getCollection(NOMBRE_COLLECTION);
     }
 
+    @Override
+    private Document dtoToEntity(TallaDTO dto) {
+        if (dto == null) return null;
+        
+        Document doc = new Document();
+        if (dto.getId() != null && !dto.getId().isEmpty()) {
+            doc.append("_id", new ObjectId(dto.getId()));
+        }
+        doc.append("nombreTalla", dto.getNombreTalla());
+        doc.append("descripcion", dto.getDescripcion());
+        return doc;
+    }
+    
+    @Override
+    private TallaDTO entityToDTO(Document doc) {
+        if (doc == null) return null;
+        
+        TallaDTO dto = new TallaDTO();
+        if (doc.containsKey("_id")) {
+            dto.setId(doc.getObjectId("_id").toHexString());
+        }
+        dto.setNombreTalla(doc.getString("nombreTalla"));
+        dto.setDescripcion(doc.getString("descripcion"));
+        return dto;
+    }
+    
     @Override
     public Talla guardarTalla(Talla talla) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
             MongoCollection<Talla> collection = getCollection(client);
+            TallaDTO dto = mapper.toDTO(talla);
+            Document doc = dtoToEntity(dto);
+            
+            if(doc.get("_id")==null) {
+                doc.remove("_id");
+            }
 
-            collection.insertOne(talla);
+            collection.insertOne(doc);
+            
+            ObjectId id = doc.getObjectId("_id");
+            talla.setId(id.toHexString());
+            
             System.out.println("Talla insertada con éxito.");
 
             return talla;
@@ -59,85 +98,12 @@ public class TallaDAO implements ITallaDAO{
 
             Bson filtroId = eq("_id", new ObjectId(idTalla));
 
-            Talla tallaEncontrada = collection.find(filtroId).first();
+            Document doc = collection.find(filtroId).first();
 
-            return tallaEncontrada;
+            return mapper.toEntity(entityToDTO(doc));
 
         } catch (MongoException e) {
             throw new MongoException("Error al buscar talla por ID: " + idTalla, e.getCause());
         }
     }
-
-    @Override
-    public List<Talla> buscarTodas() throws MongoException {
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Talla> collection = getCollection(client);
-
-            List<Talla> listaTalla = new ArrayList<>();
-            collection.find().into(listaTalla);
-
-            System.out.println("Se encontraron " + listaTalla.size() + " tallas.");
-
-            return listaTalla;
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al buscar todas las tallas.", e.getCause());
-        }
-    }
-
-    @Override
-    public void actualizarTalla(Talla talla) throws MongoException {
-        if (talla.getId() == null) {
-            throw new MongoException("No se puede actualizar una talla sin su ID.");
-        }
-
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Talla> collection = getCollection(client);
-
-            Bson filtroId = eq("_id", new ObjectId(talla.getId()));
-
-            UpdateResult resultado = collection.replaceOne(filtroId, talla);
-
-            if (resultado.getModifiedCount() == 0) {
-                if (resultado.getMatchedCount() == 0) {
-                    throw new MongoException("No se encontró ninguna talla con el ID: " + talla.getId() + " para actualizar.");
-                }
-            } else {
-                System.out.println("Se actualizó la talla con ID: " + talla.getId());
-            }
-
-        } catch (IllegalArgumentException e) {
-            throw new MongoException("El ID de la talla a actualizar no tiene el formato correcto.", e);
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al actualizar talla: " + talla.getId(), e.getCause());
-        }
-    }
-
-    @Override
-    public void eliminarTalla(String idTalla) throws MongoException {
-        try (MongoClient client = connection.crearNuevoCliente()) {
-
-            MongoCollection<Talla> collection = getCollection(client);
-
-            Bson filtroId = eq("_id", new ObjectId(idTalla));
-
-            DeleteResult resultado = collection.deleteOne(filtroId);
-
-            if (resultado.getDeletedCount() == 0) {
-                throw new MongoException("No se encontró la talla con ID: " + idTalla + " para eliminar.");
-            } else {
-                System.out.println("Se eliminó la talla con ID: " + idTalla + " exitosamente.");
-            }
-
-        } catch (IllegalArgumentException e) {
-            throw new MongoException("El ID de la talla a eliminar no tiene el formato correcto.", e);
-
-        } catch (MongoException e) {
-            throw new MongoException("Error al eliminar talla con ID: " + idTalla, e.getCause());
-        }
-    }
-    
 }
