@@ -12,6 +12,7 @@ import java.util.List;
  * @author santi
  */
 public class VentaDTO {
+    private int idVenta;
     private int folioVenta;
     private Date fechaHoraVenta;
     private int totalVenta;
@@ -21,7 +22,8 @@ public class VentaDTO {
 
     public VentaDTO() {}
 
-    public VentaDTO(int folioVenta, Date fechaHoraVenta, int totalVenta, String metodoPago, int idEmpleado, List<DetalleVentaDTO> detalles) {
+    public VentaDTO(int idVenta, int folioVenta, Date fechaHoraVenta, int totalVenta, String metodoPago, int idEmpleado, List<DetalleVentaDTO> detalles) {
+        this.idVenta = idVenta;
         this.folioVenta = folioVenta;
         this.fechaHoraVenta = fechaHoraVenta;
         this.totalVenta = totalVenta;
@@ -30,21 +32,61 @@ public class VentaDTO {
         this.detalles = detalles;
     }
 
-    public int getFolioVenta() { return folioVenta; }
-    public void setFolioVenta(int folioVenta) { this.folioVenta = folioVenta; }
+    public int getIdVenta() {
+        return idVenta;
+    }
 
-    public Date getFechaHoraVenta() { return fechaHoraVenta; }
-    public void setFechaHoraVenta(Date fechaHoraVenta) { this.fechaHoraVenta = fechaHoraVenta; }
+    public void setIdVenta(int idVenta) {
+        this.idVenta = idVenta;
+    }
 
-    public int getTotalVenta() { return totalVenta; }
-    public void setTotalVenta(int totalVenta) { this.totalVenta = totalVenta; }
+    public int getFolioVenta() {
+        return folioVenta;
+    }
 
-    public String getMetodoPago() { return metodoPago; }
-    public void setMetodoPago(String metodoPago) { this.metodoPago = metodoPago; }
+    public void setFolioVenta(int folioVenta) {
+        this.folioVenta = folioVenta;
+    }
 
-    public int getIdEmpleado() { return idEmpleado; }
-    public void setIdEmpleado(int idEmpleado) { this.idEmpleado = idEmpleado; }
+    public Date getFechaHoraVenta() {
+        return fechaHoraVenta;
+    }
 
-    public List<DetalleVentaDTO> getDetalles() { return detalles; }
-    public void setDetalles(List<DetalleVentaDTO> detalles) { this.detalles = detalles; }
+    public void setFechaHoraVenta(Date fechaHoraVenta) {
+        this.fechaHoraVenta = fechaHoraVenta;
+    }
+
+    public int getTotalVenta() {
+        return totalVenta;
+    }
+
+    public void setTotalVenta(int totalVenta) {
+        this.totalVenta = totalVenta;
+    }
+
+    public String getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(String metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public List<DetalleVentaDTO> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<DetalleVentaDTO> detalles) {
+        this.detalles = detalles;
+    }
+
+    
 }

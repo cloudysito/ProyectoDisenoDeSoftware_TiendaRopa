@@ -38,6 +38,7 @@ public class Venta {
     }
 
     public List<DetalleVenta> getDetalles() { return detalles; }
+    public void setDetalles(List<DetalleVenta> detalles) { this.detalles = detalles;}
 
     public int getIdVenta() { return idVenta; }
     public void setIdVenta(int idVenta) { this.idVenta = idVenta; }
@@ -57,6 +58,8 @@ public class Venta {
     public Empleado getEmpleado() { return empleado; }
     public void setEmpleado(Empleado empleado) { this.empleado = empleado; }
 
+    
+    
     @Override
     public String toString() {
         return "Venta #" + folioVenta + " (" + metodoPago + ") Total: $" + totalVenta;
