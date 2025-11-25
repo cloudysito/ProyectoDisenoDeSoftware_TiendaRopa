@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.objetosnegocio.dominio;
+package com.mycompany.objetosnegocio.dto;
 
 /**
  *
- * @author santi
+ * @author garfi
  */
-public class Ropa {
+public class RopaDTO {
     private String idRopa;
     private String nombreArticulo;
     private double precio;
@@ -16,11 +16,13 @@ public class Ropa {
     private String Temporada;
     private String Marca;
     private  String Material;
+    
+    public RopaDTO() {
+        
+    }
 
-    public Ropa() {}
-
-    public Ropa(String idRopa, String nombreArticulo, double precio, String descripcion, String Temporada, String Marca, String Material) {
-        this.idRopa = idRopa;
+    public RopaDTO(String id, String nombreArticulo, double precio, String descripcion, String Temporada, String Marca, String Material) {
+        this.idRopa = id;
         this.nombreArticulo = nombreArticulo;
         this.precio = precio;
         this.descripcion = descripcion;
@@ -33,8 +35,8 @@ public class Ropa {
         return idRopa;
     }
 
-    public void setIdRopa(String idRopa) {
-        this.idRopa = idRopa;
+    public void setIdRopa(String id) {
+        this.idRopa = id;
     }
 
     public String getNombreArticulo() {
@@ -84,10 +86,6 @@ public class Ropa {
     public void setMaterial(String Material) {
         this.Material = Material;
     }
-
     
-    @Override
-    public String toString() {
-        return nombreArticulo;
-    }
+    
 }
