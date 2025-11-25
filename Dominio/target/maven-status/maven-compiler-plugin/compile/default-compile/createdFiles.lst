@@ -1,0 +1,6 @@
+com\mycompany\objetosnegocio\dominioPojo\Empleado.class
+com\mycompany\objetosnegocio\dominioPojo\Talla.class
+com\mycompany\objetosnegocio\dominioPojo\Ropa.class
+com\mycompany\objetosnegocio\dominioPojo\Venta.class
+com\mycompany\objetosnegocio\dominioPojo\DetalleVenta.class
+com\mycompany\objetosnegocio\dominioPojo\RopaTalla.class
