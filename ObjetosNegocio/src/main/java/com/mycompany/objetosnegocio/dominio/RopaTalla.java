@@ -12,16 +12,24 @@ public class RopaTalla {
     private int id;
     private Ropa ropa;
     private Talla talla;
-    private String codigo;
+    private String codigoBarras;
     private int cantidad;
 
     public RopaTalla() {}
 
-    public RopaTalla(Ropa ropa, Talla talla, String codigo, int cantidad) {
+    public RopaTalla(Ropa ropa, Talla talla, String codigoBarras, int cantidad) {
         this.ropa = ropa;
         this.talla = talla;
-        this.codigo = codigo;
+        this.codigoBarras = codigoBarras;
         this.cantidad = cantidad;
+    }
+
+    public String getCodigoBarras() {
+        return codigoBarras;
+    }
+
+    public void setCodigoBarras(String codigoBarras) {
+        this.codigoBarras = codigoBarras;
     }
 
   
