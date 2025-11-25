@@ -4,14 +4,12 @@
  */
 package objetosnegocio.dominioPojo;
 
-import java.io.Serializable;
 import java.util.Date;
+import org.bson.types.ObjectId;
 
-public class EmpleadoPOJO implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class Empleado {
 
-    private String id;
+    private ObjectId id;
     private String nombre;
     private String apellidos;
     private String puesto;
@@ -22,9 +20,9 @@ public class EmpleadoPOJO implements Serializable {
     private Date fechaContratacion;
     private String rfc;
 
-    public EmpleadoPOJO() {}
+    public Empleado() {}
     
-    public EmpleadoPOJO(String nombre, String apellidos, String puesto, String telefono, 
+    public Empleado(String nombre, String apellidos, String puesto, String telefono, 
                         String email, int salario, Date fechaContratacion, String rfc, String contrasenia) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -37,7 +35,7 @@ public class EmpleadoPOJO implements Serializable {
         this.contrasenia = contrasenia;
     }
 
-    public EmpleadoPOJO(String id, String nombre, String apellidos, String puesto, String telefono, 
+    public Empleado(ObjectId id, String nombre, String apellidos, String puesto, String telefono, 
                         String email, int salario, Date fechaContratacion, String rfc, String contrasenia) {
         this.id = id;
         this.nombre = nombre;
@@ -51,8 +49,8 @@ public class EmpleadoPOJO implements Serializable {
         this.contrasenia = contrasenia;
     }
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }    
+    public ObjectId getId() { return id; }
+    public void setId(ObjectId id) { this.id = id; }
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
     public String getApellidos() { return apellidos; }

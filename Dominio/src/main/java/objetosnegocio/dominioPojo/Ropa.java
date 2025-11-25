@@ -4,12 +4,11 @@
  */
 package objetosnegocio.dominioPojo;
 
-import java.io.Serializable;
+import org.bson.types.ObjectId;
 
-public class RopaPOJO implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Ropa {
 
-    private String id;
+    private ObjectId id;
     private String nombreArticulo;
     private double precio;
     private String descripcion;
@@ -17,9 +16,9 @@ public class RopaPOJO implements Serializable {
     private String marca;
     private String material;
 
-    public RopaPOJO() {}
+    public Ropa() {}
 
-    public RopaPOJO(String nombreArticulo, String descripcion, String temporada, String marca, String material, double precio) {
+    public Ropa(String nombreArticulo, String descripcion, String temporada, String marca, String material, double precio) {
         this.nombreArticulo = nombreArticulo;
         this.descripcion = descripcion;
         this.temporada = temporada;
@@ -28,7 +27,7 @@ public class RopaPOJO implements Serializable {
         this.precio = precio;
     }
     
-    public RopaPOJO(String id, String nombreArticulo, String descripcion, String temporada, String marca, String material, double precio) {
+    public Ropa(ObjectId id, String nombreArticulo, String descripcion, String temporada, String marca, String material, double precio) {
         this.id = id;
         this.nombreArticulo = nombreArticulo;
         this.descripcion = descripcion;
@@ -38,8 +37,8 @@ public class RopaPOJO implements Serializable {
         this.precio = precio;
     }
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public ObjectId getId() { return id; }
+    public void setId(ObjectId id) { this.id = id; }
     public String getNombreArticulo() { return nombreArticulo; }
     public void setNombreArticulo(String nombreArticulo) { this.nombreArticulo = nombreArticulo; }
     public double getPrecio() { return precio; }

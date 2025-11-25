@@ -4,27 +4,26 @@
  */
 package objetosnegocio.dominioPojo;
 
-import java.io.Serializable;
+import org.bson.types.ObjectId;
 
-public class RopaTallaPOJO implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class RopaTalla {
 
-    private String id;
-    private RopaPOJO ropa;
-    private TallaPOJO talla;
+    private ObjectId id;
+    private Ropa ropa;
+    private Talla talla;
     private String codigo;
     private int cantidad;
 
-    public RopaTallaPOJO() {}
+    public RopaTalla() {}
 
-    public RopaTallaPOJO(RopaPOJO ropa, TallaPOJO talla, String codigo, int cantidad) {
+    public RopaTalla(Ropa ropa, Talla talla, String codigo, int cantidad) {
         this.ropa = ropa;
         this.talla = talla;
         this.codigo = codigo;
         this.cantidad = cantidad;
     }
     
-    public RopaTallaPOJO(String id, RopaPOJO ropa, TallaPOJO talla, String codigo, int cantidad) {
+    public RopaTalla(ObjectId id, Ropa ropa, Talla talla, String codigo, int cantidad) {
         this.id = id;
         this.ropa = ropa;
         this.talla = talla;
@@ -32,12 +31,12 @@ public class RopaTallaPOJO implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-    public RopaPOJO getRopa() { return ropa; }
-    public void setRopa(RopaPOJO ropa) { this.ropa = ropa; }
-    public TallaPOJO getTalla() { return talla; }
-    public void setTalla(TallaPOJO talla) { this.talla = talla; }
+    public Ropa getRopa() { return ropa; }
+    public void setRopa(Ropa ropa) { this.ropa = ropa; } 
+    public ObjectId getId() { return id; }
+    public void setId(ObjectId id) { this.id = id; }
+    public Talla getTalla() { return talla; }
+    public void setTalla(Talla talla) { this.talla = talla; }
     public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }
     public int getCantidad() { return cantidad; }

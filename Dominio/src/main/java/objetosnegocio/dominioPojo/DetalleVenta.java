@@ -4,29 +4,28 @@
  */
 package objetosnegocio.dominioPojo;
 
-import java.io.Serializable;
+import org.bson.types.ObjectId;
 
-public class DetalleVentaPOJO implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class DetalleVenta {
 
-    private String id; 
+    private ObjectId id; 
     
-    private RopaTallaPOJO ropaTalla;
+    private RopaTalla ropaTalla;
     private int cantidadVendida;
     private double subtotal;
 
-    public DetalleVentaPOJO() {}
+    public DetalleVenta() {}
 
-    public DetalleVentaPOJO(RopaTallaPOJO ropaTalla, int cantidadVendida, double subtotal) {
+    public DetalleVenta(RopaTalla ropaTalla, int cantidadVendida, double subtotal) {
         this.ropaTalla = ropaTalla;
         this.cantidadVendida = cantidadVendida;
         this.subtotal = subtotal;
     }
-
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-    public RopaTallaPOJO getRopaTalla() { return ropaTalla; }
-    public void setRopaTalla(RopaTallaPOJO ropaTalla) { this.ropaTalla = ropaTalla; }
+    
+    public ObjectId getId() { return id; }
+    public void setId(ObjectId id) { this.id = id; }
+    public RopaTalla getRopaTalla() { return ropaTalla; }
+    public void setRopaTalla(RopaTalla ropaTalla) { this.ropaTalla = ropaTalla; }
     public int getCantidadVendida() { return cantidadVendida; }
     public void setCantidadVendida(int cantidadVendida) { this.cantidadVendida = cantidadVendida; }
     public double getSubtotal() { return subtotal; }

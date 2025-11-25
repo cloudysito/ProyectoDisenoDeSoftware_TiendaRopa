@@ -5,29 +5,30 @@
 package objetosnegocio.dominioPojo;
 
 import java.io.Serializable;
+import org.bson.types.ObjectId;
 
-public class TallaPOJO implements Serializable {
+public class Talla implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String id;
+    private ObjectId id;
     private String nombreTalla;
     private String descripcion;
 
-    public TallaPOJO() {}
+    public Talla() {}
 
-    public TallaPOJO(String nombreTalla, String descripcion) {
+    public Talla(String nombreTalla, String descripcion) {
         this.nombreTalla = nombreTalla;
         this.descripcion = descripcion;
     }
     
-    public TallaPOJO(String id, String nombreTalla, String descripcion) {
+    public Talla(ObjectId id, String nombreTalla, String descripcion) {
         this.id = id;
         this.nombreTalla = nombreTalla;
         this.descripcion = descripcion;
     }
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public ObjectId getId() { return id; }
+    public void setId(ObjectId id) { this.id = id; }
     public String getNombreTalla() { return nombreTalla; }
     public void setNombreTalla(String nombreTalla) { this.nombreTalla = nombreTalla; }
     public String getDescripcion() { return descripcion; }
