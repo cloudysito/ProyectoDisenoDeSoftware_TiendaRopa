@@ -13,10 +13,6 @@ import java.util.List;
  */
 public interface IEmpleadoDAO {
     
-    Document dtoToEntity(EmpleadoDTO dto);
-    
-    EmpleadoDTO entityToDTO(Document doc);
-    
     Empleado guardarEmpleado(Empleado empleado) throws MongoException;
     
     Empleado buscarPorId(String idEmpleado) throws MongoException;

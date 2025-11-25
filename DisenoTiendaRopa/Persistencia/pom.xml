@@ -6,6 +6,16 @@
             <artifactId>mongodb-driver-sync</artifactId>
             <version>4.11.1</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>DTO_negocio</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Dominio</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany</groupId>

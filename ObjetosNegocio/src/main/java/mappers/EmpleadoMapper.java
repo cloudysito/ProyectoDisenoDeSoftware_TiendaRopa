@@ -4,8 +4,10 @@
  */
 package mappers;
 
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.objetosnegocio.dominioPojo.Empleado;
+
+
 
 /**
  *
