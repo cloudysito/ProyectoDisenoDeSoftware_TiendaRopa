@@ -9,7 +9,7 @@ package com.mycompany.objetosnegocio.dominio;
  * @author santi
  */
 public class Ropa {
-    private String idRopa;
+    private int idRopa;
     private String nombreArticulo;
     private double precio;
     private String descripcion;
@@ -19,70 +19,40 @@ public class Ropa {
 
     public Ropa() {}
 
-    public Ropa(String idRopa, String nombreArticulo, double precio, String descripcion, String Temporada, String Marca, String Material) {
-        this.idRopa = idRopa;
+    public Ropa( String nombreArticulo, String descripcion, String Temporada, String Marca, String Material, double precio) {
+
         this.nombreArticulo = nombreArticulo;
-        this.precio = precio;
         this.descripcion = descripcion;
         this.Temporada = Temporada;
         this.Marca = Marca;
         this.Material = Material;
-    }
-
-    public String getIdRopa() {
-        return idRopa;
-    }
-
-    public void setIdRopa(String idRopa) {
-        this.idRopa = idRopa;
-    }
-
-    public String getNombreArticulo() {
-        return nombreArticulo;
-    }
-
-    public void setNombreArticulo(String nombreArticulo) {
-        this.nombreArticulo = nombreArticulo;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    
+    public int getIdRopa() { return idRopa; }
+    public void setIdRopa(int idRopa) { this.idRopa = idRopa; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public String getNombreArticulo() { return nombreArticulo; }
+    public void setNombreArticulo(String nombreArticulo) { this.nombreArticulo = nombreArticulo; }
+
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    public double getPrecio() {
+        return precio;
     }
 
     public String getTemporada() {
         return Temporada;
     }
 
-    public void setTemporada(String Temporada) {
-        this.Temporada = Temporada;
-    }
-
     public String getMarca() {
         return Marca;
     }
 
-    public void setMarca(String Marca) {
-        this.Marca = Marca;
-    }
-
     public String getMaterial() {
         return Material;
-    }
-
-    public void setMaterial(String Material) {
-        this.Material = Material;
     }
 
     

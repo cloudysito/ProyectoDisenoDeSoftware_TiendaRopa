@@ -9,7 +9,7 @@ package com.mycompany.objetosnegocio.dominio;
  * @author santi
  */
 public class DetalleVenta {
-    private int  idDetalleVenta;
+    private int  id;
     private RopaTalla ropaTalla;
     private int cantidadVendida;
     private double subtotal;
@@ -22,12 +22,12 @@ public class DetalleVenta {
         this.subtotal = ropaTalla.getRopa().getPrecio() * this.cantidadVendida;
     }
 
-    public int getIdDetalleVenta() {
-        return idDetalleVenta;
+    public int getId() {
+        return id;
     }
 
-    public void setIdDetalleVenta(int id) {
-        this.idDetalleVenta = id;
+    public void setId(int id) {
+        this.id = id;
     }
     
     public RopaTalla getRopaTalla() { return ropaTalla; }

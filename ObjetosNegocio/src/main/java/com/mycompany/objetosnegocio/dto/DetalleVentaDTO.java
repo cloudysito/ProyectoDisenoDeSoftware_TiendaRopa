@@ -9,51 +9,29 @@ package com.mycompany.objetosnegocio.dto;
  * @author santi
  */
 public class DetalleVentaDTO {
-    private int idDetalleVenta;
-    private String ropaTalla;
+    private int idProducto;
+    private String talla;
     private int cantidadVendida;
     private int subtotal;
 
     public DetalleVentaDTO() {}
 
-    public DetalleVentaDTO(int idDetalleVenta, String ropaTalla, int cantidadVendida, int subtotal) {
-        this.idDetalleVenta = idDetalleVenta;
-        this.ropaTalla = ropaTalla;
+    public DetalleVentaDTO(int idProducto, String talla, int cantidadVendida, int subtotal) {
+        this.idProducto = idProducto;
+        this.talla = talla;
         this.cantidadVendida = cantidadVendida;
         this.subtotal = subtotal;
     }
 
-    public int getIdDetalleVenta() {
-        return idDetalleVenta;
-    }
+    public int getIdProducto() { return idProducto; }
+    public void setIdProducto(int idProducto) { this.idProducto = idProducto; }
 
-    public void setIdDetalleVenta(int idDetalleVenta) {
-        this.idDetalleVenta = idDetalleVenta;
-    }
+    public String getTalla() { return talla; }
+    public void setTalla(String talla) { this.talla = talla; }
 
-    public String getRopaTalla() {
-        return ropaTalla;
-    }
+    public int getCantidadVendida() { return cantidadVendida; }
+    public void setCantidadVendida(int cantidadVendida) { this.cantidadVendida = cantidadVendida; }
 
-    public void setRopaTalla(String ropaTalla) {
-        this.ropaTalla = ropaTalla;
-    }
-
-    public int getCantidadVendida() {
-        return cantidadVendida;
-    }
-
-    public void setCantidadVendida(int cantidadVendida) {
-        this.cantidadVendida = cantidadVendida;
-    }
-
-    public int getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(int subtotal) {
-        this.subtotal = subtotal;
-    }
-
-    
+    public int getSubtotal() { return subtotal; }
+    public void setSubtotal(int subtotal) { this.subtotal = subtotal; }
 }
