@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
+import com.mycompany.objetosnegocio.dominioPojo.Venta;
 import java.util.List;
 
 /**
@@ -12,10 +13,6 @@ import java.util.List;
  * @author garfi
  */
 public interface IVentaDAO {
-    
-    Document dtoToEntity(VentaDTO dto);
-    
-    VentaDTO entityToDTO(Document doc);
     
     Venta guardarVenta(Venta venta) throws MongoException;
     

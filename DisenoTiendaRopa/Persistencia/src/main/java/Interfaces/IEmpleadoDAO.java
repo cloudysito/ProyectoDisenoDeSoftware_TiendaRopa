@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
+import com.mycompany.objetosnegocio.dominioPojo.Empleado;
 import java.util.List;
 
 /**

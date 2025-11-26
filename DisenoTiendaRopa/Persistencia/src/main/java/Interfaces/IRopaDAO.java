@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
+import com.mycompany.objetosnegocio.dominioPojo.Ropa;
 
 
 /**
@@ -12,10 +13,6 @@ import Exceptions.MongoException;
  * @author garfi
  */
 public interface IRopaDAO {
-    
-    Document dtoToEntity(RopaDTO dto);
-    
-    RopaDTO entityToDTO(Document doc);
 
     Ropa guardarRopa(Ropa ropa) throws MongoException;
 
