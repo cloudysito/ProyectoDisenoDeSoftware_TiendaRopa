@@ -48,19 +48,19 @@ public class RopaDAO implements IRopaDAO {
     }
 
     @Override
-    public Ropa buscarPorCodigoBarras(String codigoBarras) throws MongoException {
+    public Ropa buscarPorId(String id) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
             MongoCollection<Ropa> collection = getCollection(client);
 
-            Bson filtroCodigoBarras = eq("codigoBarras", codigoBarras);
+            Bson filtroId = eq("_id", new ObjectId(id));
 
-            Ropa ropa = collection.find(filtroCodigoBarras).first();
+            Ropa ropa = collection.find(filtroId).first();
 
             return ropa;
 
         } catch (MongoException e) {
-            throw new MongoException("Error al buscar ropa por código de barras: " + codigoBarras, e.getCause());
+            throw new MongoException("Error al buscar ropa por ID: " + id, e.getCause());
         }
     }
 

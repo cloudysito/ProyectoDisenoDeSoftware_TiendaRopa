@@ -16,6 +16,6 @@ public interface IRopaDAO {
 
     Ropa guardarRopa(Ropa ropa) throws MongoException;
 
-    Ropa buscarPorCodigoBarras(String codigoBarras) throws MongoException;
+    Ropa buscarPorId(String id) throws MongoException;
     
 }
