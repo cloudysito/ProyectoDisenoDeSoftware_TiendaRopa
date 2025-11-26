@@ -135,9 +135,5 @@ public class ControlPantallas {
 
     public IAumentarVentaEmpleado getEmpleadoSistema() {
         return EmpleadoSistema;
-    }
-    
-    
-    
-    
+    }    
 }
