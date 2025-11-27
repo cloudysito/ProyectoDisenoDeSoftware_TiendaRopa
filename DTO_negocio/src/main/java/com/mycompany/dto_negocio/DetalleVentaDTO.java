@@ -9,33 +9,33 @@ package com.mycompany.dto_negocio;
  * @author santi
  */
 public class DetalleVentaDTO {
-    private int idDetalleVenta;
-    private String ropaTalla;
+    private String idDetalleVenta;
+    private RopaTallaDTO ropaTalla;
     private int cantidadVendida;
-    private int subtotal;
+    private double subtotal;
 
     public DetalleVentaDTO() {}
 
-    public DetalleVentaDTO(int idDetalleVenta, String ropaTalla, int cantidadVendida, int subtotal) {
+    public DetalleVentaDTO(String idDetalleVenta, RopaTallaDTO ropaTalla, int cantidadVendida, double subtotal) {
         this.idDetalleVenta = idDetalleVenta;
         this.ropaTalla = ropaTalla;
         this.cantidadVendida = cantidadVendida;
         this.subtotal = subtotal;
     }
 
-    public int getIdDetalleVenta() {
+    public String getIdDetalleVenta() {
         return idDetalleVenta;
     }
 
-    public void setIdDetalleVenta(int idDetalleVenta) {
+    public void setIdDetalleVenta(String idDetalleVenta) {
         this.idDetalleVenta = idDetalleVenta;
     }
 
-    public String getRopaTalla() {
+    public RopaTallaDTO getRopaTalla() {
         return ropaTalla;
     }
 
-    public void setRopaTalla(String ropaTalla) {
+    public void setRopaTalla(RopaTallaDTO ropaTalla) {
         this.ropaTalla = ropaTalla;
     }
 
@@ -47,11 +47,11 @@ public class DetalleVentaDTO {
         this.cantidadVendida = cantidadVendida;
     }
 
-    public int getSubtotal() {
+    public double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(int subtotal) {
+    public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
 

@@ -4,12 +4,14 @@
  */
 package mappers;
 
-import com.mycompany.objetosnegocio.dominio.DetalleVenta;
-import com.mycompany.objetosnegocio.dominio.Venta;
-import com.mycompany.objetosnegocio.dto.DetalleVentaDTO;
-import com.mycompany.objetosnegocio.dto.VentaDTO;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 import java.util.List;
 import java.util.stream.Collectors;
+import objetosnegocio.dominioPojo.DetalleVenta;
+import objetosnegocio.dominioPojo.Empleado;
+import objetosnegocio.dominioPojo.Venta;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -18,14 +20,17 @@ import java.util.stream.Collectors;
 public class VentaMapper {
     
     private DetalleVentaMapper detalleVentaMapper = new DetalleVentaMapper();
+    private final EmpleadoMapper empleadoMapper = new EmpleadoMapper();
+    
     
     public Venta toEntity(VentaDTO dto) {
         if (dto == null) {
             return null;
         }
         Venta venta = new Venta();
-        venta.setIdVenta(dto.getIdVenta());
-        venta.setEmpleado(dto.getIdEmpleado());
+        venta.setId(new ObjectId(dto.getIdVenta()));
+        Empleado empleadoEntidad = empleadoMapper.toEntity(dto.getEmpleado());
+        venta.setEmpleado(empleadoEntidad);
         venta.setFechaHoraVenta(dto.getFechaHoraVenta());
         venta.setFolioVenta(dto.getFolioVenta());
         venta.setMetodoPago(dto.getMetodoPago());
@@ -46,8 +51,8 @@ public class VentaMapper {
             return null;
         }
         VentaDTO dto = new VentaDTO();
-        dto.setIdVenta(venta.getIdVenta());
-        dto.setIdEmpleado(venta.getEmpleado());
+        dto.setIdVenta(venta.getId().toHexString());
+        dto.setEmpleado(empleadoMapper.toDTO(venta.getEmpleado()));
         dto.setFechaHoraVenta(venta.getFechaHoraVenta());
         dto.setFolioVenta(venta.getFolioVenta());
         dto.setMetodoPago(venta.getMetodoPago());

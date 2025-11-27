@@ -11,11 +11,11 @@ import java.util.Date;
  * @author santi
  */
 public class EmpleadoDTO {
-    private int idEmpleado;
+    private String idEmpleado;
     private String nombre;
     private String apellidos;
     private String puesto;
-    private int telefono;
+    private String telefono;
     private String email;
     private int salario;
     private Date fechaContratacion;
@@ -23,7 +23,7 @@ public class EmpleadoDTO {
 
     public EmpleadoDTO() {}
 
-    public EmpleadoDTO(int idEmpleado, String nombre, String apellidos, String puesto, int telefono, String email, int salario, Date fechaContratacion, String rfc) {
+    public EmpleadoDTO(String idEmpleado, String nombre, String apellidos, String puesto, String telefono, String email, int salario, Date fechaContratacion, String rfc) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -35,11 +35,11 @@ public class EmpleadoDTO {
         this.rfc = rfc;
     }
 
-    public int getIdEmpleado() {
+    public String getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
+    public void setIdEmpleado(String idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
@@ -67,11 +67,11 @@ public class EmpleadoDTO {
         this.puesto = puesto;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

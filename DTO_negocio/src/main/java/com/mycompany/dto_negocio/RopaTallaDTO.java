@@ -11,21 +11,22 @@ package com.mycompany.dto_negocio;
 public class RopaTallaDTO {
     
     private String idRopaTalla;
-    private String idRopa;
-    private String idTalla;
+    private RopaDTO Ropa;
+    private TallaDTO Talla;
     private String codigoBarras;
     private int cantidad;
 
     public RopaTallaDTO() {
     }
 
-    public RopaTallaDTO(String idRopaTalla, String idRopa, String idTalla, String codigoBarras, int cantidad) {
+    public RopaTallaDTO(String idRopaTalla, RopaDTO Ropa, TallaDTO Talla, String codigoBarras, int cantidad) {
         this.idRopaTalla = idRopaTalla;
-        this.idRopa = idRopa;
-        this.idTalla = idTalla;
+        this.Ropa = Ropa;
+        this.Talla = Talla;
         this.codigoBarras = codigoBarras;
         this.cantidad = cantidad;
     }
+
 
     public String getIdRopaTalla() {
         return idRopaTalla;
@@ -35,20 +36,20 @@ public class RopaTallaDTO {
         this.idRopaTalla = idRopaTalla;
     }
 
-    public String getIdRopa() {
-        return idRopa;
+    public RopaDTO getRopa() {
+        return Ropa;
     }
 
-    public void setIdRopa(String idRopa) {
-        this.idRopa = idRopa;
+    public void setRopa(RopaDTO Ropa) {
+        this.Ropa = Ropa;
     }
 
-    public String getIdTalla() {
-        return idTalla;
+    public TallaDTO getTalla() {
+        return Talla;
     }
 
-    public void setIdTalla(String idTalla) {
-        this.idTalla = idTalla;
+    public void setTalla(TallaDTO Talla) {
+        this.Talla = Talla;
     }
 
     public String getCodigoBarras() {

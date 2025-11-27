@@ -4,8 +4,9 @@
  */
 package mappers;
 
-import com.mycompany.objetosnegocio.dominio.Ropa;
-import com.mycompany.objetosnegocio.dto.RopaDTO;
+import com.mycompany.dto_negocio.RopaDTO;
+import objetosnegocio.dominioPojo.Ropa;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -18,7 +19,7 @@ public class RopaMapper {
             return null;
         }
         Ropa ropa = new Ropa();
-        ropa.setIdRopa(dto.getIdRopa());
+        ropa.setId(new ObjectId(dto.getIdRopa()));
         ropa.setNombreArticulo(dto.getNombreArticulo());
         ropa.setDescripcion(dto.getDescripcion());
         ropa.setPrecio(dto.getPrecio());
@@ -34,7 +35,7 @@ public class RopaMapper {
             return null;
         }
         RopaDTO dto = new RopaDTO();
-        dto.setIdRopa(ropa.getIdRopa());
+        dto.setIdRopa(ropa.getId().toHexString());
         dto.setNombreArticulo(ropa.getNombreArticulo());
         dto.setDescripcion(ropa.getDescripcion());
         dto.setPrecio(ropa.getPrecio());

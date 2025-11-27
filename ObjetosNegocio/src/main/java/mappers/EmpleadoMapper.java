@@ -5,7 +5,8 @@
 package mappers;
 
 import com.mycompany.dto_negocio.EmpleadoDTO;
-import com.mycompany.objetosnegocio.dominioPojo.Empleado;
+import objetosnegocio.dominioPojo.Empleado;
+import org.bson.types.ObjectId;
 
 
 
@@ -19,7 +20,7 @@ public class EmpleadoMapper {
             return null;
         }
         Empleado empleado = new Empleado();
-        empleado.setIdEmpleado(dto.getIdEmpleado());
+        empleado.setId(new ObjectId(dto.getIdEmpleado()));
         empleado.setNombre(dto.getNombre());
         empleado.setApellidos(dto.getApellidos());
         empleado.setEmail(dto.getEmail());
@@ -37,7 +38,7 @@ public class EmpleadoMapper {
             return null;
         }
         EmpleadoDTO dto = new EmpleadoDTO();
-        dto.setIdEmpleado(empleado.getIdEmpleado());
+        dto.setIdEmpleado(empleado.getId().toHexString());
         dto.setNombre(empleado.getNombre());
         dto.setApellidos(empleado.getApellidos());
         dto.setEmail(empleado.getEmail());

@@ -12,31 +12,31 @@ import java.util.List;
  * @author santi
  */
 public class VentaDTO {
-    private int idVenta;
+    private String idVenta;
     private int folioVenta;
     private Date fechaHoraVenta;
-    private int totalVenta;
+    private double totalVenta;
     private String metodoPago;
-    private int idEmpleado;
+    private EmpleadoDTO empleado;
     private List<DetalleVentaDTO> detalles;
 
     public VentaDTO() {}
 
-    public VentaDTO(int idVenta, int folioVenta, Date fechaHoraVenta, int totalVenta, String metodoPago, int idEmpleado, List<DetalleVentaDTO> detalles) {
+    public VentaDTO(String idVenta, int folioVenta, Date fechaHoraVenta, double totalVenta, String metodoPago, EmpleadoDTO empleado, List<DetalleVentaDTO> detalles) {
         this.idVenta = idVenta;
         this.folioVenta = folioVenta;
         this.fechaHoraVenta = fechaHoraVenta;
         this.totalVenta = totalVenta;
         this.metodoPago = metodoPago;
-        this.idEmpleado = idEmpleado;
+        this.empleado = empleado;
         this.detalles = detalles;
     }
 
-    public int getIdVenta() {
+    public String getIdVenta() {
         return idVenta;
     }
 
-    public void setIdVenta(int idVenta) {
+    public void setIdVenta(String idVenta) {
         this.idVenta = idVenta;
     }
 
@@ -56,11 +56,11 @@ public class VentaDTO {
         this.fechaHoraVenta = fechaHoraVenta;
     }
 
-    public int getTotalVenta() {
+    public double getTotalVenta() {
         return totalVenta;
     }
 
-    public void setTotalVenta(int totalVenta) {
+    public void setTotalVenta(double totalVenta) {
         this.totalVenta = totalVenta;
     }
 
@@ -72,12 +72,12 @@ public class VentaDTO {
         this.metodoPago = metodoPago;
     }
 
-    public int getIdEmpleado() {
-        return idEmpleado;
+    public EmpleadoDTO getEmpleado() {
+        return empleado;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setEmpleado(EmpleadoDTO empleado) {
+        this.empleado = empleado;
     }
 
     public List<DetalleVentaDTO> getDetalles() {

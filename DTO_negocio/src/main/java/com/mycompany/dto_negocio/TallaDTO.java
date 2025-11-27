@@ -9,24 +9,24 @@ package com.mycompany.dto_negocio;
  * @author garfi
  */
 public class TallaDTO {
-    private int idTalla;
+    private String idTalla;
     private String nombreTalla;
     private String descripcion;
 
     public TallaDTO() {
     }
 
-    public TallaDTO(int idTalla, String nombreTalla, String descripcion) {
+    public TallaDTO(String idTalla, String nombreTalla, String descripcion) {
         this.idTalla = idTalla;
         this.nombreTalla = nombreTalla;
         this.descripcion = descripcion;
     }
 
-    public int getIdTalla() {
+    public String getIdTalla() {
         return idTalla;
     }
 
-    public void setIdTalla(int idTalla) {
+    public void setIdTalla(String idTalla) {
         this.idTalla = idTalla;
     }
 

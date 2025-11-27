@@ -21,8 +21,8 @@ public class RopaDTO {
         
     }
 
-    public RopaDTO(String id, String nombreArticulo, double precio, String descripcion, String Temporada, String Marca, String Material) {
-        this.idRopa = id;
+    public RopaDTO(String idRopa, String nombreArticulo, double precio, String descripcion, String Temporada, String Marca, String Material) {
+        this.idRopa = idRopa;
         this.nombreArticulo = nombreArticulo;
         this.precio = precio;
         this.descripcion = descripcion;
@@ -35,8 +35,8 @@ public class RopaDTO {
         return idRopa;
     }
 
-    public void setIdRopa(String id) {
-        this.idRopa = id;
+    public void setIdRopa(String idRopa) {
+        this.idRopa = idRopa;
     }
 
     public String getNombreArticulo() {

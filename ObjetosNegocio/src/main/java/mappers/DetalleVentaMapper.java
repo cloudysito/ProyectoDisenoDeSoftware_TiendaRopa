@@ -4,8 +4,12 @@
  */
 package mappers;
 
-import com.mycompany.objetosnegocio.dominio.DetalleVenta;
-import com.mycompany.objetosnegocio.dto.DetalleVentaDTO;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+
+import objetosnegocio.dominioPojo.DetalleVenta;
+import objetosnegocio.dominioPojo.RopaTalla;
+import org.bson.types.ObjectId;
+
 
 /**
  *
@@ -13,13 +17,16 @@ import com.mycompany.objetosnegocio.dto.DetalleVentaDTO;
  */
 public class DetalleVentaMapper {
     
+    private final RopaTallaMapper ropaTallaMapper = new RopaTallaMapper();
+    
     public DetalleVenta toEntity(DetalleVentaDTO dto) {
         if (dto == null) {
             return null;
         }
         DetalleVenta dv = new DetalleVenta();
-        dv.setIdDetalleVenta(dto.getIdDetalleVenta());
-        dv.setRopaTalla(dto.setRopaTalla(ropaTalla));
+        dv.setId(new ObjectId(dto.getIdDetalleVenta()));
+        RopaTalla ropaTallaEntidad = ropaTallaMapper.toEntity(dto.getRopaTalla());
+        dv.setRopaTalla(ropaTallaEntidad);
         dv.setCantidadVendida(dto.getCantidadVendida());
         dv.setSubtotal(dto.getSubtotal());               
         
@@ -31,8 +38,8 @@ public class DetalleVentaMapper {
             return null;
         }
         DetalleVentaDTO dto = new DetalleVentaDTO();
-        dto.setIdDetalleVenta(dv.getIdDetalleVenta());
-        dto.setRopaTalla(dv.getRopaTalla());
+        dto.setIdDetalleVenta(dv.getId().toHexString());
+        dto.setRopaTalla(ropaTallaMapper.toDTO(dv.getRopaTalla()));
         dto.setCantidadVendida(dv.getCantidadVendida());
         dto.setSubtotal(dv.getSubtotal());
         
