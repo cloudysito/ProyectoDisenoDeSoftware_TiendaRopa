@@ -5,7 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
-import com.mycompany.objetosnegocio.dominioPojo.Talla;
+import objetosnegocio.dominioPojo.Talla;
 
 /**
  *
@@ -14,6 +14,10 @@ import com.mycompany.objetosnegocio.dominioPojo.Talla;
 public interface ITallaDAO {
     
     Talla guardarTalla(Talla talla) throws MongoException;
+    
+    Talla modificarTalla(Talla talla) throws MongoException;
+    
+    Talla eliminarTalla(Talla talla) throws MongoException;
 
     Talla buscarPorId(String idTalla) throws MongoException;
     

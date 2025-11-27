@@ -5,7 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
-import com.mycompany.objetosnegocio.dominioPojo.RopaTalla;
+import objetosnegocio.dominioPojo.RopaTalla;
 
 /**
  *

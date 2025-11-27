@@ -5,8 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
-import com.mycompany.objetosnegocio.dominioPojo.Venta;
-import java.util.List;
+import objetosnegocio.dominioPojo.Venta;
 
 /**
  *
@@ -15,6 +14,10 @@ import java.util.List;
 public interface IVentaDAO {
     
     Venta guardarVenta(Venta venta) throws MongoException;
+    
+    Venta modificarVenta(Venta venta) throws MongoException;
+    
+    Venta eliminarVenta(Venta venta) throws MongoException;
     
     Venta buscarPorId(String idVenta) throws MongoException;
     

@@ -5,7 +5,9 @@
 package Interfaces;
 
 import Exceptions.MongoException;
-import com.mycompany.objetosnegocio.dominioPojo.Ropa;
+import java.util.List;
+
+import objetosnegocio.dominioPojo.Ropa;
 
 
 /**
@@ -15,7 +17,13 @@ import com.mycompany.objetosnegocio.dominioPojo.Ropa;
 public interface IRopaDAO {
 
     Ropa guardarRopa(Ropa ropa) throws MongoException;
+    
+    Ropa modificarRopa(Ropa ropa) throws MongoException;
+    
+    Ropa eliminarRopa(Ropa ropa) throws MongoException;
 
     Ropa buscarPorId(String id) throws MongoException;
+    
+    List<Ropa> buscarPorNombre(String nombreArticulo) throws MongoException;
     
 }

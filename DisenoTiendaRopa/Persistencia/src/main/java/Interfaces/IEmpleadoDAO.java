@@ -5,8 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
-import com.mycompany.objetosnegocio.dominioPojo.Empleado;
-import java.util.List;
+import objetosnegocio.dominioPojo.Empleado;
 
 /**
  *
@@ -15,6 +14,10 @@ import java.util.List;
 public interface IEmpleadoDAO {
     
     Empleado guardarEmpleado(Empleado empleado) throws MongoException;
+    
+    Empleado modificarEmpleado(Empleado empleado) throws MongoException;
+    
+    Empleado eliminarEmpleado(Empleado empleado) throws MongoException;
     
     Empleado buscarPorId(String idEmpleado) throws MongoException;
 
