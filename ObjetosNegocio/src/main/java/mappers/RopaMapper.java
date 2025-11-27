@@ -14,7 +14,7 @@ import org.bson.types.ObjectId;
  */
 public class RopaMapper {
     
-    public Ropa toEntity(RopaDTO dto) {
+    public static Ropa toEntity(RopaDTO dto) {
         if (dto == null) {
             return null;
         }
@@ -30,7 +30,7 @@ public class RopaMapper {
         return ropa;
     }
     
-    public RopaDTO toDTO(Ropa ropa) {
+    public static RopaDTO toDTO(Ropa ropa) {
         if (ropa == null) {
             return null;
         }

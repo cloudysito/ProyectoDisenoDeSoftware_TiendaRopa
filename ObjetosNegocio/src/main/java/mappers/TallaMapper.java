@@ -14,7 +14,7 @@ import org.bson.types.ObjectId;
  */
 public class TallaMapper {
     
-    public Talla toEntity(TallaDTO dto) {
+    public static Talla toEntity(TallaDTO dto) {
         if (dto == null) {
             return null;
         }
@@ -26,7 +26,7 @@ public class TallaMapper {
         return talla;
     }
     
-    public TallaDTO toDTO(Talla talla) {
+    public static TallaDTO toDTO(Talla talla) {
         if (talla == null) {
             return null;
         }

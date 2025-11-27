@@ -15,7 +15,7 @@ import org.bson.types.ObjectId;
  * @author garfi
  */
 public class EmpleadoMapper {
-    public Empleado toEntity(EmpleadoDTO dto) {
+    public static Empleado toEntity(EmpleadoDTO dto) {
         if (dto == null) {
             return null;
         }
@@ -33,7 +33,7 @@ public class EmpleadoMapper {
         return empleado;
     }
     
-    public EmpleadoDTO toDTO(Empleado empleado) {
+    public static EmpleadoDTO toDTO(Empleado empleado) {
         if (empleado == null) {
             return null;
         }

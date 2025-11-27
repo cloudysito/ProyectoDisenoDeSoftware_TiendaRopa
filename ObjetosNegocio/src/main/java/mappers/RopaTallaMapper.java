@@ -19,7 +19,7 @@ public class RopaTallaMapper {
     private final RopaMapper ropaMapper = new RopaMapper();
     private final TallaMapper tallaMapper = new TallaMapper();
     
-    public RopaTalla toEntity(RopaTallaDTO dto) {
+    public  RopaTalla toEntity(RopaTallaDTO dto) {
         if (dto == null) {
             return null;
         }

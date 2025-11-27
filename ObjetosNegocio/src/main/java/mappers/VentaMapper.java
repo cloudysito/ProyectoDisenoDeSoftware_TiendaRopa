@@ -46,7 +46,7 @@ public class VentaMapper {
         return venta;
     }
     
-    public VentaDTO toDTO(Venta venta) {
+    public  VentaDTO toDTO(Venta venta) {
         if (venta == null) {
             return null;
         }

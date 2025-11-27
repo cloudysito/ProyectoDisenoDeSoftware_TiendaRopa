@@ -4,8 +4,13 @@
  */
 package BOs;
 
+import Exceptions.BOException;
+import Exceptions.DAOException;
 import Implementaciones.VentaDAO;
 import Interfaces.IVentaDAO;
+import com.mycompany.dto_negocio.VentaDTO;
+import mappers.VentaMapper;
+import objetosnegocio.dominioPojo.Venta;
 
 
 /**
@@ -29,7 +34,57 @@ public class VentaBO {
         return instance;
     }
     
+    //BO guardar venta
+    public VentaDTO guardarVenta(VentaDTO ventaDTO) throws BOException{
+        try{
+            Venta venta = VentaMapper.toEntity(ventaDTO);
+            
+            Venta ventaGuardar = ventaDAO.guardarVenta(venta);
+            
+            return VentaMapper.toDTO(ventaGuardar);
+            
+        }catch(DAOException e){
+            throw new BOException("Error al guardar empleado", e);
+        }
+    }
     
+    //BO modificar venta
+    public VentaDTO modificarVenta(VentaDTO ventaDTO) throws BOException{
+        try{
+            Venta venta = VentaMapper.toEntity(ventaDTO);
+            
+            Venta ventaModificar = ventaDAO.modificarVenta(venta);
+            
+            return VentaMapper.toDTO(ventaModificar);
+            
+        }catch(DAOException e){
+            throw new BOException("Error al guardar empleado", e);
+        }
+    }
     
+    //BO eliminar venta
+    public VentaDTO eliminarVenta(VentaDTO ventaDTO) throws BOException{
+        try{
+            Venta venta = VentaMapper.toEntity(ventaDTO);
+            
+            Venta ventaEliminar = ventaDAO.eliminarVenta(venta);
+            
+            return VentaMapper.toDTO(ventaEliminar);
+            
+        }catch(DAOException e){
+            throw new BOException("Error al guardar empleado", e);
+        }
+    }
+    
+    //Buacar por id venta
+    public String buscarPorId(String idVenta) throws BOException{
+        try{
+            
+            return VentaDAO.buscarPorId(idVenta);
+            
+        }catch(DAOException e){
+            throw new BOException("Error al buscar por id empleado", e);
+        }
+    }
     
 }
