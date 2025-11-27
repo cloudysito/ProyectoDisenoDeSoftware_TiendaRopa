@@ -22,6 +22,13 @@ public class TallaDTO {
         this.descripcion = descripcion;
     }
 
+    public TallaDTO(String nombreTalla, String descripcion) {
+        this.nombreTalla = nombreTalla;
+        this.descripcion = descripcion;
+    }
+
+    
+    
     public String getIdTalla() {
         return idTalla;
     }

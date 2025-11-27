@@ -23,6 +23,14 @@ public class DetalleVentaDTO {
         this.subtotal = subtotal;
     }
 
+    public DetalleVentaDTO(RopaTallaDTO ropaTalla, int cantidadVendida, double subtotal) {
+        this.ropaTalla = ropaTalla;
+        this.cantidadVendida = cantidadVendida;
+        this.subtotal = subtotal;
+    }
+
+    
+    
     public String getIdDetalleVenta() {
         return idDetalleVenta;
     }

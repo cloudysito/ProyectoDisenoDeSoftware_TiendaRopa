@@ -5,8 +5,7 @@
 package com.mycompany.aumentarventaempleado.Fachada;
 
 import com.mycompany.aumentarventaempleado.Interfaz.IAumentarVentaEmpleado;
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
 import java.time.Instant;
 import java.util.Date;
 
@@ -16,14 +15,14 @@ import java.util.Date;
  */
 public class FachadaAumentarVentaEmpleado implements IAumentarVentaEmpleado {
     @Override
-    public Empleado recuperarEmpleado(String email, String contrasenia) {
+    public EmpleadoDTO recuperarEmpleado(String email, String contrasenia) {
         if(email != ""){
         
         }
         if(contrasenia != "") {
         
         }
-        return new Empleado(1, "Manuel", "Cortes villa", "Cajero", "644-455-4555", "manuel_cortes@gmail.com", 8000, Date.from(Instant.MIN), email, contrasenia);
+        return new EmpleadoDTO("Manuel", "Cortes villa", "Cajero", "644-455-4555", email, 8000, Date.from(Instant.MIN), email);
     }
 
     @Override

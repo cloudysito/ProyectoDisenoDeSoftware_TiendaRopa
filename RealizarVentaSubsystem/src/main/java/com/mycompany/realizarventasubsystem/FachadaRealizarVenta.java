@@ -4,13 +4,8 @@
  */
 package com.mycompany.realizarventasubsystem;
 
-import com.mycompany.objetosnegocio.dominio.DetalleVenta;
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dominio.RopaTalla;
-import com.mycompany.objetosnegocio.dominio.Venta;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
-import com.mycompany.objetosnegocio.dto.VentaDTO;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -23,7 +18,7 @@ import java.util.Date;
 public class FachadaRealizarVenta implements IRealizarVenta {
 
     @Override
-    public Venta crearVenta(Venta venta) {
+    public VentaDTO crearVenta(VentaDTO venta) {
         venta.setFechaHoraVenta(Date.from(Instant.MIN));
         venta.setFolioVenta(23);
         return venta;
@@ -31,17 +26,17 @@ public class FachadaRealizarVenta implements IRealizarVenta {
     }
 
     @Override
-    public DetalleVenta reducirStock(DetalleVenta detalleVenta) {
+    public DetalleVentaDTO reducirStock(DetalleVentaDTO detalleVenta) {
         return detalleVenta;
     }
 
     @Override
-    public DetalleVenta cambiarTallaDisponible(DetalleVenta producto) {
+    public DetalleVentaDTO cambiarTallaDisponible(DetalleVentaDTO producto) {
         return producto;
     }
 
     @Override
-    public boolean registrarVenta(Venta venta) {
+    public boolean registrarVenta(VentaDTO venta) {
         return true;
     }
    

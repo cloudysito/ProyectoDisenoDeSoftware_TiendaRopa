@@ -32,6 +32,17 @@ public class VentaDTO {
         this.detalles = detalles;
     }
 
+    public VentaDTO(int folioVenta, Date fechaHoraVenta, double totalVenta, String metodoPago, EmpleadoDTO empleado, List<DetalleVentaDTO> detalles) {
+        this.folioVenta = folioVenta;
+        this.fechaHoraVenta = fechaHoraVenta;
+        this.totalVenta = totalVenta;
+        this.metodoPago = metodoPago;
+        this.empleado = empleado;
+        this.detalles = detalles;
+    }
+
+    
+    
     public String getIdVenta() {
         return idVenta;
     }

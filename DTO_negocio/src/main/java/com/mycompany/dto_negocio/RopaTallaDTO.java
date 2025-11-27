@@ -19,6 +19,14 @@ public class RopaTallaDTO {
     public RopaTallaDTO() {
     }
 
+    public RopaTallaDTO(RopaDTO Ropa, TallaDTO Talla, String codigoBarras, int cantidad) {
+        this.Ropa = Ropa;
+        this.Talla = Talla;
+        this.codigoBarras = codigoBarras;
+        this.cantidad = cantidad;
+    }
+
+    
     public RopaTallaDTO(String idRopaTalla, RopaDTO Ropa, TallaDTO Talla, String codigoBarras, int cantidad) {
         this.idRopaTalla = idRopaTalla;
         this.Ropa = Ropa;

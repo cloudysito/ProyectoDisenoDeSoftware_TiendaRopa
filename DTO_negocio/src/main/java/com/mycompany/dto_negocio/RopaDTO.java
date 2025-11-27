@@ -31,6 +31,17 @@ public class RopaDTO {
         this.Material = Material;
     }
 
+    public RopaDTO(String nombreArticulo, double precio, String descripcion, String Temporada, String Marca, String Material) {
+        this.nombreArticulo = nombreArticulo;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.Temporada = Temporada;
+        this.Marca = Marca;
+        this.Material = Material;
+    }
+
+    
+    
     public String getIdRopa() {
         return idRopa;
     }

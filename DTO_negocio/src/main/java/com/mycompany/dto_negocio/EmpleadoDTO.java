@@ -16,6 +16,7 @@ public class EmpleadoDTO {
     private String apellidos;
     private String puesto;
     private String telefono;
+    private String contrasenia;
     private String email;
     private int salario;
     private Date fechaContratacion;
@@ -34,6 +35,19 @@ public class EmpleadoDTO {
         this.fechaContratacion = fechaContratacion;
         this.rfc = rfc;
     }
+
+    public EmpleadoDTO(String nombre, String apellidos, String puesto, String telefono, String email, int salario, Date fechaContratacion, String rfc) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.puesto = puesto;
+        this.telefono = telefono;
+        this.email = email;
+        this.salario = salario;
+        this.fechaContratacion = fechaContratacion;
+        this.rfc = rfc;
+    }
+    
+    
 
     public String getIdEmpleado() {
         return idEmpleado;
