@@ -6,6 +6,7 @@ package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 
 /**
  *
@@ -18,9 +19,12 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
      */
     
     private EmpleadoDTO empleado;
+    private VentaDTO venta;
 
-    public GUISeleccionMetodoPago() {
+    public GUISeleccionMetodoPago(EmpleadoDTO empleado,VentaDTO venta) {
         initComponents();
+        this.empleado = empleado;
+        this.venta = venta;
         configurarNavegacionPerfil();
         setLocationRelativeTo(null);
     }
@@ -381,22 +385,22 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnRegresar != null) {
-            btnRegresar.addActionListener(evt -> navegador.navegarVenderPrenda(this, empleado));
+            btnRegresar.addActionListener(evt -> navegador.navegarVenderPrenda(this, empleado, venta ));
         }
        if (btnEfectivo != null) {
-            btnEfectivo.addActionListener(evt -> navegador.navegarPagoEfectivo(this, empleado));
+            btnEfectivo.addActionListener(evt -> navegador.navegarPagoEfectivo(this, empleado, venta));
         }
        if (btnCredito != null) {
-            btnCredito.addActionListener(evt -> navegador.navegarPagoTarjeta(this, empleado));
+            btnCredito.addActionListener(evt -> navegador.navegarPagoTarjeta(this, empleado, venta));
         }
        if (btnDebito != null) {
-            btnDebito.addActionListener(evt -> navegador.navegarPagoTarjeta(this, empleado));
+            btnDebito.addActionListener(evt -> navegador.navegarPagoTarjeta(this, empleado, venta));
         }
        if (btnTransferencia != null) {
-            btnTransferencia.addActionListener(evt -> navegador.navegarPagoTransferencia(this, empleado));
+            btnTransferencia.addActionListener(evt -> navegador.navegarPagoTransferencia(this, empleado, venta));
         }
        if (btnPaypal != null) {
-            btnPaypal.addActionListener(evt -> navegador.navegarPagoPaypal(this, empleado));
+            btnPaypal.addActionListener(evt -> navegador.navegarPagoPaypal(this, empleado, venta));
         }
 }
 

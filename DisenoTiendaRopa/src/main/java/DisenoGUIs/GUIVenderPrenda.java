@@ -183,7 +183,7 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
 
         lblNombreProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombreProducto.setForeground(new java.awt.Color(226, 115, 150));
-        lblNombreProducto.setText("Seleccionar metodo de pago:");
+        lblNombreProducto.setText("Resumen Venta");
 
         lblNombreProducto1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombreProducto1.setForeground(new java.awt.Color(226, 115, 150));
@@ -364,7 +364,7 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnVender != null) {
-            btnVender.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado));
+            btnVender.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado,venta));
         }
         if (btnAgregarPrenda != null) {
             btnAgregarPrenda.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado, venta, true));

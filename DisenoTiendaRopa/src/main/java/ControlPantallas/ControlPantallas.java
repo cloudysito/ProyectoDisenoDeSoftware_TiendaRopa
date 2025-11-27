@@ -80,39 +80,33 @@ public class ControlPantallas {
         vp.setVisible(true);
     }
 
-    public void navegarCompraRealizada(JFrame frameActual, EmpleadoDTO empleado) {
+    public void navegarPagoEfectivo(JFrame frameActual,EmpleadoDTO empleado, VentaDTO venta) {
         cerrarFrameActual(frameActual);
-        GUICompraRealizada cr = new GUICompraRealizada();
-        cr.setVisible(true);
-    }
-
-    public void navegarPagoEfectivo(JFrame frameActual,EmpleadoDTO empleado) {
-        cerrarFrameActual(frameActual);
-        GUIPagoEfectivo efectivo = new GUIPagoEfectivo();
+        GUIPagoEfectivo efectivo = new GUIPagoEfectivo(empleado,venta);
         efectivo.setVisible(true);
     }
 
-    public void navegarPagoPaypal(JFrame frameActual, EmpleadoDTO empleado) {
+    public void navegarPagoPaypal(JFrame frameActual, EmpleadoDTO empleado, VentaDTO venta) {
         cerrarFrameActual(frameActual);
-        GUIPagoPaypal paypal = new GUIPagoPaypal();
+        GUIPagoPaypal paypal = new GUIPagoPaypal(empleado,venta);
         paypal.setVisible(true);
     }
 
-    public void navegarPagoTarjeta(JFrame frameActual,EmpleadoDTO empleado) {
+    public void navegarPagoTarjeta(JFrame frameActual,EmpleadoDTO empleado, VentaDTO venta) {
         cerrarFrameActual(frameActual);
-        GUIPagoTarjeta tarjeta = new GUIPagoTarjeta();
+        GUIPagoTarjeta tarjeta = new GUIPagoTarjeta(empleado,venta);
         tarjeta.setVisible(true);
     }
 
-    public void navegarPagoTransferencia(JFrame frameActual,EmpleadoDTO empleado) {
+    public void navegarPagoTransferencia(JFrame frameActual,EmpleadoDTO empleado, VentaDTO venta) {
         cerrarFrameActual(frameActual);
-        GUIPagoTransferencia transferencia = new GUIPagoTransferencia();
+        GUIPagoTransferencia transferencia = new GUIPagoTransferencia(empleado,venta);
         transferencia.setVisible(true);
     }
 
-    public void navegarSeleccionMetodoPago(JFrame frameActual, EmpleadoDTO empleado) {
+    public void navegarSeleccionMetodoPago(JFrame frameActual, EmpleadoDTO empleado, VentaDTO venta) {
         cerrarFrameActual(frameActual);
-        GUISeleccionMetodoPago smp = new GUISeleccionMetodoPago();
+        GUISeleccionMetodoPago smp = new GUISeleccionMetodoPago(empleado,venta);
         smp.setVisible(true);
     }
 
