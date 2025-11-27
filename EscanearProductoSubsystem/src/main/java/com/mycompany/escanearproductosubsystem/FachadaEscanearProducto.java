@@ -4,10 +4,18 @@
  */
 package com.mycompany.escanearproductosubsystem;
 
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 import com.mycompany.dto_negocio.RopaDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.TallaDTO;
 import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
+import java.awt.image.BufferedImage;
 
 
 /**
@@ -16,8 +24,14 @@ import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
  */
 public class FachadaEscanearProducto implements IEscanearProducto {
     @Override
-    public String escanearCodigo() {
-        return "COD123456";
+    public String escanearCodigo(BufferedImage image) {try {
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            Result result = new MultiFormatReader().decode(bitmap);
+            return result.getText();
+        } catch (NotFoundException e) {
+            return null;
+        }
     }
 
     @Override

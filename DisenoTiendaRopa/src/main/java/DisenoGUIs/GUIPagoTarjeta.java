@@ -5,7 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dominio.Empleado;
+import com.mycompany.dto_negocio.EmpleadoDTO;
 
 /**
  *
@@ -16,7 +16,7 @@ public class GUIPagoTarjeta extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
-    private Empleado empleado;
+    private EmpleadoDTO empleado;
 
     
     public GUIPagoTarjeta() {

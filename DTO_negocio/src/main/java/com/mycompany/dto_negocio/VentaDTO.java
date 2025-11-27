@@ -4,6 +4,7 @@
  */
 package com.mycompany.dto_negocio;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class VentaDTO {
     private double totalVenta;
     private String metodoPago;
     private EmpleadoDTO empleado;
-    private List<DetalleVentaDTO> detalles;
+    private List<DetalleVentaDTO> detalles = new ArrayList<DetalleVentaDTO>();
 
     public VentaDTO() {}
 
@@ -41,7 +42,11 @@ public class VentaDTO {
         this.detalles = detalles;
     }
     
-    
+    public void agregarDetalle(DetalleVentaDTO detalle) {
+        if (detalle != null) {
+            detalles.add(detalle);
+        }
+    }
 
     public String getIdVenta() {
         return idVenta;

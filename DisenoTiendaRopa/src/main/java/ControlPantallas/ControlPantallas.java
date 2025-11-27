@@ -62,21 +62,21 @@ public class ControlPantallas {
         menu.setVisible(true);
     }
 
-    public void navegarCodigoProducto(JFrame frameActual, EmpleadoDTO empleado,VentaDTO venta) {
+    public void navegarCodigoProducto(JFrame frameActual, EmpleadoDTO empleado,VentaDTO venta, boolean ven) {
         cerrarFrameActual(frameActual);
-        GUICodigoProducto cp = new GUICodigoProducto(empleado);
+        GUICodigoProducto cp = new GUICodigoProducto(empleado,  venta, ven);
         cp.setVisible(true);
     }
 
-    public void navegarProducto(JFrame frameActual,EmpleadoDTO empleado, RopaTallaDTO productodto) {
+    public void navegarProducto(JFrame frameActual,EmpleadoDTO empleado, RopaTallaDTO productodto,VentaDTO venta,boolean ven) {
         cerrarFrameActual(frameActual);
-        GUIProducto producto = new GUIProducto(empleado, productodto);
+        GUIProducto producto = new GUIProducto(empleado, productodto, venta , ven);
         producto.setVisible(true);
     }
 
-    public void navegarVenderPrenda(JFrame frameActual,EmpleadoDTO empleado) {
+    public void navegarVenderPrenda(JFrame frameActual,EmpleadoDTO empleado, VentaDTO venta) {
         cerrarFrameActual(frameActual);
-        GUIVenderPrenda vp = new GUIVenderPrenda();
+        GUIVenderPrenda vp = new GUIVenderPrenda(empleado,venta);
         vp.setVisible(true);
     }
 

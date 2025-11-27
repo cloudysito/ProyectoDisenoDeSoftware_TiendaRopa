@@ -5,6 +5,7 @@
 package com.mycompany.escanearproductosubsystem.Interfaz;
 
 import com.mycompany.dto_negocio.RopaTallaDTO;
+import java.awt.image.BufferedImage;
 
 
 /**
@@ -13,7 +14,7 @@ import com.mycompany.dto_negocio.RopaTallaDTO;
  */
 public interface IEscanearProducto {
   
-    public abstract String escanearCodigo();
+    public abstract String escanearCodigo(BufferedImage image);
     
     public abstract RopaTallaDTO encontrarProducto(String codigo);
 }

@@ -5,10 +5,11 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dominio.RopaTalla;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.VentaDTO;
+
 
 /**
  *
@@ -19,12 +20,15 @@ public class GUIProducto extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
-    private Empleado empleado;
-    private RopaTalla producto;
-    
-    public GUIProducto(Empleado empleado, RopaTalla producto) {
+    private EmpleadoDTO empleado;
+    private RopaTallaDTO producto;
+    private VentaDTO ventaDTO;
+    private Boolean ventaIniciada;
+    public GUIProducto(EmpleadoDTO empleado, RopaTallaDTO producto,VentaDTO ventaDTO, Boolean ventaIniciada) {
         this.empleado = empleado;
         this.producto = producto;
+        this.ventaDTO = ventaDTO;
+        this.ventaIniciada = ventaIniciada;
         initComponents();
         llenarProducto();
         configurarNavegacionPerfil();
@@ -586,10 +590,14 @@ public class GUIProducto extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnCancelar != null) {
-            btnCancelar.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado));
+            
+            btnCancelar.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado, ventaDTO, ventaIniciada ));
         }
         if (btnVender != null) {
-            btnVender.addActionListener(evt -> navegador.navegarVenderPrenda(this, empleado));
+            DetalleVentaDTO detalle = new DetalleVentaDTO(producto, 1, producto.getRopa().getPrecio());
+            ventaDTO.agregarDetalle(detalle);
+            btnVender.addActionListener(evt -> navegador.navegarVenderPrenda(this, empleado, ventaDTO));
+            
         }
 }
 
