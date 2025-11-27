@@ -17,15 +17,14 @@ import org.bson.types.ObjectId;
  */
 public class DetalleVentaMapper {
     
-    private final RopaTallaMapper ropaTallaMapper = new RopaTallaMapper();
     
-    public DetalleVenta toEntity(DetalleVentaDTO dto) {
+    public static DetalleVenta toEntity(DetalleVentaDTO dto) {
         if (dto == null) {
             return null;
         }
         DetalleVenta dv = new DetalleVenta();
         dv.setId(new ObjectId(dto.getIdDetalleVenta()));
-        RopaTalla ropaTallaEntidad = ropaTallaMapper.toEntity(dto.getRopaTalla());
+        RopaTalla ropaTallaEntidad = RopaTallaMapper.toEntity(dto.getRopaTalla());
         dv.setRopaTalla(ropaTallaEntidad);
         dv.setCantidadVendida(dto.getCantidadVendida());
         dv.setSubtotal(dto.getSubtotal());               
@@ -33,13 +32,13 @@ public class DetalleVentaMapper {
         return dv;
     }
     
-    public DetalleVentaDTO toDTO(DetalleVenta dv) {
+    public static DetalleVentaDTO toDTO(DetalleVenta dv) {
         if (dv == null) {
             return null;
         }
         DetalleVentaDTO dto = new DetalleVentaDTO();
         dto.setIdDetalleVenta(dv.getId().toHexString());
-        dto.setRopaTalla(ropaTallaMapper.toDTO(dv.getRopaTalla()));
+        dto.setRopaTalla(RopaTallaMapper.toDTO(dv.getRopaTalla()));
         dto.setCantidadVendida(dv.getCantidadVendida());
         dto.setSubtotal(dv.getSubtotal());
         

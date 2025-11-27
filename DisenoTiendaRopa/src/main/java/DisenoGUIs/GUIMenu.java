@@ -5,8 +5,8 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 
 /**
  *
@@ -17,9 +17,9 @@ public class GUIMenu extends javax.swing.JFrame {
     /**
      * Creates new form GUIMenu
      */
-    private Empleado empleado;
+    private EmpleadoDTO empleado;
     
-    public GUIMenu(Empleado empleado) {
+    public GUIMenu(EmpleadoDTO empleado) {
         initComponents();
         this.empleado = empleado;
         configurarNavegacionPerfil();
@@ -303,7 +303,8 @@ public class GUIMenu extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnVenderPrenda != null) {
-            btnVenderPrenda.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado));
+            VentaDTO venta = new VentaDTO();
+            btnVenderPrenda.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado, venta));
         }
 }
 }

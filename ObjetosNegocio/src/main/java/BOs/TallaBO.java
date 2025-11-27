@@ -75,10 +75,10 @@ public class TallaBO {
     }
     
     //BO buscar por id talla
-    public String buscarPorId(String idTalla) throws BOException{
+    public TallaDTO buscarPorId(String idTalla) throws BOException{
         try{
             
-            return TallaDAO.buscarPorId(idTalla);
+            return TallaMapper.toDTO(tallaDAO.buscarPorId(idTalla));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);

@@ -77,10 +77,10 @@ public class EmpleadoBO {
     
     //BO de buscar por id empleado
     
-    public String buscarPorId(String idEmpleado) throws BOException{
+    public EmpleadoDTO buscarPorId(String idEmpleado) throws BOException{
         try{
             
-            return EmpleadoDAO.buscarPorId(idEmpleado);
+            return EmpleadoMapper.toDTO(empleadoDAO.buscarPorId(idEmpleado));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);

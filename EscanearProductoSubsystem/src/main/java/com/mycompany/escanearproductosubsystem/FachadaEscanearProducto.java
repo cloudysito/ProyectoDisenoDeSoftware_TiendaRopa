@@ -4,11 +4,11 @@
  */
 package com.mycompany.escanearproductosubsystem;
 
+import com.mycompany.dto_negocio.RopaDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.TallaDTO;
 import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
-import com.mycompany.objetosnegocio.dominio.Ropa;
-import com.mycompany.objetosnegocio.dominio.RopaTalla;
-import com.mycompany.objetosnegocio.dominio.Talla;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
+
 
 /**
  *
@@ -21,9 +21,9 @@ public class FachadaEscanearProducto implements IEscanearProducto {
     }
 
     @Override
-    public RopaTalla encontrarProducto(String codigo) {
-        Ropa prenda = new Ropa("Playera wow", "una muy buena playeraaaa", "Verano", "santi", "tela", 235.00);
-        Talla talla = new  Talla("M","una talla mediana");
-        return new RopaTalla(prenda, talla, codigo, 10);
+    public RopaTallaDTO encontrarProducto(String codigo) {
+        RopaDTO prenda = new RopaDTO("Playera wow", 235.00, "una muy buena playeraaaa", "Verano", "santi", "tela");
+        TallaDTO talla = new  TallaDTO("M","una talla mediana");
+        return new RopaTallaDTO(prenda, talla, codigo, 10);
     }
 }

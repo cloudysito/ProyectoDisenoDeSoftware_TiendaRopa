@@ -26,6 +26,7 @@ public class EmpleadoMapper {
         empleado.setEmail(dto.getEmail());
         empleado.setFechaContratacion(dto.getFechaContratacion());
         empleado.setPuesto(dto.getPuesto());
+        empleado.setContrasenia(dto.getContrasenia());
         empleado.setRfc(dto.getRfc());
         empleado.setSalario(dto.getSalario());
         empleado.setTelefono(dto.getTelefono());
@@ -44,6 +45,7 @@ public class EmpleadoMapper {
         dto.setEmail(empleado.getEmail());
         dto.setFechaContratacion(empleado.getFechaContratacion());
         dto.setPuesto(empleado.getPuesto());
+        dto.setContrasenia(empleado.getContrasenia());
         dto.setRfc(empleado.getRfc());
         dto.setSalario(empleado.getSalario());
         dto.setTelefono(empleado.getTelefono());        

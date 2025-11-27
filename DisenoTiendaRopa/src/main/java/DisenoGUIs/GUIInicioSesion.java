@@ -5,9 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
-
+import com.mycompany.dto_negocio.EmpleadoDTO;
 /**
  *
  * @author emiim
@@ -147,40 +145,6 @@ public class GUIInicioSesion extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIInicioSesion().setVisible(true);
-            }
-        });
-    }
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceder;
     private javax.swing.JLabel jLabel1;
@@ -196,7 +160,7 @@ public class GUIInicioSesion extends javax.swing.JFrame {
         if (btnAcceder != null) {
              String usuario = textFEmpleado.getText();
              String contra = textFConstraseña.getText();
-             Empleado empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
+             EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
             if(empleado != null){
                 btnAcceder.addActionListener(evt -> navegador.navegarMenuPrincipal(this, empleado));
             }

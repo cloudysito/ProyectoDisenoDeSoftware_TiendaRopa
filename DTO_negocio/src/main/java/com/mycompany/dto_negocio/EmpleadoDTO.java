@@ -16,6 +16,7 @@ public class EmpleadoDTO {
     private String apellidos;
     private String puesto;
     private String telefono;
+    private String contrasenia;
     private String email;
     private int salario;
     private Date fechaContratacion;
@@ -23,20 +24,42 @@ public class EmpleadoDTO {
 
     public EmpleadoDTO() {}
 
-    public EmpleadoDTO(String idEmpleado, String nombre, String apellidos, String puesto, String telefono, String email, int salario, Date fechaContratacion, String rfc) {
+    public EmpleadoDTO(String idEmpleado, String nombre, String apellidos, String puesto, String telefono, String contrasenia, String email, int salario, Date fechaContratacion, String rfc) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.puesto = puesto;
         this.telefono = telefono;
+        this.contrasenia = contrasenia;
         this.email = email;
         this.salario = salario;
         this.fechaContratacion = fechaContratacion;
         this.rfc = rfc;
     }
 
+    public EmpleadoDTO(String nombre, String apellidos, String puesto, String telefono, String contrasenia, String email, int salario, Date fechaContratacion, String rfc) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.puesto = puesto;
+        this.telefono = telefono;
+        this.contrasenia = contrasenia;
+        this.email = email;
+        this.salario = salario;
+        this.fechaContratacion = fechaContratacion;
+        this.rfc = rfc;
+    }
+
+    
     public String getIdEmpleado() {
         return idEmpleado;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public void setIdEmpleado(String idEmpleado) {

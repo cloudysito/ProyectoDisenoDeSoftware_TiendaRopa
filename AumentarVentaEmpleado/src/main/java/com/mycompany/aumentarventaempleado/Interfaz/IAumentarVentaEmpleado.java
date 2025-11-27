@@ -4,14 +4,14 @@
  */
 package com.mycompany.aumentarventaempleado.Interfaz;
 
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+
 
 /**
  *
  * @author LABCISCO-PC095
  */
 public interface IAumentarVentaEmpleado {
-    Empleado recuperarEmpleado(String email, String contrasenia);
+    EmpleadoDTO recuperarEmpleado(String email, String contrasenia);
     boolean aumentarVenta(EmpleadoDTO empleado);
 }

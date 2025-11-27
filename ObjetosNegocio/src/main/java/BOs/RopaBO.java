@@ -9,6 +9,8 @@ import Exceptions.DAOException;
 import Implementaciones.RopaDAO;
 import Interfaces.IRopaDAO;
 import com.mycompany.dto_negocio.RopaDTO;
+import java.util.ArrayList;
+import java.util.List;
 import mappers.RopaMapper;
 import objetosnegocio.dominioPojo.Ropa;
 
@@ -75,10 +77,10 @@ public class RopaBO {
     }
     
     //BO buscar por id ropa
-    public String buscarPorId(String idRopa) throws BOException{
+    public RopaDTO buscarPorId(String idRopa) throws BOException{
         try{
             
-            return RopaDAO.buscarPorId(idERopa);
+            return RopaMapper.toDTO(ropaDAO.buscarPorId(idRopa));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id ropa", e);
@@ -86,10 +88,17 @@ public class RopaBO {
     }
     
     //BO buscar por nombre ropa
-    public String buscarPorNombre(String nombreArticulo) throws BOException{
+    public List<RopaDTO> buscarPorNombre(String nombreArticulo) throws BOException{
         try{
-            
-            return RopaDAO.buscarPorNombre(nombreArticulo);
+            List<Ropa> listaRopa = ropaDAO.buscarPorNombre(nombreArticulo);
+
+            List<RopaDTO> listaDTO = new ArrayList<>();
+
+            for (Ropa r : listaRopa) {
+                listaDTO.add(RopaMapper.toDTO(r));
+            }
+
+            return listaDTO;
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);

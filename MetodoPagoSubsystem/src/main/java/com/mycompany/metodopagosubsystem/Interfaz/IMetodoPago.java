@@ -4,7 +4,8 @@
  */
 package com.mycompany.metodopagosubsystem.Interfaz;
 
-import com.mycompany.objetosnegocio.dto.PagoDTO;
+import com.mycompany.dto_negocio.PagoDTO;
+
 
 /**
  *

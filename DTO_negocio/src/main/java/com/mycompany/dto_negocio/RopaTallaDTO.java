@@ -27,6 +27,13 @@ public class RopaTallaDTO {
         this.cantidad = cantidad;
     }
 
+    public RopaTallaDTO(RopaDTO Ropa, TallaDTO Talla, String codigoBarras, int cantidad) {
+        this.Ropa = Ropa;
+        this.Talla = Talla;
+        this.codigoBarras = codigoBarras;
+        this.cantidad = cantidad;
+    }
+
 
     public String getIdRopaTalla() {
         return idRopaTalla;

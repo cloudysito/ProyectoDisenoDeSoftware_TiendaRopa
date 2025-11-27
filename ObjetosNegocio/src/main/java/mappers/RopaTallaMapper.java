@@ -16,10 +16,8 @@ import org.bson.types.ObjectId;
  */
 public class RopaTallaMapper {
     
-    private final RopaMapper ropaMapper = new RopaMapper();
-    private final TallaMapper tallaMapper = new TallaMapper();
     
-    public  RopaTalla toEntity(RopaTallaDTO dto) {
+    public static RopaTalla toEntity(RopaTallaDTO dto) {
         if (dto == null) {
             return null;
         }
@@ -27,22 +25,22 @@ public class RopaTallaMapper {
         rt.setId(new ObjectId(dto.getIdRopaTalla()));
         rt.setCodigo(dto.getCodigoBarras());
         rt.setCantidad(dto.getCantidad());
-        Ropa ropaEntidad = ropaMapper.toEntity(dto.getRopa());
+        Ropa ropaEntidad = RopaMapper.toEntity(dto.getRopa());
         rt.setRopa(ropaEntidad);
-        Talla tallaEntidad = tallaMapper.toEntity(dto.getTalla());
+        Talla tallaEntidad = TallaMapper.toEntity(dto.getTalla());
         rt.setTalla(tallaEntidad);
         
         return rt;
     }
     
-    public RopaTallaDTO toDTO(RopaTalla rt) {
+    public static RopaTallaDTO toDTO(RopaTalla rt) {
         if (rt == null) {
             return null;
         }
         RopaTallaDTO dto = new RopaTallaDTO();
         dto.setIdRopaTalla(String.valueOf(rt.getId()));
-        dto.setRopa(ropaMapper.toDTO(rt.getRopa()));
-        dto.setTalla(tallaMapper.toDTO(rt.getTalla()));
+        dto.setRopa(RopaMapper.toDTO(rt.getRopa()));
+        dto.setTalla(TallaMapper.toDTO(rt.getTalla()));
         dto.setCodigoBarras(rt.getCodigo());
         dto.setCantidad(rt.getCantidad());
         

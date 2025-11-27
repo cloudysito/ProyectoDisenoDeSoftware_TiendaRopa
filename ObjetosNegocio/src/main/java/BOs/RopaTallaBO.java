@@ -47,10 +47,10 @@ public class RopaTallaBO {
     }
     
     //BO buscar por id ropaTalla
-    public String buscarPorId(String id) throws BOException{
+    public RopaTallaDTO buscarPorId(String id) throws BOException{
         try{
             
-            return RopaTallaDAO.buscarPorId(id);
+            return RopaTallaMapper.toDTO(ropaTallaDAO.buscarPorId(id));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);
@@ -58,10 +58,10 @@ public class RopaTallaBO {
     }
     
     //BO buscar por codigo ropaTalla
-    public String buscarPorId(String codigo) throws BOException{
+    public RopaTallaDTO buscarPorCodigo(String codigo) throws BOException{
         try{
             
-            return RopaTallaDAO.buscarPorId(codigo);
+            return RopaTallaMapper.toDTO(ropaTallaDAO.buscarPorCodigo(codigo));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);

@@ -8,11 +8,6 @@
     <dependencies>
         <dependency>
             <groupId>com.mycompany</groupId>
-            <artifactId>ObjetosNegocio</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mycompany</groupId>
             <artifactId>EscanearProductoSubsystem</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -29,6 +24,11 @@
         <dependency>
             <groupId>com.mycompany</groupId>
             <artifactId>AumentarVentaEmpleado</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mycompany</groupId>
+            <artifactId>DTO_negocio</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

@@ -19,17 +19,15 @@ import org.bson.types.ObjectId;
  */
 public class VentaMapper {
     
-    private DetalleVentaMapper detalleVentaMapper = new DetalleVentaMapper();
-    private final EmpleadoMapper empleadoMapper = new EmpleadoMapper();
     
     
-    public Venta toEntity(VentaDTO dto) {
+    public static Venta toEntity(VentaDTO dto) {
         if (dto == null) {
             return null;
         }
         Venta venta = new Venta();
         venta.setId(new ObjectId(dto.getIdVenta()));
-        Empleado empleadoEntidad = empleadoMapper.toEntity(dto.getEmpleado());
+        Empleado empleadoEntidad = EmpleadoMapper.toEntity(dto.getEmpleado());
         venta.setEmpleado(empleadoEntidad);
         venta.setFechaHoraVenta(dto.getFechaHoraVenta());
         venta.setFolioVenta(dto.getFolioVenta());
@@ -37,29 +35,29 @@ public class VentaMapper {
         venta.setTotalVenta(dto.getTotalVenta());
         if (dto.getDetalles() != null) {
         List<DetalleVenta> detallesEntidad = dto.getDetalles().stream()
-            .map(detalleVentaMapper::toEntity) 
+            .map(DetalleVentaMapper::toEntity)
             .collect(Collectors.toList());
-        
+
         venta.setDetalles(detallesEntidad);
-    }    
+    }   
         
         return venta;
     }
     
-    public  VentaDTO toDTO(Venta venta) {
+    public static VentaDTO toDTO(Venta venta) {
         if (venta == null) {
             return null;
         }
         VentaDTO dto = new VentaDTO();
         dto.setIdVenta(venta.getId().toHexString());
-        dto.setEmpleado(empleadoMapper.toDTO(venta.getEmpleado()));
+        dto.setEmpleado(EmpleadoMapper.toDTO(venta.getEmpleado()));
         dto.setFechaHoraVenta(venta.getFechaHoraVenta());
         dto.setFolioVenta(venta.getFolioVenta());
         dto.setMetodoPago(venta.getMetodoPago());
         dto.setTotalVenta(venta.getTotalVenta());
         if (venta.getDetalles() != null) {
         List<DetalleVentaDTO> detallesDTO = venta.getDetalles().stream()
-            .map(detalleVentaMapper::toDTO) 
+            .map(DetalleVentaMapper::toDTO) 
             .collect(Collectors.toList());
             
         dto.setDetalles(detallesDTO);

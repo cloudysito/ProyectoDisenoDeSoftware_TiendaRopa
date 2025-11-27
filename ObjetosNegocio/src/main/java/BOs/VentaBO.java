@@ -77,10 +77,10 @@ public class VentaBO {
     }
     
     //Buacar por id venta
-    public String buscarPorId(String idVenta) throws BOException{
+    public VentaDTO buscarPorId(String idVenta) throws BOException{
         try{
             
-            return VentaDAO.buscarPorId(idVenta);
+            return VentaMapper.toDTO(ventaDAO.buscarPorId(idVenta));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);
