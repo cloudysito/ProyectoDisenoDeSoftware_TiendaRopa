@@ -366,12 +366,9 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
         if (btnVender != null) {
             btnVender.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado));
         }
-    }
-    
-    private void configurarNavegacionProducto() {
-        final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnAgregarPrenda != null) {
             btnAgregarPrenda.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado, venta, true));
         }
-}
+    }
+    
 }
