@@ -4,6 +4,9 @@
  */
 package BOs;
 
+import Implementaciones.RopaDAO;
+import Interfaces.IRopaDAO;
+
 /**
  *
  * @author riosr

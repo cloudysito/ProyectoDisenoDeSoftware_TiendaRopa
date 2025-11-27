@@ -4,6 +4,9 @@
  */
 package BOs;
 
+import Implementaciones.EmpleadoDAO;
+import Interfaces.IEmpleadoDAO;
+
 /**
  *
  * @author riosr

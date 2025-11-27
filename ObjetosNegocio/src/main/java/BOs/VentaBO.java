@@ -4,7 +4,9 @@
  */
 package BOs;
 
-import Persistencia.Interfaces.IVentaDAO;
+import Implementaciones.VentaDAO;
+import Interfaces.IVentaDAO;
+
 
 /**
  *

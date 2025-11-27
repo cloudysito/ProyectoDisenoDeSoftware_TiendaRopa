@@ -4,6 +4,9 @@
  */
 package BOs;
 
+import Implementaciones.RopaTallaDAO;
+import Interfaces.IRopaTallaDAO;
+
 /**
  *
  * @author riosr

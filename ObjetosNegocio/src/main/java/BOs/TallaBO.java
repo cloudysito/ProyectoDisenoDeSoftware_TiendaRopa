@@ -4,7 +4,8 @@
  */
 package BOs;
 
-import Persistencia.Interfaces.ITallaDAO;
+import Implementaciones.TallaDAO;
+import Interfaces.ITallaDAO;
 /**
  *
  * @author riosr
