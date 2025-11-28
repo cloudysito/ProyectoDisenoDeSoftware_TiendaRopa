@@ -4,6 +4,7 @@
  */
 package com.mycompany.escanearproductosubsystem;
 
+import BOs.RopaTallaBO;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
@@ -36,8 +37,6 @@ public class FachadaEscanearProducto implements IEscanearProducto {
 
     @Override
     public RopaTallaDTO encontrarProducto(String codigo) {
-        RopaDTO prenda = new RopaDTO("Playera wow", 235.00, "una muy buena playeraaaa", "Verano", "santi", "tela");
-        TallaDTO talla = new  TallaDTO("M","una talla mediana");
-        return new RopaTallaDTO(prenda, talla, codigo, 10);
+        return RopaTallaBO.getInstance().buscarPorCodigo(codigo);
     }
 }
