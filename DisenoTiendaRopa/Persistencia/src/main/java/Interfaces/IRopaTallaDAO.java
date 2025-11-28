@@ -6,16 +6,20 @@ package Interfaces;
 
 import Exceptions.MongoException;
 import objetosnegocio.dominioPojo.RopaTalla;
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author garfi
  */
 public interface IRopaTallaDAO {
-    
+
     RopaTalla guardar(RopaTalla rt) throws MongoException;
-    
+
     RopaTalla buscarPorId(String id) throws MongoException;
-    
+
     RopaTalla buscarPorCodigo(String codigo) throws MongoException;
+
+    void reducirStock(ObjectId idRopaTalla, int cantidadVendida) throws MongoException;
+
 }

@@ -10,6 +10,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import Interfaces.IRopaTallaDAO;
 import static com.mongodb.client.model.Filters.eq;
+import com.mongodb.client.model.Updates;
 import objetosnegocio.dominioPojo.RopaTalla;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -31,13 +32,13 @@ public class RopaTallaDAO implements IRopaTallaDAO {
         MongoDatabase database = client.getDatabase(ConnectionMongoDB.NOMBRE_DB);
         return database.getCollection(NOMBRE_COLLECTION, RopaTalla.class);
     }
-    
-     @Override
+
+    @Override
     public RopaTalla guardar(RopaTalla rt) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
             MongoCollection<RopaTalla> collection = getCollection(client);
-            
+
             collection.insertOne(rt);
             System.out.println("Relación RopaTalla guardada con ID: " + rt.getId());
             return rt;
@@ -69,13 +70,32 @@ public class RopaTallaDAO implements IRopaTallaDAO {
         try (MongoClient client = connection.crearNuevoCliente()) {
             MongoCollection<RopaTalla> collection = getCollection(client);
             Bson filtroCodigo = eq("codigo", codigo);
-            
+
             RopaTalla rt = collection.find(filtroCodigo).first();
 
             return rt;
         } catch (MongoException e) {
             throw new MongoException("Error al buscar RopaTalla por código.", e.getCause());
         }
-    } 
+    }
+
+    @Override
+    public void reducirStock(ObjectId idRopaTalla, int cantidadVendida) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+
+            MongoCollection<RopaTalla> collection = getCollection(client);
+
+            Bson filtroId = eq("_id", idRopaTalla);
+
+            Bson actualizacion = Updates.inc("cantidad", -cantidadVendida);
+
+            collection.updateOne(filtroId, actualizacion);
+
+            System.out.println("Stock actualizado con exito.");
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al actualizar el stock.", e.getCause());
+        }
+    }
 
 }
