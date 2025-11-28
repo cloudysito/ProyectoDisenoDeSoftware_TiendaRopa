@@ -4,12 +4,15 @@
  */
 package com.mycompany.realizarventasubsystem;
 
+import BOs.VentaBO;
+import Exceptions.BOException;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -17,12 +20,26 @@ import java.util.Date;
  */
 public class FachadaRealizarVenta implements IRealizarVenta {
 
+    private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  // Letras y números
+
+    
     @Override
     public VentaDTO crearVenta(VentaDTO venta) {
-        venta.setFechaHoraVenta(Date.from(Instant.MIN));
-        venta.setFolioVenta(23);
+        int folio;
+        boolean folioValido = false;
+        Random random = new Random();
+        do {
+            folio = 10000000 + random.nextInt(90000000); 
+            try {
+                VentaDTO ventaExistente = VentaBO.getInstance().buscarPorFolio(folio);
+                folioValido = ventaExistente == null;
+            } catch (BOException e) {
+                // throw new MongoException("Error al verificar existencia del folio: " + folio, e.getCause());
+            }
+        } while (!folioValido);
+        venta.setFolioVenta(folio); 
+        venta.setFechaHoraVenta(Date.from(Instant.now()));
         return venta;
-        
     }
 
     @Override
@@ -37,6 +54,12 @@ public class FachadaRealizarVenta implements IRealizarVenta {
 
     @Override
     public boolean registrarVenta(VentaDTO venta) {
+        VentaBO.getInstance().guardarVenta(venta);
+        for (DetalleVentaDTO detalleVentaDTO : venta.getDetalles()) {
+            DetalleVentaDTO detalleVentaDTO1 = reducirStock(detalleVentaDTO);
+        }
+        
+        VentaBO.getInstance().guardarVenta(venta);
         return true;
     }
    

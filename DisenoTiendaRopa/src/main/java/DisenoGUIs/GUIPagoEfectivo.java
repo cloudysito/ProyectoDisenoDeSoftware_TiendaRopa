@@ -6,6 +6,7 @@ package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.PagoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 /**
  *
@@ -364,6 +365,9 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnRegresar != null) {
             btnRegresar.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado, venta));
+            PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoEfectivo(venta.getTotalVenta());
+            venta.setMetodoPago(pago.getMetodo());
+            VentaDTO ventaCompleta = navegador.getRealizarVentaSistema().crearVenta(venta);
         }
         if (btnVender != null) {
             btnVender.addActionListener(evt -> navegador.navegarMenuPrincipal(this,empleado));

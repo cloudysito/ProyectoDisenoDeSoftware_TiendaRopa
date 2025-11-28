@@ -304,6 +304,7 @@ public class GUIMenu extends javax.swing.JFrame {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnVenderPrenda != null) {
             VentaDTO venta = new VentaDTO();
+            venta.setEmpleado(empleado);
             btnVenderPrenda.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado, venta, false));
         }
 }

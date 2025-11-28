@@ -110,4 +110,20 @@ public class VentaDAO implements IVentaDAO {
         }
     }
 
+    @Override
+    public Venta buscarPorFolio(int folio) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+
+            MongoCollection<Venta> collection = getCollection(client);
+
+            Bson filtroId = eq("folioVenta", folio);
+
+            Venta doc = collection.find(filtroId).first();
+
+            return doc;
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al buscar venta por folio: " + folio, e.getCause());
+        }
+    }
 }

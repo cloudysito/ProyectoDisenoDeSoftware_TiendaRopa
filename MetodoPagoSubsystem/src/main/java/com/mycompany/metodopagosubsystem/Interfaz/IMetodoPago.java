@@ -12,8 +12,8 @@ import com.mycompany.dto_negocio.PagoDTO;
  * @author santi
  */
 public interface IMetodoPago {
-    PagoDTO procesarPagoEfectivo(int monto);
-    PagoDTO procesarPagoPaypal(int monto);
-    PagoDTO procesarPagoTarjeta(int monto);
-    PagoDTO procesarPagoTransferencia(int monto);
+    PagoDTO procesarPagoEfectivo(double monto);
+    PagoDTO procesarPagoPaypal(double monto);
+    PagoDTO procesarPagoTarjeta(double monto);
+    PagoDTO procesarPagoTransferencia(double monto);
 }

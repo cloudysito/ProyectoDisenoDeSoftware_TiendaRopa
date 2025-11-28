@@ -21,4 +21,6 @@ public interface IVentaDAO {
     
     Venta buscarPorId(String idVenta) throws MongoException;
     
+    Venta buscarPorFolio(int folio) throws MongoException;
+    
 }

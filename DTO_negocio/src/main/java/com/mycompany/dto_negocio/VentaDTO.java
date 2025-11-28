@@ -16,7 +16,7 @@ public class VentaDTO {
     private String idVenta;
     private int folioVenta;
     private Date fechaHoraVenta;
-    private double totalVenta;
+    private double totalVenta = 0;
     private String metodoPago;
     private EmpleadoDTO empleado;
     private List<DetalleVentaDTO> detalles = new ArrayList<DetalleVentaDTO>();
@@ -45,6 +45,7 @@ public class VentaDTO {
     public void agregarDetalle(DetalleVentaDTO detalle) {
         if (detalle != null) {
             detalles.add(detalle);
+            totalVenta += detalle.getSubtotal();
         }
     }
 

@@ -87,4 +87,14 @@ public class VentaBO {
         }
     }
     
+    public VentaDTO buscarPorFolio(int folio)throws BOException{
+        try{
+            
+            return VentaMapper.toDTO(ventaDAO.buscarPorFolio(folio));
+            
+        }catch(DAOException e){
+            throw new BOException("Error al buscar por id empleado", e);
+        }
+    }
+    
 }
