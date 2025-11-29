@@ -5,6 +5,8 @@
 package Fachada;
 
 import Interfaz.IGestionarCatalogo;
+import com.mycompany.dto_negocio.RopaDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +17,12 @@ import java.util.List;
 public class FachadaGestionarCatalogo implements IGestionarCatalogo {
 
     @Override
-    public boolean agregarRopa(RopaDTO ropa) {
+    public boolean agregarRopa(RopaTallaDTO producto) {
         try {
-            RopaBO.getInstance().guardarRopa(ropa);
+            RopaTallaBO.getInstance().guardar(producto);
             return true;
         } catch (Exception e) {
-            System.err.println("Error en Fachada al agregar: " + e.getMessage());
+            System.err.println("Error en Fachada al agregar ropa: " + e.getMessage());
             return false;
         }
     }
@@ -31,7 +33,7 @@ public class FachadaGestionarCatalogo implements IGestionarCatalogo {
             RopaBO.getInstance().modificarRopa(ropa);
             return true;
         } catch (Exception e) {
-            System.err.println("Error en Fachada al editar: " + e.getMessage());
+            System.err.println("Error en Fachada al editar ropa: " + e.getMessage());
             return false;
         }
     }
@@ -42,7 +44,7 @@ public class FachadaGestionarCatalogo implements IGestionarCatalogo {
             RopaBO.getInstance().eliminarRopa(ropa);
             return true;
         } catch (Exception e) {
-            System.err.println("Error en Fachada al eliminar: " + e.getMessage());
+            System.err.println("Error en Fachada al eliminar ropa: " + e.getMessage());
             return false;
         }
     }
@@ -58,12 +60,12 @@ public class FachadaGestionarCatalogo implements IGestionarCatalogo {
     }
 
     @Override
-    public List<RopaDTO> obtenerTodaLaRopa() {
+    public List<RopaTallaDTO> obtenerInventarioCompleto() {
         try {
-            return RopaBO.getInstance().buscarTodos();
+            return RopaTallaBO.getInstance().buscarTodos();
         } catch (Exception e) {
-            System.err.println("Error en Fachada al obtener productos: " + e.getMessage());
-            return new java.util.ArrayList<>(); 
+            System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
         }
     }
 

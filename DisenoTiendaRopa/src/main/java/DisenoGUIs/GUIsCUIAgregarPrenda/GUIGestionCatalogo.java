@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUIs;
+package DisenoGUIs.GUIsCUIAgregarPrenda;
+
+import ControlPantallas.ControlRopa;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import java.io.File;
+import java.util.List;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -15,6 +21,62 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
      */
     public GUIGestionCatalogo() {
         initComponents();
+        setLocationRelativeTo(null);
+        pnlCatalogo.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 20));
+    }
+
+    public void cargarCatalogo() {
+        pnlCatalogo.removeAll();
+        pnlCatalogo.add(pnlAñadirPrenda);
+        try {
+            List<RopaTallaDTO> listaRopa = ControlRopa.getInstase().getGestionCatalogo().obtenerInventarioCompleto();
+
+            for (RopaTallaDTO item : listaRopa) {
+
+                panelPrenda tarjeta = new panelPrenda();
+                tarjeta.setDatos(item);
+
+                //btn eliminar
+                tarjeta.getBtnEliminar().addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+                        int confirm = javax.swing.JOptionPane.showConfirmDialog(null,
+                                "¿Estás seguro de eliminar " + item.getRopa().getNombreArticulo() + "?",
+                                "Confirmar Eliminación",
+                                javax.swing.JOptionPane.YES_NO_OPTION);
+
+                        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+                            boolean exito = ControlRopa.getInstase()
+                                    .getGestionCatalogo()
+                                    .eliminarRopa(item.getRopa());
+
+                            if (exito) {
+                                javax.swing.JOptionPane.showMessageDialog(null, "Prenda eliminada correctamente.");
+                                cargarCatalogo();
+                            } else {
+                                javax.swing.JOptionPane.showMessageDialog(null, "No se pudo eliminar la prenda.");
+                            }
+                        }
+                    }
+                });
+
+                //btn editar
+                tarjeta.getBtnEditar().addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        // Navegar a la pantalla de edición pasando el objeto actual (item)
+                        ControlRopa.getInstase().navegarEditarPrenda(GUIGestionCatalogo.this, item);
+                    }
+                });
+                pnlCatalogo.add(tarjeta);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al cargar catálogo: " + e.getMessage());
+        }
+
+        pnlCatalogo.revalidate();
+        pnlCatalogo.repaint();
+
     }
 
     /**
@@ -38,7 +100,7 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         lblNombreProducto = new javax.swing.JLabel();
         pnlCatalogo = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        pnlAñadirPrenda = new javax.swing.JPanel();
         btnAñadirPrenda = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnGenerarReporte = new javax.swing.JButton();
@@ -53,14 +115,14 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
         txtBuscador.setPreferredSize(new java.awt.Dimension(64, 30));
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lupa.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gatoLogo.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gatoLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,11 +143,11 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBuscador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(jLabel3)
@@ -110,7 +172,7 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(226, 115, 150));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/flecha.png"))); // NOI18N
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -150,30 +212,30 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
         pnlCatalogo.setBackground(new java.awt.Color(255, 238, 242));
 
-        jPanel4.setBackground(new java.awt.Color(255, 213, 223));
+        pnlAñadirPrenda.setBackground(new java.awt.Color(255, 213, 223));
 
         btnAñadirPrenda.setBackground(new java.awt.Color(255, 213, 223));
-        btnAñadirPrenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mas.png"))); // NOI18N
+        btnAñadirPrenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mas.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("<html><center>Añadir nueva <br> prenda</center></html>");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlAñadirPrendaLayout = new javax.swing.GroupLayout(pnlAñadirPrenda);
+        pnlAñadirPrenda.setLayout(pnlAñadirPrendaLayout);
+        pnlAñadirPrendaLayout.setHorizontalGroup(
+            pnlAñadirPrendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAñadirPrendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnAñadirPrenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAñadirPrendaLayout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pnlAñadirPrendaLayout.setVerticalGroup(
+            pnlAñadirPrendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAñadirPrendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnAñadirPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -187,13 +249,13 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
             pnlCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCatalogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlAñadirPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(339, Short.MAX_VALUE))
         );
         pnlCatalogoLayout.setVerticalGroup(
             pnlCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCatalogoLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlAñadirPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 14, Short.MAX_VALUE))
         );
 
@@ -257,7 +319,37 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
-        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar Reporte de Inventario");
+        fileChooser.setSelectedFile(new java.io.File("Reporte_Inventario.pdf"));
+
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            String ruta = fileToSave.getAbsolutePath();
+
+            if (!ruta.toLowerCase().endsWith(".pdf")) {
+                ruta += ".pdf";
+            }
+
+            boolean exito = ControlPantallas.ControlRopa.getInstase()
+                    .generarReporteDeCatalogo(ruta);
+
+            if (exito) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Reporte generado exitosamente en:\n" + ruta);
+
+                try {
+                    java.awt.Desktop.getDesktop().open(new java.io.File(ruta));
+                } catch (Exception ex) {
+                }
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Ocurrió un error al generar el reporte.",
+                        "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -316,8 +408,8 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblNombreProducto;
+    private javax.swing.JPanel pnlAñadirPrenda;
     private javax.swing.JPanel pnlCatalogo;
     private javax.swing.JTextField txtBuscador;
     // End of variables declaration//GEN-END:variables

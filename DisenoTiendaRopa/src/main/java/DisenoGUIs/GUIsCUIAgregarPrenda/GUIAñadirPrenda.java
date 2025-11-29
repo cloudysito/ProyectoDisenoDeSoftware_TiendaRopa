@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUIs;
+package DisenoGUIs.GUIsCUIAgregarPrenda;
+
+import com.mycompany.dto_negocio.RopaDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.TallaDTO;
 
 /**
  *
@@ -15,6 +19,36 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
      */
     public GUIAñadirPrenda() {
         initComponents();
+    }
+
+    private TallaDTO obtenerTallaSeleccionada() {
+        String nombreTalla = null;
+
+        if (XXS.isSelected()) {
+            nombreTalla = "XXS";
+        } else if (XS.isSelected()) {
+            nombreTalla = "XS";
+        } else if (S.isSelected()) {
+            nombreTalla = "S";
+        } else if (M.isSelected()) {
+            nombreTalla = "M";
+        } else if (L.isSelected()) {
+            nombreTalla = "L";
+        } else if (XL.isSelected()) {
+            nombreTalla = "XL";
+        } else if (XXL.isSelected()) {
+            nombreTalla = "XXL";
+        }
+
+        if (nombreTalla != null) {
+            TallaDTO talla = new TallaDTO();
+            talla.setIdTalla(null);
+            talla.setNombreTalla(nombreTalla);
+            talla.setDescripcion("Talla estándar " + nombreTalla);
+            return talla;
+        }
+
+        return null;
     }
 
     /**
@@ -31,8 +65,6 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        btnEmpleados = new javax.swing.JButton();
-        btnSugerencia = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         lblNombreProducto = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
@@ -68,7 +100,7 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Cuidado con el Kitten");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gatoLogo.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gatoLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,7 +110,7 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -87,9 +119,9 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel2)
                 .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -98,20 +130,9 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(179, 222, 226));
 
-        btnEmpleados.setBackground(new java.awt.Color(239, 207, 227));
-        btnEmpleados.setText("Empleados");
-        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmpleadosActionPerformed(evt);
-            }
-        });
-
-        btnSugerencia.setBackground(new java.awt.Color(239, 207, 227));
-        btnSugerencia.setText("Sugerencia");
-
         btnRegresar.setBackground(new java.awt.Color(226, 115, 150));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/flecha.png"))); // NOI18N
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -123,24 +144,14 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSugerencia, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(16, 16, 16)
+                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(btnEmpleados)
-                .addGap(18, 18, 18)
-                .addComponent(btnSugerencia)
-                .addGap(148, 148, 148)
+                .addGap(250, 250, 250)
                 .addComponent(btnRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
@@ -159,7 +170,7 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         });
 
         btnAñadirImg.setBackground(new java.awt.Color(255, 213, 223));
-        btnAñadirImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mas.png"))); // NOI18N
+        btnAñadirImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mas.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nombre");
@@ -415,12 +426,114 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEmpleadosActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+
+        // Validaciones 
+        if (txtNombre.getText().isEmpty() || txtPrecio.getText().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El nombre y el precio son obligatorios.");
+            return;
+        }
+
+        TallaDTO tallaSeleccionada = obtenerTallaSeleccionada();
+        if (tallaSeleccionada == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debes seleccionar una talla.");
+            return;
+        }
+
+        double precio = 0;
+        try {
+            precio = Double.parseDouble(txtPrecio.getText());
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El precio debe ser un número válido.");
+            return;
+        }
+
+        int stock = 0;
+        try {
+            stock = Integer.parseInt(txtStock.getText());
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El stock debe ser un número entero.");
+            return;
+        }
+
+        // Cuadro de texto de validacion
+        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(
+                this,
+                "¿Está seguro de querer añadir esta prenda?",
+                "Confirmar Guardado",
+                javax.swing.JOptionPane.YES_NO_OPTION,
+                javax.swing.JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (confirmacion != javax.swing.JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+
+            RopaDTO nuevaRopa = new RopaDTO();
+            nuevaRopa.setIdRopa(null);
+            nuevaRopa.setNombreArticulo(txtNombre.getText());
+            nuevaRopa.setDescripcion(txtDescripcion.getText());
+            nuevaRopa.setTemporada(txtTemporada.getText());
+            nuevaRopa.setMarca(txtMarca.getText());
+            nuevaRopa.setMaterial(txtMaterial.getText());
+            nuevaRopa.setPrecio(precio);
+
+            RopaTallaDTO productoFinal = new RopaTallaDTO();
+            productoFinal.setIdRopaTalla(null);
+            productoFinal.setRopa(nuevaRopa);
+            productoFinal.setTalla(tallaSeleccionada);
+            productoFinal.setCantidad(stock);
+
+            //Generar codigo de barras en formato texto
+            String codigoGenerado = ControlPantallas.ControlRopa.getInstase()
+                    .getGenerarCodigoBarras().generarCodigoBarras();
+            productoFinal.setCodigoBarras(codigoGenerado);
+
+            //Guardar img de codigo de barras en carpeta
+            String rutaGuardado = "imagenesCodigosBarras";
+            ControlPantallas.ControlRopa.getInstase()
+                    .getGenerarCodigoBarras()
+                    .guardarCodigoEnRuta(codigoGenerado, rutaGuardado);
+
+            //Guardar en base datos
+            boolean exito = ControlPantallas.ControlRopa.getInstase()
+                    .getGestionCatalogo()
+                    .agregarRopa(productoFinal);
+
+            //Mensaje de confirmacion con imagen del codigo de barras
+            if (exito) {
+                try {
+                    java.awt.image.BufferedImage imgEnMemoria = ControlPantallas.ControlRopa.getInstase()
+                            .getGenerarCodigoBarras()
+                            .generarImagenCodigo(codigoGenerado);
+
+                    javax.swing.ImageIcon icono = new javax.swing.ImageIcon(imgEnMemoria);
+
+                    Object[] mensaje = {
+                        "Prenda añadida exitosamente",
+                        " ",
+                        icono,
+                        "Código: " + codigoGenerado
+                    };
+
+                    javax.swing.JOptionPane.showMessageDialog(this, mensaje, "Éxito", javax.swing.JOptionPane.PLAIN_MESSAGE);
+
+                } catch (Exception ex) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Prenda guardada con éxito.");
+                }
+
+                ControlPantallas.ControlRopa.getInstase().navegarGestionCatalogo(this);
+
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Hubo un error al guardar en la base de datos.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error en GUI: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -530,10 +643,8 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
     private javax.swing.JToggleButton XXL;
     private javax.swing.JToggleButton XXS;
     private javax.swing.JButton btnAñadirImg;
-    private javax.swing.JButton btnEmpleados;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton btnSugerencia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

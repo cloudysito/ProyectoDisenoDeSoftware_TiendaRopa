@@ -4,22 +4,26 @@
  */
 package Interfaz;
 
+import com.mycompany.dto_negocio.RopaDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import java.util.List;
+
 /**
  *
  * @author garfi
  */
 public interface IGestionarCatalogo {
-    
-    public boolean agregarRopa(RopaDTO ropa);
-    
+
+    public boolean agregarRopa(RopaTallaDTO producto);
+
     public boolean editarRopa(RopaDTO ropa);
-    
+
     public boolean eliminarRopa(RopaDTO ropa);
-    
+
     public RopaDTO buscarRopaPorId(String id);
-    
-    public List<RopaDTO> obtenerTodaLaRopa();
-    
+
+    public List<RopaTallaDTO> obtenerInventarioCompleto();
+
     public List<RopaDTO> buscarRopaPorNombre(String nombreArticulo);
-    
+
 }
