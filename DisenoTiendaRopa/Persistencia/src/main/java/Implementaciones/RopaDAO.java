@@ -127,6 +127,21 @@ public class RopaDAO implements IRopaDAO {
             throw new MongoException("Error al buscar ropa por ID: " + nombreArticulo, e.getCause());
         }
     }
+
+    @Override
+    public List<Ropa> buscarTodos() throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+        
+        MongoCollection<Ropa> collection = getCollection(client);
+        
+        List<Ropa> listaResultados = collection.find().into(new ArrayList<>());
+        
+        return listaResultados;
+
+    } catch (MongoException e) {
+        throw new MongoException("Error al buscar toda la ropa del catálogo", e.getCause());
+    }
+    }
     
     
 

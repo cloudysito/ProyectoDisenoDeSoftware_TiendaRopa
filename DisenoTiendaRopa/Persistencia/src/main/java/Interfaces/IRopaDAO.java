@@ -26,4 +26,6 @@ public interface IRopaDAO {
     
     List<Ropa> buscarPorNombre(String nombreArticulo) throws MongoException;
     
+    public List<Ropa> buscarTodos() throws MongoException;
+    
 }

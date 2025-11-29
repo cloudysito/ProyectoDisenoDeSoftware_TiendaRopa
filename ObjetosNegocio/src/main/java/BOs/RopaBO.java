@@ -105,4 +105,23 @@ public class RopaBO {
         }
     }
     
+    //BO buscar toda la ropa
+    public List<RopaDTO> buscarTodos() throws BOException {
+        try {
+            List<Ropa> listaRopa = ropaDAO.buscarTodos();
+
+            List<RopaDTO> listaDTO = new ArrayList<>();
+            
+            for (Ropa r : listaRopa) {
+                listaDTO.add(RopaMapper.toDTO(r));
+            }
+
+            return listaDTO;
+
+        } catch (DAOException e) {
+            throw new BOException("Error al obtener todo el catálogo de ropa", e);
+        }
+    }
+    
+    
 }
