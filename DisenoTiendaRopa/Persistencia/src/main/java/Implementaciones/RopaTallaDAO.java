@@ -9,10 +9,12 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import Interfaces.IRopaTallaDAO;
+import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.client.model.Updates;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import objetosnegocio.dominioPojo.RopaTalla;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -89,6 +91,26 @@ public class RopaTallaDAO implements IRopaTallaDAO {
         } catch (Exception e) {
             throw new MongoException("Error buscando inventario", e);
         }
+    }
+    
+    @Override
+    public List<RopaTalla> buscarPorFiltro(String textoBusqueda) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+        MongoCollection<RopaTalla> collection = getCollection(client);
+
+        Pattern regex = Pattern.compile(Pattern.quote(textoBusqueda), Pattern.CASE_INSENSITIVE);
+
+        Bson filtroNombre = Filters.regex("ropa.nombreArticulo", regex);
+
+        Bson filtroCodigo = Filters.regex("codigoBarras", regex);
+
+        Bson consultaFinal = Filters.or(filtroNombre, filtroCodigo);
+
+        return collection.find(consultaFinal).into(new ArrayList<>());
+        
+    } catch (Exception e) {
+        throw new MongoException("Error buscando productos por filtro", e);
+    }
     }
 
     @Override

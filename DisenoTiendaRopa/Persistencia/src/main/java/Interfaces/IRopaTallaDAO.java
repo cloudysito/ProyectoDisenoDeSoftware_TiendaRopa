@@ -23,6 +23,8 @@ public interface IRopaTallaDAO {
     
     List<RopaTalla> buscarTodos() throws MongoException;
 
+    List<RopaTalla> buscarPorFiltro(String textoBusqueda) throws MongoException;
+    
     void reducirStock(ObjectId idRopaTalla, int cantidadVendida) throws MongoException;
 
 }

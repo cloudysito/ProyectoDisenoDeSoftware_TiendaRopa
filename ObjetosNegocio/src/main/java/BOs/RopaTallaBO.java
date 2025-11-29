@@ -70,7 +70,24 @@ public class RopaTallaBO {
             throw new BOException("Error al buscar por id empleado", e);
         }
     }
+    
+    public List<RopaTallaDTO> buscarProductos(String texto) throws BOException {
+        try {
 
+            List<RopaTalla> resultados = ropaTallaDAO.buscarPorFiltro(texto);
+
+            List<RopaTallaDTO> listaDTO = new ArrayList<>();
+            for (RopaTalla rt : resultados) {
+                listaDTO.add(RopaTallaMapper.toDTO(rt));
+            }
+            return listaDTO;
+            
+        } catch (DAOException e) {
+            throw new BOException("Error en la búsqueda", e);
+        }
+    }
+    
+    //BO buscar todo ropaTalla
     public List<RopaTallaDTO> buscarTodos() throws BOException {
         try {
 
