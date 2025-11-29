@@ -25,6 +25,6 @@ public interface IRopaTallaDAO {
 
     List<RopaTalla> buscarPorFiltro(String textoBusqueda) throws MongoException;
     
-    void reducirStock(ObjectId idRopaTalla, int cantidadVendida) throws MongoException;
+    void reducirStock(String idRopaTalla, int cantidadVendida) throws MongoException;
 
 }

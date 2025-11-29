@@ -22,7 +22,9 @@ public class RopaTallaMapper {
             return null;
         }
         RopaTalla rt = new RopaTalla();
-        rt.setId(new ObjectId(dto.getIdRopaTalla()));
+        if (dto.getIdRopaTalla()!= null) {
+            rt.setId(new ObjectId(dto.getIdRopaTalla()));
+        }
         rt.setCodigo(dto.getCodigoBarras());
         rt.setCantidad(dto.getCantidad());
         Ropa ropaEntidad = RopaMapper.toEntity(dto.getRopa());

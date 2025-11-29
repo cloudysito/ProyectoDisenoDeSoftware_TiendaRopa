@@ -8,6 +8,7 @@ import BOs.Exception.BOException;
 import Exceptions.DAOException;
 import Implementaciones.RopaTallaDAO;
 import Interfaces.IRopaTallaDAO;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -104,5 +105,16 @@ public class RopaTallaBO {
         } catch (DAOException e) {
             throw new BOException("Error al obtener el inventario completo", e);
         }
+    }
+    public DetalleVentaDTO reducirStock(DetalleVentaDTO ropaTallaDTO){
+    try {
+           System.out.println(ropaTallaDTO.getIdDetalleVenta());
+            ropaTallaDAO.reducirStock(ropaTallaDTO.getIdDetalleVenta(), ropaTallaDTO.getCantidadVendida());
+            return ropaTallaDTO;
+
+        } catch (DAOException e) {
+            throw new BOException("Error al obtener el inventario completo", e);
+        }
+    
     }
 }

@@ -6,6 +6,7 @@ package com.mycompany.realizarventasubsystem;
 
 import BOs.Exception.BOException;
 import BOs.VentaBO;
+import BOs.RopaTallaBO;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
@@ -44,6 +45,8 @@ public class FachadaRealizarVenta implements IRealizarVenta {
 
     @Override
     public DetalleVentaDTO reducirStock(DetalleVentaDTO detalleVenta) {
+       
+//        RopaTallaBO.getInstance().reducirStock(detalleVenta);
         return detalleVenta;
     }
 
@@ -54,7 +57,6 @@ public class FachadaRealizarVenta implements IRealizarVenta {
 
     @Override
     public boolean registrarVenta(VentaDTO venta) {
-        VentaBO.getInstance().guardarVenta(venta);
         for (DetalleVentaDTO detalleVentaDTO : venta.getDetalles()) {
             DetalleVentaDTO detalleVentaDTO1 = reducirStock(detalleVentaDTO);
         }

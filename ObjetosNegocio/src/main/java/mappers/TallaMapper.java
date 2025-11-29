@@ -19,7 +19,9 @@ public class TallaMapper {
             return null;
         }
         Talla talla = new Talla();
-        talla.setId(new ObjectId(dto.getIdTalla()));
+        if (dto.getIdTalla()!= null) {
+            talla.setId(new ObjectId(dto.getIdTalla()));
+        }
         talla.setNombreTalla(dto.getNombreTalla());
         talla.setDescripcion(dto.getDescripcion());
         

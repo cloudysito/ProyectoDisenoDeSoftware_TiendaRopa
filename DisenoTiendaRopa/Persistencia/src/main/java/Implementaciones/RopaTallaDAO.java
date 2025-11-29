@@ -114,12 +114,12 @@ public class RopaTallaDAO implements IRopaTallaDAO {
     }
 
     @Override
-    public void reducirStock(ObjectId idRopaTalla, int cantidadVendida) throws MongoException {
+    public void reducirStock(String idRopaTalla, int cantidadVendida) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
             MongoCollection<RopaTalla> collection = getCollection(client);
 
-            Bson filtroId = eq("_id", idRopaTalla);
+            Bson filtroId = eq("_id", new ObjectId(idRopaTalla));
 
             Bson actualizacion = Updates.inc("cantidad", -cantidadVendida);
 

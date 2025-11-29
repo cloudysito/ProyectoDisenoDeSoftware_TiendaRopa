@@ -19,7 +19,9 @@ public class RopaMapper {
             return null;
         }
         Ropa ropa = new Ropa();
-        ropa.setId(new ObjectId(dto.getIdRopa()));
+        if (dto.getIdRopa() != null) {
+            ropa.setId(new ObjectId(dto.getIdRopa()));
+        }
         ropa.setNombreArticulo(dto.getNombreArticulo());
         ropa.setDescripcion(dto.getDescripcion());
         ropa.setPrecio(dto.getPrecio());

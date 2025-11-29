@@ -331,12 +331,12 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         panelCamara.setLayout(new BorderLayout());
 
         WebcamPanel webcamPanel = new WebcamPanel(webcam);
-        webcamPanel.setPreferredSize(new Dimension(320, 240)); 
-        webcamPanel.setMaximumSize(new Dimension(320, 240));
-        webcamPanel.setMinimumSize(new Dimension(320, 240));
+        webcamPanel.setPreferredSize(new Dimension(172, 140)); 
+        webcamPanel.setMaximumSize(new Dimension(172, 140));
+        webcamPanel.setMinimumSize(new Dimension(172, 140));
 
         JPanel contenedor = new JPanel();
-        contenedor.setPreferredSize(new Dimension(320, 240));
+        contenedor.setPreferredSize(new Dimension(172, 140));
         contenedor.add(webcamPanel);
 
         panelCamara.removeAll();

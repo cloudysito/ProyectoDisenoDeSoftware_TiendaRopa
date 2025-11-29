@@ -20,7 +20,9 @@ public class EmpleadoMapper {
             return null;
         }
         Empleado empleado = new Empleado();
-        empleado.setId(new ObjectId(dto.getIdEmpleado()));
+        if (dto.getIdEmpleado()!= null) {
+            empleado.setId(new ObjectId(dto.getIdEmpleado()));
+        }
         empleado.setNombre(dto.getNombre());
         empleado.setApellidos(dto.getApellidos());
         empleado.setEmail(dto.getEmail());

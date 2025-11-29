@@ -26,7 +26,9 @@ public class VentaMapper {
             return null;
         }
         Venta venta = new Venta();
-        venta.setId(new ObjectId(dto.getIdVenta()));
+        if (dto.getIdVenta()!= null) {
+            venta.setId(new ObjectId(dto.getIdVenta()));
+        }
         Empleado empleadoEntidad = EmpleadoMapper.toEntity(dto.getEmpleado());
         venta.setEmpleado(empleadoEntidad);
         venta.setFechaHoraVenta(dto.getFechaHoraVenta());

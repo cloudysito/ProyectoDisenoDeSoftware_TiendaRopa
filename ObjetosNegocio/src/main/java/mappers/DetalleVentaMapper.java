@@ -23,7 +23,9 @@ public class DetalleVentaMapper {
             return null;
         }
         DetalleVenta dv = new DetalleVenta();
-        dv.setId(new ObjectId(dto.getIdDetalleVenta()));
+        if (dto.getIdDetalleVenta() != null) {
+           dv.setId(new ObjectId(dto.getIdDetalleVenta()));
+        }
         RopaTalla ropaTallaEntidad = RopaTallaMapper.toEntity(dto.getRopaTalla());
         dv.setRopaTalla(ropaTallaEntidad);
         dv.setCantidadVendida(dto.getCantidadVendida());
@@ -37,7 +39,9 @@ public class DetalleVentaMapper {
             return null;
         }
         DetalleVentaDTO dto = new DetalleVentaDTO();
-        dto.setIdDetalleVenta(dv.getId().toHexString());
+        dto.setIdDetalleVenta(
+            dv.getId() != null ? dv.getId().toHexString() : null
+        );
         dto.setRopaTalla(RopaTallaMapper.toDTO(dv.getRopaTalla()));
         dto.setCantidadVendida(dv.getCantidadVendida());
         dto.setSubtotal(dv.getSubtotal());
