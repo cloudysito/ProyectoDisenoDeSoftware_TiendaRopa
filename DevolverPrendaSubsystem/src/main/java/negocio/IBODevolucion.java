@@ -6,16 +6,13 @@ package negocio;
 
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.SolicitudDevolucionDTO;
-import com.mycompany.objetosnegocio.dominioPojo.Empleado;
 import objetosnegocio.dominioPojo.Devolucion;
+import objetosnegocio.dominioPojo.Empleado;
 
-public interface IBODevolucion {
-    
-    Empleado autenticar(String usuario, String contrasenia);
-    
-    DetalleVentaDTO buscarVenta(String idVenta);
-    
-    boolean validarCantidades(SolicitudDevolucionDTO solicitud);
-    
+
+public interface IBODevolucion {   
+    Empleado autenticar(String usuario, String contrasenia);    
+    DetalleVentaDTO buscarVenta(String idVenta); 
+    boolean validarCantidades(SolicitudDevolucionDTO solicitud);   
     Devolucion procesarDevolucion(SolicitudDevolucionDTO solicitud);
 }
