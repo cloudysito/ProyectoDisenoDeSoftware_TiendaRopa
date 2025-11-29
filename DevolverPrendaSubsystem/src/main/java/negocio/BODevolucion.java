@@ -13,6 +13,7 @@ import com.mycompany.dto_negocio.DetalleDevolucionDTO;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.ItemVentaDTO;
 import com.mycompany.dto_negocio.SolicitudDevolucionDTO;
+import com.mycompany.dto_negocio.TicketVentaDTO;
 import infraestructura.ISistemaPagos;
 
 import objetosnegocio.dominioPojo.DetalleDevolucion;
@@ -50,7 +51,7 @@ public class BODevolucion implements IBODevolucion {
     }
 
     @Override
-    public DetalleVentaDTO buscarVenta(String idVentaString) {
+    public TicketVentaDTO buscarVenta(String idVentaString) {
         try {
             ObjectId id = new ObjectId(idVentaString);
             Venta venta = ventaDAO.buscarPorId(id);

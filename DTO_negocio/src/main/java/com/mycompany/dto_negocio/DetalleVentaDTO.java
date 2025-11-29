@@ -4,6 +4,9 @@
  */
 package com.mycompany.dto_negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author santi
@@ -15,6 +18,8 @@ public class DetalleVentaDTO {
     private int subtotal;
 
     public DetalleVentaDTO() {}
+    
+    private List<ItemVentaDTO> itemsComprados = new ArrayList<>();
 
     public DetalleVentaDTO(int idDetalleVenta, String ropaTalla, int cantidadVendida, int subtotal) {
         this.idDetalleVenta = idDetalleVenta;
@@ -55,5 +60,12 @@ public class DetalleVentaDTO {
         this.subtotal = subtotal;
     }
 
+    public List<ItemVentaDTO> getItemsComprados() { 
+        return itemsComprados; 
+    }
+    
+    public void setItemsComprados(List<ItemVentaDTO> itemsComprados) { 
+        this.itemsComprados = itemsComprados; 
+    }
     
 }
