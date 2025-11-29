@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
+import java.util.List;
 import objetosnegocio.dominioPojo.RopaTalla;
 import org.bson.types.ObjectId;
 
@@ -19,6 +20,8 @@ public interface IRopaTallaDAO {
     RopaTalla buscarPorId(String id) throws MongoException;
 
     RopaTalla buscarPorCodigo(String codigo) throws MongoException;
+    
+    List<RopaTalla> buscarTodos() throws MongoException;
 
     void reducirStock(ObjectId idRopaTalla, int cantidadVendida) throws MongoException;
 
