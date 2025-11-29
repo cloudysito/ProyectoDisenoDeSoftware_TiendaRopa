@@ -20,5 +20,7 @@ public interface IEmpleadoDAO {
     Empleado eliminarEmpleado(Empleado empleado) throws MongoException;
     
     Empleado buscarPorId(String idEmpleado) throws MongoException;
+    
+    Empleado iniciarSesion(String correo, String contrasenia) throws MongoException;
 
 }

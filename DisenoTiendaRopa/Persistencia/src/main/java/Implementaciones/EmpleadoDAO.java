@@ -9,6 +9,7 @@ import Interfaces.IEmpleadoDAO;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.client.model.Updates;
 import objetosnegocio.dominioPojo.Empleado;
@@ -110,6 +111,28 @@ public class EmpleadoDAO implements IEmpleadoDAO {
             throw new MongoException("Error al buscar empleado por ID: " + idEmpleado, e.getCause());
         }
     }
+
+    @Override
+    public Empleado iniciarSesion(String correo, String contrasenia) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+
+            MongoCollection<Empleado> collection = getCollection(client);
+
+            // Filtro para buscar por correo y contraseña
+            Bson filtro = and(
+                    eq("nombre", correo),
+                    eq("contrasenia", contrasenia)
+            );
+
+            // Buscar el empleado que coincida con los filtros
+            Empleado empleado = collection.find(filtro).first();
+
+            return empleado;
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al iniciar sesión", e);
+        }
+}
 
     
 

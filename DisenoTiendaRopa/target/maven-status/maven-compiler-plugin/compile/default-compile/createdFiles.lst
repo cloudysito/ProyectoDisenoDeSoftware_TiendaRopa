@@ -29,6 +29,7 @@ DisenoGUIs\GUICodigoProducto$1.class
 DisenoGUIs\GUISeleccionMetodoPago$3.class
 DisenoGUIs\GUICambiarTalla.class
 DisenoGUIs\GUIPagoTarjeta$5.class
+DisenoGUIs\GUICodigoProducto$5.class
 DisenoGUIs\GUIProducto$3.class
 DisenoGUIs\GUIVenderPrenda$1.class
 DisenoGUIs\GUICambiarTalla$4.class
@@ -87,6 +88,7 @@ DisenoGUIs\GUICambiarTalla$7.class
 DisenoGUIs\GUICambiarTalla$11.class
 DisenoGUIs\GUICodigoProducto$2.class
 DisenoGUIs\GUICompraRealizada$2.class
+DisenoGUIs\JProductoPanel.class
 DisenoGUIs\GUICambiarTalla$11$1.class
 DisenoGUIs\GUIVenderPrenda$5.class
 DisenoGUIs\GUIPagoTarjeta$2.class

@@ -10,6 +10,7 @@ import com.github.sarxos.webcam.WebcamPanel;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
@@ -26,12 +27,13 @@ public class GUICodigoProducto extends javax.swing.JFrame {
     private EmpleadoDTO empleado;
     private VentaDTO venta;
     private Boolean ventaIniciada;
+    private Webcam webcam;
+    
     public GUICodigoProducto(EmpleadoDTO empleado, VentaDTO venta, Boolean ventaIniciada) {
         initComponents();
         this.empleado = empleado;
         this.venta = venta;
         this.ventaIniciada = ventaIniciada;
-        configurarNavegacionPerfil();
         llenarEmpleado();
         iniciarEscaneo(JPanelCamara);
         setLocationRelativeTo(null);
@@ -203,6 +205,11 @@ public class GUICodigoProducto extends javax.swing.JFrame {
 
         btnContinuar.setBackground(new java.awt.Color(239, 207, 227));
         btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -283,6 +290,11 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLibroActionPerformed
 
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // TODO add your handling code here:
+        configurarNavegacionPerfil();
+    }//GEN-LAST:event_btnContinuarActionPerformed
+
     private void llenarEmpleado(){
         lblNombreEmpleado.setText(empleado.getNombre());
     }
@@ -311,47 +323,59 @@ public class GUICodigoProducto extends javax.swing.JFrame {
 
     public void iniciarEscaneo(JPanel panelCamara) {
         final ControlPantallas navegador = ControlPantallas.getInstase();
-        // 1️⃣ Inicializa la cámara
-        Webcam webcam = Webcam.getDefault();
+
+        webcam = Webcam.getDefault();
         webcam.setViewSize(new Dimension(640, 480));
         webcam.open();
 
-        // 2️⃣ Crea el panel de la cámara y lo “inyecta” en el JPanel existente
+        panelCamara.setLayout(new BorderLayout());
+
         WebcamPanel webcamPanel = new WebcamPanel(webcam);
-        panelCamara.removeAll(); // opcional, limpia si hay algo
-        panelCamara.add(webcamPanel);
+        webcamPanel.setPreferredSize(new Dimension(320, 240)); 
+        webcamPanel.setMaximumSize(new Dimension(320, 240));
+        webcamPanel.setMinimumSize(new Dimension(320, 240));
+
+        JPanel contenedor = new JPanel();
+        contenedor.setPreferredSize(new Dimension(320, 240));
+        contenedor.add(webcamPanel);
+
+        panelCamara.removeAll();
+        panelCamara.add(contenedor, BorderLayout.CENTER); 
         panelCamara.revalidate();
         panelCamara.repaint();
 
-        // 3️⃣ Hilo para escanear continuamente los frames
         new Thread(() -> {
+            String ultimoCodigo = "";
+
             while (true) {
                 try {
                     BufferedImage frame = webcam.getImage();
                     if (frame == null) continue;
 
                     String codigo = navegador.getEscanerSistema().escanearCodigo(frame);
-                    jTextCodigo.setText(codigo);
-                    Thread.sleep(100); 
+
+                    if (codigo != null && !codigo.isBlank()) {
+                        ultimoCodigo = codigo;  
+                        jTextCodigo.setText(ultimoCodigo);
+                    }
+
+                    Thread.sleep(100);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }).start();
-    }
+}
+
 
     
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
-        if (btnContinuar != null) {
-            if(!ventaIniciada){
-            String codigoProducto = jTextCodigo.getText();
-            RopaTallaDTO producto = navegador.getEscanerSistema().encontrarProducto(codigoProducto);
-            btnContinuar.addActionListener(evt -> navegador.navegarProducto(this, empleado, producto, venta, ventaIniciada));}
-            }
-        else{
-            
-            }
-}
+        String codigoProducto = jTextCodigo.getText();
+        RopaTallaDTO producto = navegador.getEscanerSistema().encontrarProducto(codigoProducto);
+        webcam.close();
+        navegador.navegarProducto(this, empleado, producto, venta, ventaIniciada);
+    }
+     
 }
 

@@ -4,12 +4,12 @@
  */
 package BOs;
 
+import BOs.Exception.BOException;
 import Implementaciones.EmpleadoDAO;
 import Interfaces.IEmpleadoDAO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import mappers.EmpleadoMapper;
 import objetosnegocio.dominioPojo.Empleado;
-import Exceptions.BOException;
 import Exceptions.DAOException;
 
 /**
@@ -81,6 +81,16 @@ public class EmpleadoBO {
         try{
             
             return EmpleadoMapper.toDTO(empleadoDAO.buscarPorId(idEmpleado));
+            
+        }catch(DAOException e){
+            throw new BOException("Error al buscar por id empleado", e);
+        }
+    }
+    
+    public EmpleadoDTO iniciarSesion(String correo, String contrasenia){
+        try{
+            
+            return EmpleadoMapper.toDTO(empleadoDAO.iniciarSesion(correo, contrasenia));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);

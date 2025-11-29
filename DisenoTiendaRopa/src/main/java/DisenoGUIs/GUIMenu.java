@@ -22,7 +22,6 @@ public class GUIMenu extends javax.swing.JFrame {
     public GUIMenu(EmpleadoDTO empleado) {
         initComponents();
         this.empleado = empleado;
-        configurarNavegacionPerfil();
         llenarEmpleado();
         setLocationRelativeTo(null);
     }
@@ -257,6 +256,7 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void btnVenderPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderPrendaActionPerformed
         // TODO add your handling code here:
+        configurarNavegacionPerfil();
     }//GEN-LAST:event_btnVenderPrendaActionPerformed
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
@@ -302,10 +302,9 @@ public class GUIMenu extends javax.swing.JFrame {
     
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
-        if (btnVenderPrenda != null) {
-            VentaDTO venta = new VentaDTO();
-            venta.setEmpleado(empleado);
-            btnVenderPrenda.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado, venta, false));
-        }
+        VentaDTO venta = new VentaDTO();
+        venta.setEmpleado(empleado);
+        navegador.navegarCodigoProducto(this, empleado, venta, false);
+        
 }
 }

@@ -140,8 +140,17 @@ public class GUIInicioSesion extends javax.swing.JFrame {
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
         // TODO add your handling code here:
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+        String usuario = textFEmpleado.getText();
+        String contra = textFConstraseña.getText();
+        EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
+        System.out.println(empleado);
+        
+        if(empleado != null){
+        navegador.navegarMenuPrincipal(this, empleado);
+        }
     }//GEN-LAST:event_btnAccederActionPerformed
-  
+
     /**
      * @param args the command line arguments
      */
@@ -156,15 +165,15 @@ public class GUIInicioSesion extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private void configurarNavegacionPerfil() {
-        final ControlPantallas navegador = ControlPantallas.getInstase();
-        if (btnAcceder != null) {
-             String usuario = textFEmpleado.getText();
-             String contra = textFConstraseña.getText();
-             EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
-            if(empleado != null){
-                btnAcceder.addActionListener(evt -> navegador.navegarMenuPrincipal(this, empleado));
-            }
-        }
+//        final ControlPantallas navegador = ControlPantallas.getInstase();
+//        if (btnAcceder != null) {
+//             String usuario = textFEmpleado.getText();
+//             String contra = textFConstraseña.getText();
+//             EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
+//            if(empleado != null){
+//                btnAcceder.addActionListener(evt -> navegador.navegarMenuPrincipal(this, empleado));
+//            }
+//        }
 }
     }
 

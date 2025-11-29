@@ -6,6 +6,7 @@ package ControlPantallas;
 
 import DisenoGUIs.GUICodigoProducto;
 import DisenoGUIs.GUICompraRealizada;
+import DisenoGUIs.GUIInicioSesion;
 import DisenoGUIs.GUIMenu;
 import DisenoGUIs.GUIPagoEfectivo;
 import DisenoGUIs.GUIPagoPaypal;
@@ -56,6 +57,11 @@ public class ControlPantallas {
         }
     }
 
+    public void iniciarFlujo(){
+        GUIInicioSesion iniciar = new GUIInicioSesion();
+        iniciar.setVisible(true);
+    }
+    
     public void navegarMenuPrincipal(JFrame frameActual, EmpleadoDTO empleado) {
         cerrarFrameActual(frameActual);
         GUIMenu menu = new GUIMenu(empleado);

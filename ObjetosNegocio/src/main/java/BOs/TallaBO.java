@@ -4,7 +4,7 @@
  */
 package BOs;
 
-import Exceptions.BOException;
+import BOs.Exception.BOException;
 import Exceptions.DAOException;
 import Implementaciones.TallaDAO;
 import Interfaces.ITallaDAO;

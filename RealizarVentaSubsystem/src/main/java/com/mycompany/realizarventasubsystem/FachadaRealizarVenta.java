@@ -4,8 +4,8 @@
  */
 package com.mycompany.realizarventasubsystem;
 
+import BOs.Exception.BOException;
 import BOs.VentaBO;
-import Exceptions.BOException;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;

@@ -4,6 +4,7 @@
  */
 package com.mycompany.aumentarventaempleado.Fachada;
 
+import BOs.EmpleadoBO;
 import com.mycompany.aumentarventaempleado.Interfaz.IAumentarVentaEmpleado;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import java.time.Instant;
@@ -22,7 +23,7 @@ public class FachadaAumentarVentaEmpleado implements IAumentarVentaEmpleado {
         if(contrasenia != "") {
         
         }
-        return new EmpleadoDTO( "Manuel", "Cortes villa", "Cajero", contrasenia, "644-455-4555", email, 8000, Date.from(Instant.MIN),"dasdadw3452");
+        return EmpleadoBO.getInstance().iniciarSesion(email, contrasenia);
     }
 
     @Override

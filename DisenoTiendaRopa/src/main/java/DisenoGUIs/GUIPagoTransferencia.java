@@ -6,6 +6,7 @@ package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.PagoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 
 /**
@@ -28,7 +29,7 @@ public class GUIPagoTransferencia extends javax.swing.JFrame {
         initComponents();
         this.empleado = empleado;
         this.venta = venta;
-        configurarNavegacionPerfil();
+//        configurarNavegacionPerfil();
         setLocationRelativeTo(null);
     }
 
@@ -290,6 +291,8 @@ public class GUIPagoTransferencia extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+        navegador.navegarSeleccionMetodoPago(this, empleado, venta);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
@@ -310,6 +313,12 @@ public class GUIPagoTransferencia extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         // TODO add your handling code here:
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+         PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoTransferencia(venta.getTotalVenta());
+         VentaDTO venta1 = navegador.getRealizarVentaSistema().crearVenta(venta);
+         venta1.setMetodoPago(pago.getMetodo());
+         navegador.getRealizarVentaSistema().registrarVenta(venta1);
+         navegador.navegarMenuPrincipal(this,empleado);
     }//GEN-LAST:event_btnVenderActionPerformed
 
     /**

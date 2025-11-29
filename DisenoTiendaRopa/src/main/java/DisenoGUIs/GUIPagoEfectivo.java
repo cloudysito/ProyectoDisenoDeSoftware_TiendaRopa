@@ -308,6 +308,8 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+        navegador.navegarSeleccionMetodoPago(this, empleado, venta);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
@@ -332,6 +334,12 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         // TODO add your handling code here:
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+         PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoPaypal(venta.getTotalVenta());
+         VentaDTO venta1 = navegador.getRealizarVentaSistema().crearVenta(venta);
+         venta1.setMetodoPago(pago.getMetodo());
+         navegador.getRealizarVentaSistema().registrarVenta(venta1);
+         navegador.navegarMenuPrincipal(this,empleado);
     }//GEN-LAST:event_btnVenderActionPerformed
 
     
