@@ -5,6 +5,9 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.TicketVentaDTO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,8 +44,9 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
         btnEnviarSugerencia = new javax.swing.JButton();
         lblDevolverPrenda = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtFldIDPrenda = new javax.swing.JTextField();
+        txtIdVenta = new javax.swing.JTextField();
         btnBuscarVenta = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,10 +176,10 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Escribir ID de compra:  ");
 
-        txtFldIDPrenda.setBackground(new java.awt.Color(255, 255, 255));
-        txtFldIDPrenda.addActionListener(new java.awt.event.ActionListener() {
+        txtIdVenta.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldIDPrendaActionPerformed(evt);
+                txtIdVentaActionPerformed(evt);
             }
         });
 
@@ -188,6 +192,15 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
             }
         });
 
+        btnVolver.setBackground(new java.awt.Color(239, 207, 227));
+        btnVolver.setForeground(new java.awt.Color(0, 0, 0));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -197,17 +210,23 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(txtFldIDPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(btnBuscarVenta))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDevolverPrenda)
-                            .addComponent(jLabel4))))
-                .addContainerGap(219, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(161, 161, 161)
+                                .addComponent(txtIdVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(233, 233, 233)
+                                .addComponent(btnBuscarVenta))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(189, 189, 189)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDevolverPrenda)
+                                    .addComponent(jLabel4))))
+                        .addGap(0, 213, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolver)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,10 +242,12 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFldIDPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBuscarVenta)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolver)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -262,12 +283,33 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVentaActionPerformed
-        // TODO add your handling code here:
+        String idVenta = txtIdVenta.getText().trim();
+        
+        if (idVenta.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID de venta.");
+            return;
+        }
+
+        try {
+            TicketVentaDTO venta = control.getDevolverPrendaSistema().buscarVenta(idVenta);
+            
+            if (venta != null) {
+                control.navegarDetalleDevolucion(this, venta);
+            } else {
+                JOptionPane.showMessageDialog(this, "Venta no encontrada con ese ID.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al buscar: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnBuscarVentaActionPerformed
 
-    private void txtFldIDPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldIDPrendaActionPerformed
+    private void txtIdVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldIDPrendaActionPerformed
+    }//GEN-LAST:event_txtIdVentaActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        control.navegarMenuPrincipal(this);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,6 +352,7 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
     private javax.swing.JButton btnDevolverPrenda;
     private javax.swing.JButton btnEnviarSugerencia;
     private javax.swing.JButton btnLibro;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -319,6 +362,6 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblDevolverPrenda;
     private javax.swing.JLabel lblNombreEmpleado;
-    private javax.swing.JTextField txtFldIDPrenda;
+    private javax.swing.JTextField txtIdVenta;
     // End of variables declaration//GEN-END:variables
 }

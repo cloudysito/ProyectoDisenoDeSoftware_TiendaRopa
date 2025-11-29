@@ -4,6 +4,8 @@
  */
 package DisenoGUIs;
 
+import ControlPantallas.ControlPantallas;
+
 /**
  *
  * @author emiim
@@ -15,6 +17,7 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
      */
     public GUIConfirmacionDevolucion() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -136,15 +139,15 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(lblNombreProducto))
+                        .addGap(183, 183, 183)
+                        .addComponent(btnInicio))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
+                        .addGap(203, 203, 203)
                         .addComponent(lbl1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(btnInicio)))
-                .addContainerGap(220, Short.MAX_VALUE))
+                        .addGap(160, 160, 160)
+                        .addComponent(lblNombreProducto)))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +257,7 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        // TODO add your handling code here:
+        ControlPantallas.getInstase().navegarMenuPrincipal(this);
     }//GEN-LAST:event_btnInicioActionPerformed
 
     /**

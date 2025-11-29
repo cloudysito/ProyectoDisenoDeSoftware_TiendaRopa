@@ -5,8 +5,7 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import objetosnegocio.dominioPojo.Empleado;
 
 /**
  *
@@ -25,6 +24,10 @@ public class GUIMenu extends javax.swing.JFrame {
         configurarNavegacionPerfil();
         llenarEmpleado();
         setLocationRelativeTo(null);
+    }
+    
+    public GUIMenu() {
+        initComponents();
     }
 
     /**

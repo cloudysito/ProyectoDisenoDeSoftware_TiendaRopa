@@ -5,6 +5,15 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.dto_negocio.DetalleDevolucionDTO;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.SolicitudDevolucionDTO;
+import com.mycompany.dto_negocio.ItemVentaDTO;
+import com.mycompany.dto_negocio.TicketVentaDTO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -14,16 +23,17 @@ import ControlPantallas.ControlPantallas;
 public class GUIReembolsoPrenda extends javax.swing.JFrame {
 
     private ControlPantallas control = ControlPantallas.getInstase();
+    private TicketVentaDTO ventaActual;
     
     /**
      * Creates new form GUIDetalleDevolucion
      */
-    public GUIReembolsoPrenda(DetalleVentaDTO venta) {
+    public GUIReembolsoPrenda(TicketVentaDTO venta) {
+        this.ventaActual = venta;
         initComponents();
-        tablaProductos.getModel().addTableModelListener(new javax.swing.event.TableModelListener() {
-        public void tableChanged(javax.swing.event.TableModelEvent evt) {
-            actualizarTotal();
-        } });
+        configurarTabla();
+        llenarTabla();  
+        agregarListenerCambios();
         setLocationRelativeTo(null);
     }
     
@@ -31,36 +41,56 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
         initComponents();
     }
 
-    private void actualizarTotal() {
-    double total = 0.0;
-    // Obtenemos el modelo de la tabla
-    javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tablaProductos.getModel();
+    private void configurarTabla() {
+        String[] columnas = {"ID", "Prenda", "Talla", "Precio", "Comprado", "Devolver"};
+        
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas) {
+            // Definimos los tipos para que funcionen las sumas
+            Class[] types = { String.class, String.class, String.class, Double.class, Integer.class, Integer.class };
+            // Solo la última columna (índice 5) es editable
+            boolean[] canEdit = { false, false, false, false, false, true };
+
+            public Class getColumnClass(int columnIndex) { return types[columnIndex]; }
+            public boolean isCellEditable(int rowIndex, int columnIndex) { return canEdit[columnIndex]; }
+        };
+        tablaProductos.setModel(modelo);
+    }
     
-    for (int i = 0; i < modelo.getRowCount(); i++) {
-        try {
-            double precio = Double.parseDouble(modelo.getValueAt(i, 2).toString());
-            int cantidad = Integer.parseInt(modelo.getValueAt(i, 3).toString());
-            
-            total += (precio * cantidad);
-        } catch (Exception e) {
+    private void llenarTabla() {
+        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
+        model.setRowCount(0);
+        
+        if (ventaActual != null && ventaActual.getItemsComprados() != null) {
+            for (ItemVentaDTO item : ventaActual.getItemsComprados()) {
+                model.addRow(new Object[]{
+                    item.getIdRopaTalla(),
+                    item.getNombrePrenda(),
+                    item.getTalla(),
+                    item.getPrecioUnitario(),
+                    item.getCantidadComprada(),
+                    0 
+                });
+            }
         }
     }
-    lblTotal.setText("Total a reembolsar: $" + total);
-}
     
-    private void llenarTabla(DetalleVentaDTO venta) {
-    javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tablaProductos.getModel();
-    modelo.setRowCount(0);
-    
-    for (var item : venta.getItemsComprados()) {
-        modelo.addRow(new Object[]{
-            item.getIdRopaTalla(),
-            item.getTalla(),
-            item.getPrecioUnitario(),
-            0 
-        });
+    private void agregarListenerCambios() {
+        tablaProductos.getModel().addTableModelListener(e -> calcularTotal());
     }
-}
+
+    private void calcularTotal() {
+        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
+        double totalCalculado = 0.0; // 
+        
+        for (int i = 0; i < model.getRowCount(); i++) {
+            try {
+                double precio = (double) model.getValueAt(i, 3);
+                int cantidad = (int) model.getValueAt(i, 5);
+                totalCalculado += (precio * cantidad); 
+            } catch (Exception ex) { }
+        }
+        lblMonto.setText("Total a Reembolsar: $" + totalCalculado);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,7 +117,7 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
         idCompra = new javax.swing.JLabel();
         btnReembolsar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        lblTotal = new javax.swing.JLabel();
+        lblMonto = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
 
@@ -242,9 +272,9 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
             }
         });
 
-        lblTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblTotal.setForeground(new java.awt.Color(0, 0, 0));
-        lblTotal.setText("Cantidad: ");
+        lblMonto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblMonto.setForeground(new java.awt.Color(0, 0, 0));
+        lblMonto.setText("Cantidad: ");
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -284,15 +314,11 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTotal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMonto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnCancelar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 17, Short.MAX_VALUE)))
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnReembolsar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -329,7 +355,7 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnReembolsar)
                             .addComponent(btnCancelar)
-                            .addComponent(lblTotal)))))
+                            .addComponent(lblMonto)))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -372,11 +398,57 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnReembolsarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReembolsarActionPerformed
-        // TODO add your handling code here:
+        List<DetalleDevolucionDTO> listaDevolver = new ArrayList<>();
+        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
+        
+        double totalDinero = 0.0; 
+        
+        for (int i = 0; i < model.getRowCount(); i++) {
+            int devolver = (int) model.getValueAt(i, 5); 
+            
+            if (devolver > 0) {
+                int comprados = (int) model.getValueAt(i, 4);
+                
+                if (devolver > comprados) {
+                    JOptionPane.showMessageDialog(this, "Error: No puedes devolver más de lo comprado.");
+                    return;
+                }
+
+                String id = (String) model.getValueAt(i, 0);
+                String nombre = (String) model.getValueAt(i, 1);
+                String talla = (String) model.getValueAt(i, 2);
+                double precio = (double) model.getValueAt(i, 3);
+                double subtotal = devolver * precio;
+                
+                totalDinero += subtotal; 
+                
+                DetalleDevolucionDTO item = new DetalleDevolucionDTO();
+                item.setIdRopaTalla(id);
+                item.setNombrePrenda(nombre);
+                item.setTalla(talla);
+                item.setCantidadDevuelta(devolver);
+                item.setSubtotalReembolsado(subtotal);
+                
+                listaDevolver.add(item);
+            }
+        }
+
+        if (listaDevolver.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione al menos un artículo.");
+            return;
+        }
+
+        SolicitudDevolucionDTO solicitud = new SolicitudDevolucionDTO();
+        solicitud.setIdVentaOriginal(ventaActual.getIdVenta());
+        solicitud.setMontoTotal(totalDinero); 
+        
+        solicitud.setListaDetalles(listaDevolver);
+
+        control.navegarMetodoReembolso(this, solicitud);
     }//GEN-LAST:event_btnReembolsarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        control.navegarMenuPrincipal(this);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
@@ -396,13 +468,13 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIDetalleDevolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIReembolsoPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIDetalleDevolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIReembolsoPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIDetalleDevolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIReembolsoPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIDetalleDevolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIReembolsoPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -431,8 +503,8 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDevolverPrenda;
+    private javax.swing.JLabel lblMonto;
     private javax.swing.JLabel lblNombreEmpleado1;
-    private javax.swing.JLabel lblTotal;
     private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }

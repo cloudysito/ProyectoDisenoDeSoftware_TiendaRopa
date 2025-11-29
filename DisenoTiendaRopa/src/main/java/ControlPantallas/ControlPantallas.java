@@ -14,39 +14,56 @@ import DisenoGUIs.GUIPagoTransferencia;
 import DisenoGUIs.GUIProducto;
 import DisenoGUIs.GUISeleccionMetodoPago;
 import DisenoGUIs.GUIVenderPrenda;
+
+import DisenoGUIs.GUIBuscarVenta;
+import DisenoGUIs.GUIDetalleDevolucion;
+import DisenoGUIs.GUIMetodoReembolso;
+import DisenoGUIs.GUIConfirmacionDevolucion;
+import DisenoGUIs.GUIReembolsoPrenda;
+
 import com.mycompany.aumentarventaempleado.Fachada.FachadaAumentarVentaEmpleado;
 import com.mycompany.aumentarventaempleado.Interfaz.IAumentarVentaEmpleado;
 import com.mycompany.escanearproductosubsystem.FachadaEscanearProducto;
 import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
 import com.mycompany.metodopagosubsystem.FachadaMetodoPago;
 import com.mycompany.metodopagosubsystem.Interfaz.IMetodoPago;
-import com.mycompany.objetosnegocio.dominio.Empleado;
-import com.mycompany.objetosnegocio.dominio.RopaTalla;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
 import com.mycompany.realizarventasubsystem.FachadaRealizarVenta;
+import com.mycompany.dto_negocio.TicketVentaDTO;
+
+import objetosnegocio.dominioPojo.Empleado;
+import objetosnegocio.dominioPojo.RopaTalla;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.SolicitudDevolucionDTO;
+import fachada.FachadaDevolverPrenda;
+
 import javax.swing.JFrame;
+import negocio.IBODevolucion;
 
 /**
- *
+ * Singleton que controla la navegación y el acceso a los subsistemas.
  * @author emiim
  */
 public class ControlPantallas {
 
     private static ControlPantallas instancia;
+    
     private static IEscanearProducto escanerSistema;
     private static IRealizarVenta realizarVentaSistema;
     private static IMetodoPago metodoPagoSistema;
     private static IAumentarVentaEmpleado EmpleadoSistema;
     
+    private static IBODevolucion devolverPrendaSistema;
+    
     public static synchronized ControlPantallas getInstase() {
         if (instancia == null) {
             instancia = new ControlPantallas();
+            
             escanerSistema = new FachadaEscanearProducto();
             realizarVentaSistema = new FachadaRealizarVenta();
             metodoPagoSistema = new FachadaMetodoPago();
             EmpleadoSistema = new FachadaAumentarVentaEmpleado();
+            devolverPrendaSistema = new FachadaDevolverPrenda();
         }
         return instancia;
     }
@@ -56,10 +73,16 @@ public class ControlPantallas {
             frameActual.dispose();
         }
     }
-
+    
     public void navegarMenuPrincipal(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIMenu menu = new GUIMenu(empleado);
+        menu.setVisible(true);
+    }
+    
+    public void navegarMenuPrincipal(JFrame frameActual) {
+        cerrarFrameActual(frameActual);
+        GUIMenu menu = new GUIMenu(); 
         menu.setVisible(true);
     }
 
@@ -69,13 +92,13 @@ public class ControlPantallas {
         cp.setVisible(true);
     }
 
-    public void navegarProducto(JFrame frameActual,Empleado empleado, RopaTalla productodto) {
+    public void navegarProducto(JFrame frameActual, Empleado empleado, RopaTalla productodto) {
         cerrarFrameActual(frameActual);
         GUIProducto producto = new GUIProducto(empleado, productodto);
         producto.setVisible(true);
     }
 
-    public void navegarVenderPrenda(JFrame frameActual,Empleado empleado) {
+    public void navegarVenderPrenda(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIVenderPrenda vp = new GUIVenderPrenda();
         vp.setVisible(true);
@@ -87,7 +110,7 @@ public class ControlPantallas {
         cr.setVisible(true);
     }
 
-    public void navegarPagoEfectivo(JFrame frameActual,Empleado empleado) {
+    public void navegarPagoEfectivo(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIPagoEfectivo efectivo = new GUIPagoEfectivo();
         efectivo.setVisible(true);
@@ -99,13 +122,13 @@ public class ControlPantallas {
         paypal.setVisible(true);
     }
 
-    public void navegarPagoTarjeta(JFrame frameActual,Empleado empleado) {
+    public void navegarPagoTarjeta(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIPagoTarjeta tarjeta = new GUIPagoTarjeta();
         tarjeta.setVisible(true);
     }
 
-    public void navegarPagoTransferencia(JFrame frameActual,Empleado empleado) {
+    public void navegarPagoTransferencia(JFrame frameActual, Empleado empleado) {
         cerrarFrameActual(frameActual);
         GUIPagoTransferencia transferencia = new GUIPagoTransferencia();
         transferencia.setVisible(true);
@@ -116,7 +139,32 @@ public class ControlPantallas {
         GUISeleccionMetodoPago smp = new GUISeleccionMetodoPago();
         smp.setVisible(true);
     }
+    
+    // metodos devolucion
+    public void navegarBuscarVenta(JFrame frameActual) {
+        cerrarFrameActual(frameActual);
+        GUIBuscarVenta buscar = new GUIBuscarVenta();
+        buscar.setVisible(true);
+    }
 
+    public void navegarDetalleDevolucion(JFrame frameActual, TicketVentaDTO ventaEncontrada) {
+        cerrarFrameActual(frameActual);
+        GUIReembolsoPrenda detalle = new GUIReembolsoPrenda(ventaEncontrada);
+        detalle.setVisible(true);
+    }
+
+    public void navegarMetodoReembolso(JFrame frameActual, SolicitudDevolucionDTO solicitud) {
+        cerrarFrameActual(frameActual);
+        GUISeleccionMetodoPago metodo = new GUISeleccionMetodoPago(solicitud);
+        metodo.setVisible(true);
+    }
+    
+    public void navegarConfirmacionDevolucion(JFrame frameActual) {
+        cerrarFrameActual(frameActual);
+        GUIConfirmacionDevolucion confirmacion = new GUIConfirmacionDevolucion();
+        confirmacion.setVisible(true);
+    }
+    
     public ControlPantallas getInstancia() {
         return instancia;
     }
@@ -129,11 +177,15 @@ public class ControlPantallas {
         return realizarVentaSistema;
     }
 
-    public  IMetodoPago getMetodoPagoSistema() {
+    public IMetodoPago getMetodoPagoSistema() {
         return metodoPagoSistema;
     }
 
     public IAumentarVentaEmpleado getEmpleadoSistema() {
         return EmpleadoSistema;
-    }    
+    } 
+
+    public IBODevolucion getDevolverPrendaSistema() {
+        return devolverPrendaSistema;
+    }
 }
