@@ -4,8 +4,11 @@
  */
 package com.mycompany.aumentarventaempleado.Fachada;
 
+import BOs.EmpleadoBO;
 import com.mycompany.aumentarventaempleado.Interfaz.IAumentarVentaEmpleado;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import java.time.Instant;
+import java.util.Date;
 
 /**
  *
@@ -13,8 +16,14 @@ import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
  */
 public class FachadaAumentarVentaEmpleado implements IAumentarVentaEmpleado {
     @Override
-    public EmpleadoDTO recuperarEmpleado(String email) {
-        return new EmpleadoDTO(1, "Luis Martínez", "Cajero", email);
+    public EmpleadoDTO recuperarEmpleado(String email, String contrasenia) {
+        if(email != ""){
+        
+        }
+        if(contrasenia != "") {
+        
+        }
+        return EmpleadoBO.getInstance().iniciarSesion(email, contrasenia);
     }
 
     @Override

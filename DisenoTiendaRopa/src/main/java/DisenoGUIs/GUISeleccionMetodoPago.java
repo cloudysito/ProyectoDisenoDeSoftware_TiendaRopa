@@ -5,6 +5,8 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 
 /**
  *
@@ -15,8 +17,14 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
-    public GUISeleccionMetodoPago() {
+    
+    private EmpleadoDTO empleado;
+    private VentaDTO venta;
+
+    public GUISeleccionMetodoPago(EmpleadoDTO empleado,VentaDTO venta) {
         initComponents();
+        this.empleado = empleado;
+        this.venta = venta;
         configurarNavegacionPerfil();
         setLocationRelativeTo(null);
     }
@@ -350,41 +358,6 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPaypalActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUISeleccionMetodoPago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUISeleccionMetodoPago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUISeleccionMetodoPago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUISeleccionMetodoPago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUISeleccionMetodoPago().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcularTalla;
@@ -412,22 +385,22 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnRegresar != null) {
-            btnRegresar.addActionListener(evt -> navegador.navegarVenderPrenda(this));
+            btnRegresar.addActionListener(evt -> navegador.navegarVenderPrenda(this, empleado, venta ));
         }
        if (btnEfectivo != null) {
-            btnEfectivo.addActionListener(evt -> navegador.navegarPagoEfectivo(this));
+            btnEfectivo.addActionListener(evt -> navegador.navegarPagoEfectivo(this, empleado, venta));
         }
        if (btnCredito != null) {
-            btnCredito.addActionListener(evt -> navegador.navegarPagoTarjeta(this));
+            btnCredito.addActionListener(evt -> navegador.navegarPagoTarjeta(this, empleado, venta));
         }
        if (btnDebito != null) {
-            btnDebito.addActionListener(evt -> navegador.navegarPagoTarjeta(this));
+            btnDebito.addActionListener(evt -> navegador.navegarPagoTarjeta(this, empleado, venta));
         }
        if (btnTransferencia != null) {
-            btnTransferencia.addActionListener(evt -> navegador.navegarPagoTransferencia(this));
+            btnTransferencia.addActionListener(evt -> navegador.navegarPagoTransferencia(this, empleado, venta));
         }
        if (btnPaypal != null) {
-            btnPaypal.addActionListener(evt -> navegador.navegarPagoPaypal(this));
+            btnPaypal.addActionListener(evt -> navegador.navegarPagoPaypal(this, empleado, venta));
         }
 }
 

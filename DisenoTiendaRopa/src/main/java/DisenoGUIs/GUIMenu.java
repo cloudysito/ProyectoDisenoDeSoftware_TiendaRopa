@@ -5,7 +5,8 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 
 /**
  *
@@ -21,7 +22,6 @@ public class GUIMenu extends javax.swing.JFrame {
     public GUIMenu(EmpleadoDTO empleado) {
         initComponents();
         this.empleado = empleado;
-        configurarNavegacionPerfil();
         llenarEmpleado();
         setLocationRelativeTo(null);
     }
@@ -256,6 +256,7 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void btnVenderPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderPrendaActionPerformed
         // TODO add your handling code here:
+        configurarNavegacionPerfil();
     }//GEN-LAST:event_btnVenderPrendaActionPerformed
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
@@ -275,7 +276,7 @@ public class GUIMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
      private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombreCompleto());
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
     
     /**
@@ -301,8 +302,9 @@ public class GUIMenu extends javax.swing.JFrame {
     
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
-        if (btnVenderPrenda != null) {
-            btnVenderPrenda.addActionListener(evt -> navegador.navegarCodigoProducto(this, empleado));
-        }
+        VentaDTO venta = new VentaDTO();
+        venta.setEmpleado(empleado);
+        navegador.navegarCodigoProducto(this, empleado, venta, false);
+        
 }
 }

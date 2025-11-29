@@ -5,9 +5,15 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dominio.RopaTalla;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.VentaDTO;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,12 +25,17 @@ public class GUICodigoProducto extends javax.swing.JFrame {
      * Creates new form GUICodigoProducto
      */
     private EmpleadoDTO empleado;
-    public GUICodigoProducto(EmpleadoDTO empleado) {
+    private VentaDTO venta;
+    private Boolean ventaIniciada;
+    private Webcam webcam;
+    
+    public GUICodigoProducto(EmpleadoDTO empleado, VentaDTO venta, Boolean ventaIniciada) {
         initComponents();
         this.empleado = empleado;
-        
-        configurarNavegacionPerfil();
+        this.venta = venta;
+        this.ventaIniciada = ventaIniciada;
         llenarEmpleado();
+        iniciarEscaneo(JPanelCamara);
         setLocationRelativeTo(null);
         
     }
@@ -50,10 +61,9 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         btnEnviarSugerencia = new javax.swing.JButton();
         btnLibro = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        JPanelCamara = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextCodigo = new javax.swing.JTextField();
         btnContinuar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,7 +90,7 @@ public class GUICodigoProducto extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -179,23 +189,15 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(226, 115, 150));
         jLabel4.setText("Introducir codigo del producto:");
 
-        jLabel5.setText("Funcion camara");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
+        javax.swing.GroupLayout JPanelCamaraLayout = new javax.swing.GroupLayout(JPanelCamara);
+        JPanelCamara.setLayout(JPanelCamaraLayout);
+        JPanelCamaraLayout.setHorizontalGroup(
+            JPanelCamaraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 172, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5)
-                .addContainerGap(44, Short.MAX_VALUE))
+        JPanelCamaraLayout.setVerticalGroup(
+            JPanelCamaraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
         );
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -203,6 +205,11 @@ public class GUICodigoProducto extends javax.swing.JFrame {
 
         btnContinuar.setBackground(new java.awt.Color(239, 207, 227));
         btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -215,14 +222,14 @@ public class GUICodigoProducto extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(jLabel4))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
+                        .addGap(29, 29, 29)
+                        .addComponent(JPanelCamara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnContinuar))))
-                .addGap(0, 84, Short.MAX_VALUE))
+                .addGap(0, 72, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,15 +239,17 @@ public class GUICodigoProducto extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnContinuar))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(JPanelCamara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -249,7 +258,10 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,14 +290,20 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLibroActionPerformed
 
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // TODO add your handling code here:
+        configurarNavegacionPerfil();
+    }//GEN-LAST:event_btnContinuarActionPerformed
+
     private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombreCompleto());
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
     /**
      * @param args the command line arguments
      */
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPanelCamara;
     private javax.swing.JButton btnCalcularTalla;
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnDevolverPrenda;
@@ -295,23 +313,69 @@ public class GUICodigoProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextCodigo;
     private javax.swing.JLabel lblNombreEmpleado;
     // End of variables declaration//GEN-END:variables
 
+    public void iniciarEscaneo(JPanel panelCamara) {
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+
+        webcam = Webcam.getDefault();
+        webcam.setViewSize(new Dimension(640, 480));
+        webcam.open();
+
+        panelCamara.setLayout(new BorderLayout());
+
+        WebcamPanel webcamPanel = new WebcamPanel(webcam);
+        webcamPanel.setPreferredSize(new Dimension(172, 140)); 
+        webcamPanel.setMaximumSize(new Dimension(172, 140));
+        webcamPanel.setMinimumSize(new Dimension(172, 140));
+
+        JPanel contenedor = new JPanel();
+        contenedor.setPreferredSize(new Dimension(172, 140));
+        contenedor.add(webcamPanel);
+
+        panelCamara.removeAll();
+        panelCamara.add(contenedor, BorderLayout.CENTER); 
+        panelCamara.revalidate();
+        panelCamara.repaint();
+
+        new Thread(() -> {
+            String ultimoCodigo = "";
+
+            while (true) {
+                try {
+                    BufferedImage frame = webcam.getImage();
+                    if (frame == null) continue;
+
+                    String codigo = navegador.getEscanerSistema().escanearCodigo(frame);
+
+                    if (codigo != null && !codigo.isBlank()) {
+                        ultimoCodigo = codigo;  
+                        jTextCodigo.setText(ultimoCodigo);
+                    }
+
+                    Thread.sleep(100);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+}
+
+
+    
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
-        if (btnContinuar != null) {
-            String codigoProducto = navegador.getEscanerSistema().escanearCodigo();
-            RopaTalla producto = navegador.getEscanerSistema().encontrarProducto(codigoProducto);
-            btnContinuar.addActionListener(evt -> navegador.navegarProducto(this, empleado, producto));
-        }
-}
+        String codigoProducto = jTextCodigo.getText();
+        RopaTallaDTO producto = navegador.getEscanerSistema().encontrarProducto(codigoProducto);
+        webcam.close();
+        navegador.navegarProducto(this, empleado, producto, venta, ventaIniciada);
+    }
+     
 }
 

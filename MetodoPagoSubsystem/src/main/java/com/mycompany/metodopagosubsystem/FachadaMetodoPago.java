@@ -4,8 +4,8 @@
  */
 package com.mycompany.metodopagosubsystem;
 
+import com.mycompany.dto_negocio.PagoDTO;
 import com.mycompany.metodopagosubsystem.Interfaz.IMetodoPago;
-import com.mycompany.objetosnegocio.dto.PagoDTO;
 
 /**
  *
@@ -13,22 +13,22 @@ import com.mycompany.objetosnegocio.dto.PagoDTO;
  */
 public class FachadaMetodoPago implements IMetodoPago {
     @Override
-    public PagoDTO procesarPagoEfectivo(int monto) {
+    public PagoDTO procesarPagoEfectivo(double monto) {
         return new PagoDTO("Efectivo", monto, true);
     }
 
     @Override
-    public PagoDTO procesarPagoPaypal(int monto) {
+    public PagoDTO procesarPagoPaypal(double monto) {
         return new PagoDTO("Paypal", monto, true);
     }
 
     @Override
-    public PagoDTO procesarPagoTarjeta(int monto) {
+    public PagoDTO procesarPagoTarjeta(double monto) {
         return new PagoDTO("Tarjeta", monto, true);
     }
 
     @Override
-    public PagoDTO procesarPagoTransferencia(int monto) {
+    public PagoDTO procesarPagoTransferencia(double monto) {
         return new PagoDTO("Transferencia", monto, true);
     }
 }

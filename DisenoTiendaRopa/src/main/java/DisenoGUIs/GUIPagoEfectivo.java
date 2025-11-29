@@ -5,7 +5,9 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
-
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.PagoDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 /**
  *
  * @author emiim
@@ -15,8 +17,15 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
-    public GUIPagoEfectivo() {
+    
+    private EmpleadoDTO empleado;
+    
+    private VentaDTO venta;
+
+    public GUIPagoEfectivo(EmpleadoDTO empleado,VentaDTO venta) {
         initComponents();
+        this.empleado = empleado;
+        this.venta = venta;
         configurarNavegacionPerfil();
         setLocationRelativeTo(null);
     }
@@ -299,6 +308,8 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+        navegador.navegarSeleccionMetodoPago(this, empleado, venta);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
@@ -323,47 +334,16 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         // TODO add your handling code here:
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+         PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoPaypal(venta.getTotalVenta());
+         VentaDTO venta1 = navegador.getRealizarVentaSistema().crearVenta(venta);
+         venta1.setMetodoPago(pago.getMetodo());
+         navegador.getRealizarVentaSistema().registrarVenta(venta1);
+         navegador.navegarMenuPrincipal(this,empleado);
     }//GEN-LAST:event_btnVenderActionPerformed
 
     
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIPagoEfectivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIPagoEfectivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIPagoEfectivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIPagoEfectivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIPagoEfectivo().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcularTalla;
@@ -392,10 +372,13 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnRegresar != null) {
-            btnRegresar.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this));
+            btnRegresar.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado, venta));
+            PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoEfectivo(venta.getTotalVenta());
+            venta.setMetodoPago(pago.getMetodo());
+            VentaDTO ventaCompleta = navegador.getRealizarVentaSistema().crearVenta(venta);
         }
         if (btnVender != null) {
-            btnVender.addActionListener(evt -> navegador.navegarCompraRealizada(this));
+            btnVender.addActionListener(evt -> navegador.navegarMenuPrincipal(this,empleado));
         }
     }
 

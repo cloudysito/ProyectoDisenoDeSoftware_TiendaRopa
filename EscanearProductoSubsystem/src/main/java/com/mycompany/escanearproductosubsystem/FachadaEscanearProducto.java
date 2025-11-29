@@ -4,11 +4,20 @@
  */
 package com.mycompany.escanearproductosubsystem;
 
+import BOs.RopaTallaBO;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+import com.mycompany.dto_negocio.RopaDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.TallaDTO;
 import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
-import com.mycompany.objetosnegocio.dominio.Ropa;
-import com.mycompany.objetosnegocio.dominio.RopaTalla;
-import com.mycompany.objetosnegocio.dominio.Talla;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
+import java.awt.image.BufferedImage;
+
 
 /**
  *
@@ -16,14 +25,18 @@ import com.mycompany.objetosnegocio.dto.ProductoDTO;
  */
 public class FachadaEscanearProducto implements IEscanearProducto {
     @Override
-    public String escanearCodigo() {
-        return "COD123456";
+    public String escanearCodigo(BufferedImage image) {try {
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            Result result = new MultiFormatReader().decode(bitmap);
+            return result.getText();
+        } catch (NotFoundException e) {
+            return null;
+        }
     }
 
     @Override
-    public RopaTalla encontrarProducto(String codigo) {
-        Ropa prenda = new Ropa("Playera wow", "una muy buena playeraaaa", "Verano", "santi", "tela", 235.00);
-        Talla talla = new  Talla("M","una talla mediana");
-        return new RopaTalla(prenda, talla, codigo, 10);
+    public RopaTallaDTO encontrarProducto(String codigo) {
+        return RopaTallaBO.getInstance().buscarPorCodigo(codigo);
     }
 }

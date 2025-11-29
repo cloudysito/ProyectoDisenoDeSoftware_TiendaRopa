@@ -4,6 +4,7 @@
 
 package diseno.disenotiendaropa;
 
+import ControlPantallas.ControlPantallas;
 import DisenoGUIs.GUIInicioSesion;
 
 /**
@@ -13,6 +14,6 @@ import DisenoGUIs.GUIInicioSesion;
 public class DisenoTiendaRopa {
 
     public static void main(String[] args) {
-        GUIInicioSesion inicioSesion = new  GUIInicioSesion();
+        ControlPantallas.getInstase().iniciarFlujo();
     }
 }

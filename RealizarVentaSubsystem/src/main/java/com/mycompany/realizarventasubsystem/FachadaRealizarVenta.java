@@ -4,37 +4,65 @@
  */
 package com.mycompany.realizarventasubsystem;
 
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
-import com.mycompany.objetosnegocio.dto.VentaDTO;
+import BOs.Exception.BOException;
+import BOs.VentaBO;
+import BOs.RopaTallaBO;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
  * @author santi
  */
 public class FachadaRealizarVenta implements IRealizarVenta {
+
+    private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  // Letras y números
+
+    
     @Override
-    public VentaDTO crearVenta(EmpleadoDTO empleado, String metodoPago) {
-        return new VentaDTO(1001, new Date(), 500, metodoPago, empleado.getIdEmpleado(), new ArrayList<>());
+    public VentaDTO crearVenta(VentaDTO venta) {
+        int folio;
+        boolean folioValido = false;
+        Random random = new Random();
+        do {
+            folio = 10000000 + random.nextInt(90000000); 
+            try {
+                VentaDTO ventaExistente = VentaBO.getInstance().buscarPorFolio(folio);
+                folioValido = ventaExistente == null;
+            } catch (BOException e) {
+                // throw new MongoException("Error al verificar existencia del folio: " + folio, e.getCause());
+            }
+        } while (!folioValido);
+        venta.setFolioVenta(folio); 
+        venta.setFechaHoraVenta(Date.from(Instant.now()));
+        return venta;
     }
 
     @Override
-    public ProductoDTO reducirStock(ProductoDTO producto, int cantidad) {
-        producto.setCantidadDisponible(producto.getCantidadDisponible() - cantidad);
-        return producto;
+    public DetalleVentaDTO reducirStock(DetalleVentaDTO detalleVenta) {
+       
+//        RopaTallaBO.getInstance().reducirStock(detalleVenta);
+        return detalleVenta;
     }
 
     @Override
-    public ProductoDTO cambiarTallaDisponible(ProductoDTO producto) {
-        producto.setTalla("L");
+    public DetalleVentaDTO cambiarTallaDisponible(DetalleVentaDTO producto) {
         return producto;
     }
 
     @Override
     public boolean registrarVenta(VentaDTO venta) {
+        for (DetalleVentaDTO detalleVentaDTO : venta.getDetalles()) {
+            DetalleVentaDTO detalleVentaDTO1 = reducirStock(detalleVentaDTO);
+        }
+        
+        VentaBO.getInstance().guardarVenta(venta);
         return true;
     }
+   
 }

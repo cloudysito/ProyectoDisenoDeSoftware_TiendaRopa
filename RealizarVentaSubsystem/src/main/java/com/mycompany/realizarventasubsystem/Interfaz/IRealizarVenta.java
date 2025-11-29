@@ -4,17 +4,16 @@
  */
 package com.mycompany.realizarventasubsystem.Interfaz;
 
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
-import com.mycompany.objetosnegocio.dto.VentaDTO;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.VentaDTO;
 
 /**
  *
  * @author santi
  */
 public interface IRealizarVenta {
-    VentaDTO crearVenta(EmpleadoDTO empleado, String metodoPago);
-    ProductoDTO reducirStock(ProductoDTO producto, int cantidad);
-    ProductoDTO cambiarTallaDisponible(ProductoDTO producto);
+    VentaDTO crearVenta(VentaDTO venta);
+    DetalleVentaDTO reducirStock(DetalleVentaDTO detalleVenta);
+    DetalleVentaDTO cambiarTallaDisponible(DetalleVentaDTO producto);
     boolean registrarVenta(VentaDTO venta);
 }
