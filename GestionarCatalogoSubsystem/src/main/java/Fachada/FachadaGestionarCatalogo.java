@@ -59,7 +59,12 @@ public class FachadaGestionarCatalogo implements IGestionarCatalogo {
 
     @Override
     public List<RopaDTO> obtenerTodaLaRopa() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody 
+        try {
+            return RopaBO.getInstance().buscarTodos();
+        } catch (Exception e) {
+            System.err.println("Error en Fachada al obtener productos: " + e.getMessage());
+            return new java.util.ArrayList<>(); 
+        }
     }
 
     @Override
