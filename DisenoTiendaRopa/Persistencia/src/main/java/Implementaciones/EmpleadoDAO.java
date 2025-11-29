@@ -9,9 +9,12 @@ import Interfaces.IEmpleadoDAO;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.client.model.Updates;
+import java.util.ArrayList;
+import java.util.List;
 import objetosnegocio.dominioPojo.Empleado;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -134,6 +137,34 @@ public class EmpleadoDAO implements IEmpleadoDAO {
         }
 }
 
+    @Override
+    public List<Empleado> buscarTodos() throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+            MongoCollection<Empleado> collection = getCollection(client);
+            return collection.find().into(new ArrayList<>());
+        } catch (Exception e) {
+            throw new MongoException("Error al buscar todos los empleados", e);
+        }
+    }
+
+    @Override
+    public List<Empleado> buscarPorNombre(String nombreEmpleado) {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+
+            MongoCollection<Empleado> collection = getCollection(client);
+
+            Bson filtroNombre = Filters.regex("nombreEmpleado", nombreEmpleado,"i");
+
+            List<Empleado> listaResultados = collection.find(filtroNombre).into(new ArrayList<>());
+
+            return listaResultados;
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al buscar ropa por ID: " + nombreEmpleado, e.getCause());
+        }
+    }
+
+    
     
 
     

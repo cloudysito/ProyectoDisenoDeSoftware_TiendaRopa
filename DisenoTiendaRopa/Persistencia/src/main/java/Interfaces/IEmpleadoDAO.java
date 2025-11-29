@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
+import java.util.List;
 import objetosnegocio.dominioPojo.Empleado;
 
 /**
@@ -22,5 +23,9 @@ public interface IEmpleadoDAO {
     Empleado buscarPorId(String idEmpleado) throws MongoException;
     
     Empleado iniciarSesion(String correo, String contrasenia) throws MongoException;
+    
+    List<Empleado> buscarTodos() throws MongoException;
+    
+    List<Empleado> buscarPorNombre(String nombreEmpleado);
 
 }

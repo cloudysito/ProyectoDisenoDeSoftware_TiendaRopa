@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
+import java.util.List;
 import objetosnegocio.dominioPojo.Venta;
 
 /**
@@ -23,4 +24,5 @@ public interface IVentaDAO {
     
     Venta buscarPorFolio(int folio) throws MongoException;
     
+    List<Venta> buscarTodas() throws MongoException;
 }
