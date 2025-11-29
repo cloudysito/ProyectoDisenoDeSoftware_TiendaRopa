@@ -25,6 +25,35 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
         pnlCatalogo.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 20));
     }
 
+    private void configurarBotonesTarjeta(panelPrenda tarjeta, com.mycompany.dto_negocio.RopaTallaDTO item) {
+
+        // --- Botón ELIMINAR ---
+        tarjeta.getBtnEliminar().addActionListener(e -> {
+            int confirm = javax.swing.JOptionPane.showConfirmDialog(null,
+                    "¿Estás seguro de eliminar " + item.getRopa().getNombreArticulo() + "?",
+                    "Eliminar Prenda", javax.swing.JOptionPane.YES_NO_OPTION);
+
+            if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+                boolean exito = ControlPantallas.ControlRopa.getInstase()
+                        .getGestionCatalogo()
+                        .eliminarRopa(item.getRopa());
+
+                if (exito) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Eliminado correctamente");
+                    cargarCatalogo();
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Error al eliminar");
+                }
+            }
+        });
+
+        // --- Botón EDITAR ---
+        tarjeta.getBtnEditar().addActionListener(e -> {
+            ControlPantallas.ControlRopa.getInstase()
+                    .navegarEditarPrenda(this, item);
+        });
+    }
+
     public void cargarCatalogo() {
         pnlCatalogo.removeAll();
         pnlCatalogo.add(pnlAñadirPrenda);
@@ -35,38 +64,7 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
                 panelPrenda tarjeta = new panelPrenda();
                 tarjeta.setDatos(item);
-
-                //btn eliminar
-                tarjeta.getBtnEliminar().addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-
-                        int confirm = javax.swing.JOptionPane.showConfirmDialog(null,
-                                "¿Estás seguro de eliminar " + item.getRopa().getNombreArticulo() + "?",
-                                "Confirmar Eliminación",
-                                javax.swing.JOptionPane.YES_NO_OPTION);
-
-                        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-                            boolean exito = ControlRopa.getInstase()
-                                    .getGestionCatalogo()
-                                    .eliminarRopa(item.getRopa());
-
-                            if (exito) {
-                                javax.swing.JOptionPane.showMessageDialog(null, "Prenda eliminada correctamente.");
-                                cargarCatalogo();
-                            } else {
-                                javax.swing.JOptionPane.showMessageDialog(null, "No se pudo eliminar la prenda.");
-                            }
-                        }
-                    }
-                });
-
-                //btn editar
-                tarjeta.getBtnEditar().addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        // Navegar a la pantalla de edición pasando el objeto actual (item)
-                        ControlRopa.getInstase().navegarEditarPrenda(GUIGestionCatalogo.this, item);
-                    }
-                });
+                configurarBotonesTarjeta(tarjeta, item);
                 pnlCatalogo.add(tarjeta);
             }
 
@@ -357,7 +355,39 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        String texto = txtBuscador.getText().trim();
+
+        if (texto.isEmpty()) {
+            cargarCatalogo();
+        } else {
+            try {
+
+                List<RopaTallaDTO> resultados = ControlPantallas.ControlRopa.getInstase()
+                        .getGestionCatalogo()
+                        .buscarPorFiltro(texto);
+
+                if (resultados.isEmpty()) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "No se encontraron prendas con ese nombre o código.");
+                } else {
+
+                    pnlCatalogo.removeAll();
+                    pnlCatalogo.add(pnlAñadirPrenda);
+
+                    for (RopaTallaDTO item : resultados) {
+                        panelPrenda tarjeta = new panelPrenda();
+                        tarjeta.setDatos(item);
+                        configurarBotonesTarjeta(tarjeta, item);
+
+                        pnlCatalogo.add(tarjeta);
+                    }
+                    pnlCatalogo.revalidate();
+                    pnlCatalogo.repaint();
+                }
+
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**

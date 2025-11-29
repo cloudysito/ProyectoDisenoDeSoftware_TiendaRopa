@@ -21,6 +21,8 @@ public interface IGestionarCatalogo {
     public boolean eliminarRopa(RopaDTO ropa);
 
     public RopaDTO buscarRopaPorId(String id);
+    
+    public List<RopaTallaDTO> buscarPorFiltro(String texto);
 
     public List<RopaTallaDTO> obtenerInventarioCompleto();
 

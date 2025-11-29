@@ -60,6 +60,16 @@ public class FachadaGestionarCatalogo implements IGestionarCatalogo {
     }
 
     @Override
+    public List<RopaTallaDTO> buscarPorFiltro(String texto) {
+        try {
+            return RopaTallaBO.getInstance().buscarProductos(texto);
+        } catch (Exception e) {
+            System.err.println("Error buscando: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
     public List<RopaTallaDTO> obtenerInventarioCompleto() {
         try {
             return RopaTallaBO.getInstance().buscarTodos();
