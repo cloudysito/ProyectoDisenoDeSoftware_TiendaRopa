@@ -5,7 +5,6 @@
 package AsignarHorario;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
 
 /**
  *
@@ -17,7 +16,7 @@ public class GUIMenu1 extends javax.swing.JFrame {
      * Creates new form GUIMenu
      */
     
-    public GUIMenu1(EmpleadoDTO empleado) {
+    public GUIMenu1() {
         initComponents();
         setLocationRelativeTo(null);
     }

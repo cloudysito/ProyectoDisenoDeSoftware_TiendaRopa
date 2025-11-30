@@ -6,9 +6,7 @@ package AsignarHorario;
 
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
-import com.mycompany.objetosnegocio.dominio.RopaTalla;
-import com.mycompany.objetosnegocio.dto.EmpleadoDTO;
-import com.mycompany.objetosnegocio.dto.ProductoDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
 
 /**
  *

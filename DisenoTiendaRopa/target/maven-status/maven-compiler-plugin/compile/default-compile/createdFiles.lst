@@ -1,4 +1,5 @@
 DisenoGUIs\GUICodigoProducto$3.class
+AsignarHorario\GUIEmpleados$1.class
 DisenoGUIs\GUISeleccionMetodoPago$5.class
 DisenoGUIs\GUICambiarTalla$9.class
 DisenoGUIs\GUIMenu$4.class
@@ -15,6 +16,7 @@ DisenoGUIs\GUIProducto$9.class
 DisenoGUIs\GUIPagoTransferencia.class
 DisenoGUIs\GUIMenu.class
 DisenoGUIs\GUIPagoEfectivo.class
+AsignarHorario\GUIMenu1$3.class
 DisenoGUIs\GUIPagoTransferencia$1.class
 DisenoGUIs\GUIProducto.class
 DisenoGUIs\GUISeleccionMetodoPago$2.class
@@ -37,6 +39,7 @@ DisenoGUIs\GUIInicioSesion$3.class
 DisenoGUIs\GUIPagoEfectivo$6.class
 DisenoGUIs\GUIPagoPaypal$1.class
 DisenoGUIs\GUIProducto$13.class
+AsignarHorario\GUIEmpleados$3.class
 DisenoGUIs\GUIPagoTarjeta$4.class
 DisenoGUIs\GUICodigoProducto.class
 DisenoGUIs\GUIMenu$3.class
@@ -45,6 +48,7 @@ DisenoGUIs\GUICompraRealizada$5.class
 DisenoGUIs\GUIProducto$4.class
 DisenoGUIs\GUICambiarTalla$3.class
 DisenoGUIs\GUIPagoTransferencia$3.class
+AsignarHorario\GUIEmpleados$4.class
 DisenoGUIs\GUIPagoEfectivo$7.class
 DisenoGUIs\GUIVenderPrenda$2.class
 DisenoGUIs\GUIProducto$14.class
@@ -76,11 +80,14 @@ DisenoGUIs\GUIPagoTarjeta.class
 DisenoGUIs\GUIPagoTarjeta$6.class
 DisenoGUIs\GUIVenderPrenda.class
 DisenoGUIs\GUIMenu$5.class
+AsignarHorario\GUIEmpleados$2.class
 DisenoGUIs\GUIPagoEfectivo$3.class
 DisenoGUIs\GUIVenderPrenda$4.class
+AsignarHorario\GUIMenu1$2.class
 DisenoGUIs\GUIPagoPaypal$5.class
 DisenoGUIs\GUIPagoPaypal.class
 DisenoGUIs\GUISeleccionMetodoPago$7.class
+AsignarHorario\GUIEmpleados.class
 DisenoGUIs\GUIPagoTarjeta$1.class
 DisenoGUIs\GUIMenu$6.class
 DisenoGUIs\GUIProducto$7.class
@@ -95,9 +102,11 @@ DisenoGUIs\GUIPagoTarjeta$2.class
 DisenoGUIs\GUISeleccionMetodoPago$6.class
 DisenoGUIs\GUIProducto$11.class
 ControlPantallas\ControlPantallas.class
+AsignarHorario\GUIMenu1.class
 DisenoGUIs\GUIPagoEfectivo$4.class
 DisenoGUIs\GUIPagoTarjeta$8.class
 DisenoGUIs\GUIPagoTransferencia$6.class
+AsignarHorario\GUIMenu1$1.class
 DisenoGUIs\GUICambiarTalla$6.class
 DisenoGUIs\GUICompraRealizada.class
 DisenoGUIs\GUIProducto$1.class
