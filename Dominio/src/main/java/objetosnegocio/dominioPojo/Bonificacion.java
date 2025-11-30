@@ -17,7 +17,7 @@ public class Bonificacion {
     
     public Bonificacion() {}
     
-    public Bonificacion(String descripcion, int cantidadVenta){
+    public Bonificacion(String descripcion,int cantidadVenta){
         this.descripcion = descripcion;
         this.cantidadVenta = cantidadVenta;
     }
