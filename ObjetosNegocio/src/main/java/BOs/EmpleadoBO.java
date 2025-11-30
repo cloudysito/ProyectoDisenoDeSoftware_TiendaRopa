@@ -11,6 +11,8 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
 import mappers.EmpleadoMapper;
 import objetosnegocio.dominioPojo.Empleado;
 import Exceptions.DAOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -94,6 +96,41 @@ public class EmpleadoBO {
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);
+        }
+    }
+    
+    public List<EmpleadoDTO> buscarProductos(String texto) throws BOException {
+        try {
+
+            List<Empleado> resultados = empleadoDAO.buscarPorNombre(texto);
+
+            List<EmpleadoDTO> listaDTO = new ArrayList<>();
+            for (Empleado e : resultados) {
+                listaDTO.add(EmpleadoMapper.toDTO(e));
+            }
+            return listaDTO;
+            
+        } catch (DAOException e) {
+            throw new BOException("Error en la búsqueda", e);
+        }
+    }
+    
+    //BO buscar todo ropaTalla
+    public List<EmpleadoDTO> buscarTodos() throws BOException {
+        try {
+
+            List<Empleado> listaRopaTalla = empleadoDAO.buscarTodos();
+
+            List<EmpleadoDTO> listaDTO = new ArrayList<>();
+
+            for (Empleado rt : listaRopaTalla) {
+                listaDTO.add(EmpleadoMapper.toDTO(rt));
+            }
+
+            return listaDTO;
+
+        } catch (DAOException e) {
+            throw new BOException("Error al obtener el inventario completo", e);
         }
     }
     
