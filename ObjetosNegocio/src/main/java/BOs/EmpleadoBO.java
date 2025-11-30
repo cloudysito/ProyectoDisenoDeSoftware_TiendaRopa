@@ -96,22 +96,39 @@ public class EmpleadoBO {
             throw new BOException("Error al buscar por id empleado", e);
         }
     }
+    
+    public List<EmpleadoDTO> buscarProductos(String texto) throws BOException {
+        try {
 
-    //BO de buscar todos los empleados
+            List<Empleado> resultados = empleadoDAO.buscarPorNombre(texto);
+
+            List<EmpleadoDTO> listaDTO = new ArrayList<>();
+            for (Empleado e : resultados) {
+                listaDTO.add(EmpleadoMapper.toDTO(e));
+            }
+            return listaDTO;
+            
+        } catch (DAOException e) {
+            throw new BOException("Error en la búsqueda", e);
+        }
+    }
+    
+    //BO buscar todo ropaTalla
     public List<EmpleadoDTO> buscarTodos() throws BOException {
         try {
 
-            List<Empleado> listaEmpleados = empleadoDAO.buscarTodos();
+            List<Empleado> listaRopaTalla = empleadoDAO.buscarTodos();
 
             List<EmpleadoDTO> listaDTO = new ArrayList<>();
 
-            for (Empleado e : listaEmpleados) {
-                listaDTO.add(EmpleadoMapper.toDTO(e));
+            for (Empleado rt : listaRopaTalla) {
+                listaDTO.add(EmpleadoMapper.toDTO(rt));
             }
 
             return listaDTO;
 
         } catch (DAOException e) {
+
             throw new BOException("Error al obtener todos los empleados", e);
         }
     }
@@ -133,5 +150,6 @@ public class EmpleadoBO {
             throw new BOException("Error al buscar por id empleado", e);
         }
     }
+
 
 }
