@@ -7,8 +7,6 @@ package DisenoGUIs;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
-import com.mycompany.dto_negocio.SolicitudDevolucionDTO;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,53 +14,21 @@ import javax.swing.JOptionPane;
  */
 public class GUISeleccionMetodoPago extends javax.swing.JFrame {
 
-    private ControlPantallas control = ControlPantallas.getInstase();
-    private SolicitudDevolucionDTO solicitud;
+    /**
+     * Creates new form GUIProducto
+     */
+    
     private EmpleadoDTO empleado;
     private VentaDTO venta;
-    
-    public GUISeleccionMetodoPago(EmpleadoDTO empleado, VentaDTO venta) {
+
+    public GUISeleccionMetodoPago(EmpleadoDTO empleado,VentaDTO venta) {
         initComponents();
         this.empleado = empleado;
         this.venta = venta;
-        this.solicitud = null;
+        configurarNavegacionPerfil();
         setLocationRelativeTo(null);
-        configurarNavegacionPerfil(); 
-        setLocationRelativeTo(null);
-        lblMonto.setText("Monto a cobrar: $" + venta.getTotal());
     }
 
-    public GUISeleccionMetodoPago(SolicitudDevolucionDTO solicitud) {
-        this.solicitud = solicitud;
-        this.empleado = null;
-        this.venta = null;
-        initComponents();
-        setLocationRelativeTo(null);
-        
-        if (solicitud != null) {
-            lblMonto.setText("Monto a devolver: $" + solicitud.getMontoTotal());
-        }
-    }
-    
-    public GUISeleccionMetodoPago() {
-        initComponents();
-    }
-    
-    private void procesarReembolso(String metodo) {
-        if (solicitud == null) return;
-        solicitud.setMetodoReembolso(metodo);
-
-        try {
-            control.getDevolverPrendaSistema().procesarDevolucion(solicitud);
-            control.navegarConfirmacionDevolucion(this);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, 
-                "Error al procesar el reembolso:\n" + e.getMessage(), 
-                "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,7 +58,6 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
         btnTransferencia = new javax.swing.JButton();
         btnCredito = new javax.swing.JButton();
         btnPaypal = new javax.swing.JButton();
-        lblMonto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -219,10 +184,10 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
 
         lblTotal.setBackground(new java.awt.Color(0, 0, 0));
         lblTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTotal.setText("Total: ");
+        lblTotal.setText("Total");
 
         btnRegresar.setBackground(new java.awt.Color(226, 115, 150));
-        btnRegresar.setText("Cancelar");
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Users\\garfi\\OneDrive\\Documentos\\GitHub\\ProyectoDisenoDeSoftware_TiendaRopa\\DisenoTiendaRopa\\src\\main\\resources\\flecha.png")); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -279,9 +244,6 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
             }
         });
 
-        lblMonto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblMonto.setText("jLabel4");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -307,10 +269,8 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
                             .addComponent(btnDebito, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnPaypal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(lblTotal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblMonto)))
+                        .addGap(220, 220, 220)
+                        .addComponent(lblTotal)))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -320,9 +280,7 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(lblNombreProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotal)
-                    .addComponent(lblMonto))
+                .addComponent(lblTotal)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnDebito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -360,14 +318,8 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        if (solicitud != null) {
-            control.navegarMenuPrincipal(this);
-        } 
-        else if (venta != null && empleado != null) {
-             control.navegarVenderPrenda(this, empleado, venta);
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
@@ -387,23 +339,23 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfectivoActionPerformed
-        procesarReembolso("Efectivo");
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnEfectivoActionPerformed
 
     private void btnDebitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDebitoActionPerformed
-        procesarReembolso("Tarjeta");
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnDebitoActionPerformed
 
     private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
-        procesarReembolso("Transferencia");
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnTransferenciaActionPerformed
 
     private void btnCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditoActionPerformed
-        procesarReembolso("Tarjeta");
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnCreditoActionPerformed
 
     private void btnPaypalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaypalActionPerformed
-        procesarReembolso("Paypal");
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnPaypalActionPerformed
 
 
@@ -425,7 +377,6 @@ public class GUISeleccionMetodoPago extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblMonto;
     private javax.swing.JLabel lblNombreEmpleado;
     private javax.swing.JLabel lblNombreProducto;
     private javax.swing.JLabel lblTotal;

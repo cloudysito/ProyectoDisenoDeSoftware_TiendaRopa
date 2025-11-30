@@ -25,10 +25,6 @@ public class GUIMenu extends javax.swing.JFrame {
         llenarEmpleado();
         setLocationRelativeTo(null);
     }
-    
-    public GUIMenu() {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -255,7 +251,7 @@ public class GUIMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
-        ControlPantallas.getInstase().navegarBuscarVenta(this);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnDevolverPrendaActionPerformed
 
     private void btnVenderPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderPrendaActionPerformed
