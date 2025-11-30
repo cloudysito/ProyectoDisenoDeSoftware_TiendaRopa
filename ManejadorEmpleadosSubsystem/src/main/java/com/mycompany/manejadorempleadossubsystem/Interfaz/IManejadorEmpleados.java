@@ -4,12 +4,21 @@
  */
 package com.mycompany.manejadorempleadossubsystem.Interfaz;
 
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import java.util.List;
+
 /**
  *
  * @author santi
  */
 public interface IManejadorEmpleados {
     
-//    EmpleadoDTO actuali
+    EmpleadoDTO guardarEmpleado(EmpleadoDTO empleadoDTO);
+    
+    EmpleadoDTO modificarEmpleado(EmpleadoDTO empleadoDTO);
+    
+    List<EmpleadoDTO> buscarEmpleados(String texto);
+    
+    
     
 }
