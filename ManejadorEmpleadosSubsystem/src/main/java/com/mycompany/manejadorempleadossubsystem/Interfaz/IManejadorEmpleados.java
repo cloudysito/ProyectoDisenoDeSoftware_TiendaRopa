@@ -10,4 +10,6 @@ package com.mycompany.manejadorempleadossubsystem.Interfaz;
  */
 public interface IManejadorEmpleados {
     
+//    EmpleadoDTO actuali
+    
 }
