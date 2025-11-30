@@ -11,6 +11,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.client.model.Updates;
+import java.util.ArrayList;
+import java.util.List;
 import objetosnegocio.dominioPojo.Venta;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -124,6 +126,16 @@ public class VentaDAO implements IVentaDAO {
 
         } catch (MongoException e) {
             throw new MongoException("Error al buscar venta por folio: " + folio, e.getCause());
+        }
+    }
+
+    @Override
+    public List<Venta> buscarTodas() throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+            MongoCollection<Venta> collection = getCollection(client);
+            return collection.find().into(new ArrayList<>());
+        } catch (Exception e) {
+            throw new MongoException("Error al buscar todas las ventas", e);
         }
     }
 }
