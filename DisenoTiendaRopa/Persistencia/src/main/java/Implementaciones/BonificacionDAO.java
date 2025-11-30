@@ -18,7 +18,7 @@ import org.bson.types.ObjectId;
  *
  * @author riosr
  */
-public abstract class BonificacionDAO implements IBonificacionDAO {
+public class BonificacionDAO implements IBonificacionDAO {
     private static final String NOMBRE_COLLECTION = "Bonificacion";
     private final ConnectionMongoDB connection;
 
@@ -54,6 +54,16 @@ public abstract class BonificacionDAO implements IBonificacionDAO {
         } catch (MongoException e) {
             throw new MongoException("Error al buscar ropa por ID: " + idBonificacion, e.getCause());
         }
+    }
+
+    @Override
+    public Bonificacion guardarEmpleado(Bonificacion bonificacion) throws MongoException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Bonificacion modificarEmpleado(Bonificacion bonificacion) throws MongoException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

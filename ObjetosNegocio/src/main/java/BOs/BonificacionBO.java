@@ -34,7 +34,7 @@ public class BonificacionBO {
     public BonificacionDTO buscarPorId(String id) throws BOException {
         try {
 
-            return BonificacionMapper.toDTO(BonificacionDAO.buscarPorId(id));
+            return BonificacionMapper.toDTO(bonificacionDAO.buscarPorId(id));
 
         } catch (DAOException e) {
             throw new BOException("Error al buscar por id empleado", e);

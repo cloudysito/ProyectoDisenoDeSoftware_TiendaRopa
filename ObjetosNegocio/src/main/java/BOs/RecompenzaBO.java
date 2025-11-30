@@ -34,7 +34,7 @@ public class RecompenzaBO {
     public RecompenzaDTO buscarPorId(String id) throws BOException {
         try {
 
-            return RecompenzaMapper.toDTO(RecompenzaDAO.buscarPorId(id));
+            return RecompenzaMapper.toDTO(recompenzaDAO.buscarPorId(id));
 
         } catch (DAOException e) {
             throw new BOException("Error al buscar por id empleado", e);

@@ -18,7 +18,7 @@ import org.bson.types.ObjectId;
  *
  * @author riosr
  */
-public abstract class CapacitacionDAO implements ICapacitacionDAO{
+public class CapacitacionDAO implements ICapacitacionDAO{
     private static final String NOMBRE_COLLECTION = "Bonificacion";
     private final ConnectionMongoDB connection;
 
@@ -53,5 +53,15 @@ public abstract class CapacitacionDAO implements ICapacitacionDAO{
         } catch (MongoException e) {
             throw new MongoException("Error al buscar ropa por ID: " + idCapacitacion, e.getCause());
         }
+    }
+
+    @Override
+    public Capacitacion guardarEmpleado(Capacitacion capacitacion) throws MongoException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Capacitacion modificarEmpleado(Capacitacion capacitacion) throws MongoException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
