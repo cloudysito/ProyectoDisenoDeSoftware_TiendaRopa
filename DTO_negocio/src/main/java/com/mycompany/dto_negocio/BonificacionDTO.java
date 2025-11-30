@@ -9,14 +9,14 @@ package com.mycompany.dto_negocio;
  * @author riosr
  */
 public class BonificacionDTO {
-    private String id;
+    private String idBonificacion;
     private String descripcion;
     private int cantidadVenta;
 
     public BonificacionDTO() {}
     
-    public BonificacionDTO(String id, String descripcion, int cantidadVenta) {
-        this.id = id;
+    public BonificacionDTO(String idBonificacion, String descripcion, int cantidadVenta) {
+        this.idBonificacion = idBonificacion;
         this.descripcion = descripcion;
         this.cantidadVenta = cantidadVenta;
     }
@@ -26,12 +26,12 @@ public class BonificacionDTO {
         this.cantidadVenta = cantidadVenta;
     }
 
-    public String getId() {
-        return id;
+    public String getIdBonificacion() {
+        return idBonificacion;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdBonificacion(String id) {
+        this.idBonificacion = idBonificacion;
     }
 
     public String getDescripcion() {

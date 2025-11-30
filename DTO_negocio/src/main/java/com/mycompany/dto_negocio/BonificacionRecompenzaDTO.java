@@ -9,15 +9,15 @@ package com.mycompany.dto_negocio;
  * @author riosr
  */
 public class BonificacionRecompenzaDTO {
-    private String id;
+    private String idBonificacionRecompenza;
     private EmpleadoDTO nombreEmpleado;
     private BonificacionDTO nombreBonificacion;
     private RecompenzaDTO nombreRecompenza;
     
     public BonificacionRecompenzaDTO() {}
 
-    public BonificacionRecompenzaDTO(String id, EmpleadoDTO nombreEmpleado, BonificacionDTO nombreBonificacion, RecompenzaDTO nombreRecompenza) {
-        this.id = id;
+    public BonificacionRecompenzaDTO(String idBonificacionRecompenza, EmpleadoDTO nombreEmpleado, BonificacionDTO nombreBonificacion, RecompenzaDTO nombreRecompenza) {
+        this.idBonificacionRecompenza = idBonificacionRecompenza;
         this.nombreEmpleado = nombreEmpleado;
         this.nombreBonificacion = nombreBonificacion;
         this.nombreRecompenza = nombreRecompenza;
@@ -29,12 +29,12 @@ public class BonificacionRecompenzaDTO {
         this.nombreRecompenza = nombreRecompenza;
     }
 
-    public String getId() {
-        return id;
+    public String getIdBonificacionRecompenza() {
+        return idBonificacionRecompenza;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdBonificacionRecompenza(String id) {
+        this.idBonificacionRecompenza = idBonificacionRecompenza;
     }
 
     public EmpleadoDTO getNombreEmpleado() {

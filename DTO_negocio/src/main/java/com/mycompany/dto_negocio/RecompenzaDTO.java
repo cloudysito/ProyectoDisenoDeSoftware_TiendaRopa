@@ -9,14 +9,14 @@ package com.mycompany.dto_negocio;
  * @author riosr
  */
 public class RecompenzaDTO {
-    private String id;
+    private String idRecompenza;
     private String nombreRecompenza;
     private int puntosNecesarios;
     
     public RecompenzaDTO() {}
 
-    public RecompenzaDTO(String id, String nombreRecompenza, int puntosNecesarios) {
-        this.id = id;
+    public RecompenzaDTO(String idRecompenza, String nombreRecompenza, int puntosNecesarios) {
+        this.idRecompenza = idRecompenza;
         this.nombreRecompenza = nombreRecompenza;
         this.puntosNecesarios = puntosNecesarios;
     }
@@ -26,12 +26,12 @@ public class RecompenzaDTO {
         this.puntosNecesarios = puntosNecesarios;
     }
 
-    public String getId() {
-        return id;
+    public String getIdRecompenza() {
+        return idRecompenza;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.idRecompenza = id;
     }
 
     public String getNombreRecompenza() {
