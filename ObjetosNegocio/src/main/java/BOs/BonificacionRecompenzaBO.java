@@ -8,9 +8,9 @@ import BOs.Exception.BOException;
 import Exceptions.DAOException;
 import Implementaciones.BonificacionRecompenzaDAO;
 import Interfaces.IBonificacionRecompenzaDAO;
-import com.mycompany.dto_negocio.BonificacionRecompenzaDTO;
+import com.mycompany.dto_negocio.PuntosDTO;
 import mappers.BonificacionRecompenzaMapper;
-import objetosnegocio.dominioPojo.BonificacionRecompenza;
+import objetosnegocio.dominioPojo.Puntos;
 /**
  *
  * @author riosr
@@ -32,7 +32,7 @@ public class BonificacionRecompenzaBO {
         return instance;
     }
     
-    public BonificacionRecompenzaDTO buscarPorId(String idBonificacionRecompenza) throws BOException{
+    public PuntosDTO buscarPorId(String idBonificacionRecompenza) throws BOException{
         try{
             
             return BonificacionRecompenzaMapper.toDTO(bonificacionRecompenzaDAO.buscarPorId(idBonificacionRecompenza));

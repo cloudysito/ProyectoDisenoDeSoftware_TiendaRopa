@@ -5,7 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
-import objetosnegocio.dominioPojo.Recompenza;
+import objetosnegocio.dominioPojo.Recompensa;
 
 /**
  *
@@ -13,10 +13,10 @@ import objetosnegocio.dominioPojo.Recompenza;
  */
 public interface IRecompenzaDAO {
     
-    Recompenza guardarEmpleado(Recompenza recompenza) throws MongoException;
+    Recompensa guardarEmpleado(Recompensa recompenza) throws MongoException;
     
-    Recompenza modificarEmpleado(Recompenza recompenza) throws MongoException;
+    Recompensa modificarEmpleado(Recompensa recompenza) throws MongoException;
     
-    Recompenza buscarPorId(String idRecompenza) throws MongoException;
+    Recompensa buscarPorId(String idRecompenza) throws MongoException;
     
 }

@@ -10,19 +10,22 @@ package com.mycompany.dto_negocio;
  */
 public class CapacitacionDTO {
     private String idCapacitacion;
-    private String temaCapacitacion;
+    private EmpleadoDTO nombreEmpleado;
+    private TemaCapacitacionDTO temaCapacitacion;
     private String estado;
     
     public CapacitacionDTO() {}
     
-    public CapacitacionDTO(String idCapacitacion, String temaCapacitacion, String estado){
+    public CapacitacionDTO(String idCapacitacion, EmpleadoDTO nombreEmpleado, TemaCapacitacionDTO temaCapacitacion, String estado){
         this.idCapacitacion = idCapacitacion;
+        this.nombreEmpleado = nombreEmpleado;
         this.temaCapacitacion = temaCapacitacion;
         this.estado = estado;
     }
     
-    public CapacitacionDTO(String temaCapacitacion, String estado){
-        this.idCapacitacion = temaCapacitacion;
+    public CapacitacionDTO(EmpleadoDTO nombreEmpleado, TemaCapacitacionDTO temaCapacitacion, String estado){
+        this.nombreEmpleado = nombreEmpleado;
+        this.temaCapacitacion = temaCapacitacion;
         this.estado = estado;
     }
 
@@ -34,11 +37,19 @@ public class CapacitacionDTO {
         this.idCapacitacion = idCapacitacion;
     }
 
-    public String getTemaCapacitacion() {
+    public EmpleadoDTO getNombreEmpleado() {
+        return nombreEmpleado;
+    }
+
+    public void setNombreEmpleado(EmpleadoDTO nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+    }
+
+    public TemaCapacitacionDTO getTemaCapacitacion() {
         return temaCapacitacion;
     }
 
-    public void setTemaCapacitacion(String temaCapacitacion) {
+    public void setTemaCapacitacion(TemaCapacitacionDTO temaCapacitacion) {
         this.temaCapacitacion = temaCapacitacion;
     }
 

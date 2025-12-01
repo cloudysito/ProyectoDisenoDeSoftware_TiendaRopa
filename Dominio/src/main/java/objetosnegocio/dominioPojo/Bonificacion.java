@@ -11,45 +11,59 @@ import org.bson.types.ObjectId;
  * @author riosr
  */
 public class Bonificacion {
-    private ObjectId id;
-    private String descripcion;
-    private int cantidadVenta;
+    private ObjectId idBonificacion;
+    private Empleado nombreEmpleado;
+    private int puntosTotales;
+    private int nombreRecompensa;
     
     public Bonificacion() {}
     
-    public Bonificacion(String descripcion,int cantidadVenta){
-        this.descripcion = descripcion;
-        this.cantidadVenta = cantidadVenta;
+    public Bonificacion(Empleado nombreEmpleado, int puntosTotales, int nombreRecompensa){
+        this.nombreEmpleado = nombreEmpleado;
+        this.puntosTotales = puntosTotales;
+        this.nombreRecompensa = nombreRecompensa;
+        
     }
     
-    public Bonificacion(ObjectId id, String descripcion, int cantidadVenta){
-        this.id = id;
-        this.descripcion = descripcion;
-        this.cantidadVenta = cantidadVenta;
+    public Bonificacion(ObjectId id, Empleado nombreEmpleado, int puntosTotales, int nombreRecompensa){
+        this.idBonificacion = idBonificacion;
+        this.nombreEmpleado = nombreEmpleado;
+        this.puntosTotales = puntosTotales;
+        this.nombreRecompensa = nombreRecompensa;
     }
 
-    public ObjectId getId() {
-        return id;
+    public ObjectId getIdBonificacion() {
+        return idBonificacion;
     }
 
-    public void setId(ObjectId id) {
-        this.id = id;
+    public void setIdBonificacion(ObjectId idBonificacion) {
+        this.idBonificacion = idBonificacion;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Empleado getNombreEmpleado() {
+        return nombreEmpleado;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombreEmpleado(Empleado nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
     }
 
-    public int getCantidadVenta() {
-        return cantidadVenta;
+    public int getPuntosTotales() {
+        return puntosTotales;
     }
 
-    public void setCantidadVenta(int cantidadVenta) {
-        this.cantidadVenta = cantidadVenta;
+    public void setPuntosTotales(int puntosTotales) {
+        this.puntosTotales = puntosTotales;
     }
+
+    public int getNombreRecompensa() {
+        return nombreRecompensa;
+    }
+
+    public void setNombreRecompensa(int nombreRecompensa) {
+        this.nombreRecompensa = nombreRecompensa;
+    }
+
+
     
 }

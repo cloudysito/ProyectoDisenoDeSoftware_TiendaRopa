@@ -8,7 +8,7 @@ import BOs.Exception.BOException;
 import Exceptions.DAOException;
 import Implementaciones.RecompenzaDAO;
 import Interfaces.IRecompenzaDAO;
-import com.mycompany.dto_negocio.RecompenzaDTO;
+import com.mycompany.dto_negocio.RecompensaDTO;
 import mappers.RecompenzaMapper;
 
 /**
@@ -31,7 +31,7 @@ public class RecompenzaBO {
         return instance;
     }
     
-    public RecompenzaDTO buscarPorId(String id) throws BOException {
+    public RecompensaDTO buscarPorId(String id) throws BOException {
         try {
 
             return RecompenzaMapper.toDTO(recompenzaDAO.buscarPorId(id));

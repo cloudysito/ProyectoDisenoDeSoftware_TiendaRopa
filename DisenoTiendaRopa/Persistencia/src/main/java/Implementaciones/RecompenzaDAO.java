@@ -10,7 +10,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
-import objetosnegocio.dominioPojo.Recompenza;
+import objetosnegocio.dominioPojo.Recompensa;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -26,9 +26,9 @@ public class RecompenzaDAO implements IRecompenzaDAO{
         this.connection = new ConnectionMongoDB();
     }
 
-    private MongoCollection<Recompenza> getCollection(MongoClient client) {
+    private MongoCollection<Recompensa> getCollection(MongoClient client) {
         MongoDatabase database = client.getDatabase(ConnectionMongoDB.NOMBRE_DB);
-        return database.getCollection(NOMBRE_COLLECTION, Recompenza.class);
+        return database.getCollection(NOMBRE_COLLECTION, Recompensa.class);
     }
     
     /**
@@ -39,14 +39,14 @@ public class RecompenzaDAO implements IRecompenzaDAO{
      */
     
     @Override
-    public Recompenza buscarPorId(String idRecompenza) throws MongoException {
+    public Recompensa buscarPorId(String idRecompenza) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
-            MongoCollection<Recompenza> collection = getCollection(client);
+            MongoCollection<Recompensa> collection = getCollection(client);
 
             Bson filtroId = eq("_id", new ObjectId(idRecompenza));
 
-            Recompenza bonificacion = collection.find(filtroId).first();
+            Recompensa bonificacion = collection.find(filtroId).first();
 
             return bonificacion;
 
@@ -56,12 +56,12 @@ public class RecompenzaDAO implements IRecompenzaDAO{
     }
 
     @Override
-    public Recompenza guardarEmpleado(Recompenza recompenza) throws MongoException {
+    public Recompensa guardarEmpleado(Recompensa recompenza) throws MongoException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Recompenza modificarEmpleado(Recompenza recompenza) throws MongoException {
+    public Recompensa modificarEmpleado(Recompensa recompenza) throws MongoException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

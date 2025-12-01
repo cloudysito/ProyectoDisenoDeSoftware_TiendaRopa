@@ -5,7 +5,7 @@
 package Interfaces;
 
 import Exceptions.MongoException;
-import objetosnegocio.dominioPojo.BonificacionRecompenza;
+import objetosnegocio.dominioPojo.Puntos;
 
 /**
  *
@@ -13,10 +13,10 @@ import objetosnegocio.dominioPojo.BonificacionRecompenza;
  */
 public interface IBonificacionRecompenzaDAO {
     
-    BonificacionRecompenza guardarEmpleado(BonificacionRecompenza br) throws MongoException;
+    Puntos guardarEmpleado(Puntos br) throws MongoException;
     
-    BonificacionRecompenza modificarEmpleado(BonificacionRecompenza br) throws MongoException;
+    Puntos modificarEmpleado(Puntos br) throws MongoException;
     
-    BonificacionRecompenza buscarPorId(String idBonificacionRecompenza) throws MongoException;
+    Puntos buscarPorId(String idBonificacionRecompenza) throws MongoException;
     
 }

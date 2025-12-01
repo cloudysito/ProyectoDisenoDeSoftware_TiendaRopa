@@ -10,7 +10,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
-import objetosnegocio.dominioPojo.BonificacionRecompenza;
+import objetosnegocio.dominioPojo.Puntos;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -26,9 +26,9 @@ public class BonificacionRecompenzaDAO implements IBonificacionRecompenzaDAO{
         this.connection = new ConnectionMongoDB();
     }
 
-    private MongoCollection<BonificacionRecompenza> getCollection(MongoClient client) {
+    private MongoCollection<Puntos> getCollection(MongoClient client) {
         MongoDatabase database = client.getDatabase(ConnectionMongoDB.NOMBRE_DB);
-        return database.getCollection(NOMBRE_COLLECTION, BonificacionRecompenza.class);
+        return database.getCollection(NOMBRE_COLLECTION, Puntos.class);
     }
     
     /**
@@ -38,14 +38,14 @@ public class BonificacionRecompenzaDAO implements IBonificacionRecompenzaDAO{
      * @throws MongoException
      */
     
-    public BonificacionRecompenza buscarPorId(String idBonificacionRecompenza) throws MongoException {
+    public Puntos buscarPorId(String idBonificacionRecompenza) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
-            MongoCollection<BonificacionRecompenza> collection = getCollection(client);
+            MongoCollection<Puntos> collection = getCollection(client);
 
             Bson filtroId = eq("_id", new ObjectId(idBonificacionRecompenza));
 
-            BonificacionRecompenza bonificacion = collection.find(filtroId).first();
+            Puntos bonificacion = collection.find(filtroId).first();
 
             return bonificacion;
 
@@ -55,12 +55,12 @@ public class BonificacionRecompenzaDAO implements IBonificacionRecompenzaDAO{
     }
 
     @Override
-    public BonificacionRecompenza guardarEmpleado(BonificacionRecompenza br) throws MongoException {
+    public Puntos guardarEmpleado(Puntos br) throws MongoException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public BonificacionRecompenza modificarEmpleado(BonificacionRecompenza br) throws MongoException {
+    public Puntos modificarEmpleado(Puntos br) throws MongoException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -4,11 +4,11 @@
  */
 package mappers;
 
-import com.mycompany.dto_negocio.BonificacionRecompenzaDTO;
+import com.mycompany.dto_negocio.PuntosDTO;
 import objetosnegocio.dominioPojo.Bonificacion;
-import objetosnegocio.dominioPojo.BonificacionRecompenza;
+import objetosnegocio.dominioPojo.Puntos;
 import objetosnegocio.dominioPojo.Empleado;
-import objetosnegocio.dominioPojo.Recompenza;
+import objetosnegocio.dominioPojo.Recompensa;
 import org.bson.types.ObjectId;
 
 /**
@@ -17,11 +17,11 @@ import org.bson.types.ObjectId;
  */
 public class BonificacionRecompenzaMapper {
     
-    public static BonificacionRecompenza toEntity(BonificacionRecompenzaDTO dto) {
+    public static Puntos toEntity(PuntosDTO dto) {
         if (dto == null) {
             return null;
         }
-        BonificacionRecompenza br = new BonificacionRecompenza();
+        Puntos br = new Puntos();
         if (dto.getIdBonificacionRecompenza()!= null) {
             br.setId(new ObjectId(dto.getIdBonificacionRecompenza()));
         }
@@ -29,17 +29,17 @@ public class BonificacionRecompenzaMapper {
         br.setNombreEmpleado(empleadoEntidad);
         Bonificacion bonificacionEntidad = BonificacionMapper.toEntity(dto.getNombreBonificacion());
         br.setNombreBonificacion(bonificacionEntidad);
-        Recompenza recompenzaEntidad = RecompenzaMapper.toEntity(dto.getNombreRecompenza());
+        Recompensa recompenzaEntidad = RecompenzaMapper.toEntity(dto.getNombreRecompenza());
         br.setNombreRecompenza(recompenzaEntidad);
         
         return br;
     }
     
-    public static BonificacionRecompenzaDTO toDTO(BonificacionRecompenza br) {
+    public static PuntosDTO toDTO(Puntos br) {
         if (br == null) {
             return null;
         }
-        BonificacionRecompenzaDTO dto = new BonificacionRecompenzaDTO();
+        PuntosDTO dto = new PuntosDTO();
         dto.setIdBonificacionRecompenza(String.valueOf(br.getId()));
         dto.setNombreEmpleado(EmpleadoMapper.toDTO(br.getNombreEmpleado()));
         dto.setNombreBonificacion(BonificacionMapper.toDTO(br.getNombreBonificacion()));

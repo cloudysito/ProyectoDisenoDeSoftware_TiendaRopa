@@ -4,8 +4,8 @@
  */
 package mappers;
 
-import com.mycompany.dto_negocio.RecompenzaDTO;
-import objetosnegocio.dominioPojo.Recompenza;
+import com.mycompany.dto_negocio.RecompensaDTO;
+import objetosnegocio.dominioPojo.Recompensa;
 import org.bson.types.ObjectId;
 
 /**
@@ -14,11 +14,11 @@ import org.bson.types.ObjectId;
  */
 public class RecompenzaMapper {
     
-    public static Recompenza toEntity(RecompenzaDTO dto) {
+    public static Recompensa toEntity(RecompensaDTO dto) {
         if (dto == null) {
             return null;
         }
-        Recompenza r = new Recompenza();
+        Recompensa r = new Recompensa();
         if (dto.getIdRecompenza()!= null) {
             r.setId(new ObjectId(dto.getIdRecompenza()));
         }
@@ -27,11 +27,11 @@ public class RecompenzaMapper {
         return r;
     }
     
-    public static RecompenzaDTO toDTO(Recompenza r) {
+    public static RecompensaDTO toDTO(Recompensa r) {
         if (r == null) {
             return null;
         }
-        RecompenzaDTO dto = new RecompenzaDTO();
+        RecompensaDTO dto = new RecompensaDTO();
         dto.setId(String.valueOf(r.getId()));
         dto.setNombreRecompenza(r.getNombreRecompenza());
         dto.setPuntosNecesarios(r.getPuntosNecesarios());

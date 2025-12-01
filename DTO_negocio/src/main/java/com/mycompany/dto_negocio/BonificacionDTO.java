@@ -10,44 +10,55 @@ package com.mycompany.dto_negocio;
  */
 public class BonificacionDTO {
     private String idBonificacion;
-    private String descripcion;
-    private int cantidadVenta;
+    private EmpleadoDTO nombreEmpleado;
+    private int puntosTotales;
+    private int nombreRecompensa;
 
     public BonificacionDTO() {}
     
-    public BonificacionDTO(String idBonificacion, String descripcion, int cantidadVenta) {
+    public BonificacionDTO(String idBonificacion, EmpleadoDTO nombreEmpleado, int puntosTotales, int nombreRecompensa) {
         this.idBonificacion = idBonificacion;
-        this.descripcion = descripcion;
-        this.cantidadVenta = cantidadVenta;
+        this.nombreEmpleado = nombreEmpleado;
+        this.puntosTotales = puntosTotales;
+        this.nombreRecompensa = nombreRecompensa;
     }
     
-    public BonificacionDTO(String descripcion, int cantidadVenta){
-        this.descripcion = descripcion;
-        this.cantidadVenta = cantidadVenta;
+    public BonificacionDTO(EmpleadoDTO nombreEmpleado, int puntosTotales, int nombreRecompensa){
+        this.nombreEmpleado = nombreEmpleado;
+        this.puntosTotales = puntosTotales;
+        this.nombreRecompensa = nombreRecompensa;
     }
 
     public String getIdBonificacion() {
         return idBonificacion;
     }
 
-    public void setIdBonificacion(String id) {
+    public void setIdBonificacion(String idBonificacion) {
         this.idBonificacion = idBonificacion;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public EmpleadoDTO getNombreEmpleado() {
+        return nombreEmpleado;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombreEmpleado(EmpleadoDTO nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
     }
 
-    public int getCantidadVenta() {
-        return cantidadVenta;
+    public int getPuntosTotales() {
+        return puntosTotales;
     }
 
-    public void setCantidadVenta(int cantidadVenta) {
-        this.cantidadVenta = cantidadVenta;
+    public void setPuntosTotales(int puntosTotales) {
+        this.puntosTotales = puntosTotales;
+    }
+
+    public int getNombreRecompensa() {
+        return nombreRecompensa;
+    }
+
+    public void setNombreRecompensa(int nombreRecompensa) {
+        this.nombreRecompensa = nombreRecompensa;
     }
     
 }
