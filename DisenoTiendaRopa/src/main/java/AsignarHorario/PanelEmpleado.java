@@ -4,17 +4,22 @@
  */
 package AsignarHorario;
 
+import com.mycompany.dto_negocio.EmpleadoDTO;
+
 /**
  *
  * @author santi
  */
 public class PanelEmpleado extends javax.swing.JPanel {
 
+    EmpleadoDTO empleado;
     /**
      * Creates new form PanelEmpleado
      */
-    public PanelEmpleado() {
+    public PanelEmpleado(EmpleadoDTO empleado) {
         initComponents();
+        this.empleado = empleado;
+        LlenarEmpleado();
     }
 
     /**
@@ -93,7 +98,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    private void LlenarEmpleado(){
+        nombreTxt.setText(empleado.getNombre() + " " + empleado.getApellidos());
+        estadoTxt.setText(empleado.getPuesto());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editarBtn;
     private javax.swing.JLabel estadoTxt;

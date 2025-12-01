@@ -4,9 +4,13 @@
  */
 package AsignarHorario;
 
+import ControlPantallas.ControlEmpleados;
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
+import java.awt.Dimension;
+import java.util.List;
+import javax.swing.Box;
 
 /**
  *
@@ -17,10 +21,10 @@ public class GUIEmpleados extends javax.swing.JFrame {
     /**
      * Creates new form GUICodigoProducto
      */
-    public GUIEmpleados(EmpleadoDTO empleado) {
+    public GUIEmpleados() {
         initComponents();
         setLocationRelativeTo(null);
-        
+        llenarEmpleados("");
     }
 
     /**
@@ -41,31 +45,9 @@ public class GUIEmpleados extends javax.swing.JFrame {
         btnInfrestructura = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        nombreTxt = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        estadoTxt = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        estadoTxt1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        estadoTxt3 = new javax.swing.JLabel();
-        estadoTxt2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        estadoTxt4 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        estadoTxt5 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        estadoTxt6 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        estadoTxt7 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        estadoTxt8 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        estadoTxt9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanelEmpleados = new javax.swing.JPanel();
+        lblNombreProducto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,7 +67,7 @@ public class GUIEmpleados extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,217 +142,12 @@ public class GUIEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelEmpleados.setLayout(new javax.swing.BoxLayout(jPanelEmpleados, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(jPanelEmpleados);
 
-        nombreTxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        nombreTxt.setText("Nombre empleado");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Estado:");
-
-        estadoTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt.setText("Activo");
-
-        jLabel6.setText("Imagen");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Edad:");
-
-        estadoTxt1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt1.setText("00");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("Puesto:");
-
-        estadoTxt3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt3.setText("cajero");
-
-        estadoTxt2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt2.setText("+52 6444-444-444");
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Telefono:");
-
-        estadoTxt4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt4.setText("hola@ejemploc.com");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Correo");
-
-        estadoTxt5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt5.setText("1:00pm- 6:00pm");
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("Lunes");
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("Martes");
-
-        estadoTxt6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt6.setText("1:00pm- 6:00pm");
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("Miercoles");
-
-        estadoTxt7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt7.setText("1:00pm- 6:00pm");
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("Jueves");
-
-        estadoTxt8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt8.setText("1:00pm- 6:00pm");
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Viernes");
-
-        estadoTxt9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt9.setText("1:00pm- 6:00pm");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nombreTxt)
-                .addGap(20, 20, 20))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estadoTxt3))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(estadoTxt)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(estadoTxt1)))))
-                .addGap(72, 72, 72))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estadoTxt2))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estadoTxt4))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt5))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt6))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt8))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt7))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt9)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nombreTxt)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(estadoTxt))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(estadoTxt1)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(estadoTxt3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(estadoTxt2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(estadoTxt4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(estadoTxt5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(estadoTxt6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(estadoTxt7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(estadoTxt8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(estadoTxt9))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"7:00-8:00", null, null, null, null, null, null, null},
-                {"8:00-9:00", null, null, null, null, null, null, null},
-                {"9:00-10:00", null, null, null, null, null, null, null},
-                {"10:00-11:00", null, null, null, null, null, null, null},
-                {"11:00-12:00", null, null, null, null, null, null, null},
-                {"12:00-13:00", null, null, null, null, null, null, null},
-                {"13:00-14:00", null, null, null, null, null, null, null},
-                {"14:00-15:00", null, null, null, null, null, null, null},
-                {"15:00-16:00", null, null, null, null, null, null, null},
-                {"16:00-17:00", null, null, null, null, null, null, null},
-                {"17:00-18:00", null, null, null, null, null, null, null},
-                {"18:00-19:00", null, null, null, null, null, null, null},
-                {"19:00-20:00", null, null, null, null, null, null, null},
-                {"20:00-21:00", null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Horas", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
-            }
-        ));
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable1.setSelectionBackground(new java.awt.Color(0, 0, 0));
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        lblNombreProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreProducto.setForeground(new java.awt.Color(226, 115, 150));
+        lblNombreProducto.setText("Empleados");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -384,13 +161,13 @@ public class GUIEmpleados extends javax.swing.JFrame {
                         .addComponent(btnRegresar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
-                        .addGap(56, 56, 56))
+                        .addGap(179, 179, 179))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNombreProducto)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(51, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,10 +176,10 @@ public class GUIEmpleados extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
+                        .addComponent(lblNombreProducto)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegresar)
                             .addComponent(btnAgregar)))))
@@ -413,7 +190,7 @@ public class GUIEmpleados extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,6 +218,8 @@ public class GUIEmpleados extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        final ControlEmpleados navegador = ControlEmpleados.getInstase();
+        navegador.navegarAgregarEmpleado(this);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
@@ -452,38 +231,37 @@ public class GUIEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnInfrestructura;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JLabel estadoTxt;
-    private javax.swing.JLabel estadoTxt1;
-    private javax.swing.JLabel estadoTxt2;
-    private javax.swing.JLabel estadoTxt3;
-    private javax.swing.JLabel estadoTxt4;
-    private javax.swing.JLabel estadoTxt5;
-    private javax.swing.JLabel estadoTxt6;
-    private javax.swing.JLabel estadoTxt7;
-    private javax.swing.JLabel estadoTxt8;
-    private javax.swing.JLabel estadoTxt9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelEmpleados;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel nombreTxt;
+    private javax.swing.JLabel lblNombreProducto;
     // End of variables declaration//GEN-END:variables
 
+    private void llenarEmpleados(String busqueda) {
+        // Limpia el panel antes de volver a llenarlo
+        jPanelEmpleados.removeAll();
+        jPanelEmpleados.revalidate();
+        jPanelEmpleados.repaint();
+
+        final ControlEmpleados navegador = ControlEmpleados.getInstase();
+        List<EmpleadoDTO> empleados = navegador.getManejadorEmpleados().buscarEmpleados(busqueda);
+
+        for (EmpleadoDTO empleado : empleados) {
+            PanelEmpleado panelEmpleado = new PanelEmpleado(empleado);
+            jPanelEmpleados.add(panelEmpleado);
+            jPanelEmpleados.add(Box.createRigidArea(new Dimension(0, 5)));
+        }
+
+        // Vuelve a refrescar para asegurarse de que se pinten los nuevos componentes
+        jPanelEmpleados.revalidate();
+        jPanelEmpleados.repaint();
+    }
+
+    
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         

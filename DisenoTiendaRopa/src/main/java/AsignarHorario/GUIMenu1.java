@@ -4,6 +4,7 @@
  */
 package AsignarHorario;
 
+import ControlPantallas.ControlEmpleados;
 import ControlPantallas.ControlPantallas;
 
 /**
@@ -145,6 +146,9 @@ public class GUIMenu1 extends javax.swing.JFrame {
 
     private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
         // TODO add your handling code here:
+        final ControlEmpleados navegador = ControlEmpleados.getInstase();
+        navegador.navegarEmpleados(this);
+        
     }//GEN-LAST:event_btnDevolverPrendaActionPerformed
 
     private void btnVenderPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderPrendaActionPerformed
@@ -153,6 +157,7 @@ public class GUIMenu1 extends javax.swing.JFrame {
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
+        ControlEmpleados.getInstase().navegarAsignar(this);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
     

@@ -4,6 +4,7 @@
  */
 package DisenoGUIs;
 
+import ControlPantallas.ControlEmpleados;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 /**
@@ -140,15 +141,17 @@ public class GUIInicioSesion extends javax.swing.JFrame {
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
         // TODO add your handling code here:
-        final ControlPantallas navegador = ControlPantallas.getInstase();
-        String usuario = textFEmpleado.getText();
-        String contra = textFConstraseña.getText();
-        EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
-        System.out.println(empleado);
-        
-        if(empleado != null){
-        navegador.navegarMenuPrincipal(this, empleado);
-        }
+//        final ControlPantallas navegador = ControlPantallas.getInstase();
+//        String usuario = textFEmpleado.getText();
+//        String contra = textFConstraseña.getText();
+//        EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
+//        System.out.println(empleado);
+//        
+//        if(empleado != null){
+//        navegador.navegarMenuPrincipal(this, empleado);
+//        }
+        final ControlEmpleados navegador = ControlEmpleados.getInstase();
+        navegador.navegarMenuAdmin(this);
     }//GEN-LAST:event_btnAccederActionPerformed
 
     /**
