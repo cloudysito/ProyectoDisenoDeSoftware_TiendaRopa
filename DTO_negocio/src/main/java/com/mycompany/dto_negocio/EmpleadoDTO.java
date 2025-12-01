@@ -17,6 +17,8 @@ public class EmpleadoDTO {
     private String puesto;
     private String telefono;
     private String contrasenia;
+    private HorarioDTO horario;
+    private CapacitacionDTO capacitacion;
     private String email;
     private int salario;
     private Date fechaContratacion;
@@ -47,6 +49,22 @@ public class EmpleadoDTO {
         this.salario = salario;
         this.fechaContratacion = fechaContratacion;
         this.rfc = rfc;
+    }
+
+    public HorarioDTO getHorario() {
+        return horario;
+    }
+
+    public void setHorario(HorarioDTO horario) {
+        this.horario = horario;
+    }
+
+    public CapacitacionDTO getCapacitacion() {
+        return capacitacion;
+    }
+
+    public void setCapacitacion(CapacitacionDTO capacitacion) {
+        this.capacitacion = capacitacion;
     }
 
     

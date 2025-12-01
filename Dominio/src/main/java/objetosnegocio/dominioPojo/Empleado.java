@@ -16,6 +16,8 @@ public class Empleado {
     private String telefono;
     private String email;
     private String contrasenia;
+    private Capacitacion capacitacion;
+    private Horario horario;
     private int salario;
     private Date fechaContratacion;
     private String rfc;
@@ -47,6 +49,22 @@ public class Empleado {
         this.fechaContratacion = fechaContratacion;
         this.rfc = rfc;
         this.contrasenia = contrasenia;
+    }
+
+    public Capacitacion getCapacitacion() {
+        return capacitacion;
+    }
+
+    public void setCapacitacion(Capacitacion capacitacion) {
+        this.capacitacion = capacitacion;
+    }
+
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Horario horario) {
+        this.horario = horario;
     }
 
     public ObjectId getId() { return id; }

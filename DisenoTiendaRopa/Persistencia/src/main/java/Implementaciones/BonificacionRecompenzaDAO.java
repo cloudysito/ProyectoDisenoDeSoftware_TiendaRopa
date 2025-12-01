@@ -5,6 +5,7 @@
 package Implementaciones;
 
 import Exceptions.MongoException;
+import Interfaces.IBonificacionRecompenzaDAO;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -17,7 +18,7 @@ import org.bson.types.ObjectId;
  *
  * @author riosr
  */
-public class BonificacionRecompenzaDAO {
+public class BonificacionRecompenzaDAO implements IBonificacionRecompenzaDAO{
     private static final String NOMBRE_COLLECTION = "Bonificacion";
     private final ConnectionMongoDB connection;
 
@@ -51,5 +52,15 @@ public class BonificacionRecompenzaDAO {
         } catch (MongoException e) {
             throw new MongoException("Error al buscar ropa por ID: " + idBonificacionRecompenza, e.getCause());
         }
+    }
+
+    @Override
+    public BonificacionRecompenza guardarEmpleado(BonificacionRecompenza br) throws MongoException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public BonificacionRecompenza modificarEmpleado(BonificacionRecompenza br) throws MongoException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

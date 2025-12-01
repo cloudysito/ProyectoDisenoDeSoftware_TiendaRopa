@@ -32,10 +32,10 @@ public class BonificacionRecompenzaBO {
         return instance;
     }
     
-    public BonificacionRecompenzaDTO buscarPorId(String idEmpleado) throws BOException{
+    public BonificacionRecompenzaDTO buscarPorId(String idBonificacionRecompenza) throws BOException{
         try{
             
-            return BonificacionRecompenzaMapper.toDTO(BonificacionRecompenzaDAO.buscarPorId(idBonificacionRecompenza));
+            return BonificacionRecompenzaMapper.toDTO(bonificacionRecompenzaDAO.buscarPorId(idBonificacionRecompenza));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);

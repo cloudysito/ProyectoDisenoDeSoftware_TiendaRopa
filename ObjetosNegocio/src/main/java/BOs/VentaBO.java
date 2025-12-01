@@ -9,6 +9,8 @@ import Exceptions.DAOException;
 import Implementaciones.VentaDAO;
 import Interfaces.IVentaDAO;
 import com.mycompany.dto_negocio.VentaDTO;
+import java.util.ArrayList;
+import java.util.List;
 import mappers.VentaMapper;
 import objetosnegocio.dominioPojo.Venta;
 
@@ -94,6 +96,24 @@ public class VentaBO {
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);
+        }
+    }
+    
+    //Bo para buscar todas las ventas
+    public List<VentaDTO> buscarTodas() throws BOException {
+        try {
+            List<Venta> listaRopa = ventaDAO.buscarTodas();
+
+            List<VentaDTO> listaDTO = new ArrayList<>();
+            
+            for (Venta v : listaRopa) {
+                listaDTO.add(VentaMapper.toDTO(v));
+            }
+
+            return listaDTO;
+
+        } catch (DAOException e) {
+            throw new BOException("Error al obtener todas las ventas", e);
         }
     }
     

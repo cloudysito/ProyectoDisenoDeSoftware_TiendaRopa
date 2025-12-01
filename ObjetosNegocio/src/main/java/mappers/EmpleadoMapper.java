@@ -28,6 +28,8 @@ public class EmpleadoMapper {
         empleado.setEmail(dto.getEmail());
         empleado.setFechaContratacion(dto.getFechaContratacion());
         empleado.setPuesto(dto.getPuesto());
+        empleado.setCapacitacion(CapacitacionMapper.toEntity(dto.getCapacitacion()));
+        empleado.setHorario(HorarioMapper.toEntity(dto.getHorario()));
         empleado.setContrasenia(dto.getContrasenia());
         empleado.setRfc(dto.getRfc());
         empleado.setSalario(dto.getSalario());
@@ -46,6 +48,8 @@ public class EmpleadoMapper {
         dto.setApellidos(empleado.getApellidos());
         dto.setEmail(empleado.getEmail());
         dto.setFechaContratacion(empleado.getFechaContratacion());
+        dto.setCapacitacion(CapacitacionMapper.toDTO(empleado.getCapacitacion()));
+        dto.setHorario(HorarioMapper.toDTO(empleado.getHorario()));
         dto.setPuesto(empleado.getPuesto());
         dto.setContrasenia(empleado.getContrasenia());
         dto.setRfc(empleado.getRfc());
