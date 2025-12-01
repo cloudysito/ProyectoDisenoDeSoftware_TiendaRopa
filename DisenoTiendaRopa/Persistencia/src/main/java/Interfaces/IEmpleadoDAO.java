@@ -27,5 +27,8 @@ public interface IEmpleadoDAO {
     List<Empleado> buscarTodos() throws MongoException;
     
     List<Empleado> buscarPorNombre(String nombreEmpleado);
+    
+    // Igual al otro para no causar problemas
+    Empleado buscarPorCredenciales(String correo, String contrasenia) throws MongoException;
 
 }

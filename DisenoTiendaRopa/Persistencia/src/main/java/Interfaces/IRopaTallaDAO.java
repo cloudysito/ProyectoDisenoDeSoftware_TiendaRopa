@@ -27,4 +27,5 @@ public interface IRopaTallaDAO {
     
     void reducirStock(String idRopaTalla, int cantidadVendida) throws MongoException;
 
+    void actualizarStock(ObjectId idRopaTalla, int cantidad) throws MongoException;
 }

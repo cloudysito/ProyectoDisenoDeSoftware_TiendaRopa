@@ -131,5 +131,21 @@ public class RopaTallaDAO implements IRopaTallaDAO {
             throw new MongoException("Error al actualizar el stock.", e.getCause());
         }
     }
+    
+    @Override
+    public void actualizarStock(ObjectId idRopaTalla, int cantidad) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+            MongoCollection<RopaTalla> collection = getCollection(client);
+            
+            // Usamos $inc para incrementar o decrementar el campo "cantidad"
+            collection.updateOne(
+                Filters.eq("_id", idRopaTalla), 
+                Updates.inc("cantidad", cantidad)
+            );
+            
+        } catch (Exception e) {
+            throw new MongoException("Error al actualizar stock: " + e.getMessage(), e);
+        }
+    }
 
 }

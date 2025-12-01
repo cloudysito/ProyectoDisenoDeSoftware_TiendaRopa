@@ -164,8 +164,23 @@ public class EmpleadoDAO implements IEmpleadoDAO {
         }
     }
 
-    
-    
+    @Override
+    public Empleado buscarPorCredenciales(String correo, String contrasenia) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
 
-    
+            MongoCollection<Empleado> collection = getCollection(client);
+
+            Bson filtro = and(
+                    eq("nombre", correo), 
+                    eq("contrasenia", contrasenia)
+            );
+
+            Empleado empleado = collection.find(filtro).first();
+
+            return empleado;
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al iniciar sesión", e);
+    }
+  }
 }

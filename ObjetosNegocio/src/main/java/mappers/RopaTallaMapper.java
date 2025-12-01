@@ -22,15 +22,22 @@ public class RopaTallaMapper {
             return null;
         }
         RopaTalla rt = new RopaTalla();
-        if (dto.getIdRopaTalla()!= null) {
+        if (dto.getIdRopaTalla() != null && !dto.getIdRopaTalla().isEmpty()) {
             rt.setId(new ObjectId(dto.getIdRopaTalla()));
         }
+        
         rt.setCodigo(dto.getCodigoBarras());
         rt.setCantidad(dto.getCantidad());
-        Ropa ropaEntidad = RopaMapper.toEntity(dto.getRopa());
-        rt.setRopa(ropaEntidad);
-        Talla tallaEntidad = TallaMapper.toEntity(dto.getTalla());
-        rt.setTalla(tallaEntidad);
+        
+        if (dto.getRopa() != null) {
+            Ropa ropaEntidad = RopaMapper.toEntity(dto.getRopa());
+            rt.setRopa(ropaEntidad);
+        }
+        
+        if (dto.getTalla() != null) {
+            Talla tallaEntidad = TallaMapper.toEntity(dto.getTalla());
+            rt.setTalla(tallaEntidad);
+        }
         
         return rt;
     }
@@ -40,7 +47,11 @@ public class RopaTallaMapper {
             return null;
         }
         RopaTallaDTO dto = new RopaTallaDTO();
-        dto.setIdRopaTalla(String.valueOf(rt.getId()));
+        
+        if (rt.getId() != null) {
+            dto.setIdRopaTalla(rt.getId().toHexString());
+        }
+        
         dto.setRopa(RopaMapper.toDTO(rt.getRopa()));
         dto.setTalla(TallaMapper.toDTO(rt.getTalla()));
         dto.setCodigoBarras(rt.getCodigo());

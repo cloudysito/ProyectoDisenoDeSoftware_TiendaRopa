@@ -19,9 +19,11 @@ public class TallaMapper {
             return null;
         }
         Talla talla = new Talla();
-        if (dto.getIdTalla()!= null) {
+        
+        if (dto.getIdTalla() != null && !dto.getIdTalla().isEmpty()) {
             talla.setId(new ObjectId(dto.getIdTalla()));
         }
+        
         talla.setNombreTalla(dto.getNombreTalla());
         talla.setDescripcion(dto.getDescripcion());
         
@@ -33,7 +35,10 @@ public class TallaMapper {
             return null;
         }
         TallaDTO dto = new TallaDTO();
-        dto.setIdTalla(talla.getId().toHexString());
+       if (talla.getId() != null) {
+            dto.setIdTalla(talla.getId().toHexString());
+        }
+        
         dto.setNombreTalla(talla.getNombreTalla());
         dto.setDescripcion(talla.getDescripcion());
         

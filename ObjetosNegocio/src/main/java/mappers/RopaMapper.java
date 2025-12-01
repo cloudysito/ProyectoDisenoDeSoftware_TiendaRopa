@@ -19,9 +19,11 @@ public class RopaMapper {
             return null;
         }
         Ropa ropa = new Ropa();
-        if (dto.getIdRopa() != null) {
+        
+        if (dto.getIdRopa() != null && !dto.getIdRopa().isEmpty()) {
             ropa.setId(new ObjectId(dto.getIdRopa()));
         }
+        
         ropa.setNombreArticulo(dto.getNombreArticulo());
         ropa.setDescripcion(dto.getDescripcion());
         ropa.setPrecio(dto.getPrecio());
@@ -37,7 +39,11 @@ public class RopaMapper {
             return null;
         }
         RopaDTO dto = new RopaDTO();
-        dto.setIdRopa(ropa.getId().toHexString());
+        
+        if (ropa.getId() != null) {
+            dto.setIdRopa(ropa.getId().toHexString());
+        }
+        
         dto.setNombreArticulo(ropa.getNombreArticulo());
         dto.setDescripcion(ropa.getDescripcion());
         dto.setPrecio(ropa.getPrecio());
