@@ -4,6 +4,7 @@
  */
 package AsignarHorario;
 
+import ControlPantallas.ControlEmpleados;
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.DiaHorarioDTO;
@@ -23,11 +24,17 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
      * Creates new form GUICodigoProducto
      * 
      */
-    
+    private EmpleadoDTO empleado;
     
     public GUIAsignarHorarios(EmpleadoDTO empleado) {
         initComponents();
-        configurarTablaHorario(jTable1);
+        this.empleado = empleado;
+        if(empleado.getHorario() == null){
+            HorarioDTO horario = new HorarioDTO();
+            empleado.setHorario(horario);
+        }
+        llenarEmpleado();
+        configurarTablaHorario(jTable1, empleado.getHorario());
         setLocationRelativeTo(null);
         
     }
@@ -52,27 +59,15 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         nombreTxt = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        estadoTxt = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        estadoTxt1 = new javax.swing.JLabel();
+        salarioTxt1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        estadoTxt3 = new javax.swing.JLabel();
-        estadoTxt2 = new javax.swing.JLabel();
+        puestoTxt3 = new javax.swing.JLabel();
+        telefonoTxt2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        estadoTxt4 = new javax.swing.JLabel();
+        emailTxt4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        estadoTxt5 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        estadoTxt6 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        estadoTxt7 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        estadoTxt8 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        estadoTxt9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -171,70 +166,34 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        nombreTxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nombreTxt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         nombreTxt.setText("Nombre empleado");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Estado:");
-
-        estadoTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt.setText("Activo");
 
         jLabel6.setText("Imagen");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Edad:");
+        jLabel7.setText("Salario");
 
-        estadoTxt1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt1.setText("00");
+        salarioTxt1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        salarioTxt1.setText("00");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Puesto:");
 
-        estadoTxt3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt3.setText("cajero");
+        puestoTxt3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        puestoTxt3.setText("cajero");
 
-        estadoTxt2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt2.setText("+52 6444-444-444");
+        telefonoTxt2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        telefonoTxt2.setText("+52 6444-444-444");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Telefono:");
 
-        estadoTxt4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt4.setText("hola@ejemploc.com");
+        emailTxt4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emailTxt4.setText("hola@ejemploc.com");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Correo");
-
-        estadoTxt5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt5.setText("1:00pm- 6:00pm");
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("Lunes");
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("Martes");
-
-        estadoTxt6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt6.setText("1:00pm- 6:00pm");
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("Miercoles");
-
-        estadoTxt7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt7.setText("1:00pm- 6:00pm");
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("Jueves");
-
-        estadoTxt8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt8.setText("1:00pm- 6:00pm");
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Viernes");
-
-        estadoTxt9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        estadoTxt9.setText("1:00pm- 6:00pm");
+        jLabel10.setText("Correo:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -245,60 +204,28 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
                 .addComponent(nombreTxt)
                 .addGap(20, 20, 20))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estadoTxt3))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(estadoTxt)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(estadoTxt1)))))
-                .addGap(72, 72, 72))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estadoTxt2))
+                        .addComponent(jLabel10))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estadoTxt4))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt5))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt6))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt8))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt7))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(estadoTxt9)))))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(salarioTxt1)
+                    .addComponent(telefonoTxt2)
+                    .addComponent(emailTxt4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(puestoTxt3)
+                .addGap(55, 55, 55))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,50 +234,27 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
                 .addComponent(nombreTxt)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(32, 32, 32)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(estadoTxt))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(estadoTxt1)))
+                            .addComponent(jLabel9)
+                            .addComponent(puestoTxt3))
+                        .addGap(34, 34, 34))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(estadoTxt3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(estadoTxt2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(estadoTxt4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(emailTxt4))
+                .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(estadoTxt5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel8)
+                    .addComponent(telefonoTxt2))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(estadoTxt6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(estadoTxt7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(estadoTxt8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(estadoTxt9))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(salarioTxt1))
+                .addGap(18, 28, Short.MAX_VALUE))
         );
 
         jTable1.setAutoCreateRowSorter(true);
@@ -446,10 +350,13 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        ControlEmpleados.getInstase().navegarEmpleados(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        ControlEmpleados.getInstase().getManejadorEmpleados().modificarEmpleado(empleado);
+        ControlEmpleados.getInstase().navegarEmpleados(this);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
@@ -461,25 +368,10 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
     private javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnInfrestructura;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JLabel estadoTxt;
-    private javax.swing.JLabel estadoTxt1;
-    private javax.swing.JLabel estadoTxt2;
-    private javax.swing.JLabel estadoTxt3;
-    private javax.swing.JLabel estadoTxt4;
-    private javax.swing.JLabel estadoTxt5;
-    private javax.swing.JLabel estadoTxt6;
-    private javax.swing.JLabel estadoTxt7;
-    private javax.swing.JLabel estadoTxt8;
-    private javax.swing.JLabel estadoTxt9;
+    private javax.swing.JLabel emailTxt4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -491,39 +383,24 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel nombreTxt;
+    private javax.swing.JLabel puestoTxt3;
+    private javax.swing.JLabel salarioTxt1;
+    private javax.swing.JLabel telefonoTxt2;
     // End of variables declaration//GEN-END:variables
 
-//    
-   private void configurarTablaHorario(JTable tabla) {
-HorarioDTO horarioPrueba = new HorarioDTO();
-
-// Lunes: 9:00 - 11:00
-DiaHorarioDTO lunes1 = new DiaHorarioDTO();
-lunes1.setDia(DayOfWeek.MONDAY);
-lunes1.setHoraEntrada(LocalTime.of(9, 0));
-lunes1.setHoraSalida(LocalTime.of(11, 0));
-
-// Martes: 10:30 - 13:00
-DiaHorarioDTO martes1 = new DiaHorarioDTO();
-martes1.setDia(DayOfWeek.TUESDAY);
-martes1.setHoraEntrada(LocalTime.of(10, 30));
-martes1.setHoraSalida(LocalTime.of(13, 0));
-
-horarioPrueba.getDias().add(lunes1);
-horarioPrueba.getDias().add(martes1);
-
-// Configurar tabla
-configurarTablaHorario(tabla, horarioPrueba);
-
-      
+    private void llenarEmpleado(){
+        nombreTxt.setText(empleado.getNombre());
+        emailTxt4.setText(empleado.getEmail());
+        telefonoTxt2.setText(empleado.getTelefono());
+        puestoTxt3.setText(empleado.getTelefono());
+        salarioTxt1.setText(String.valueOf(empleado.getSalario()));     
     }
+
    
    private void configurarTablaHorario(JTable tabla, HorarioDTO horarioActual) {
 
-        // Columnas: primera = horas, luego los días
         String[] columnas = { "Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
 
-        // Generar horas
         java.util.List<String> horas = new java.util.ArrayList<>();
         java.time.LocalTime inicio = java.time.LocalTime.of(9, 0);
         java.time.LocalTime fin = java.time.LocalTime.of(22, 0);
@@ -638,7 +515,12 @@ configurarTablaHorario(tabla, horarioPrueba);
                 horarioActual.getDias().add(dh);
 
                 // Guardar el rango para pintar permanentemente
+                // Reemplazar el rango anterior del día
+                rangosPintados.get(columna).clear();
+
+                // Guardar el único rango válido
                 rangosPintados.get(columna).add(new int[]{start, end});
+
 
                 // Limpiar selección temporal
                 filaInicio[0] = null;
@@ -656,11 +538,8 @@ configurarTablaHorario(tabla, horarioPrueba);
         tabla.repaint();
     }
 
-
-
     private void configurarNavegacionPerfil() {
-        final ControlPantallas navegador = ControlPantallas.getInstase();
-        
-}
+        final ControlPantallas navegador = ControlPantallas.getInstase();  
+    }
 }
 

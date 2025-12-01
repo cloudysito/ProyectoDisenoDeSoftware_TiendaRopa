@@ -13,13 +13,17 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
  *
  * @author emiim
  */
-public class GUIAgregarEmpleado extends javax.swing.JFrame {
+public class GUIModificarEmpleado1 extends javax.swing.JFrame {
 
     /**
      * Creates new form GUICodigoProducto
      */
-    public GUIAgregarEmpleado() {
+    
+    private EmpleadoDTO empleado;
+    public GUIModificarEmpleado1(EmpleadoDTO empleado) {
         initComponents();
+        this.empleado = empleado;
+        llenarEmpleado();
         setLocationRelativeTo(null);
         
     }
@@ -339,7 +343,7 @@ public class GUIAgregarEmpleado extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(btnRegresar)
-                        .addGap(71, 71, 71)
+                        .addGap(70, 70, 70)
                         .addComponent(btnRegresar2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
@@ -399,7 +403,6 @@ public class GUIAgregarEmpleado extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        EmpleadoDTO empleado = new EmpleadoDTO();
         empleado.setNombre(jNombreText.getText());
         empleado.setApellidos(jApellidoText.getText());
         empleado.setContrasenia(jContraseniaText.getText());
@@ -409,7 +412,7 @@ public class GUIAgregarEmpleado extends javax.swing.JFrame {
         empleado.setTelefono(jTelefonoText.getText());
         empleado.setSalario((int) jSpinner1.getValue());
         
-        ControlEmpleados.getInstase().getManejadorEmpleados().guardarEmpleado(empleado);
+        ControlEmpleados.getInstase().getManejadorEmpleados().modificarEmpleado(empleado);
         ControlEmpleados.getInstase().navegarEmpleados(this);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -435,20 +438,22 @@ public class GUIAgregarEmpleado extends javax.swing.JFrame {
 
     private void btnRegresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresar2ActionPerformed
         // TODO add your handling code here:
-        EmpleadoDTO empleado = new EmpleadoDTO();
-        empleado.setNombre(jNombreText.getText());
-        empleado.setApellidos(jApellidoText.getText());
-        empleado.setContrasenia(jContraseniaText.getText());
-        empleado.setEmail(jCorreoText.getText());
-        empleado.setPuesto(jPuestoTExt.getText());
-        empleado.setRfc(jRfcText.getText());
-        empleado.setTelefono(jTelefonoText.getText());
-        empleado.setSalario((int) jSpinner1.getValue());
+        ControlEmpleados.getInstase().navegarAsignar(this, empleado);
         
-        EmpleadoDTO empleadoagregado = ControlEmpleados.getInstase().getManejadorEmpleados().guardarEmpleado(empleado);
-        ControlEmpleados.getInstase().navegarAsignar(this, empleadoagregado);
     }//GEN-LAST:event_btnRegresar2ActionPerformed
 
+    private void llenarEmpleado(){
+    jNombreText.setText(empleado.getNombre());
+    jApellidoText.setText(empleado.getApellidos());
+    jContraseniaText.setText(empleado.getContrasenia());
+    jCorreoText.setText(empleado.getEmail());
+    jPuestoTExt.setText(empleado.getPuesto());
+    jRfcText.setText(empleado.getRfc());
+    jTelefonoText.setText(empleado.getTelefono());
+    jSpinner1.setValue(empleado.getSalario());
+
+    }
+    
     /**
      * @param args the command line arguments
      */

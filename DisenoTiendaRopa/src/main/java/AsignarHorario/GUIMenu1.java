@@ -157,7 +157,6 @@ public class GUIMenu1 extends javax.swing.JFrame {
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
-        ControlEmpleados.getInstase().navegarAsignar(this);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
     

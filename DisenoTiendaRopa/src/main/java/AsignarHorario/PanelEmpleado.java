@@ -4,7 +4,9 @@
  */
 package AsignarHorario;
 
+import ControlPantallas.ControlEmpleados;
 import com.mycompany.dto_negocio.EmpleadoDTO;
+import javax.swing.JFrame;
 
 /**
  *
@@ -13,12 +15,14 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
 public class PanelEmpleado extends javax.swing.JPanel {
 
     EmpleadoDTO empleado;
+    JFrame frameActual;
     /**
      * Creates new form PanelEmpleado
      */
-    public PanelEmpleado(EmpleadoDTO empleado) {
+    public PanelEmpleado(EmpleadoDTO empleado, JFrame frameActual) {
         initComponents();
         this.empleado = empleado;
+        this.frameActual = frameActual;
         LlenarEmpleado();
     }
 
@@ -45,7 +49,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
         nombreTxt.setText("Nombre empleado");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Estado:");
+        jLabel2.setText("Puesto:");
 
         estadoTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         estadoTxt.setText("Activo");
@@ -57,6 +61,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
         horarioBtn.setBackground(new java.awt.Color(255, 238, 242));
         horarioBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         horarioBtn.setText("Asignar horario");
+        horarioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horarioBtnActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Imagen");
 
@@ -97,6 +106,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void horarioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horarioBtnActionPerformed
+        // TODO add your handling code here:
+        ControlEmpleados.getInstase().navegarAsignar(frameActual, empleado);
+    }//GEN-LAST:event_horarioBtnActionPerformed
 
     private void LlenarEmpleado(){
         nombreTxt.setText(empleado.getNombre() + " " + empleado.getApellidos());

@@ -55,10 +55,15 @@ public class ControlEmpleados {
         empleado.setVisible(true);
     }
     
-    public void navegarAsignar(JFrame frameActual) {
+    public void navegarAsignar(JFrame frameActual,EmpleadoDTO empleadoDTO) {
         cerrarFrameActual(frameActual);
-        
-        GUIAsignarHorarios empleado = new GUIAsignarHorarios(new EmpleadoDTO());
+        GUIAsignarHorarios empleado = new GUIAsignarHorarios(empleadoDTO);
+        empleado.setVisible(true);
+    }
+    
+    public void navegarModificar(JFrame frameActual,EmpleadoDTO empleadoDTO){
+        cerrarFrameActual(frameActual);
+        GUIModificarEmpleado1 empleado = new GUIModificarEmpleado1(empleadoDTO);
         empleado.setVisible(true);
     }
 }

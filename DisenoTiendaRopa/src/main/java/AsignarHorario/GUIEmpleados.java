@@ -214,6 +214,7 @@ public class GUIEmpleados extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        ControlEmpleados.getInstase().navegarMenuAdmin(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -251,7 +252,7 @@ public class GUIEmpleados extends javax.swing.JFrame {
         List<EmpleadoDTO> empleados = navegador.getManejadorEmpleados().buscarEmpleados(busqueda);
 
         for (EmpleadoDTO empleado : empleados) {
-            PanelEmpleado panelEmpleado = new PanelEmpleado(empleado);
+            PanelEmpleado panelEmpleado = new PanelEmpleado(empleado, this);
             jPanelEmpleados.add(panelEmpleado);
             jPanelEmpleados.add(Box.createRigidArea(new Dimension(0, 5)));
         }
