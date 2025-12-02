@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Fachada;
+package GenerarCodigo.Fachada;
 
-import Implementaciones.GeneradorCodigoBarras;
-import Interfaz.IGeneradorCodigoBarras;
+import GenerarCodigo.Implementaciones.GeneradorCodigoBarras;
+import GenerarCodigo.Interfaz.IGeneradorCodigoBarras;
 import java.awt.image.BufferedImage;
 
 /**

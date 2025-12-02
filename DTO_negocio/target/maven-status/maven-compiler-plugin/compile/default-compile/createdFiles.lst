@@ -3,7 +3,6 @@ com\mycompany\dto_negocio\RopaDTO.class
 com\mycompany\dto_negocio\BonificacionDTO.class
 com\mycompany\dto_negocio\VentaDTO.class
 com\mycompany\dto_negocio\RopaTallaDTO.class
-<<<<<<< HEAD
 com\mycompany\dto_negocio\DiaHorarioDTO.class
 com\mycompany\dto_negocio\ItemVentaDTO.class
 com\mycompany\dto_negocio\TallaDTO.class
@@ -16,14 +15,5 @@ com\mycompany\dto_negocio\TemaCapacitacionDTO.class
 com\mycompany\dto_negocio\DetalleVentaDTO.class
 com\mycompany\dto_negocio\PuntosDTO.class
 com\mycompany\dto_negocio\SolicitudReembolsoDTO.class
-=======
-com\mycompany\dto_negocio\RecompenzaDTO.class
-com\mycompany\dto_negocio\DiaHorarioDTO.class
-com\mycompany\dto_negocio\BonificacionRecompenzaDTO.class
-com\mycompany\dto_negocio\TallaDTO.class
-com\mycompany\dto_negocio\EmpleadoDTO.class
-com\mycompany\dto_negocio\CapacitacionDTO.class
-com\mycompany\dto_negocio\DetalleVentaDTO.class
->>>>>>> AdministrarEmpleadoCU_santi
 com\mycompany\dto_negocio\HorarioDTO.class
 com\mycompany\dto_negocio\PagoDTO.class

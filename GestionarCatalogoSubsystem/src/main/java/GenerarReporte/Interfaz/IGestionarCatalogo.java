@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Interfaz;
+package GenerarReporte.Interfaz;
 
 import com.mycompany.dto_negocio.RopaDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;

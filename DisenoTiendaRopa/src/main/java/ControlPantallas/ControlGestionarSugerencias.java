@@ -4,12 +4,13 @@
  */
 package ControlPantallas;
 
-import Fachada.FachadaGenerarReporte;
-import Fachada.FachadaGestionarSugerencias;
+
 import GUIsCUIAdminTendenciaSugerencia.GUIDetallesSugerencia;
 import GUIsCUIAdminTendenciaSugerencia.GUIMenuSugerencia;
-import Interfaz.IGenerarReporte;
-import Interfaz.IGestionarSugerencias;
+import GenerarReporte.Fachada.FachadaGenerarReporte;
+import GenerarReporte.Interfaz.IGenerarReporte;
+import GestionarSugerencia.Fachada.FachadaGestionarSugerencias;
+import GestionarSugerencia.Interfaz.IGestionarSugerencias;
 import com.mycompany.dto_negocio.SugerenciaDTO;
 import java.util.List;
 import javax.swing.JFrame;

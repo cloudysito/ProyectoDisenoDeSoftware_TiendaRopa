@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Fachada;
+package GenerarReporte.Fachada;
 
-import Implementaciones.GestorPDF;
-import Interfaz.IGenerarReporte;
+import GenerarReporte.Implementaciones.GestorPDF;
+import GenerarReporte.Interfaz.IGenerarReporte;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.SugerenciaDTO;
 import java.util.List;

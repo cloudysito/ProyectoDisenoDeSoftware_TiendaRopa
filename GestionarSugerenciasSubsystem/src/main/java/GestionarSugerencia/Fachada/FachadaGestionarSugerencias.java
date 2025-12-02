@@ -1,6 +1,7 @@
-package Fachada;
+package GestionarSugerencia.Fachada;
 
-import Interfaz.IGestionarSugerencias;
+import BOs.SugerenciaBO;
+import GestionarSugerencia.Interfaz.IGestionarSugerencias;
 import com.mycompany.dto_negocio.SugerenciaDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class FachadaGestionarSugerencias implements IGestionarSugerencias{
     @Override
     public List<SugerenciaDTO> filtrarSugerencias(String filtro) {
         try {
-            return SugerenciaBO.getInstance().filtrarSugerencias(filtro);
+            return SugerenciaBO.getIntance().filtrarSugerencias(filtro);
         } catch (Exception e) {
             System.err.println("Error en fachada al filtrar sugerencias: " + e.getMessage());
             return new ArrayList<>();
@@ -29,7 +30,7 @@ public class FachadaGestionarSugerencias implements IGestionarSugerencias{
     @Override
     public boolean cambiarEstadoSugerencia(SugerenciaDTO sugerencia, String nuevoEstado) {
        try {
-            SugerenciaBO.getInstance().cambiarEstadoSugerencia(sugerencia.getId(), nuevoEstado);
+            SugerenciaBO.getIntance().cambiarEstado(sugerencia , nuevoEstado);
             return true;
         } catch (Exception e) {
             System.err.println("Error en fachada al cambiar estado de sugerencia: " + e.getMessage());
