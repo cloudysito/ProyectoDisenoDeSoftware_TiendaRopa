@@ -15,10 +15,15 @@ import DisenoGUIs.GUIPagoTransferencia;
 import DisenoGUIs.GUIProducto;
 import DisenoGUIs.GUISeleccionMetodoPago;
 import DisenoGUIs.GUIVenderPrenda;
+import GUIDevolverPrenda.GUIBuscarVenta;
+import GUIDevolverPrenda.GUIConfirmacionReembolso;
+import GUIDevolverPrenda.GUIReembolsoPrenda;
+import GUIDevolverPrenda.GUISeleccionMetodoReembolso;
 import com.mycompany.aumentarventaempleado.Fachada.FachadaAumentarVentaEmpleado;
 import com.mycompany.aumentarventaempleado.Interfaz.IAumentarVentaEmpleado;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.SolicitudReembolsoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 import com.mycompany.escanearproductosubsystem.FachadaEscanearProducto;
 import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
@@ -47,6 +52,7 @@ public class ControlPantallas {
             realizarVentaSistema = new FachadaRealizarVenta();
             metodoPagoSistema = new FachadaMetodoPago();
             EmpleadoSistema = new FachadaAumentarVentaEmpleado();
+            instancia.controlReembolso = new ControlReembolso(instancia);
         }
         return instancia;
     }
@@ -115,7 +121,33 @@ public class ControlPantallas {
         GUISeleccionMetodoPago smp = new GUISeleccionMetodoPago(empleado,venta);
         smp.setVisible(true);
     }
+    
+    private ControlReembolso controlReembolso;
+    
+    public ControlReembolso getControlReembolso() {
+        return controlReembolso;
+    }
+    
+    public void navegarBuscarVenta(JFrame frame) {
+        cerrarFrameActual(frame);
+        new GUIBuscarVenta().setVisible(true);
+    }
 
+    public void navegarReembolsoPrenda(JFrame frame, VentaDTO venta) {
+        cerrarFrameActual(frame);
+        new GUIReembolsoPrenda(venta).setVisible(true);
+    }
+
+    public void navegarMetodoReembolso(JFrame frame, SolicitudReembolsoDTO solicitud) {
+        cerrarFrameActual(frame);
+        new GUISeleccionMetodoReembolso(solicitud).setVisible(true);
+    }
+
+    public void navegarConfirmacionReembolso(JFrame frame) {
+        cerrarFrameActual(frame);
+        new GUIConfirmacionReembolso().setVisible(true);
+    }
+    
     public ControlPantallas getInstancia() {
         return instancia;
     }

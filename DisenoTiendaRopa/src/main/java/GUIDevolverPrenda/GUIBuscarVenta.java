@@ -3,19 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+package GUIDevolverPrenda;
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.dto_negocio.DetalleVentaDTO;
-import javax.swing.JOptionPane;
+import com.mycompany.dto_negocio.EmpleadoDTO;
 
 /**
  *
  * @author emiim
  */
 public class GUIBuscarVenta extends javax.swing.JFrame {
-
-    private ControlPantallas control = ControlPantallas.getInstase();
-
+    
     public GUIBuscarVenta() {
         initComponents();
         setLocationRelativeTo(null);
@@ -274,24 +272,8 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVentaActionPerformed
-//        String idVenta = txtIdVenta.getText().trim();
-//        
-//        if (idVenta.isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID de venta.");
-//            return;
-//        }
-//
-//        try {
-//            TicketVentaDTO venta = control.getDevolverPrendaSistema().buscarVenta(idVenta);
-//            
-//            if (venta != null) {
-//                control.navegarDetalleDevolucion(this, venta);
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Venta no encontrada con ese ID.");
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Error al buscar: " + e.getMessage());
-//        }
+        String id = txtIdVenta.getText();
+        ControlPantallas.getInstase().getControlReembolso().buscarVenta(this, id);
     }//GEN-LAST:event_btnBuscarVentaActionPerformed
 
     private void txtIdVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVentaActionPerformed
@@ -299,7 +281,7 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdVentaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//        control.navegarMenuPrincipal(this);
+        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**

@@ -3,22 +3,39 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+package GUIDevolverPrenda;
+
 import ControlPantallas.ControlPantallas;
+import com.mycompany.dto_negocio.SolicitudReembolsoDTO;
 
 /**
  *
  * @author emiim
  */
-public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
-
+public class GUIConfirmacionReembolso extends javax.swing.JFrame {
+    private SolicitudReembolsoDTO solicitudExitosa;
+    
     /**
      * Creates new form GUIConfirmacionDevolucion
      */
-    public GUIConfirmacionDevolucion() {
+    public GUIConfirmacionReembolso() {
         initComponents();
         setLocationRelativeTo(null);
     }
 
+    public GUIConfirmacionReembolso(SolicitudReembolsoDTO solicitud) {
+        this.solicitudExitosa = solicitud;
+        initComponents();
+        setLocationRelativeTo(null);
+        mostrarDatos();
+    }
+    
+    private void mostrarDatos() {
+        if (solicitudExitosa != null) {
+            lbl1.setText("Monto devuelto: $" + String.format("%.2f", solicitudExitosa.getMontoTotal()));
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +54,7 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
         lblNombreProducto = new javax.swing.JLabel();
         lbl1 = new javax.swing.JLabel();
         btnInicio = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -117,18 +135,19 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
         lblNombreProducto.setText("Reembolso realizado");
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbl1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl1.setText("Cantidad: ");
+        lbl1.setText("cant");
 
         btnInicio.setBackground(new java.awt.Color(239, 207, 227));
         btnInicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnInicio.setForeground(new java.awt.Color(0, 0, 0));
         btnInicio.setText("Volver al inicio");
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Cantidad:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -138,14 +157,16 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(btnInicio))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(lbl1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addComponent(lblNombreProducto)))
+                        .addComponent(lblNombreProducto))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnInicio)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl1)))))
                 .addContainerGap(211, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -155,10 +176,12 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
                 .addGap(129, 129, 129)
                 .addComponent(lblNombreProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl1)
+                    .addComponent(jLabel4))
+                .addGap(49, 49, 49)
                 .addComponent(btnInicio)
-                .addGap(62, 62, 62))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(234, 154, 178));
@@ -256,7 +279,7 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-//        ControlPantallas.getInstase().navegarMenuPrincipal(this);
+        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
     }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
@@ -276,20 +299,21 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIConfirmacionDevolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIConfirmacionReembolso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIConfirmacionDevolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIConfirmacionReembolso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIConfirmacionDevolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIConfirmacionReembolso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIConfirmacionDevolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIConfirmacionReembolso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIConfirmacionDevolucion().setVisible(true);
+                new GUIConfirmacionReembolso().setVisible(true);
             }
         });
     }
@@ -303,6 +327,7 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

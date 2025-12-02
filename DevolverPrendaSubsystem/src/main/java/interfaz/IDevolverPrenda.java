@@ -16,5 +16,5 @@ public interface IDevolverPrenda {
     EmpleadoDTO autenticar(String usuario, String contrasenia);
     VentaDTO buscarVenta(String idVenta);
     boolean validarCantidades(SolicitudReembolsoDTO solicitud);
-    boolean procesarDevolucion(SolicitudReembolsoDTO solicitud);
+    boolean procesarReembolso(SolicitudReembolsoDTO solicitud);
 }

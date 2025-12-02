@@ -81,6 +81,11 @@
             <artifactId>GestionarSugerenciasSubsystem</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>1</groupId>
+            <artifactId>DevolverPrendaSubsystem</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
