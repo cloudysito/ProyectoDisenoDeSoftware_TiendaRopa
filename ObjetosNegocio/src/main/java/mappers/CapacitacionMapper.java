@@ -22,8 +22,8 @@ public class CapacitacionMapper {
         if (dto.getIdCapacitacion()!= null) {
             c.setId(new ObjectId(dto.getIdCapacitacion()));
         }
-        c.setTemaCapacitacion(dto.getTemaCapacitacion());
-        c.setEstado(dto.getEstado());
+//        c.setTemaCapacitacion(dto.getTemaCapacitacion());
+//        c.setEstado(dto.getEstado());
         return c;
     }
     
@@ -33,8 +33,8 @@ public class CapacitacionMapper {
         }
         CapacitacionDTO dto = new CapacitacionDTO();
         dto.setIdCapacitacion(String.valueOf(c.getId()));
-        dto.setTemaCapacitacion(c.getTemaCapacitacion());
-        dto.setEstado(c.getEstado());
+//        dto.setTemaCapacitacion(c.getTemaCapacitacion());
+//        dto.setEstado(c.getEstado());
         return dto;
     }
 }

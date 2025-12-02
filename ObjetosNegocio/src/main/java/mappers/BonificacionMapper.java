@@ -22,8 +22,8 @@ public class BonificacionMapper {
         if (dto.getIdBonificacion()!= null) {
             b.setIdBonificacion(new ObjectId(dto.getIdBonificacion()));
         }
-        b.setDescripcion(dto.ge());
-        b.setCantidadVenta(dto.getCantidadVenta());
+//        b.setDescripcion(dto.ge());
+//        b.setCantidadVenta(dto.getCantidadVenta());
         return b;
     }
     
@@ -32,9 +32,9 @@ public class BonificacionMapper {
             return null;
         }
         BonificacionDTO dto = new BonificacionDTO();
-        dto.setIdBonificacion(String.valueOf(b.getId()));
-        dto.setDescripcion(b.getDescripcion());
-        dto.setCantidadVenta(b.getCantidadVenta());
+//        dto.setIdBonificacion(String.valueOf(b.getId()));
+//        dto.setDescripcion(b.getDescripcion());
+//        dto.setCantidadVenta(b.getCantidadVenta());
         return dto;
     }
 }
