@@ -46,7 +46,7 @@ public class FachadaRealizarVenta implements IRealizarVenta {
     @Override
     public DetalleVentaDTO reducirStock(DetalleVentaDTO detalleVenta) {
        
-//        RopaTallaBO.getInstance().reducirStock(detalleVenta);
+        RopaTallaBO.getInstance().reducirStock(detalleVenta);
         return detalleVenta;
     }
 

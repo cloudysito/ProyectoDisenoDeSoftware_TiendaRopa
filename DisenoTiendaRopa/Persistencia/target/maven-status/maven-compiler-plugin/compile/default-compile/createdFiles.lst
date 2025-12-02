@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Interfaces\IRecompenzaDAO.class
 Interfaces\IBonificacionRecompenzaDAO.class
 Implementaciones\RopaTallaDAO.class
@@ -9,6 +10,12 @@ Implementaciones\EmpleadoDAO.class
 Implementaciones\CapacitacionDAO.class
 Interfaces\IVentaDAO.class
 Interfaces\IReembolsoDAO.class
+=======
+Implementaciones\CapacitacionDAO.class
+Interfaces\IVentaDAO.class
+Interfaces\IRecompenzaDAO.class
+Interfaces\IBonificacionRecompenzaDAO.class
+>>>>>>> AdministrarEmpleadoCU_santi
 Implementaciones\RopaDAO.class
 Interfaces\IRopaDAO.class
 Interfaces\IRopaTallaDAO.class
@@ -16,12 +23,23 @@ Interfaces\ITallaDAO.class
 Implementaciones\VentaDAO.class
 Interfaces\ICapacitacionDAO.class
 Interfaces\IEmpleadoDAO.class
+<<<<<<< HEAD
 Implementaciones\ReembolsoDAO.class
+=======
+>>>>>>> AdministrarEmpleadoCU_santi
 Interfaces\IBonificacionDAO.class
 pruebas\prueba.class
 Implementaciones\BonificacionDAO.class
 Implementaciones\TallaDAO.class
 Exceptions\DAOException.class
 Implementaciones\ConnectionMongoDB.class
+<<<<<<< HEAD
 Implementaciones\RecompenzaDAO.class
 Exceptions\MongoException.class
+=======
+Implementaciones\RopaTallaDAO.class
+Implementaciones\RecompenzaDAO.class
+Exceptions\MongoException.class
+Implementaciones\BonificacionRecompenzaDAO.class
+Implementaciones\EmpleadoDAO.class
+>>>>>>> AdministrarEmpleadoCU_santi

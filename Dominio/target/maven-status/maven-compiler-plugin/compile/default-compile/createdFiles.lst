@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 objetosnegocio\dominioPojo\DetalleReembolso.class
 objetosnegocio\dominioPojo\TemaCapacitacion.class
 objetosnegocio\dominioPojo\Venta.class
@@ -7,6 +8,19 @@ objetosnegocio\dominioPojo\Recompensa.class
 objetosnegocio\dominioPojo\DetalleVenta.class
 objetosnegocio\dominioPojo\Bonificacion.class
 objetosnegocio\dominioPojo\Capacitacion.class
+=======
+objetosnegocio\dominioPojo\Ropa.class
+objetosnegocio\dominioPojo\BonificacionRecompenza.class
+objetosnegocio\dominioPojo\Venta.class
+objetosnegocio\dominioPojo\DiaHorario.class
+objetosnegocio\dominioPojo\Horario.class
+objetosnegocio\dominioPojo\Recompenza.class
+objetosnegocio\dominioPojo\Empleado.class
+objetosnegocio\dominioPojo\DetalleVenta.class
+objetosnegocio\dominioPojo\Bonificacion.class
+objetosnegocio\dominioPojo\Capacitacion.class
+objetosnegocio\dominioPojo\Talla.class
+>>>>>>> AdministrarEmpleadoCU_santi
 objetosnegocio\dominioPojo\RopaTalla.class
 objetosnegocio\dominioPojo\Ropa.class
 objetosnegocio\dominioPojo\Puntos.class
