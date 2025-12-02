@@ -5,7 +5,9 @@
 package AsignarHorario;
 
 import ControlPantallas.ControlEmpleados;
+import ControlPantallas.ControlGestionarSugerencias;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlRopa;
 
 /**
  *
@@ -94,7 +96,7 @@ public class GUIMenu1 extends javax.swing.JFrame {
 
         btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
         btnCalcularTalla.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCalcularTalla.setText("Infrestructura");
+        btnCalcularTalla.setText("sugerencia");
         btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalcularTallaActionPerformed(evt);
@@ -153,10 +155,12 @@ public class GUIMenu1 extends javax.swing.JFrame {
 
     private void btnVenderPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderPrendaActionPerformed
         // TODO add your handling code here:
+        ControlRopa.getInstase().navegarGestionCatalogo(this);
     }//GEN-LAST:event_btnVenderPrendaActionPerformed
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
+        ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
     

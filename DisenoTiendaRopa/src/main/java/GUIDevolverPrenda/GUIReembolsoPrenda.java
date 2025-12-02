@@ -6,6 +6,7 @@
 package GUIDevolverPrenda;
 
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.DetalleReembolsoDTO;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
@@ -430,11 +431,11 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
             return;
         }
         
-        ControlPantallas.getInstase().getControlReembolso().irASeleccionMetodo(this, listaParaDevolver, totalCalculado);
+        ControlReembolso.getInstase().irASeleccionMetodo(this, listaParaDevolver, totalCalculado);
     }//GEN-LAST:event_btnReembolsarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        control.getControlReembolso().cancelar(this);
+//        control.getControlReembolso().cancelar(this);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**

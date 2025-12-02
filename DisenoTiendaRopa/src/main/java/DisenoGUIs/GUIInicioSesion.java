@@ -150,8 +150,10 @@ public class GUIInicioSesion extends javax.swing.JFrame {
         if(empleado != null){
         navegador.navegarMenuPrincipal(this, empleado);
         }
-//        final ControlEmpleados navegador = ControlEmpleados.getInstase();
-//        navegador.navegarMenuAdmin(this);
+        else {
+        System.out.println(empleado);
+        ControlEmpleados.getInstase().navegarMenuAdmin(this);
+        }
     }//GEN-LAST:event_btnAccederActionPerformed
 
     /**

@@ -13,6 +13,7 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.SolicitudReembolsoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 import fachada.FachadaDevolverPrenda;
+import interfaz.IDevolverPrenda;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,15 +23,23 @@ import javax.swing.JOptionPane;
  * @author emiim
  */
 public class ControlReembolso {
-    private ControlPantallas controlGeneral;
-    private FachadaDevolverPrenda fachada;
+    private static ControlReembolso  instancia;
+    private static IDevolverPrenda fachada;
     private EmpleadoDTO empleadoActual;
     private VentaDTO ventaEncontrada;
     private SolicitudReembolsoDTO solicitudActual;
     
-    public ControlReembolso(ControlPantallas controlGeneral) {
-        this.controlGeneral = controlGeneral;
+    public ControlReembolso() {
         this.fachada = new FachadaDevolverPrenda();
+    }
+    
+    public static synchronized ControlReembolso getInstase() {
+        if (instancia == null) {
+            instancia = new ControlReembolso();
+            fachada = new FachadaDevolverPrenda();
+           
+        }
+        return instancia;
     }
 
     public void iniciarFlujo(JFrame frameAnterior, EmpleadoDTO empleado) {
@@ -90,7 +99,7 @@ public class ControlReembolso {
         solicitudActual.setMetodoReembolso(metodoPago);
         
         try {
-            boolean exito = fachada.procesarDevolucion(solicitudActual);
+            boolean exito = fachada.procesarReembolso(solicitudActual);
             
             if (exito) {
                 frameActual.dispose();
@@ -104,7 +113,5 @@ public class ControlReembolso {
         }
     }
     
-    public void cancelar(JFrame frame) {
-        controlGeneral.navegarMenuPrincipal(frame, empleadoActual);
-    }
+    
 }

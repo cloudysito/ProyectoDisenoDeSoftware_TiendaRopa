@@ -18,7 +18,7 @@ public class ControlCalcularTalla {
     private static ControlCalcularTalla instancia;
     private static ICalcularTalla calcularTalla;
     
-    private static synchronized ControlCalcularTalla getIntase(){
+    public  static synchronized ControlCalcularTalla getIntase(){
         if(instancia == null){
             instancia = new ControlCalcularTalla();
             calcularTalla = new FachadaCalcularTalla();

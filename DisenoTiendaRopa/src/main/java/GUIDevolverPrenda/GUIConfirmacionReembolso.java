@@ -279,7 +279,7 @@ public class GUIConfirmacionReembolso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+//        ControlReembolso..cancelar(this);
     }//GEN-LAST:event_btnInicioActionPerformed
 
     /**

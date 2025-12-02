@@ -1,5 +1,9 @@
 package BOs;
 
+import Implementaciones.EmpleadoDAO;
+import Implementaciones.ReembolsoDAO;
+import Implementaciones.RopaTallaDAO;
+import Implementaciones.VentaDAO;
 import Interfaces.IEmpleadoDAO;
 import Interfaces.IReembolsoDAO;
 import Interfaces.IRopaTallaDAO;
@@ -29,25 +33,12 @@ public class ReembolsoBO {
     private IEmpleadoDAO empleadoDAO;
     private IVentaDAO ventaDAO;
     private IReembolsoDAO reembolsoDAO;
-    private ISistemaPagos sistemaPagos;
 
     private ReembolsoBO() {
-    }
-
-    public void setDependencias(IEmpleadoDAO empleadoDAO, IVentaDAO ventaDAO, IRopaTallaDAO ropaTallaDAO, IReembolsoDAO devolucionDAO, ISistemaPagos sistemaPagos) {
-        this.empleadoDAO = empleadoDAO;
-        this.ventaDAO = ventaDAO;
-        this.ropaTallaDAO = ropaTallaDAO;
-        this.reembolsoDAO = devolucionDAO;
-        this.sistemaPagos = sistemaPagos;
-    }
-    
-    public ReembolsoBO(IRopaTallaDAO ropaTallaDAO, IEmpleadoDAO empleadoDAO, IVentaDAO ventaDAO, ITallaDAO tallaDAO, IReembolsoDAO reembolsoDAO, ISistemaPagos sistemaPagos) {
-        this.ropaTallaDAO = ropaTallaDAO;
-        this.empleadoDAO = empleadoDAO;
-        this.ventaDAO = ventaDAO;
-        this.reembolsoDAO = reembolsoDAO;
-        this.sistemaPagos = sistemaPagos;
+        this.ropaTallaDAO = new RopaTallaDAO();
+        this.empleadoDAO = new EmpleadoDAO();
+        this.ventaDAO = new VentaDAO();
+        this.reembolsoDAO = new ReembolsoDAO();
     }
 
     public static synchronized ReembolsoBO getInstance() {
@@ -73,16 +64,12 @@ public class ReembolsoBO {
         }
     }
     
-    public boolean procesarReembolso(SolicitudReembolsoDTO solicitudDTO) {
-        if (sistemaPagos == null || reembolsoDAO == null) {
-            throw new RuntimeException("Dependencias del BO no inicializadas.");
-        }
-        Reembolso devolucionEntity = ReembolsoMapper.toEntity(solicitudDTO);
+    public boolean procesarReembolso(SolicitudReembolsoDTO solicitudDTO, boolean  pagoExitoso) {
+       
 
-        boolean pagoExitoso = sistemaPagos.ejecutarReembolso(
-            devolucionEntity.getTotalReembolsado(),
-            devolucionEntity.getMetodoReembolso()
-        );
+       
+        
+        Reembolso devolucionEntity = ReembolsoMapper.toEntity(solicitudDTO);
 
         if (!pagoExitoso) {
             return false;

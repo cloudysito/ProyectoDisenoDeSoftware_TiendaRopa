@@ -52,7 +52,7 @@ public class ControlPantallas {
             realizarVentaSistema = new FachadaRealizarVenta();
             metodoPagoSistema = new FachadaMetodoPago();
             EmpleadoSistema = new FachadaAumentarVentaEmpleado();
-            instancia.controlReembolso = new ControlReembolso(instancia);
+           
         }
         return instancia;
     }
@@ -121,13 +121,6 @@ public class ControlPantallas {
         GUISeleccionMetodoPago smp = new GUISeleccionMetodoPago(empleado,venta);
         smp.setVisible(true);
     }
-    
-    private ControlReembolso controlReembolso;
-    
-    public ControlReembolso getControlReembolso() {
-        return controlReembolso;
-    }
-    
     public void navegarBuscarVenta(JFrame frame) {
         cerrarFrameActual(frame);
         new GUIBuscarVenta().setVisible(true);

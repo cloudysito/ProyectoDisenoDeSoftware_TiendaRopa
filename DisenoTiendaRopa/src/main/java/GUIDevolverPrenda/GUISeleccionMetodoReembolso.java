@@ -5,6 +5,7 @@
 package GUIDevolverPrenda;
 
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.SolicitudReembolsoDTO;
 import javax.swing.JOptionPane;
 
@@ -39,7 +40,7 @@ public class GUISeleccionMetodoReembolso extends javax.swing.JFrame {
     private void procesar(String metodo) {
         if (solicitud != null) {
             solicitud.setMetodoReembolso(metodo);
-            ControlPantallas.getInstase().getControlReembolso().procesarReembolso(this, metodo);
+            ControlReembolso.getInstase().procesarReembolso(this, metodo);
         } else {
             JOptionPane.showMessageDialog(this, "Error: No hay datos de solicitud.");
         }
@@ -357,7 +358,7 @@ public class GUISeleccionMetodoReembolso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+//        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfectivoActionPerformed

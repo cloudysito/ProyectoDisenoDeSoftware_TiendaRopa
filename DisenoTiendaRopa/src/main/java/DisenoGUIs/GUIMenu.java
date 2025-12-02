@@ -4,6 +4,7 @@
  */
 package DisenoGUIs;
 
+import ControlPantallas.ControlCalcularTalla;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
@@ -252,6 +253,7 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnDevolverPrendaActionPerformed
 
     private void btnVenderPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderPrendaActionPerformed
@@ -261,6 +263,7 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
+        ControlCalcularTalla.getIntase().navegarCalcularTalla(this, empleado);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed

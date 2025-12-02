@@ -6,6 +6,7 @@
 package GUIDevolverPrenda;
 
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 
 /**
@@ -273,7 +274,7 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
 
     private void btnBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVentaActionPerformed
         String id = txtIdVenta.getText();
-        ControlPantallas.getInstase().getControlReembolso().buscarVenta(this, id);
+        ControlReembolso.getInstase().buscarVenta(this, id);
     }//GEN-LAST:event_btnBuscarVentaActionPerformed
 
     private void txtIdVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVentaActionPerformed
@@ -281,7 +282,7 @@ public class GUIBuscarVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdVentaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+//        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
