@@ -19,10 +19,10 @@ public class RecompenzaMapper {
             return null;
         }
         Recompensa r = new Recompensa();
-        if (dto.getIdRecompenza()!= null) {
-            r.setId(new ObjectId(dto.getIdRecompenza()));
+        if (dto.getIdRecompensa()!= null) {
+            r.setIdRecompensa(new ObjectId(dto.getIdRecompensa()));
         }
-        r.setNombreRecompenza(dto.getNombreRecompenza());
+        r.setNombreRecompensa(dto.getNombreRecompensa());
         r.setPuntosNecesarios(dto.getPuntosNecesarios());
         return r;
     }
@@ -32,8 +32,8 @@ public class RecompenzaMapper {
             return null;
         }
         RecompensaDTO dto = new RecompensaDTO();
-        dto.setId(String.valueOf(r.getId()));
-        dto.setNombreRecompenza(r.getNombreRecompenza());
+        dto.setIdRecompensa(r.getIdRecompensa().toHexString());
+        dto.setNombreRecompensa(r.getNombreRecompensa());
         dto.setPuntosNecesarios(r.getPuntosNecesarios());
         return dto;
     }

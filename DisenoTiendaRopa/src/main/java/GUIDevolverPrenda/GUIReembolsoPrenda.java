@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package DisenoGUIs;
+
 
 import ControlPantallas.ControlPantallas;
-import com.mycompany.dto_negocio.DetalleDevolucionDTO;
-import com.mycompany.dto_negocio.DetalleVentaDTO;
-import com.mycompany.dto_negocio.SolicitudDevolucionDTO;
-import com.mycompany.dto_negocio.ItemVentaDTO;
-import com.mycompany.dto_negocio.TicketVentaDTO;
+//import com.mycompany.dto_negocio.DetalleDevolucionDTO;
+//import com.mycompany.dto_negocio.DetalleVentaDTO;
+//import com.mycompany.dto_negocio.SolicitudDevolucionDTO;
+//import com.mycompany.dto_negocio.ItemVentaDTO;
+//import com.mycompany.dto_negocio.TicketVentaDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -23,19 +23,19 @@ import javax.swing.table.DefaultTableModel;
 public class GUIReembolsoPrenda extends javax.swing.JFrame {
 
     private ControlPantallas control = ControlPantallas.getInstase();
-    private TicketVentaDTO ventaActual;
+//    private TicketVentaDTO ventaActual;
     
     /**
      * Creates new form GUIDetalleDevolucion
      */
-    public GUIReembolsoPrenda(TicketVentaDTO venta) {
-        this.ventaActual = venta;
-        initComponents();
-        configurarTabla();
-        llenarTabla();  
-        agregarListenerCambios();
-        setLocationRelativeTo(null);
-    }
+//    public GUIReembolsoPrenda(TicketVentaDTO venta) {
+//        this.ventaActual = venta;
+//        initComponents();
+//        configurarTabla();
+//        llenarTabla();  
+//        agregarListenerCambios();
+//        setLocationRelativeTo(null);
+//    }
     
     public GUIReembolsoPrenda() {
         initComponents();
@@ -57,21 +57,21 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
     }
     
     private void llenarTabla() {
-        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
-        model.setRowCount(0);
-        
-        if (ventaActual != null && ventaActual.getItemsComprados() != null) {
-            for (ItemVentaDTO item : ventaActual.getItemsComprados()) {
-                model.addRow(new Object[]{
-                    item.getIdRopaTalla(),
-                    item.getNombrePrenda(),
-                    item.getTalla(),
-                    item.getPrecioUnitario(),
-                    item.getCantidadComprada(),
-                    0 
-                });
-            }
-        }
+//        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
+//        model.setRowCount(0);
+//        
+//        if (ventaActual != null && ventaActual.getItemsComprados() != null) {
+//            for (ItemVentaDTO item : ventaActual.getItemsComprados()) {
+//                model.addRow(new Object[]{
+//                    item.getIdRopaTalla(),
+//                    item.getNombrePrenda(),
+//                    item.getTalla(),
+//                    item.getPrecioUnitario(),
+//                    item.getCantidadComprada(),
+//                    0 
+//                });
+//            }
+//        }
     }
     
     private void agregarListenerCambios() {
@@ -398,57 +398,57 @@ public class GUIReembolsoPrenda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnReembolsarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReembolsarActionPerformed
-        List<DetalleDevolucionDTO> listaDevolver = new ArrayList<>();
-        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
-        
-        double totalDinero = 0.0; 
-        
-        for (int i = 0; i < model.getRowCount(); i++) {
-            int devolver = (int) model.getValueAt(i, 5); 
-            
-            if (devolver > 0) {
-                int comprados = (int) model.getValueAt(i, 4);
-                
-                if (devolver > comprados) {
-                    JOptionPane.showMessageDialog(this, "Error: No puedes devolver más de lo comprado.");
-                    return;
-                }
-
-                String id = (String) model.getValueAt(i, 0);
-                String nombre = (String) model.getValueAt(i, 1);
-                String talla = (String) model.getValueAt(i, 2);
-                double precio = (double) model.getValueAt(i, 3);
-                double subtotal = devolver * precio;
-                
-                totalDinero += subtotal; 
-                
-                DetalleDevolucionDTO item = new DetalleDevolucionDTO();
-                item.setIdRopaTalla(id);
-                item.setNombrePrenda(nombre);
-                item.setTalla(talla);
-                item.setCantidadDevuelta(devolver);
-                item.setSubtotalReembolsado(subtotal);
-                
-                listaDevolver.add(item);
-            }
-        }
-
-        if (listaDevolver.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Seleccione al menos un artículo.");
-            return;
-        }
-
-        SolicitudDevolucionDTO solicitud = new SolicitudDevolucionDTO();
-        solicitud.setIdVentaOriginal(ventaActual.getIdVenta());
-        solicitud.setMontoTotal(totalDinero); 
-        
-        solicitud.setListaDetalles(listaDevolver);
-
-        control.navegarMetodoReembolso(this, solicitud);
+//        List<DetalleDevolucionDTO> listaDevolver = new ArrayList<>();
+//        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
+//        
+//        double totalDinero = 0.0; 
+//        
+//        for (int i = 0; i < model.getRowCount(); i++) {
+//            int devolver = (int) model.getValueAt(i, 5); 
+//            
+//            if (devolver > 0) {
+//                int comprados = (int) model.getValueAt(i, 4);
+//                
+//                if (devolver > comprados) {
+//                    JOptionPane.showMessageDialog(this, "Error: No puedes devolver más de lo comprado.");
+//                    return;
+//                }
+//
+//                String id = (String) model.getValueAt(i, 0);
+//                String nombre = (String) model.getValueAt(i, 1);
+//                String talla = (String) model.getValueAt(i, 2);
+//                double precio = (double) model.getValueAt(i, 3);
+//                double subtotal = devolver * precio;
+//                
+//                totalDinero += subtotal; 
+//                
+//                DetalleDevolucionDTO item = new DetalleDevolucionDTO();
+//                item.setIdRopaTalla(id);
+//                item.setNombrePrenda(nombre);
+//                item.setTalla(talla);
+//                item.setCantidadDevuelta(devolver);
+//                item.setSubtotalReembolsado(subtotal);
+//                
+//                listaDevolver.add(item);
+//            }
+//        }
+//
+//        if (listaDevolver.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Seleccione al menos un artículo.");
+//            return;
+//        }
+//
+//        SolicitudDevolucionDTO solicitud = new SolicitudDevolucionDTO();
+//        solicitud.setIdVentaOriginal(ventaActual.getIdVenta());
+//        solicitud.setMontoTotal(totalDinero); 
+//        
+//        solicitud.setListaDetalles(listaDevolver);
+//
+//        control.navegarMetodoReembolso(this, solicitud);
     }//GEN-LAST:event_btnReembolsarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        control.navegarMenuPrincipal(this);
+//        control.navegarMenuPrincipal(this);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**

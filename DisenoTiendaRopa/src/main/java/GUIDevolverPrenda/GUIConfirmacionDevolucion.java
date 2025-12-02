@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
 
@@ -257,7 +256,7 @@ public class GUIConfirmacionDevolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        ControlPantallas.getInstase().navegarMenuPrincipal(this);
+//        ControlPantallas.getInstase().navegarMenuPrincipal(this);
     }//GEN-LAST:event_btnInicioActionPerformed
 
     /**

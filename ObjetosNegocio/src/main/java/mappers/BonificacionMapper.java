@@ -20,9 +20,9 @@ public class BonificacionMapper {
         }
         Bonificacion b = new Bonificacion();
         if (dto.getIdBonificacion()!= null) {
-            b.setId(new ObjectId(dto.getIdBonificacion()));
+            b.setIdBonificacion(new ObjectId(dto.getIdBonificacion()));
         }
-        b.setDescripcion(dto.getDescripcion());
+        b.setDescripcion(dto.ge());
         b.setCantidadVenta(dto.getCantidadVenta());
         return b;
     }
