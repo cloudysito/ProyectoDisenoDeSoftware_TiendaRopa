@@ -108,8 +108,8 @@ public class RopaTallaBO {
     }
     public DetalleVentaDTO reducirStock(DetalleVentaDTO ropaTallaDTO){
     try {
-           System.out.println(ropaTallaDTO.getIdDetalleVenta());
-            ropaTallaDAO.reducirStock(ropaTallaDTO.getIdDetalleVenta(), ropaTallaDTO.getCantidadVendida());
+           
+            ropaTallaDAO.reducirStock(ropaTallaDTO.getRopaTalla().getIdRopaTalla(), ropaTallaDTO.getCantidadVendida());
             return ropaTallaDTO;
 
         } catch (DAOException e) {
