@@ -12,6 +12,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
 import objetosnegocio.dominioPojo.Empleado;
@@ -31,12 +32,12 @@ public class SugerenciaDAO implements ISugerenciaDAO {
     public SugerenciaDAO() {
         this.connection = new ConnectionMongoDB();
     }
-    
+
     private MongoCollection<Sugerencia> getCollection(MongoClient client) {
         MongoDatabase database = client.getDatabase(ConnectionMongoDB.NOMBRE_DB);
         return database.getCollection(NOMBRE_COLLECTION, Sugerencia.class);
     }
-    
+
     @Override
     public Sugerencia guardarSugerencia(Sugerencia sugerencia) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
@@ -76,7 +77,6 @@ public class SugerenciaDAO implements ISugerenciaDAO {
         }
     }
 
-
     @Override
     public Sugerencia buscarPorId(String idBonificacion) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
@@ -110,7 +110,7 @@ public class SugerenciaDAO implements ISugerenciaDAO {
 
             MongoCollection<Sugerencia> collection = getCollection(client);
 
-            Bson filtroNombre = Filters.regex("nombre", nombreEmpleado,"i");
+            Bson filtroNombre = Filters.regex("nombre", nombreEmpleado, "i");
 
             List<Sugerencia> listaResultados = collection.find(filtroNombre).into(new ArrayList<>());
 
@@ -120,5 +120,35 @@ public class SugerenciaDAO implements ISugerenciaDAO {
             throw new MongoException("Error al buscar ropa por ID: " + nombreEmpleado, e.getCause());
         }
     }
-    
+
+    public List<Sugerencia> buscarPorEstado(String estado) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+            MongoCollection<Sugerencia> collection = getCollection(client);
+
+            Bson filtroEstado = Filters.regex("estado", "^" + estado + "$", "i");
+
+            return collection.find(filtroEstado).into(new ArrayList<>());
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al buscar sugerencias por estado: " + estado, e.getCause());
+        }
+    }
+
+    public boolean actualizarEstado(String idSugerencia, String nuevoEstado) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+            MongoCollection<Sugerencia> collection = getCollection(client);
+
+            Bson filtroId = Filters.eq("_id", new org.bson.types.ObjectId(idSugerencia));
+
+            Bson actualizacion = Updates.set("estado", nuevoEstado);
+
+            UpdateResult resultado = collection.updateOne(filtroId, actualizacion);
+
+            return resultado.getModifiedCount() > 0;
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al actualizar el estado de la sugerencia: " + idSugerencia, e.getCause());
+        }
+    }
+
 }

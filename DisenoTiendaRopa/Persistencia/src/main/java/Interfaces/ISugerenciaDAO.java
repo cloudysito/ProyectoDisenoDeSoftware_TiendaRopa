@@ -22,4 +22,8 @@ public interface ISugerenciaDAO {
      List<Sugerencia> buscarTodos() throws MongoException;
     
     List<Sugerencia> buscarPorNombre(String nombreEmpleado);
+    
+    List<Sugerencia> buscarPorEstado(String estado) throws MongoException;
+    
+    boolean actualizarEstado(String idSugerencia, String nuevoEstado) throws MongoException;
 }
