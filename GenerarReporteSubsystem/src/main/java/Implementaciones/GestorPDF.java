@@ -13,7 +13,9 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.SugerenciaDTO;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -71,6 +73,48 @@ public class GestorPDF {
         PdfPCell celda = new PdfPCell(new Phrase(texto, FUENTE_CABECERA));
         celda.setHorizontalAlignment(Element.ALIGN_CENTER);
         tabla.addCell(celda);
+    }
+
+    public void generarPDFSugerencias(List<SugerenciaDTO> lista, String ruta, String tituloFiltro) throws Exception {
+        Document documento = new Document();
+        PdfWriter.getInstance(documento, new FileOutputStream(ruta));
+        documento.open();
+
+        Paragraph titulo = new Paragraph("Reporte de Sugerencias " + tituloFiltro, FUENTE_TITULO);
+        titulo.setAlignment(Element.ALIGN_CENTER);
+        documento.add(titulo);
+        documento.add(new Paragraph(" "));
+
+        PdfPTable tabla = new PdfPTable(4);
+        agregarCabecera(tabla, "Fecha");
+        agregarCabecera(tabla, "Nombre del Empleado");
+        agregarCabecera(tabla, "Descripción");
+        agregarCabecera(tabla, "Estado");
+
+        for (SugerenciaDTO s : lista) {
+            String fecha = (s.getFechaPublicacion() != null) ? s.getFechaPublicacion().toString() : "-";
+            EmpleadoDTO empleado = s.getEmpleadoDTO();
+
+            String nombreCompleto = "Anónimo";
+
+            if (empleado != null) {
+                String nombre = (empleado.getNombre() != null) ? empleado.getNombre() : "";
+                String apellido = (empleado.getApellidos() != null) ? empleado.getApellidos() : "";
+
+                nombreCompleto = (nombre + " " + apellido).trim();
+
+                if (nombreCompleto.isEmpty()) {
+                    nombreCompleto = "Anónimo";
+                }
+            }
+
+            tabla.addCell(fecha);
+            tabla.addCell(nombreCompleto);
+            tabla.addCell(s.getDescripcion());
+            tabla.addCell(s.getEstado());
+        }
+        documento.add(tabla);
+        documento.close();
     }
 
 }

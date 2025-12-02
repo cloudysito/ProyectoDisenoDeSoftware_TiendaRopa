@@ -7,6 +7,7 @@ package Fachada;
 import Implementaciones.GestorPDF;
 import Interfaz.IGenerarReporte;
 import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.SugerenciaDTO;
 import java.util.List;
 
 /**
@@ -25,6 +26,17 @@ public class FachadaGenerarReporte implements IGenerarReporte {
     public boolean generarReporteInventario(List<RopaTallaDTO> datos, String rutaDestino) {
         try {
             gestor.generarReportePDF(datos, rutaDestino);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean generarReporteSugerencias(List<SugerenciaDTO> datos, String rutaDestino, String tituloReporte) {
+         try {
+            gestor.generarPDFSugerencias(datos, rutaDestino, tituloReporte);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

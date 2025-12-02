@@ -5,6 +5,7 @@
 package Interfaz;
 
 import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.SugerenciaDTO;
 import java.util.List;
 
 /**
@@ -15,4 +16,5 @@ public interface IGenerarReporte {
     
     public boolean generarReporteInventario(List<RopaTallaDTO> datos, String rutaDestino);
     
+    public boolean generarReporteSugerencias(List<SugerenciaDTO> datos, String rutaDestino, String tituloReporte);
 }
