@@ -28,4 +28,6 @@ public interface IRopaTallaDAO {
     void reducirStock(String idRopaTalla, int cantidadVendida) throws MongoException;
 
     void actualizarStock(ObjectId idRopaTalla, int cantidad) throws MongoException;
+    
+    RopaTalla buscarPorFiltroAproximado(String temporada,String material,String marca, Double precio,String nombreTalla);
 }

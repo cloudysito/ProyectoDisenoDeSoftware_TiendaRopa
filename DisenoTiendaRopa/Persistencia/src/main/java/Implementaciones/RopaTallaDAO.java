@@ -10,12 +10,17 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import Interfaces.IRopaTallaDAO;
 import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.gt;
+import static com.mongodb.client.model.Filters.regex;
 import com.mongodb.client.model.Updates;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Pattern;
 import objetosnegocio.dominioPojo.RopaTalla;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -147,5 +152,49 @@ public class RopaTallaDAO implements IRopaTallaDAO {
             throw new MongoException("Error al actualizar stock: " + e.getMessage(), e);
         }
     }
+    
+    @Override
+    public RopaTalla buscarPorFiltroAproximado(String temporada,String material, String marca, Double precio,String nombreTalla) throws MongoException {
+
+        try (MongoClient client = connection.crearNuevoCliente()) {
+
+            MongoCollection<RopaTalla> collection = getCollection(client);
+
+            List<Bson> filtros = new ArrayList<>();
+
+            if (temporada != null && !temporada.isBlank()) {
+                filtros.add(regex("ropa.temporada", temporada, "i")); // ignoreCase
+            }
+            if (material != null && !material.isBlank()) {
+                filtros.add(regex("ropa.material", material, "i"));
+            }
+            if (marca != null && !marca.isBlank()) {
+                filtros.add(regex("ropa.marca", marca, "i"));
+            }
+            if (nombreTalla != null && !nombreTalla.isBlank()) {
+                filtros.add(regex("talla.nombreTalla", nombreTalla, "i"));
+            }
+
+            if (precio != null) {
+                filtros.add(eq("ropa.precio", precio));
+            }
+
+            filtros.add(gt("cantidad", 1));
+
+            Bson filtroFinal = filtros.isEmpty() ? new Document() : and(filtros);
+
+            List<RopaTalla> resultados = collection.find(filtroFinal).into(new ArrayList<>());
+
+            if (resultados.isEmpty()) {
+                return null;
+            }
+
+            return resultados.get(new Random().nextInt(resultados.size()));
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al buscar RopaTalla con filtros aproximados.", e.getCause());
+        }
+    }
+
 
 }

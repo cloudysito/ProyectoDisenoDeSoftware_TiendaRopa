@@ -8,6 +8,7 @@ import BOs.Exception.BOException;
 import Exceptions.DAOException;
 import Implementaciones.RopaTallaDAO;
 import Interfaces.IRopaTallaDAO;
+import com.mycompany.dto_negocio.BuscarPrendaDTO;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import java.util.ArrayList;
@@ -116,5 +117,20 @@ public class RopaTallaBO {
             throw new BOException("Error al obtener el inventario completo", e);
         }
     
+    }
+    
+    public RopaTallaDTO buscarPorFiltro(BuscarPrendaDTO buscarPrendaDTO){
+     try {
+           RopaTalla ropaTalla = ropaTallaDAO.buscarPorFiltroAproximado(
+                                    buscarPrendaDTO.getTemporada(),
+                                    buscarPrendaDTO.getMaterial(), 
+                                    buscarPrendaDTO.getMarca(), 
+                                    buscarPrendaDTO.getPrecio(), 
+                                    buscarPrendaDTO.getNombreTalla());
+           return RopaTallaMapper.toDTO(ropaTalla);
+
+        } catch (DAOException e) {
+            throw new BOException("Error al obtener el inventario completo", e);
+        }
     }
 }
