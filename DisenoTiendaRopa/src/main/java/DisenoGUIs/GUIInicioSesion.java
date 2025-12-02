@@ -4,7 +4,6 @@
  */
 package DisenoGUIs;
 
-import ControlPantallas.ControlEmpleados;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 /**
@@ -150,8 +149,6 @@ public class GUIInicioSesion extends javax.swing.JFrame {
         if(empleado != null){
         navegador.navegarMenuPrincipal(this, empleado);
         }
-//        final ControlEmpleados navegador = ControlEmpleados.getInstase();
-//        navegador.navegarMenuAdmin(this);
     }//GEN-LAST:event_btnAccederActionPerformed
 
     /**

@@ -28,12 +28,6 @@ public class DiaHorarioDTO {
         this.horaSalida = horaSalida;
     }
 
-    public DiaHorarioDTO(DayOfWeek dia, LocalTime horaEntrada, LocalTime horaSalida) {
-        this.dia = dia;
-        this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
-    }
-
     
 
     public DayOfWeek getDia() {
