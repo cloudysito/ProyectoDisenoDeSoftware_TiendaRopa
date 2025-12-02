@@ -4,17 +4,57 @@
  */
 package GUIsCUIAdminTendenciaSugerencia;
 
+import ControlPantallas.ControlGestionarSugerencias;
+import com.mycompany.dto_negocio.SugerenciaDTO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author garfi
  */
 public class GUIDetallesSugerencia extends javax.swing.JFrame {
 
+    private SugerenciaDTO sugerenciaActual;
+
     /**
      * Creates new form GUIGestionCatalogo
      */
     public GUIDetallesSugerencia() {
         initComponents();
+        setLocationRelativeTo(null);
+    }
+
+    public void setDatos(SugerenciaDTO sugerencia) {
+        this.sugerenciaActual = sugerencia;
+
+        if (sugerencia.getEmpleadoDTO() != null) {
+            String nombre = sugerencia.getEmpleadoDTO().getNombre();
+            String apellido = sugerencia.getEmpleadoDTO().getApellidos();
+            lblNombreEmpleado.setText(nombre + " " + (apellido != null ? apellido : ""));
+        } else {
+            lblNombreEmpleado.setText("Anónimo");
+        }
+
+        if (sugerencia.getFechaPublicacion() != null) {
+            lblFecha.setText(sugerencia.getFechaPublicacion().toString());
+        } else {
+            lblFecha.setText("-");
+        }
+
+        lblDescripcion.setText(sugerencia.getDescripcion());
+        
+
+        String estado = sugerencia.getEstado();
+
+        lblEstado.setText(estado);
+        
+        if (estado != null && !estado.equalsIgnoreCase("PENDIENTE")) {
+            btnAprobar.setEnabled(false);
+            btnRechazar.setEnabled(false);
+        } else {
+            btnAprobar.setEnabled(true);
+            btnRechazar.setEnabled(true);
+        }
     }
 
     /**
@@ -41,8 +81,10 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
         pnlDescripcion = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lblDescripcion = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
+        btnRechazar = new javax.swing.JButton();
+        btnAprobar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,7 +152,7 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(226, 115, 150));
-        lblTitulo.setText("Asunto Sugerencia");
+        lblTitulo.setText("Detalles de la Sugerencia");
 
         panel.setBackground(new java.awt.Color(255, 238, 242));
 
@@ -155,31 +197,43 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setText("Estado:");
+
+        lblEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEstado.setText("estado");
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNombreEmpleado))
+                    .addComponent(pnlDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblFecha)))
-                .addGap(0, 315, Short.MAX_VALUE))
-            .addGroup(panelLayout.createSequentialGroup()
-                .addComponent(pnlDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblFecha)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(panelLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNombreEmpleado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblEstado)
+                .addGap(38, 38, 38))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(lblNombreEmpleado))
+                    .addComponent(lblNombreEmpleado)
+                    .addComponent(jLabel6)
+                    .addComponent(lblEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,21 +243,21 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(226, 115, 150));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Rechazar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRechazar.setBackground(new java.awt.Color(226, 115, 150));
+        btnRechazar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRechazar.setText("Rechazar");
+        btnRechazar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRechazarActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(226, 115, 150));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setText("Aceptar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAprobar.setBackground(new java.awt.Color(226, 115, 150));
+        btnAprobar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAprobar.setText("Aprobar");
+        btnAprobar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAprobarActionPerformed(evt);
             }
         });
 
@@ -218,15 +272,13 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblTitulo)
-                                .addGap(18, 18, 18)))
-                        .addGap(0, 80, Short.MAX_VALUE))
+                            .addComponent(lblTitulo))
+                        .addGap(0, 63, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btnRechazar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btnAprobar)
                         .addGap(17, 17, 17))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -239,8 +291,8 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnRechazar)
+                    .addComponent(btnAprobar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -263,16 +315,44 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
+        ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechazarActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(this, 
+                "¿Estás seguro de querer Rechazar esta sugerencia?",
+                "Confirmar Rechazo", 
+                JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            boolean exito = ControlGestionarSugerencias.getInstance().procesarSugerencia(sugerenciaActual, "Rechazada");
+            
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Sugerencia rechazada.");
+                ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al rechazar la sugerencia.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnRechazarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(this, 
+                "¿Estás seguro de querer Aprobar esta sugerencia?",
+                "Confirmar Aprobación", 
+                JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            boolean exito = ControlGestionarSugerencias.getInstance().procesarSugerencia(sugerenciaActual, "Aceptada");
+            
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Sugerencia aprobada con exito.");
+                ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al aprobar la sugerencia.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnAprobarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,18 +393,20 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAprobar;
+    private javax.swing.JButton btnRechazar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblNombreEmpleado;
     private javax.swing.JLabel lblTitulo;

@@ -4,19 +4,33 @@
  */
 package GUIsCUIAdminTendenciaSugerencia;
 
+import com.mycompany.dto_negocio.SugerenciaDTO;
+import javax.swing.JButton;
+
 /**
  *
  * @author garfi
  */
 public class panelSugerencia extends javax.swing.JPanel {
 
-    /**
-     * Creates new form panelSugerencia
-     */
+    private SugerenciaDTO sugerenciaActual;
+    
     public panelSugerencia() {
         initComponents();
     }
 
+    public void setDatos(SugerenciaDTO sugerencia) {
+        this.sugerenciaActual = sugerencia;
+        
+        lblFecha.setText(sugerencia.getFechaPublicacion().toString()); 
+        lblEstado.setText(sugerencia.getEstado());
+        
+    }
+    
+    public JButton getBtnDetalles() {
+        return btnDetalles;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,15 +40,16 @@ public class panelSugerencia extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblAsunto = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
         btnDetalles = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 213, 223));
 
-        lblAsunto.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lblAsunto.setText("Asunto");
+        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl1.setText("Fecha de publicación:");
 
         btnDetalles.setBackground(new java.awt.Color(226, 115, 150));
         btnDetalles.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -44,6 +59,8 @@ public class panelSugerencia extends javax.swing.JPanel {
         jLabel2.setText("Estado:");
 
         lblEstado.setText("estado");
+
+        lblFecha.setText("fecha");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -58,20 +75,31 @@ public class panelSugerencia extends javax.swing.JPanel {
                         .addComponent(lblEstado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(btnDetalles))
-                    .addComponent(lblAsunto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblFecha)
+                        .addGap(33, 33, 33)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblAsunto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDetalles)
-                    .addComponent(jLabel2)
-                    .addComponent(lblEstado))
-                .addContainerGap())
+                    .addComponent(lbl1)
+                    .addComponent(lblFecha))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addComponent(btnDetalles)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(lblEstado))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -79,7 +107,8 @@ public class panelSugerencia extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDetalles;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblAsunto;
+    private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblFecha;
     // End of variables declaration//GEN-END:variables
 }

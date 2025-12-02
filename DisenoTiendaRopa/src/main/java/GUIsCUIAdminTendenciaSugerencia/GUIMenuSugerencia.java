@@ -4,6 +4,14 @@
  */
 package GUIsCUIAdminTendenciaSugerencia;
 
+import ControlPantallas.ControlGestionarSugerencias;
+import com.mycompany.dto_negocio.SugerenciaDTO;
+import java.awt.Desktop;
+import java.io.File;
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author garfi
@@ -15,6 +23,30 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
      */
     public GUIMenuSugerencia() {
         initComponents();
+        setLocationRelativeTo(null);
+        pnlSugerencias.setLayout(new java.awt.GridLayout(0, 1, 0, 10));
+        cargarSugerencias();
+    }
+
+    public void cargarSugerencias() {
+        pnlSugerencias.removeAll();
+
+        String filtro = cmbEstadoSugerencias.getSelectedItem().toString();
+
+        List<SugerenciaDTO> lista = ControlGestionarSugerencias.getInstance().obtenerSugerenciasFiltradas(filtro);
+
+        for (SugerenciaDTO item : lista) {
+            panelSugerencia tarjeta = new panelSugerencia();
+            tarjeta.setDatos(item);
+
+            tarjeta.getBtnDetalles().addActionListener(e -> {
+                ControlGestionarSugerencias.getInstance().navegarDetalleSugerencia(this, item);
+            });
+
+            pnlSugerencias.add(tarjeta);
+        }
+        pnlSugerencias.revalidate();
+        pnlSugerencias.repaint();
     }
 
     /**
@@ -222,7 +254,30 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar Reporte de Sugerencias");
+        fileChooser.setSelectedFile(new File("Reporte_Sugerencias.pdf"));
 
+        if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+            String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+            if (!ruta.toLowerCase().endsWith(".pdf")) {
+                ruta += ".pdf";
+            }
+
+            String filtroActual = cmbEstadoSugerencias.getSelectedItem().toString();
+
+            boolean exito = ControlGestionarSugerencias.getInstance().generarReportePDF(ruta, filtroActual);
+
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Reporte generado correctamente.");
+                try {
+                    Desktop.getDesktop().open(new File(ruta));
+                } catch (Exception ex) {
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al generar el reporte.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -234,7 +289,7 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCatalogoActionPerformed
 
     private void cmbEstadoSugerenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoSugerenciasActionPerformed
-        // TODO add your handling code here:
+        cargarSugerencias();
     }//GEN-LAST:event_cmbEstadoSugerenciasActionPerformed
 
     /**
@@ -284,8 +339,6 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlSugerencias;
     // End of variables declaration//GEN-END:variables
