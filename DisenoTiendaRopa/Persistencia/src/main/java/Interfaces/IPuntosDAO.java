@@ -11,12 +11,10 @@ import objetosnegocio.dominioPojo.Puntos;
  *
  * @author riosr
  */
-public interface IBonificacionRecompenzaDAO {
+public interface IPuntosDAO {
     
-    Puntos guardarEmpleado(Puntos br) throws MongoException;
+    Puntos guardarPuntos(Puntos puntos) throws MongoException;
     
-    Puntos modificarEmpleado(Puntos br) throws MongoException;
-    
-    Puntos buscarPorId(String idBonificacionRecompenza) throws MongoException;
+    Puntos buscarPorId(String idPuntos) throws MongoException;
     
 }

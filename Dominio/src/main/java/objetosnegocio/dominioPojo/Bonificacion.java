@@ -14,18 +14,18 @@ public class Bonificacion {
     private ObjectId idBonificacion;
     private Empleado nombreEmpleado;
     private int puntosTotales;
-    private int nombreRecompensa;
+    private Recompensa nombreRecompensa;
     
     public Bonificacion() {}
     
-    public Bonificacion(Empleado nombreEmpleado, int puntosTotales, int nombreRecompensa){
+    public Bonificacion(Empleado nombreEmpleado, int puntosTotales, Recompensa nombreRecompensa){
         this.nombreEmpleado = nombreEmpleado;
         this.puntosTotales = puntosTotales;
         this.nombreRecompensa = nombreRecompensa;
         
     }
     
-    public Bonificacion(ObjectId id, Empleado nombreEmpleado, int puntosTotales, int nombreRecompensa){
+    public Bonificacion(ObjectId id, Empleado nombreEmpleado, int puntosTotales, Recompensa nombreRecompensa){
         this.idBonificacion = idBonificacion;
         this.nombreEmpleado = nombreEmpleado;
         this.puntosTotales = puntosTotales;
@@ -56,11 +56,11 @@ public class Bonificacion {
         this.puntosTotales = puntosTotales;
     }
 
-    public int getNombreRecompensa() {
+    public Recompensa getNombreRecompensa() {
         return nombreRecompensa;
     }
 
-    public void setNombreRecompensa(int nombreRecompensa) {
+    public void setNombreRecompensa(Recompensa nombreRecompensa) {
         this.nombreRecompensa = nombreRecompensa;
     }
 

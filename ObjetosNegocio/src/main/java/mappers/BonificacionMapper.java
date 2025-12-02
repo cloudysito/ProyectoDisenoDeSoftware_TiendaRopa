@@ -6,6 +6,8 @@ package mappers;
 
 import com.mycompany.dto_negocio.BonificacionDTO;
 import objetosnegocio.dominioPojo.Bonificacion;
+import objetosnegocio.dominioPojo.Empleado;
+import objetosnegocio.dominioPojo.Recompensa;
 import org.bson.types.ObjectId;
 
 /**
@@ -22,8 +24,11 @@ public class BonificacionMapper {
         if (dto.getIdBonificacion()!= null) {
             b.setIdBonificacion(new ObjectId(dto.getIdBonificacion()));
         }
-//        b.setDescripcion(dto.ge());
-//        b.setCantidadVenta(dto.getCantidadVenta());
+        Empleado nombreEmpleado = EmpleadoMapper.toEntity(dto.getNombreEmpleado());
+        b.setNombreEmpleado(nombreEmpleado);
+        b.setPuntosTotales(dto.getPuntosTotales());
+        Recompensa nombreRecompensa = RecompensaMapper.toEntity(dto.getNombreRecompensa());
+        b.setNombreRecompensa(nombreRecompensa);
         return b;
     }
     
@@ -32,9 +37,12 @@ public class BonificacionMapper {
             return null;
         }
         BonificacionDTO dto = new BonificacionDTO();
-//        dto.setIdBonificacion(String.valueOf(b.getId()));
-//        dto.setDescripcion(b.getDescripcion());
-//        dto.setCantidadVenta(b.getCantidadVenta());
+        dto.setIdBonificacion(
+            b.getIdBonificacion()!= null ? b.getIdBonificacion().toHexString() : null
+        );
+        dto.setNombreEmpleado(EmpleadoMapper.toDTO(b.getNombreEmpleado()));
+        dto.setPuntosTotales(b.getPuntosTotales());
+        dto.setNombreRecompensa(RecompensaMapper.toDTO(b.getNombreRecompensa()));
         return dto;
     }
 }

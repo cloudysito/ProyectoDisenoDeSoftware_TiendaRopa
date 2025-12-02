@@ -12,18 +12,18 @@ public class BonificacionDTO {
     private String idBonificacion;
     private EmpleadoDTO nombreEmpleado;
     private int puntosTotales;
-    private int nombreRecompensa;
+    private RecompensaDTO nombreRecompensa;
 
     public BonificacionDTO() {}
     
-    public BonificacionDTO(String idBonificacion, EmpleadoDTO nombreEmpleado, int puntosTotales, int nombreRecompensa) {
+    public BonificacionDTO(String idBonificacion, EmpleadoDTO nombreEmpleado, int puntosTotales, RecompensaDTO nombreRecompensa) {
         this.idBonificacion = idBonificacion;
         this.nombreEmpleado = nombreEmpleado;
         this.puntosTotales = puntosTotales;
         this.nombreRecompensa = nombreRecompensa;
     }
     
-    public BonificacionDTO(EmpleadoDTO nombreEmpleado, int puntosTotales, int nombreRecompensa){
+    public BonificacionDTO(EmpleadoDTO nombreEmpleado, int puntosTotales, RecompensaDTO nombreRecompensa){
         this.nombreEmpleado = nombreEmpleado;
         this.puntosTotales = puntosTotales;
         this.nombreRecompensa = nombreRecompensa;
@@ -53,11 +53,11 @@ public class BonificacionDTO {
         this.puntosTotales = puntosTotales;
     }
 
-    public int getNombreRecompensa() {
+    public RecompensaDTO getNombreRecompensa() {
         return nombreRecompensa;
     }
 
-    public void setNombreRecompensa(int nombreRecompensa) {
+    public void setNombreRecompensa(RecompensaDTO nombreRecompensa) {
         this.nombreRecompensa = nombreRecompensa;
     }
     

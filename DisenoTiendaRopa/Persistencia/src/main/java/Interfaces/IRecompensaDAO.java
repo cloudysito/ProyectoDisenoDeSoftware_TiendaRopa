@@ -11,12 +11,10 @@ import objetosnegocio.dominioPojo.Recompensa;
  *
  * @author riosr
  */
-public interface IRecompenzaDAO {
+public interface IRecompensaDAO {
     
-    Recompensa guardarEmpleado(Recompensa recompenza) throws MongoException;
+    Recompensa guardarRecompensa(Recompensa recompensa) throws MongoException;
     
-    Recompensa modificarEmpleado(Recompensa recompenza) throws MongoException;
-    
-    Recompensa buscarPorId(String idRecompenza) throws MongoException;
+    Recompensa buscarPorId(String idRecompensa) throws MongoException;
     
 }

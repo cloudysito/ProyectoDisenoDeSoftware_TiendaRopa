@@ -12,7 +12,7 @@ import org.bson.types.ObjectId;
  *
  * @author riosr
  */
-public class RecompenzaMapper {
+public class RecompensaMapper {
     
     public static Recompensa toEntity(RecompensaDTO dto) {
         if (dto == null) {
@@ -32,7 +32,9 @@ public class RecompenzaMapper {
             return null;
         }
         RecompensaDTO dto = new RecompensaDTO();
-        dto.setIdRecompensa(r.getIdRecompensa().toHexString());
+        dto.setIdRecompensa(
+            r.getIdRecompensa()!= null ? r.getIdRecompensa().toHexString() : null
+        );
         dto.setNombreRecompensa(r.getNombreRecompensa());
         dto.setPuntosNecesarios(r.getPuntosNecesarios());
         return dto;

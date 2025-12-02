@@ -13,9 +13,9 @@ import objetosnegocio.dominioPojo.Capacitacion;
  */
 public interface ICapacitacionDAO {
     
-    Capacitacion guardarEmpleado(Capacitacion capacitacion) throws MongoException;
+    Capacitacion guardarCapacitacion(Capacitacion capacitacion) throws MongoException;
     
-    Capacitacion modificarEmpleado(Capacitacion capacitacion) throws MongoException;
+    Capacitacion modificarCapacitacion(Capacitacion capacitacion) throws MongoException;
     
     Capacitacion buscarPorId(String idCapacitacion) throws MongoException;
     

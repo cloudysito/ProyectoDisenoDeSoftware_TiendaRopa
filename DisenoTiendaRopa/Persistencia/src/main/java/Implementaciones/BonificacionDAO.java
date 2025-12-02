@@ -10,6 +10,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
+import com.mongodb.client.model.Updates;
 import objetosnegocio.dominioPojo.Bonificacion;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -31,10 +32,47 @@ public class BonificacionDAO implements IBonificacionDAO {
         return database.getCollection(NOMBRE_COLLECTION, Bonificacion.class);
     }
     
+    @Override
+    public Bonificacion guardarBonificacion(Bonificacion bonificacion) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+
+            MongoCollection<Bonificacion> collection = getCollection(client);
+            collection.insertOne(bonificacion);
+            System.out.println("Bonificacion insertada con éxito.");
+            return bonificacion;
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al guardar la bonificacion.", e.getCause());
+        }
+    }
+    
+    @Override
+    public Bonificacion modificarBonificacion(Bonificacion bonificacion) throws MongoException {
+        try (MongoClient client = connection.crearNuevoCliente()) {
+
+            MongoCollection<Bonificacion> collection = getCollection(client);
+
+            Bson filtroId = eq("_id", bonificacion.getIdBonificacion());
+
+            Bson actualizaciones = Updates.combine(
+                    Updates.set("nombreEmpleado", bonificacion.getNombreEmpleado()),
+                    Updates.set("nombreRecompensa", bonificacion.getNombreRecompensa()),
+                    Updates.set("puntosTotales", bonificacion.getPuntosTotales())
+            );
+
+            collection.updateOne(filtroId, actualizaciones);
+
+            System.out.println("Bonificacion actualizada con exito.");
+            return bonificacion;
+
+        } catch (MongoException e) {
+            throw new MongoException("Error al actualizar la bonificacion.", e.getCause());
+        }
+    }
+    
     /**
      *
      * @param idBonificacion
-     * @param id
      * @return
      * @throws MongoException
      */
@@ -52,18 +90,8 @@ public class BonificacionDAO implements IBonificacionDAO {
             return bonificacion;
 
         } catch (MongoException e) {
-            throw new MongoException("Error al buscar ropa por ID: " + idBonificacion, e.getCause());
+            throw new MongoException("Error al buscar bonificacion por ID: " + idBonificacion, e.getCause());
         }
     }
-
-    @Override
-    public Bonificacion guardarEmpleado(Bonificacion bonificacion) throws MongoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Bonificacion modificarEmpleado(Bonificacion bonificacion) throws MongoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
 }

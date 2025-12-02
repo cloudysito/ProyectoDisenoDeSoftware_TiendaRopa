@@ -6,6 +6,8 @@ package mappers;
 
 import com.mycompany.dto_negocio.CapacitacionDTO;
 import objetosnegocio.dominioPojo.Capacitacion;
+import objetosnegocio.dominioPojo.Empleado;
+import objetosnegocio.dominioPojo.TemaCapacitacion;
 import org.bson.types.ObjectId;
 
 /**
@@ -20,10 +22,14 @@ public class CapacitacionMapper {
         }
         Capacitacion c = new Capacitacion();
         if (dto.getIdCapacitacion()!= null) {
-            c.setId(new ObjectId(dto.getIdCapacitacion()));
+            c.setIdCapacitacion(new ObjectId(dto.getIdCapacitacion()));
         }
-//        c.setTemaCapacitacion(dto.getTemaCapacitacion());
-//        c.setEstado(dto.getEstado());
+        Empleado nombreEmpleado = EmpleadoMapper.toEntity(dto.getNombreEmpleado());
+        c.setNombreEmpleado(nombreEmpleado);
+        TemaCapacitacion temaCapacitacion = TemaCapacitacionMapper.toEntity(dto.getTemaCapacitacion());
+        c.setTemaCapacitacion(temaCapacitacion);
+        c.setEstado(dto.getEstado());
+        
         return c;
     }
     
@@ -32,9 +38,13 @@ public class CapacitacionMapper {
             return null;
         }
         CapacitacionDTO dto = new CapacitacionDTO();
-        dto.setIdCapacitacion(String.valueOf(c.getId()));
-//        dto.setTemaCapacitacion(c.getTemaCapacitacion());
-//        dto.setEstado(c.getEstado());
+        dto.setIdCapacitacion(
+            c.getIdCapacitacion()!= null ? c.getIdCapacitacion().toHexString() : null
+        );
+        dto.setNombreEmpleado(EmpleadoMapper.toDTO(c.getNombreEmpleado()));
+        dto.setTemaCapacitacion(TemaCapacitacionMapper.toDTO(c.getTemaCapacitacion()));
+        dto.setEstado(c.getEstado());
+        
         return dto;
     }
 }

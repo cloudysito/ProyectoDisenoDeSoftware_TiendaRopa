@@ -10,6 +10,7 @@ import Implementaciones.BonificacionDAO;
 import Interfaces.IBonificacionDAO;
 import com.mycompany.dto_negocio.BonificacionDTO;
 import mappers.BonificacionMapper;
+import objetosnegocio.dominioPojo.Bonificacion;
 
 /**
  *
@@ -31,13 +32,38 @@ public class BonificacionBO {
         return instance;
     }
     
-    public BonificacionDTO buscarPorId(String id) throws BOException {
+    public BonificacionDTO guardarEmpleado(BonificacionDTO empleadoDTO) throws BOException {
         try {
+            Bonificacion bonificacion = BonificacionMapper.toEntity(empleadoDTO);
 
-            return BonificacionMapper.toDTO(bonificacionDAO.buscarPorId(id));
+            Bonificacion bonificacionGuardar = bonificacionDAO.guardarBonificacion(bonificacion);
+
+            return BonificacionMapper.toDTO(bonificacionGuardar);
 
         } catch (DAOException e) {
-            throw new BOException("Error al buscar por id empleado", e);
+            throw new BOException("Error al guardar bonificacion", e);
+        }
+    }
+    
+    public BonificacionDTO modificarCapacitacion(BonificacionDTO bonificacionDTO) throws BOException {
+        try {
+            Bonificacion bonificacion = BonificacionMapper.toEntity(bonificacionDTO);
+
+            Bonificacion bonificacionModificar = bonificacionDAO.modificarBonificacion(bonificacion);
+
+            return BonificacionMapper.toDTO(bonificacionModificar);
+        } catch (DAOException e) {
+            throw new BOException("Error al modificar capacitacion", e);
+        }
+    }
+    
+    public BonificacionDTO buscarPorId(String idBonificacion) throws BOException {
+        try {
+
+            return BonificacionMapper.toDTO(bonificacionDAO.buscarPorId(idBonificacion));
+
+        } catch (DAOException e) {
+            throw new BOException("Error al buscar por id bonificacion", e);
         }
     }
 }

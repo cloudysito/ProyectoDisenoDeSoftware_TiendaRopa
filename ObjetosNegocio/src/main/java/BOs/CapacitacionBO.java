@@ -10,6 +10,7 @@ import Implementaciones.CapacitacionDAO;
 import Interfaces.ICapacitacionDAO;
 import com.mycompany.dto_negocio.CapacitacionDTO;
 import mappers.CapacitacionMapper;
+import objetosnegocio.dominioPojo.Capacitacion;
 
 /**
  *
@@ -31,13 +32,39 @@ public class CapacitacionBO {
         return instance;
     }
     
-    public CapacitacionDTO buscarPorId(String id) throws BOException {
+    public CapacitacionDTO guardarCapacitacion(CapacitacionDTO capacitacionDTO) throws BOException {
         try {
+            Capacitacion capacitacion = CapacitacionMapper.toEntity(capacitacionDTO);
 
-            return CapacitacionMapper.toDTO(capacitacionDAO.buscarPorId(id));
+            Capacitacion capacitacionGuardar = capacitacionDAO.guardarCapacitacion(capacitacion);
+
+            return CapacitacionMapper.toDTO(capacitacionGuardar);
 
         } catch (DAOException e) {
-            throw new BOException("Error al buscar por id empleado", e);
+            throw new BOException("Error al guardar capacitacion", e);
+        }
+    }
+    
+    public CapacitacionDTO modificarCapacitacion(CapacitacionDTO capacitacionDTO) throws BOException {
+        try {
+            Capacitacion capacitacion = CapacitacionMapper.toEntity(capacitacionDTO);
+
+            Capacitacion capacitacionModificar = capacitacionDAO.modificarCapacitacion(capacitacion);
+
+            return CapacitacionMapper.toDTO(capacitacionModificar);
+        } catch (DAOException e) {
+            throw new BOException("Error al modificar capacitacion", e);
+        }
+    }
+    
+    
+    public CapacitacionDTO buscarPorId(String idCapacitacion) throws BOException {
+        try {
+
+            return CapacitacionMapper.toDTO(capacitacionDAO.buscarPorId(idCapacitacion));
+
+        } catch (DAOException e) {
+            throw new BOException("Error al buscar por id capacitacion", e);
         }
     }
 }

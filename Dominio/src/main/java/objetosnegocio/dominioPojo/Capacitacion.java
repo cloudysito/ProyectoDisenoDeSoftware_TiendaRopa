@@ -11,7 +11,7 @@ import org.bson.types.ObjectId;
  * @author riosr
  */
 public class Capacitacion {
-    private ObjectId id;
+    private ObjectId idCapacitacion;
     private Empleado nombreEmpleado;
     private TemaCapacitacion temaCapacitacion;
     private String estado;
@@ -25,19 +25,19 @@ public class Capacitacion {
         this.estado = estado;
     }
 
-    public Capacitacion(ObjectId id, Empleado nombreEmpleado, TemaCapacitacion temaCapacitacion, String estado) {
-        this.id = id;
+    public Capacitacion(ObjectId idCapacitacion, Empleado nombreEmpleado, TemaCapacitacion temaCapacitacion, String estado) {
+        this.idCapacitacion = idCapacitacion;
         this.nombreEmpleado = nombreEmpleado;
         this.temaCapacitacion = temaCapacitacion;
         this.estado = estado;
     }
 
-    public ObjectId getId() {
-        return id;
+    public ObjectId getIdCapacitacion() {
+        return idCapacitacion;
     }
 
-    public void setId(ObjectId id) {
-        this.id = id;
+    public void setIdCapacitacion(ObjectId idCapacitacion) {
+        this.idCapacitacion = idCapacitacion;
     }
 
     public Empleado getNombreEmpleado() {
