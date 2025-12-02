@@ -4,6 +4,8 @@
  */
 package DisenoGUIs.GUIsCUIAgregarPrenda;
 
+import ControlPantallas.ControlEmpleados;
+import ControlPantallas.ControlGestionarSugerencias;
 import ControlPantallas.ControlRopa;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import java.io.File;
@@ -167,6 +169,11 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
         btnSugerencia.setBackground(new java.awt.Color(239, 207, 227));
         btnSugerencia.setText("Sugerencia");
+        btnSugerencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSugerenciaActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setBackground(new java.awt.Color(226, 115, 150));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -314,6 +321,8 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         // TODO add your handling code here:
+        final ControlEmpleados navegador = ControlEmpleados.getInstase();
+        navegador.navegarEmpleados(this);
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
@@ -389,6 +398,11 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSugerenciaActionPerformed
+        // TODO add your handling code here:
+        ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
+    }//GEN-LAST:event_btnSugerenciaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,7 @@
  */
 package ControlPantallas;
 
+import CalcularTalla.GUICalcularTalla;
 import DisenoGUIs.GUIMenu;
 import com.mycompany.calculartallasubsystem.FachadaCalcularTalla;
 import com.mycompany.calculartallasubsystem.Interfaz.ICalcularTalla;
@@ -34,7 +35,7 @@ public class ControlCalcularTalla {
     
     public void navegarCalcularTalla(JFrame frameActual, EmpleadoDTO empleado) {
         cerrarFrameActual(frameActual);
-        GUIMenu menu = new GUIMenu(empleado);
+        GUICalcularTalla menu = new GUICalcularTalla();
         menu.setVisible(true);
     }
 

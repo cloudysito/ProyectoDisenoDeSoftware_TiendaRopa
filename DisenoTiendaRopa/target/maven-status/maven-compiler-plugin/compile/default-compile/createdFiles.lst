@@ -165,6 +165,7 @@ DisenoGUIs\GUIPagoTarjeta$4.class
 GUIDevolverPrenda\GUIConfirmacionReembolso$4.class
 DisenoGUIs\GUICodigoProducto.class
 GUIsCUIAdminTendenciaSugerencia\GUIDetallesSugerencia$4.class
+DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$6.class
 GUIDevolverPrenda\GUIBuscarVenta$5.class
 DisenoGUIs\GUIMenu$3.class
 DisenoGUIs\GUICambiarTalla$3.class
