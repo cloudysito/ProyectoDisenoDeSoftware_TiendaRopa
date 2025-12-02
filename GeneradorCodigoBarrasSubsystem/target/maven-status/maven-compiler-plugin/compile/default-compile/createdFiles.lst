@@ -1,0 +1,3 @@
+GenerarCodigo\Interfaz\IGeneradorCodigoBarras.class
+GenerarCodigo\Fachada\FachadaGeneradorCodigoBarras.class
+GenerarCodigo\Implementaciones\GeneradorCodigoBarras.class

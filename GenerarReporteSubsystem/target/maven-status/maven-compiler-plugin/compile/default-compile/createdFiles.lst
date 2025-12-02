@@ -1,0 +1,3 @@
+GenerarReporte\Interfaz\IGenerarReporte.class
+GenerarReporte\Fachada\FachadaGenerarReporte.class
+GenerarReporte\Implementaciones\GestorPDF.class
