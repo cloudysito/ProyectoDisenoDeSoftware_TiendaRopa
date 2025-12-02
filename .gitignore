@@ -6,3 +6,6 @@
 /AumentarVentaEmpleado/target/
 /GUIsCUI/target/
 /GeneradorCodigoBarrasSubsystem/target/
+DisenoTiendaRopa/Persistencia/target/classes/Exceptions/DAOException.class
+*.class
+/DisenoTiendaRopa/Persistencia/target
