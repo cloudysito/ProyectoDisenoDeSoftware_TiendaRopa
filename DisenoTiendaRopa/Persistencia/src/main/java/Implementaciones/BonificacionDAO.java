@@ -11,7 +11,10 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.client.model.Updates;
+import java.util.List;
 import objetosnegocio.dominioPojo.Bonificacion;
+import objetosnegocio.dominioPojo.Empleado;
+import objetosnegocio.dominioPojo.Recompensa;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -94,4 +97,66 @@ public class BonificacionDAO implements IBonificacionDAO {
         }
     }
     
+    public Bonificacion getBonificacionPorEmpleado(String idEmpleado) {
+        // Lógica de MongoDB para buscar el documento Bonificacion
+        // Donde el campo 'idEmpleado' coincide con el valor proporcionado.
+        // Debe mapear el Document MongoDB a un objeto BonificacionDTO.
+        
+        System.out.println("DAO: Buscando bonificación para empleado ID: " + idEmpleado);
+        // ... (Implementación de findOne)
+        
+        // *** Placeholder de retorno para ejemplo ***
+        Bonificacion dto = new Bonificacion();
+        dto.setIdBonificacion("ObjectID_de_Bonificacion"); 
+        dto.setPuntosTotales(0); // Ejemplo: Retorna 500 puntos actuales
+        return dto; 
+    }
+    
+    public boolean actualizarPuntosTotales(Bonificacion bonificacion) {
+        // Lógica de MongoDB usando updateOne:
+        // 1. Filtrar por el ID de la bonificación (bonificacion.getId())
+        // 2. Usar $set para cambiar solo el campo "puntosTotales" al valor de bonificacion.getPuntosTotales()
+        
+        System.out.println("DAO: Persistiendo nuevo total de puntos: " + bonificacion.getPuntosTotales());
+        // ... (Implementación de updateOne)
+
+        return true; // Asumiendo éxito en la operación
+    }
+    
+    public Recompensa obtenerEstadoRecompensa(Empleado empleado) {
+        
+        // 1. Inicializar DAOs
+        BonificacionDAO bonificacionDAO = new BonificacionDAO();
+        RecompensaDAO recompensaDAO = new RecompensaDAO(); // Nuevo DAO para la entidad Recompensa
+
+        // 2. Obtener los puntos totales del empleado
+        Bonificacion bonificacion = bonificacionDAO.getBonificacionPorEmpleado(empleadoDTO.getId());
+        if (bonificacion == null) {
+            return new Recompensa(0, "Bonificación no encontrada");
+        }
+        int puntosActuales = bonificacion.getPuntosTotales();
+
+        // 3. Obtener la lista de todas las recompensas
+        List<Recompensa> recompensas = recompensaDAO.obtenerTodasLasRecompensas();
+
+        // 4. Lógica de Proporcionalidad (Encontrar la recompensa más alta alcanzable)
+        String nombreRecompensaAlcanzada = "Sin Recompensa Alcanzada";
+        int maxPuntosAlcanzados = 0;
+
+        for (Recompensa recompensa : recompensas) {
+            int puntosRequeridos = recompensa.getCantidadPuntos();
+            
+            // Si los puntos actuales superan o igualan los requeridos, es una recompensa alcanzable.
+            if (puntosActuales >= puntosRequeridos) {
+                // Se busca la recompensa que requiera la MAYOR cantidad de puntos.
+                if (puntosRequeridos > maxPuntosAlcanzados) {
+                    maxPuntosAlcanzados = puntosRequeridos;
+                    nombreRecompensaAlcanzada = recompensa.getNombreRecompensa();
+                }
+            }
+        }
+        
+        // 5. Devolver el DTO de respuesta con los datos filtrados
+        return new Recompensa(puntosActuales, nombreRecompensaAlcanzada);
+    }
 }
