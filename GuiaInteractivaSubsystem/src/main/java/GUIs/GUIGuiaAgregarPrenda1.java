@@ -10,12 +10,12 @@ import ControlGuiaInteractivaPantallas.ControlGuiaInteractiva;
  *
  * @author riosr
  */
-public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
+public class GUIGuiaAgregarPrenda1 extends javax.swing.JPanel {
 
     /**
-     * Creates new form GUIEmergenciaMedicaPostEmergencia
+     * Creates new form GUIGuiaAgregarPrenda1
      */
-    public GUIEmergenciaMedicaPostEmergencia() {
+    public GUIGuiaAgregarPrenda1() {
         initComponents();
     }
 
@@ -94,7 +94,7 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 238, 242));
 
         btnSiguiente.setBackground(new java.awt.Color(239, 207, 227));
-        btnSiguiente.setText("Terminar");
+        btnSiguiente.setText("Siguiente");
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteActionPerformed(evt);
@@ -112,32 +112,31 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Paso 6: Post-Emergencia");
+        jLabel4.setText("Paso 1");
 
-        jLabel6.setText("Documenta el incidente.");
+        jLabel6.setText("Ingresas los datos de la prenda, tales como:");
 
-        jLabel8.setText("Ofrece apoyo emocional al personal involucrado.");
+        jLabel8.setText("Nombre, stock inicial, descripción, precio, marca, temporada");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(101, 101, 101))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
                         .addComponent(jLabel6))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
+                        .addGap(141, 141, 141)
                         .addComponent(jLabel4))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel8)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addGap(121, 121, 121)
+                        .addComponent(btnVolver)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,12 +220,14 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
+        final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
+        navegador.navegarGUIGuiaAgregarPrenda2(this, empleado);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
         final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
-        navegador.navegarGUIEmergenciaMedicaAsistenciaLlegada(this, empleado);
+        navegador.navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 

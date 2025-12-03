@@ -161,7 +161,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e3" green="cf" red="ef" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Siguiente"/>
+            <Property name="text" type="java.lang.String" value="Terminar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSiguienteActionPerformed"/>

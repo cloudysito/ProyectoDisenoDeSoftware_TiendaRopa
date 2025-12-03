@@ -4,6 +4,8 @@
  */
 package GUIs;
 
+import ControlGuiaInteractivaPantallas.ControlGuiaInteractiva;
+
 /**
  *
  * @author riosr
@@ -93,7 +95,7 @@ public class GUIClientesAgresivosDocumentacion extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 238, 242));
 
         btnSiguiente.setBackground(new java.awt.Color(239, 207, 227));
-        btnSiguiente.setText("Siguiente");
+        btnSiguiente.setText("Terminar");
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteActionPerformed(evt);
@@ -229,6 +231,8 @@ public class GUIClientesAgresivosDocumentacion extends javax.swing.JPanel {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
+        navegador.navegarGUIClientesAgresivosEstableceLimites(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 

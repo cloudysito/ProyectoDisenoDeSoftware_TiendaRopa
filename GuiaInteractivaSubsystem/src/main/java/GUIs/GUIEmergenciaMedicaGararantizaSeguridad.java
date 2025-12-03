@@ -4,6 +4,8 @@
  */
 package GUIs;
 
+import ControlGuiaInteractivaPantallas.ControlGuiaInteractiva;
+
 /**
  *
  * @author riosr
@@ -217,10 +219,14 @@ public class GUIEmergenciaMedicaGararantizaSeguridad extends javax.swing.JPanel 
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
+        final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
+        navegador.navegarGUIEmergenciaMedicaAsignarTareas(this, empleado);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
+        navegador.navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 

@@ -10,12 +10,12 @@ import ControlGuiaInteractivaPantallas.ControlGuiaInteractiva;
  *
  * @author riosr
  */
-public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
+public class GUIGuiaDevolverPrenda3 extends javax.swing.JPanel {
 
     /**
-     * Creates new form GUIEmergenciaMedicaPostEmergencia
+     * Creates new form GUIGuiaDevolverPrenda3
      */
-    public GUIEmergenciaMedicaPostEmergencia() {
+    public GUIGuiaDevolverPrenda3() {
         initComponents();
     }
 
@@ -39,7 +39,6 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
         btnVolver = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -94,7 +93,7 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 238, 242));
 
         btnSiguiente.setBackground(new java.awt.Color(239, 207, 227));
-        btnSiguiente.setText("Terminar");
+        btnSiguiente.setText("Siguiente");
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteActionPerformed(evt);
@@ -112,20 +111,14 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Paso 6: Post-Emergencia");
+        jLabel4.setText("Paso 3");
 
-        jLabel6.setText("Documenta el incidente.");
-
-        jLabel8.setText("Ofrece apoyo emocional al personal involucrado.");
+        jLabel6.setText("Seleccionas el metodo de reembolso");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(101, 101, 101))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -133,11 +126,11 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
                         .addComponent(jLabel6))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jLabel4))
+                        .addComponent(btnVolver))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel8)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,9 +139,7 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addContainerGap())
         );
@@ -221,12 +212,14 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
+        final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
+        navegador.navegarGUIGuiaDevolverPrenda4(this, empleado);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
         final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
-        navegador.navegarGUIEmergenciaMedicaAsistenciaLlegada(this, empleado);
+        navegador.navegarGUIGuiaDevolverPrenda2(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 
@@ -239,7 +232,6 @@ public class GUIEmergenciaMedicaPostEmergencia extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

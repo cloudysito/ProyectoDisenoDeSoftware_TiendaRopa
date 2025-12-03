@@ -4,6 +4,8 @@
  */
 package GUIs;
 
+import ControlGuiaInteractivaPantallas.ControlGuiaInteractiva;
+
 /**
  *
  * @author riosr
@@ -226,10 +228,14 @@ public class GUIMenuGuia extends javax.swing.JPanel {
 
     private void btnGuiaClientesAgresivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaClientesAgresivosActionPerformed
         // TODO add your handling code here:
+        final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
+        navegador.navegarGUIClientesAgresivosMantenerCalma(this, empleado);
     }//GEN-LAST:event_btnGuiaClientesAgresivosActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
+        navegador.navegarGUIRobosOAmenazasSeguridadTodo(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnVerCapacitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCapacitacionesActionPerformed

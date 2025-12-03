@@ -4,6 +4,8 @@
  */
 package GUIs;
 
+import ControlGuiaInteractivaPantallas.ControlGuiaInteractiva;
+
 /**
  *
  * @author riosr
@@ -230,6 +232,8 @@ public class GUIRobosOAmenazasCooperar extends javax.swing.JPanel {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        final ControlGuiaInteractiva navegador = ControlGuiaInteractiva.getInstasce();
+        navegador.navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 
