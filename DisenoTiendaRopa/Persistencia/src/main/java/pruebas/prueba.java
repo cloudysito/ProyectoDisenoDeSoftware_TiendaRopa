@@ -4,8 +4,11 @@
  */
 package pruebas;
 
-import Implementaciones.EmpleadoDAO;
-import Interfaces.IEmpleadoDAO;
+import Implementaciones.*;
+import Interfaces.*;
+import java.time.Instant;
+import java.util.Date;
+import objetosnegocio.dominioPojo.*;
 
 /**
  *
@@ -19,10 +22,12 @@ public class prueba {
     public static void main(String[] args) {
         // TODO code application logic here
         IEmpleadoDAO daoEmpleado = new EmpleadoDAO();
+        Empleado empleado  = daoEmpleado.iniciarSesion("Santiago", "santi");
+        Sugerencia sugerencia = new Sugerencia(empleado, "Limpiar mas seguido la terrasa", "Pendiente", Date.from(Instant.now()));
         
+        ISugerenciaDAO sugerenciaDAO = new SugerenciaDAO();
         
-        
-        System.out.println(daoEmpleado.iniciarSesion("Santiago", "santi"));
+        sugerenciaDAO.guardarSugerencia(sugerencia);
     }
     
 }

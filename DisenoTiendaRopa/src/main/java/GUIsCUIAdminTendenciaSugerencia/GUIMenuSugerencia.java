@@ -4,7 +4,9 @@
  */
 package GUIsCUIAdminTendenciaSugerencia;
 
+import ControlPantallas.ControlEmpleados;
 import ControlPantallas.ControlGestionarSugerencias;
+import ControlPantallas.ControlRopa;
 import com.mycompany.dto_negocio.SugerenciaDTO;
 import java.awt.Desktop;
 import java.io.File;
@@ -251,6 +253,7 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
 
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         // TODO add your handling code here:
+        ControlEmpleados.getInstase().navegarEmpleados(this);
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
@@ -282,10 +285,12 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        ControlEmpleados.getInstase().navegarMenuAdmin(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
         // TODO add your handling code here:
+        ControlRopa.getInstase().navegarGestionCatalogo(this);
     }//GEN-LAST:event_btnCatalogoActionPerformed
 
     private void cmbEstadoSugerenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoSugerenciasActionPerformed

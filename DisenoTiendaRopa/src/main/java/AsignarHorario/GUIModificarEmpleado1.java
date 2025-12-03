@@ -153,7 +153,7 @@ public class GUIModificarEmpleado1 extends javax.swing.JFrame {
 
         btnAgregar.setBackground(new java.awt.Color(234, 154, 178));
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnAgregar.setText("Agregar +");
+        btnAgregar.setText("Modificar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);

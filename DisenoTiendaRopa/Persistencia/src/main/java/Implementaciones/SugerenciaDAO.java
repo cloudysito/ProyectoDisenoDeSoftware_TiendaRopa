@@ -26,7 +26,7 @@ import org.bson.types.ObjectId;
  */
 public class SugerenciaDAO implements ISugerenciaDAO {
 
-    private static final String NOMBRE_COLLECTION = "Empleado";
+    private static final String NOMBRE_COLLECTION = "Sugerencia";
     private final ConnectionMongoDB connection;
 
     public SugerenciaDAO() {

@@ -57,6 +57,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
         editarBtn.setBackground(new java.awt.Color(255, 238, 242));
         editarBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         editarBtn.setText("Modificar");
+        editarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarBtnActionPerformed(evt);
+            }
+        });
 
         horarioBtn.setBackground(new java.awt.Color(255, 238, 242));
         horarioBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -111,6 +116,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
         // TODO add your handling code here:
         ControlEmpleados.getInstase().navegarAsignar(frameActual, empleado);
     }//GEN-LAST:event_horarioBtnActionPerformed
+
+    private void editarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBtnActionPerformed
+        // TODO add your handling code here:
+        ControlEmpleados.getInstase().navegarModificar(frameActual, empleado);
+    }//GEN-LAST:event_editarBtnActionPerformed
 
     private void LlenarEmpleado(){
         nombreTxt.setText(empleado.getNombre() + " " + empleado.getApellidos());

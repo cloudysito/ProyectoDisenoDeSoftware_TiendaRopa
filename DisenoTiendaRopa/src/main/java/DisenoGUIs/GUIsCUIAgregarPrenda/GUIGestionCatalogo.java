@@ -25,6 +25,8 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         pnlCatalogo.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 20));
+        cargarCatalogo();
+        
     }
 
     private void configurarBotonesTarjeta(panelPrenda tarjeta, com.mycompany.dto_negocio.RopaTallaDTO item) {
@@ -221,6 +223,11 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
         btnAñadirPrenda.setBackground(new java.awt.Color(255, 213, 223));
         btnAñadirPrenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mas.png"))); // NOI18N
+        btnAñadirPrenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirPrendaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("<html><center>Añadir nueva <br> prenda</center></html>");
@@ -361,6 +368,7 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        ControlEmpleados.getInstase().navegarMenuAdmin(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -403,6 +411,11 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
     }//GEN-LAST:event_btnSugerenciaActionPerformed
+
+    private void btnAñadirPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirPrendaActionPerformed
+        // TODO add your handling code here:
+        ControlRopa.getInstase().navegarAñadirPrenda(this);
+    }//GEN-LAST:event_btnAñadirPrendaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -72,6 +72,8 @@ DisenoGUIs\GUIProducto$2.class
 DisenoGUIs\GUIInicioSesion$1.class
 GUIsCUIAdminTendenciaSugerencia\GUIMenuSugerencia$4.class
 DisenoGUIs\GUIProducto$12.class
+AsignarHorario\PanelEmpleado$2.class
+DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$7.class
 GUIDevolverPrenda\GUIConfirmacionReembolso$3.class
 DisenoGUIs\GUIPagoTarjeta$6.class
 GUIDevolverPrenda\GUISeleccionMetodoReembolso$6.class
@@ -168,6 +170,7 @@ GUIsCUIAdminTendenciaSugerencia\GUIDetallesSugerencia$4.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$6.class
 GUIDevolverPrenda\GUIBuscarVenta$5.class
 DisenoGUIs\GUIMenu$3.class
+AsignarHorario\GUIAsignarHorarios$7.class
 DisenoGUIs\GUICambiarTalla$3.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$5.class
 GUIsCUIAdminTendenciaSugerencia\GUIDetallesSugerencia$3.class
