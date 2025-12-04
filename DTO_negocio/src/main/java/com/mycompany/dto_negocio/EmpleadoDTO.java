@@ -14,6 +14,7 @@ public class EmpleadoDTO {
     private String idEmpleado;
     private String nombre;
     private String apellidos;
+    private String urlImagen;
     private String puesto;
     private String telefono;
     private String contrasenia;
@@ -65,6 +66,14 @@ public class EmpleadoDTO {
 
     public void setCapacitacion(CapacitacionDTO capacitacion) {
         this.capacitacion = capacitacion;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 
     

@@ -25,6 +25,7 @@ public class RopaMapper {
         }
         
         ropa.setNombreArticulo(dto.getNombreArticulo());
+        ropa.setUrlImagen(dto.getUrlImagen());
         ropa.setDescripcion(dto.getDescripcion());
         ropa.setPrecio(dto.getPrecio());
         ropa.setTemporada(dto.getTemporada());
@@ -46,6 +47,7 @@ public class RopaMapper {
         
         dto.setNombreArticulo(ropa.getNombreArticulo());
         dto.setDescripcion(ropa.getDescripcion());
+        dto.setUrlImagen(ropa.getUrlImagen());
         dto.setPrecio(ropa.getPrecio());
         dto.setTemporada(ropa.getTemporada());
         dto.setMarca(ropa.getMarca());

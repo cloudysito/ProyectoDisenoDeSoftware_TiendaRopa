@@ -11,6 +11,7 @@ package com.mycompany.dto_negocio;
 public class RopaDTO {
     private String idRopa;
     private String nombreArticulo;
+    private String urlImagen;
     private double precio;
     private String descripcion;
     private String Temporada;
@@ -54,6 +55,14 @@ public class RopaDTO {
 
     public void setNombreArticulo(String nombreArticulo) {
         this.nombreArticulo = nombreArticulo;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 
     public double getPrecio() {

@@ -25,6 +25,7 @@ public class EmpleadoMapper {
         }
         empleado.setNombre(dto.getNombre());
         empleado.setApellidos(dto.getApellidos());
+        empleado.setUrlImagen(dto.getUrlImagen());
         empleado.setEmail(dto.getEmail());
         empleado.setFechaContratacion(dto.getFechaContratacion());
         empleado.setPuesto(dto.getPuesto());
@@ -47,6 +48,7 @@ public class EmpleadoMapper {
         dto.setNombre(empleado.getNombre());
         dto.setApellidos(empleado.getApellidos());
         dto.setEmail(empleado.getEmail());
+        dto.setUrlImagen(empleado.getUrlImagen());
         dto.setFechaContratacion(empleado.getFechaContratacion());
         dto.setCapacitacion(CapacitacionMapper.toDTO(empleado.getCapacitacion()));
         dto.setHorario(HorarioMapper.toDTO(empleado.getHorario()));

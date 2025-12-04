@@ -61,6 +61,7 @@ public class RopaDAO implements IRopaDAO {
             Bson actualizaciones = Updates.combine(
                     Updates.set("nombreArticulo", ropa.getNombreArticulo()),
                     Updates.set("descripcion", ropa.getDescripcion()),
+                    Updates.set("urlImagen", ropa.getUrlImagen()),
                     Updates.set("precio", ropa.getPrecio()),
                     Updates.set("temporada", ropa.getTemporada()),
                     Updates.set("marca", ropa.getMarca()),

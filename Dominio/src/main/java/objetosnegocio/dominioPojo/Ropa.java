@@ -10,6 +10,7 @@ public class Ropa {
 
     private ObjectId id;
     private String nombreArticulo;
+    private String urlImagen;
     private double precio;
     private String descripcion;
     private String temporada;
@@ -35,6 +36,14 @@ public class Ropa {
         this.marca = marca;
         this.material = material;
         this.precio = precio;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 
     public ObjectId getId() { return id; }

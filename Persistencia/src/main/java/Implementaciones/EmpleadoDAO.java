@@ -64,6 +64,7 @@ public class EmpleadoDAO implements IEmpleadoDAO {
                     Updates.set("nombre", empleado.getNombre()),
                     Updates.set("apellidos", empleado.getApellidos()),
                     Updates.set("puesto", empleado.getPuesto()),
+                    Updates.set("urlImagen", empleado.getUrlImagen()),
                     Updates.set("telefono", empleado.getTelefono()),
                     Updates.set("horario", empleado.getHorario()),
                     Updates.set("email", empleado.getEmail()),
