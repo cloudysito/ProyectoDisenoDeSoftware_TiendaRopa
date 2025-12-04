@@ -9,6 +9,8 @@ import Exceptions.DAOException;
 import Implementaciones.TallaDAO;
 import Interfaces.ITallaDAO;
 import com.mycompany.dto_negocio.TallaDTO;
+import java.util.ArrayList;
+import java.util.List;
 import mappers.TallaMapper;
 import objetosnegocio.dominioPojo.Talla;
 /**
@@ -82,6 +84,23 @@ public class TallaBO {
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id empleado", e);
+        }
+    }
+    
+    public List<TallaDTO> buscarTodos() throws BOException{
+        try {
+            List<Talla> listaTalla = tallaDAO.consultarTallas();
+
+            List<TallaDTO> listaDTO = new ArrayList<>();
+            
+            for (Talla r : listaTalla) {
+                listaDTO.add(TallaMapper.toDTO(r));
+            }
+
+            return listaDTO;
+
+        } catch (DAOException e) {
+            throw new BOException("Error al obtener todo el catálogo de ropa", e);
         }
     }
     

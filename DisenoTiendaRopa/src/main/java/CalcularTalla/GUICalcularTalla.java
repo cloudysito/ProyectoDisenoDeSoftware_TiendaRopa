@@ -4,12 +4,19 @@
  */
 package CalcularTalla;
 
+import ControlPantallas.ControlCalcularTalla;
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 
 /**
@@ -21,9 +28,14 @@ public class GUICalcularTalla extends javax.swing.JFrame {
     /**
      * Creates new form GUIProducto
      */
-    public GUICalcularTalla() {
+    
+    private EmpleadoDTO empleado;
+    public GUICalcularTalla(EmpleadoDTO empleado) {
         initComponents();
+        this.empleado = empleado;
+        llenarEmpleado();
         setLocationRelativeTo(null);
+        
     }
     
     /**
@@ -55,9 +67,10 @@ public class GUICalcularTalla extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnVender = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
+        JPecho = new javax.swing.JSpinner();
+        jCadera = new javax.swing.JSpinner();
+        jCintura = new javax.swing.JSpinner();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,6 +241,10 @@ public class GUICalcularTalla extends javax.swing.JFrame {
             }
         });
 
+        JPecho.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "UNISEX", "FEMENINO", "MASCULINO" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -252,11 +269,14 @@ public class GUICalcularTalla extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(214, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jCadera, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                .addComponent(JPecho))
+                            .addComponent(jCintura, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(30, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,17 +290,18 @@ public class GUICalcularTalla extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JPecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
+                            .addComponent(jCintura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jCadera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(panelPrenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnVender))
@@ -307,6 +328,13 @@ public class GUICalcularTalla extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         // TODO add your handling code here:
+        Double Pecho = ((Number) JPecho.getValue()).doubleValue();
+        Double cintura = ((Number) jCintura.getValue()).doubleValue();
+        Double Cadera = ((Number) jCadera.getValue()).doubleValue();
+        String genero = (String) jComboBox1.getSelectedItem();
+
+        String talla = ControlCalcularTalla.getCalcularTalla().ValidarDatos(Pecho, cintura, Cadera, genero);
+        mostrarTalla(talla);
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -329,8 +357,26 @@ public class GUICalcularTalla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLibroActionPerformed
 
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombre());
+    }
+    
+    
+    public void mostrarTalla(String talla) {
+        // Crear un JLabel con el mensaje
+        JLabel mensaje = new JLabel("Esta es tu talla: " + talla, SwingConstants.CENTER);
+        mensaje.setFont(new Font("Arial", Font.BOLD, 16));
+        mensaje.setOpaque(true);
+        mensaje.setBackground(new Color(255, 182, 193)); // Color rosita
+        mensaje.setForeground(Color.BLACK);
+        mensaje.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
 
+        // Mostrar el diálogo
+        JOptionPane.showMessageDialog(null, mensaje, "Resultado", JOptionPane.PLAIN_MESSAGE);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner JPecho;
     private javax.swing.JButton btnCalcularTalla;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDevolverPrenda;
@@ -338,6 +384,9 @@ public class GUICalcularTalla extends javax.swing.JFrame {
     private javax.swing.JButton btnLibro;
     private javax.swing.JButton btnVender;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JSpinner jCadera;
+    private javax.swing.JSpinner jCintura;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -347,9 +396,6 @@ public class GUICalcularTalla extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JLabel lblFotoPrenda;
     private javax.swing.JLabel lblNombreEmpleado;
     private javax.swing.JLabel lblNombreProducto;

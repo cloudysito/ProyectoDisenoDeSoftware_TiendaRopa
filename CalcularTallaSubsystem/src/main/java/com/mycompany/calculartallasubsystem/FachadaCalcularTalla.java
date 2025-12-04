@@ -71,21 +71,21 @@ public class FachadaCalcularTalla implements ICalcularTalla{
     }
 
     @Override
-    public void ValidarDatos(double pecho, double cintura, double cadera, String genero) {
-        if (pecho == 0) {
+    public String ValidarDatos(double pecho, double cintura, double cadera, String genero) {
+        if (pecho <= 0) {
             
         }
-        if (cintura == 0) {
+        if (cintura <= 0) {
             
         }
-        if (cadera == 0) {
+        if (cadera <= 0) {
             
         }
         if (genero == null || genero == "") {
         
         
         } 
-        CalcularTalla(pecho, cintura, cadera, genero);
+        return CalcularTalla(pecho, cintura, cadera, genero);
     }
     
 }

@@ -5,7 +5,16 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlPantallas;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.TallaDTO;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.util.List;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -16,9 +25,17 @@ public class GUICambiarTalla extends javax.swing.JDialog {
     /**
      * Creates new form GUICambiarTalla
      */
-    public GUICambiarTalla(java.awt.Frame parent, boolean modal) {
+    
+    private RopaTallaDTO ropaTalla;
+    
+    
+    private ButtonGroup group;
+    public GUICambiarTalla(java.awt.Frame parent, boolean modal, RopaTallaDTO  ropaTallaDTO) {
         super(parent, modal);
+        ropaTalla = ropaTallaDTO;
         initComponents();
+        generarBotonesTallas(jPanel4);
+        obtenerNombreTallaSeleccionada(group);
         setLocationRelativeTo(parent);
     }
 
@@ -287,49 +304,27 @@ public class GUICambiarTalla extends javax.swing.JDialog {
 //
 //        this.dispose();
 //    }
+        String nombre = obtenerNombreTallaSeleccionada(group);
+        RopaTallaDTO ropaTallaCambiada = ControlPantallas.getInstase().getRealizarVentaSistema().cambiarTallaDisponible(ropaTalla.getRopa(), nombre);
+        if (ropaTallaCambiada == null) {
+            JOptionPane.showMessageDialog(
+                this,  
+                "En este momento no hay stock de la prenda",
+                "Cambiar talla",                            
+                JOptionPane.ERROR_MESSAGE                   
+            );
+
+        } else {
+            ropaTalla = ropaTallaCambiada;
+            this.dispose();
+        }
     }//GEN-LAST:event_btnCambiarTallaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICambiarTalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICambiarTalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICambiarTalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICambiarTalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                GUICambiarTalla dialog = new GUICambiarTalla(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton L;
@@ -350,5 +345,37 @@ public class GUICambiarTalla extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
 
+    public void generarBotonesTallas(JPanel panel) {
+        panel.removeAll();
+        panel.setLayout(new FlowLayout()); 
+
+        List<TallaDTO> tallas = ControlPantallas.getInstase().getRealizarVentaSistema().obtenerTallas();
+
+        group = new ButtonGroup(); 
+
+        for (TallaDTO talla : tallas) {
+            JToggleButton btn = new JToggleButton(talla.getNombreTalla());
+            btn.setPreferredSize(new Dimension(70, 35)); 
+
+            btn.setActionCommand(talla.getNombreTalla());
+
+            group.add(btn);
+            panel.add(btn);
+        }
+
+        panel.revalidate();
+        panel.repaint();
+    }
+    
+    public String obtenerNombreTallaSeleccionada(ButtonGroup group) {
+        ButtonModel selected = group.getSelection();
+        return selected != null ? selected.getActionCommand() : null;
+    }
+
+    public RopaTallaDTO getRopaTalla() {
+        return ropaTalla;
+    }
+
+    
 }
 

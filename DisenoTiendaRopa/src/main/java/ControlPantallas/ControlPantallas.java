@@ -21,6 +21,7 @@ import GUIDevolverPrenda.GUIReembolsoPrenda;
 import GUIDevolverPrenda.GUISeleccionMetodoReembolso;
 import com.mycompany.aumentarventaempleado.Fachada.FachadaAumentarVentaEmpleado;
 import com.mycompany.aumentarventaempleado.Interfaz.IAumentarVentaEmpleado;
+import com.mycompany.dto_negocio.DetalleVentaDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.SolicitudReembolsoDTO;
@@ -31,7 +32,16 @@ import com.mycompany.metodopagosubsystem.FachadaMetodoPago;
 import com.mycompany.metodopagosubsystem.Interfaz.IMetodoPago;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
 import com.mycompany.realizarventasubsystem.FachadaRealizarVenta;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -139,6 +149,85 @@ public class ControlPantallas {
     public void navegarConfirmacionReembolso(JFrame frame) {
         cerrarFrameActual(frame);
         new GUIConfirmacionReembolso().setVisible(true);
+    }
+    
+    public void mostrarYGuardarTicketComoImagen(VentaDTO venta, JFrame frame) {
+        // Validar que se reciba un objeto válido
+        if (venta == null) {
+            JOptionPane.showMessageDialog(frame, "La venta es nula");
+            return;
+        }
+
+        // --- Crear texto del ticket ---
+        StringBuilder sb = new StringBuilder();
+        sb.append("=========== TICKET DE VENTA ===========\n");
+        sb.append("Folio: ").append(venta.getFolioVenta()).append("\n");
+        sb.append("Fecha: ").append(venta.getFechaHoraVenta()).append("\n");
+        sb.append("----------------------------------------\n");
+        sb.append("Empleado: ").append(venta.getEmpleado().getNombre())
+          .append(" ").append(venta.getEmpleado().getApellidos()).append("\n");
+        sb.append("Método de pago: ").append(venta.getMetodoPago()).append("\n");
+        sb.append("----------------------------------------\n");
+        sb.append(String.format("%-15s %-8s %-10s %-10s\n", "Producto", "Cant.", "Precio", "Subtot."));
+        sb.append("----------------------------------------\n");
+
+        for (DetalleVentaDTO d : venta.getDetalles()) {
+            sb.append(String.format("%-15s %-8d %-10.2f %-10.2f\n",
+                    d.getRopaTalla().getRopa().getNombreArticulo(),
+                    d.getCantidadVendida(),
+                    d.getRopaTalla().getRopa().getPrecio(),
+                    d.getSubtotal()));
+        }
+
+        sb.append("----------------------------------------\n");
+        sb.append(String.format("TOTAL: $%.2f\n", venta.getTotalVenta()));
+        sb.append("========================================\n");
+
+        String[] lineas = sb.toString().split("\n");
+
+        // --- Configuración de la imagen ---
+        int ancho = 400;
+        int alto = lineas.length * 20 + 20; // 20px por línea
+        BufferedImage image = new BufferedImage(ancho, alto, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2 = image.createGraphics();
+
+        // Fondo blanco
+        g2.setColor(Color.WHITE);
+        g2.fillRect(0, 0, ancho, alto);
+
+        // Texto negro
+        g2.setColor(Color.BLACK);
+        g2.setFont(new Font("Monospaced", Font.PLAIN, 14));
+
+        int y = 20;
+        for (String linea : lineas) {
+            g2.drawString(linea, 10, y);
+            y += 20;
+        }
+        g2.dispose();
+
+        // --- Mostrar en JOptionPane centrado en el frame ---
+        ImageIcon icon = new ImageIcon(image);
+        JOptionPane.showMessageDialog(frame, new JLabel(icon), "Ticket de venta", JOptionPane.PLAIN_MESSAGE);
+
+        // --- Guardar imagen ---
+        try {
+            File carpeta = new File("tickets");
+            if (!carpeta.exists()) carpeta.mkdirs();
+
+            String nombreArchivo = "ticket_" + venta.getFolioVenta() + ".png";
+            File archivo = new File(carpeta, nombreArchivo);
+
+            ImageIO.write(image, "png", archivo);
+
+            JOptionPane.showMessageDialog(frame,
+                    "Ticket guardado en: " + archivo.getAbsolutePath(),
+                    "Guardado", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(frame,
+                    "Error al guardar el ticket: " + e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public ControlPantallas getInstancia() {

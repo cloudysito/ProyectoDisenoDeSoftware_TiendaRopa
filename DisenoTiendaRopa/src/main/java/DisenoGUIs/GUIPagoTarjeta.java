@@ -340,7 +340,7 @@ public class GUIPagoTarjeta extends javax.swing.JFrame {
          VentaDTO venta1 = navegador.getRealizarVentaSistema().crearVenta(venta);
          venta1.setMetodoPago(pago.getMetodo());
          navegador.getRealizarVentaSistema().registrarVenta(venta1);
-         navegador.navegarMenuPrincipal(this,empleado);
+         navegador.mostrarYGuardarTicketComoImagen(venta, this);
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void txtFechaVencimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaVencimientoActionPerformed

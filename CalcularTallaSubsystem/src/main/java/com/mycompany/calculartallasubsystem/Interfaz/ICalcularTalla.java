@@ -11,5 +11,5 @@ package com.mycompany.calculartallasubsystem.Interfaz;
 public interface ICalcularTalla {
     String CalcularTalla(double pecho, double cintura, double cadera, String genero);
     
-    void ValidarDatos(double pecho, double cintura, double cadera, String genero);
+    String ValidarDatos(double pecho, double cintura, double cadera, String genero);
 }

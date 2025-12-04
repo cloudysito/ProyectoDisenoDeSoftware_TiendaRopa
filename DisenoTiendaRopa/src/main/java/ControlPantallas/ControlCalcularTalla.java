@@ -35,7 +35,7 @@ public class ControlCalcularTalla {
     
     public void navegarCalcularTalla(JFrame frameActual, EmpleadoDTO empleado) {
         cerrarFrameActual(frameActual);
-        GUICalcularTalla menu = new GUICalcularTalla();
+        GUICalcularTalla menu = new GUICalcularTalla(empleado);
         menu.setVisible(true);
     }
 

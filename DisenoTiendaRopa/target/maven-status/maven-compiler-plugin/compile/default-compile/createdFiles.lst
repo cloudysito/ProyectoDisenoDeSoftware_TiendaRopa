@@ -78,6 +78,7 @@ GUIDevolverPrenda\GUIConfirmacionReembolso$3.class
 DisenoGUIs\GUIPagoTarjeta$6.class
 GUIDevolverPrenda\GUISeleccionMetodoReembolso$6.class
 DisenoGUIs\GUIVenderPrenda.class
+Main\DisenoTiendaRopa.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda$12.class
 AsignarHorario\GUIEmpleados$2.class
 GUIDevolverPrenda\GUIReembolsoPrenda.class
@@ -98,7 +99,6 @@ AsignarHorario\PanelEmpleado$1.class
 ControlPantallas\ControlRopa.class
 AsignarHorario\GUIModificarEmpleado1$2.class
 DisenoGUIs\JProductoPanel.class
-DisenoGUIs\GUICambiarTalla$11$1.class
 AsignarHorario\GUIAgregarEmpleado$2.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$6.class
 DisenoGUIs\GUISeleccionMetodoPago$6.class
@@ -212,7 +212,6 @@ GUIDevolverPrenda\GUIReembolsoPrenda$1.class
 DisenoGUIs\GUIPagoPaypal$4.class
 CalcularTalla\GUICalcularTalla$4.class
 AsignarHorario\GUIModificarEmpleado1$9.class
-diseno\disenotiendaropa\DisenoTiendaRopa.class
 DisenoGUIs\GUICodigoProducto$4.class
 GUIDevolverPrenda\GUIConfirmacionReembolso$6.class
 AsignarHorario\GUIAsignarHorarios$2.class
@@ -245,7 +244,6 @@ DisenoGUIs\GUIProducto$7.class
 GUIsCUIAdminTendenciaSugerencia\GUIDetallesSugerencia$1.class
 DisenoGUIs\GUICambiarTalla$7.class
 RecomendarPrenda\GUIRecomendarPrenda$5.class
-DisenoGUIs\GUICambiarTalla$11.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$11.class
 DisenoGUIs\GUICodigoProducto$2.class
 DisenoGUIs\GUICompraRealizada$2.class

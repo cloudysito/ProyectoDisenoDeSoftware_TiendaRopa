@@ -90,7 +90,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
-        <exec.mainClass>DisenoGUIs.GUIInicioSesion</exec.mainClass>
+        <exec.mainClass>Main.DisenoTiendaRopa</exec.mainClass>
     </properties>
     <build>
     <plugins>

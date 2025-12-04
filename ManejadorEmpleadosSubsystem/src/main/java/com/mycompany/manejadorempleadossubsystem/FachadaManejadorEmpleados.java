@@ -20,7 +20,7 @@ public class FachadaManejadorEmpleados implements IManejadorEmpleados {
     @Override
     public EmpleadoDTO guardarEmpleado(EmpleadoDTO empleadoDTO) {
         if (empleadoDTO.getNombre() == null || empleadoDTO.getNombre().trim().isEmpty()) {
-
+            
         }
 
         if (empleadoDTO.getApellidos() == null || empleadoDTO.getApellidos().trim().isEmpty()) {

@@ -7,12 +7,17 @@ package com.mycompany.realizarventasubsystem;
 import BOs.Exception.BOException;
 import BOs.VentaBO;
 import BOs.RopaTallaBO;
+import BOs.TallaBO;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
+import com.mycompany.dto_negocio.RopaDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.TallaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -50,9 +55,11 @@ public class FachadaRealizarVenta implements IRealizarVenta {
         return detalleVenta;
     }
 
+    
+    
     @Override
-    public DetalleVentaDTO cambiarTallaDisponible(DetalleVentaDTO producto) {
-        return producto;
+    public List<TallaDTO> obtenerTallas(){
+        return TallaBO.getInstance().buscarTodos();
     }
 
     @Override
@@ -63,6 +70,11 @@ public class FachadaRealizarVenta implements IRealizarVenta {
         
         VentaBO.getInstance().guardarVenta(venta);
         return true;
+    }
+
+    @Override
+    public RopaTallaDTO cambiarTallaDisponible(RopaDTO dto, String nombreTalla) {
+        return RopaTallaBO.getInstance().buscarRopaTalla(dto, nombreTalla);
     }
    
 }

@@ -529,9 +529,11 @@ public class GUIProducto extends javax.swing.JFrame {
 
     private void btnCambiarTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarTallaActionPerformed
         java.awt.Window ventanaPadre = javax.swing.SwingUtilities.getWindowAncestor(this);
-        GUICambiarTalla dialogo = new GUICambiarTalla((java.awt.Frame) ventanaPadre, true);
+        GUICambiarTalla dialogo = new GUICambiarTalla((java.awt.Frame) ventanaPadre, true, producto);
         dialogo.setLocationRelativeTo(this);
         dialogo.setVisible(true);
+        producto = dialogo.getRopaTalla();
+        
     }//GEN-LAST:event_btnCambiarTallaActionPerformed
 
 
