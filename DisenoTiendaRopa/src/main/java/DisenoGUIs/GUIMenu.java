@@ -48,9 +48,6 @@ public class GUIMenu extends javax.swing.JFrame {
         btnCalcularTalla = new javax.swing.JButton();
         btnEnviarSugerencia = new javax.swing.JButton();
         btnDescuento = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         btnLibro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,14 +58,12 @@ public class GUIMenu extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gatoLogo.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cuidado con el Kitten");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usuario.png"))); // NOI18N
         jLabel3.setText("\n");
 
         lblNombreEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreEmpleado.setText("Nombre Empleado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -112,7 +107,6 @@ public class GUIMenu extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 238, 242));
 
         btnVenderPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnVenderPrenda.setForeground(new java.awt.Color(0, 0, 0));
         btnVenderPrenda.setText("Vender prendas");
         btnVenderPrenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +115,6 @@ public class GUIMenu extends javax.swing.JFrame {
         });
 
         btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnDevolverPrenda.setForeground(new java.awt.Color(0, 0, 0));
         btnDevolverPrenda.setText("Devolver prendas");
         btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +123,6 @@ public class GUIMenu extends javax.swing.JFrame {
         });
 
         btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
-        btnCalcularTalla.setForeground(new java.awt.Color(0, 0, 0));
         btnCalcularTalla.setText("Calcular talla");
         btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +131,6 @@ public class GUIMenu extends javax.swing.JFrame {
         });
 
         btnEnviarSugerencia.setBackground(new java.awt.Color(239, 207, 227));
-        btnEnviarSugerencia.setForeground(new java.awt.Color(0, 0, 0));
         btnEnviarSugerencia.setText("Enviar sugerencia");
         btnEnviarSugerencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,43 +139,12 @@ public class GUIMenu extends javax.swing.JFrame {
         });
 
         btnDescuento.setBackground(new java.awt.Color(239, 207, 227));
-        btnDescuento.setForeground(new java.awt.Color(0, 0, 0));
-        btnDescuento.setText("Descuento");
+        btnDescuento.setText("Recomendar prenda");
         btnDescuento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDescuentoActionPerformed(evt);
             }
         });
-
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Caso de uso ");
-
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("recompensar");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(89, Short.MAX_VALUE))
-        );
 
         btnLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libro.png"))); // NOI18N
         btnLibro.addActionListener(new java.awt.event.ActionListener() {
@@ -207,9 +167,7 @@ public class GUIMenu extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDevolverPrenda)
                     .addComponent(btnEnviarSugerencia))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(16, 341, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(btnLibro)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -218,19 +176,16 @@ public class GUIMenu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnVenderPrenda)
-                            .addComponent(btnDevolverPrenda))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCalcularTalla)
-                            .addComponent(btnEnviarSugerencia))
-                        .addGap(27, 27, 27)
-                        .addComponent(btnDescuento))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVenderPrenda)
+                    .addComponent(btnDevolverPrenda))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCalcularTalla)
+                    .addComponent(btnEnviarSugerencia))
+                .addGap(27, 27, 27)
+                .addComponent(btnDescuento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(btnLibro))
         );
 
@@ -296,11 +251,8 @@ public class GUIMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblNombreEmpleado;
     // End of variables declaration//GEN-END:variables
     
