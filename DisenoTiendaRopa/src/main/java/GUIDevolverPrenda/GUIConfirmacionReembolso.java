@@ -6,6 +6,7 @@
 package GUIDevolverPrenda;
 
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.SolicitudReembolsoDTO;
 
 /**
@@ -280,6 +281,7 @@ public class GUIConfirmacionReembolso extends javax.swing.JFrame {
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
 //        ControlReembolso..cancelar(this);
+            
     }//GEN-LAST:event_btnInicioActionPerformed
 
     /**

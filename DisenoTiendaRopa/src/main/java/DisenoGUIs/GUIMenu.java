@@ -6,6 +6,7 @@ package DisenoGUIs;
 
 import ControlPantallas.ControlCalcularTalla;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 
@@ -253,7 +254,7 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
         // TODO add your handling code here:
-        
+        ControlReembolso.getInstase().iniciarFlujo(this, empleado);
     }//GEN-LAST:event_btnDevolverPrendaActionPerformed
 
     private void btnVenderPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderPrendaActionPerformed

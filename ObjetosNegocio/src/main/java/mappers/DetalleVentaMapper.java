@@ -24,7 +24,9 @@ public class DetalleVentaMapper {
         }
         DetalleVenta dv = new DetalleVenta();
         if (dto.getIdDetalleVenta() != null) {
-           dv.setId(new ObjectId(dto.getIdDetalleVenta()));
+            dv.setId(new ObjectId(dto.getIdDetalleVenta()));
+        } else {
+            dv.setId(new ObjectId()); // <-- asigna un ID nuevo si no tiene
         }
         RopaTalla ropaTallaEntidad = RopaTallaMapper.toEntity(dto.getRopaTalla());
         dv.setRopaTalla(ropaTallaEntidad);
