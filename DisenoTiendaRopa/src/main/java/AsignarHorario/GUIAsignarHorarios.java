@@ -418,6 +418,9 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
     private void llenarEmpleado(){
         nombreTxt.setText(empleado.getNombre());
         emailTxt4.setText(empleado.getEmail());
+        if(empleado.getUrlImagen() != null){
+            ControlPantallas.getInstase().mostrarImagenEnLabel(empleado.getUrlImagen(), jLabel6);
+        }
         telefonoTxt2.setText(empleado.getTelefono());
         puestoTxt3.setText(empleado.getTelefono());
         salarioTxt1.setText(String.valueOf(empleado.getSalario()));     
