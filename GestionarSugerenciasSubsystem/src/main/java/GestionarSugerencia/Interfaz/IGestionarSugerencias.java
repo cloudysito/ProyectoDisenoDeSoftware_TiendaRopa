@@ -16,4 +16,6 @@ public interface IGestionarSugerencias {
     public List<SugerenciaDTO> filtrarSugerencias(String filtro);
 
     public boolean cambiarEstadoSugerencia(SugerenciaDTO sugerencia, String nuevoEstado);
+    
+    public SugerenciaDTO guardarSugerencia(SugerenciaDTO sugerenciaDTO);
 }

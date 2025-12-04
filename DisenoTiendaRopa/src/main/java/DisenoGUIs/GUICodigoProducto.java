@@ -13,6 +13,7 @@ import com.mycompany.dto_negocio.VentaDTO;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -373,8 +374,18 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         String codigoProducto = jTextCodigo.getText();
         RopaTallaDTO producto = navegador.getEscanerSistema().encontrarProducto(codigoProducto);
-        webcam.close();
-        navegador.navegarProducto(this, empleado, producto, venta, ventaIniciada);
+        if (producto != null) {
+            webcam.close();
+            navegador.navegarProducto(this, empleado, producto, venta, ventaIniciada);
+        }
+        else{
+            JOptionPane.showMessageDialog(
+                this,  
+                "No se encontro la prenda ",
+                "aceptar",                            
+                JOptionPane.ERROR_MESSAGE                   
+            );
+        }
     }
      
 }

@@ -35,7 +35,7 @@ public class SugerenciaBO {
         return instance;
     }
 
-    SugerenciaDTO guardarSugerencia(SugerenciaDTO sugerenciaDTO) throws BOException {
+    public SugerenciaDTO guardarSugerencia(SugerenciaDTO sugerenciaDTO) throws BOException {
         try {
             Sugerencia sugerencia = SugerenciaMapper.toEntity(sugerenciaDTO);
             Sugerencia sugerenciaGuardada = sugerenciaDAO.guardarSugerencia(sugerencia);
@@ -45,7 +45,7 @@ public class SugerenciaBO {
         }
     }
 
-    SugerenciaDTO modificarSugerencia(SugerenciaDTO sugerenciaDTO) throws BOException {
+    public SugerenciaDTO modificarSugerencia(SugerenciaDTO sugerenciaDTO) throws BOException {
         try {
             Sugerencia sugerencia = SugerenciaMapper.toEntity(sugerenciaDTO);
             Sugerencia sugerenciaModificar = sugerenciaDAO.modificarSugerencia(sugerencia);
@@ -55,7 +55,7 @@ public class SugerenciaBO {
         }
     }
 
-    SugerenciaDTO buscarPorId(String idBonificacion) throws BOException {
+    public SugerenciaDTO buscarPorId(String idBonificacion) throws BOException {
         try {
             return SugerenciaMapper.toDTO(sugerenciaDAO.buscarPorId(idBonificacion));
         } catch (Exception e) {
@@ -63,7 +63,7 @@ public class SugerenciaBO {
         }
     }
 
-    List<SugerenciaDTO> buscarTodos() throws BOException {
+   public  List<SugerenciaDTO> buscarTodos() throws BOException {
         try {
 
             List<Sugerencia> listaSugerencia = sugerenciaDAO.buscarTodos();
@@ -82,7 +82,7 @@ public class SugerenciaBO {
         }
     }
 
-    List<SugerenciaDTO> buscarPorNombre(String BOException) {
+    public List<SugerenciaDTO> buscarPorNombre(String BOException) {
         try {
 
             List<Sugerencia> listaSugerencia = sugerenciaDAO.buscarPorNombre(BOException);

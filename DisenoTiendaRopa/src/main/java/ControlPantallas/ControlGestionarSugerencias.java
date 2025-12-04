@@ -69,5 +69,8 @@ public class ControlGestionarSugerencias {
         List<SugerenciaDTO> datos = gestionSugerencias.filtrarSugerencias(filtroActual);
         return generadorReportes.generarReporteSugerencias(datos, ruta, filtroActual);
     }
-
+    
+    public SugerenciaDTO guardarSugerencia(SugerenciaDTO sugerenciaDTO){
+        return gestionSugerencias.guardarSugerencia(sugerenciaDTO);
+    }
 }
