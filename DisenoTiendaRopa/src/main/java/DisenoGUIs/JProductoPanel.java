@@ -4,7 +4,6 @@
  */
 package DisenoGUIs;
 
-import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
 
 /**
@@ -89,9 +88,6 @@ public class JProductoPanel extends javax.swing.JPanel {
         lblNombrePrenda.setText(detalle.getRopaTalla().getRopa().getNombreArticulo());
         lblTalla.setText(detalle.getRopaTalla().getTalla().getNombreTalla());
         lblPrecio.setText(String.valueOf(detalle.getSubtotal()));
-        if(detalle.getRopaTalla().getRopa().getUrlImagen() != null){
-            ControlPantallas.getInstase().mostrarImagenEnLabel(detalle.getRopaTalla().getRopa().getUrlImagen(), jLabel5);
-        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

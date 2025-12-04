@@ -8,10 +8,6 @@ import ControlPantallas.ControlEmpleados;
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
-import java.awt.Component;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +18,7 @@ public class GUIModificarEmpleado1 extends javax.swing.JFrame {
     /**
      * Creates new form GUICodigoProducto
      */
-    private String url;
+    
     private EmpleadoDTO empleado;
     public GUIModificarEmpleado1(EmpleadoDTO empleado) {
         initComponents();
@@ -415,7 +411,7 @@ public class GUIModificarEmpleado1 extends javax.swing.JFrame {
         empleado.setRfc(jRfcText.getText());
         empleado.setTelefono(jTelefonoText.getText());
         empleado.setSalario((int) jSpinner1.getValue());
-        empleado.setUrlImagen(url);
+        
         ControlEmpleados.getInstase().getManejadorEmpleados().modificarEmpleado(empleado);
         ControlEmpleados.getInstase().navegarEmpleados(this);
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -438,10 +434,6 @@ public class GUIModificarEmpleado1 extends javax.swing.JFrame {
 
     private void btnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresar1ActionPerformed
         // TODO add your handling code here:
-        url = copiarImagenSeleccionada(this);
-        if (url != null) {
-            JOptionPane.showMessageDialog(this, "Imagen guardada en:\n" + url);
-        }
     }//GEN-LAST:event_btnRegresar1ActionPerformed
 
     private void btnRegresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresar2ActionPerformed
@@ -459,52 +451,7 @@ public class GUIModificarEmpleado1 extends javax.swing.JFrame {
     jRfcText.setText(empleado.getRfc());
     jTelefonoText.setText(empleado.getTelefono());
     jSpinner1.setValue(empleado.getSalario());
-    
-    if(empleado.getUrlImagen() != null){
-            ControlPantallas.getInstase().mostrarImagenEnLabel(empleado.getUrlImagen(), jLabel6);
-            url = empleado.getUrlImagen();
-      }
-    }
-    
-    private String copiarImagenSeleccionada(Component parent) {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Selecciona una imagen");
 
-        // Filtrar solo imágenes
-        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
-                "Imágenes", "jpg", "jpeg", "png"));
-
-        int resultado = fileChooser.showOpenDialog(parent);
-
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File imagenOriginal = fileChooser.getSelectedFile();
-
-            try {
-                // Crear carpeta interna
-                File carpetaDestino = new File("Empleados");
-                if (!carpetaDestino.exists()) {
-                    carpetaDestino.mkdirs();
-                }
-
-                // Crear copia con mismo nombre
-                File copia = new File(carpetaDestino, imagenOriginal.getName());
-
-                // Copiar archivo
-                java.nio.file.Files.copy(
-                        imagenOriginal.toPath(),
-                        copia.toPath(),
-                        java.nio.file.StandardCopyOption.REPLACE_EXISTING
-                );
-
-                // Regresar ruta absoluta de la copia
-                return copia.getAbsolutePath();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return null; // por si cancelan
     }
     
     /**

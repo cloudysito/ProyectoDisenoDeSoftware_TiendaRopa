@@ -5,7 +5,6 @@
 package AsignarHorario;
 
 import ControlPantallas.ControlEmpleados;
-import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import javax.swing.JFrame;
 
@@ -126,9 +125,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
     private void LlenarEmpleado(){
         nombreTxt.setText(empleado.getNombre() + " " + empleado.getApellidos());
         estadoTxt.setText(empleado.getPuesto());
-        if(empleado.getUrlImagen() != null){
-            ControlPantallas.getInstase().mostrarImagenEnLabel(empleado.getUrlImagen(), jLabel1);
-      }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

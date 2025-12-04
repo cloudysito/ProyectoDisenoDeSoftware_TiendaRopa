@@ -35,7 +35,6 @@ import com.mycompany.realizarventasubsystem.FachadaRealizarVenta;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -251,19 +250,7 @@ public class ControlPantallas {
         return EmpleadoSistema;
     }
     
-    public void mostrarImagenEnLabel(String ruta, JLabel label) {
-        ImageIcon icon = new ImageIcon(ruta);
-
-        // Redimensionar la imagen al tamaño del label
-        Image img = icon.getImage().getScaledInstance(
-                label.getWidth(),
-                label.getHeight(),
-                Image.SCALE_SMOOTH
-        );
-
-        label.setIcon(new ImageIcon(img));
-    }
-
+    
     
     
 }
