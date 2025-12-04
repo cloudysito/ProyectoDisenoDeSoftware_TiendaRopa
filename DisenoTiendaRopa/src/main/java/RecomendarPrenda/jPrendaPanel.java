@@ -4,6 +4,12 @@
  */
 package RecomendarPrenda;
 
+import ControlPantallas.ControlPantallas;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.VentaDTO;
+import javax.swing.JFrame;
+
 /**
  *
  * @author santi
@@ -13,8 +19,23 @@ public class jPrendaPanel extends javax.swing.JPanel {
     /**
      * Creates new form jPrendaPanel
      */
-    public jPrendaPanel() {
+    private EmpleadoDTO empleado;
+    private RopaTallaDTO ropaTalla;
+    private JFrame frame;
+    
+    public jPrendaPanel(EmpleadoDTO empleado, RopaTallaDTO ropaTalla,JFrame frame) {
         initComponents();
+        this.empleado = empleado;
+        this.ropaTalla  = ropaTalla;
+        this.frame = frame;
+        llenarRopaTalla();
+    }
+    
+    private void llenarRopaTalla(){
+        jNombre.setText(ropaTalla.getRopa().getNombreArticulo());
+        jTalla.setText(ropaTalla.getTalla().getNombreTalla());
+        jPrecio.setText(Double.toString(ropaTalla.getRopa().getPrecio()));
+        
     }
 
     /**
@@ -26,22 +47,22 @@ public class jPrendaPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jNombre = new javax.swing.JLabel();
+        jPrecio = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jTalla = new javax.swing.JLabel();
         btnVender = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Nombre");
+        jNombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jNombre.setText("Nombre");
 
-        jLabel2.setText("precio");
+        jPrecio.setText("precio");
 
         jLabel3.setText("imagen");
 
-        jLabel4.setText("talla");
+        jTalla.setText("talla");
 
         btnVender.setBackground(new java.awt.Color(226, 115, 150));
         btnVender.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -60,54 +81,53 @@ public class jPrendaPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jNombre)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(jLabel4)))
-                        .addGap(51, 51, 51))))
+                            .addComponent(jTalla)
+                            .addComponent(jPrecio))
+                        .addGap(45, 45, 45))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVender)
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jNombre)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
+                        .addComponent(jPrecio))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jTalla)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVender)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         // TODO add your handling code here:
-
+        VentaDTO venta = new VentaDTO();
+        venta.setEmpleado(empleado);
+        ControlPantallas.getInstase().navegarProducto(frame, empleado, ropaTalla,venta, false);
     }//GEN-LAST:event_btnVenderActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVender;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jNombre;
+    private javax.swing.JLabel jPrecio;
+    private javax.swing.JLabel jTalla;
     // End of variables declaration//GEN-END:variables
 }

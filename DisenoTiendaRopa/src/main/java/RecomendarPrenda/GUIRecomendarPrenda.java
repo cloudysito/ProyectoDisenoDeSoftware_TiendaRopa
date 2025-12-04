@@ -6,9 +6,14 @@ package RecomendarPrenda;
 
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlRecomendarPrenda;
+import ControlPantallas.ControlRopa;
+import com.mycompany.dto_negocio.BuscarPrendaDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.PagoDTO;
+import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,13 +25,11 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
      * Creates new form GUIProducto
      */
     private EmpleadoDTO empleado;
-    private VentaDTO venta;
 
     
-    public GUIRecomendarPrenda(EmpleadoDTO empleado,VentaDTO venta) {
+    public GUIRecomendarPrenda(EmpleadoDTO empleado) {
         initComponents();
         this.empleado = empleado;
-        this.venta = venta;
 //        configurarNavegacionPerfil();
         setLocationRelativeTo(null);
     }
@@ -57,10 +60,10 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Buscar = new javax.swing.JButton();
-        txtNombreTitular = new javax.swing.JTextField();
-        txtNumTarjeta = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
+        txtTemporada = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtFechaVencimiento = new javax.swing.JTextField();
+        txtMaterial = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -213,11 +216,11 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Material");
 
-        txtFechaVencimiento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtFechaVencimiento.setForeground(new java.awt.Color(153, 153, 153));
-        txtFechaVencimiento.addActionListener(new java.awt.event.ActionListener() {
+        txtMaterial.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtMaterial.setForeground(new java.awt.Color(153, 153, 153));
+        txtMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaVencimientoActionPerformed(evt);
+                txtMaterialActionPerformed(evt);
             }
         });
 
@@ -265,10 +268,10 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtNombreTitular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                                .addComponent(txtNumTarjeta, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                                .addComponent(txtTemporada, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(jLabel6)
-                            .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
@@ -294,18 +297,18 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,12 +358,29 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
+        BuscarPrendaDTO busqueda = new BuscarPrendaDTO();
+        busqueda.setMarca(txtMarca.getText());
+        busqueda.setMaterial(txtMaterial.getText());
+        busqueda.setTemporada(txtTemporada.getText());
         
+        RopaTallaDTO ropaTalla = ControlRecomendarPrenda.getInstance().getRecomendarPrenda().recomentarPrenda(busqueda);
+        
+        if (ropaTalla != null) {
+            jPanel5.add(new jPrendaPanel(empleado, ropaTalla, this));
+        }
+        else{
+            JOptionPane.showMessageDialog(
+                    this,  
+                    "Lo sentimos no encontramos una prenda con sus especificaciones",
+                    "Cambiar talla",                            
+                    JOptionPane.ERROR_MESSAGE                   
+                );
+        }
     }//GEN-LAST:event_BuscarActionPerformed
 
-    private void txtFechaVencimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaVencimientoActionPerformed
+    private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaVencimientoActionPerformed
+    }//GEN-LAST:event_txtMaterialActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -385,9 +405,9 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblNombreEmpleado;
     private javax.swing.JLabel lblNombreProducto;
-    private javax.swing.JTextField txtFechaVencimiento;
-    private javax.swing.JTextField txtNombreTitular;
-    private javax.swing.JTextField txtNumTarjeta;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtMaterial;
+    private javax.swing.JTextField txtTemporada;
     // End of variables declaration//GEN-END:variables
 
     

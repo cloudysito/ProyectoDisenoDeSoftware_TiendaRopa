@@ -157,11 +157,11 @@
                               <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtNombreTitular" alignment="0" pref="159" max="32767" attributes="0"/>
-                                  <Component id="txtNumTarjeta" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMarca" alignment="0" pref="159" max="32767" attributes="0"/>
+                                  <Component id="txtTemporada" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtFechaVencimiento" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                              <Component id="txtMaterial" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -197,7 +197,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtNumTarjeta" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="txtTemporada" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanel4" max="32767" attributes="0"/>
                   </Group>
@@ -206,11 +206,11 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtNombreTitular" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="txtMarca" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtFechaVencimiento" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="txtMaterial" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanel5" max="32767" attributes="0"/>
                   </Group>
@@ -367,9 +367,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNombreTitular">
+        <Component class="javax.swing.JTextField" name="txtMarca">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNumTarjeta">
+        <Component class="javax.swing.JTextField" name="txtTemporada">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -379,7 +379,7 @@
             <Property name="text" type="java.lang.String" value="Material"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFechaVencimiento">
+        <Component class="javax.swing.JTextField" name="txtMaterial">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
@@ -389,7 +389,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFechaVencimientoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMaterialActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
