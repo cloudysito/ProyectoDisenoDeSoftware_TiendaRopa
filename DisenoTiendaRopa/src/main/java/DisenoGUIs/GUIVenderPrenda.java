@@ -29,10 +29,23 @@ public class GUIVenderPrenda extends javax.swing.JFrame {
         this.venta = venta;
         initComponents();
         LlenarPrendar();
+        actualizarTotales();
         setLocationRelativeTo(null);
 //        configurarNavegacionPerfil();
     }
 
+    private void actualizarTotales() {
+        double totalFinal = venta.getTotalVenta(); 
+        if (venta.tieneDescuentoAplicado()) {
+            lblTotal.setText(String.format("<html>Total: $%.2f <br><font color='green' size='3'>(10%% Descuento)</font></html>", totalFinal));
+        } else {
+            lblTotal.setText(String.format("Total: $ %.2f", totalFinal));
+        }
+        
+        lblTotal.revalidate();
+        lblTotal.repaint();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

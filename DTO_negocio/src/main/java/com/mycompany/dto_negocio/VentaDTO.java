@@ -45,10 +45,34 @@ public class VentaDTO {
     public void agregarDetalle(DetalleVentaDTO detalle) {
         if (detalle != null) {
             detalles.add(detalle);
-            totalVenta += detalle.getSubtotal();
         }
     }
 
+    public double getTotalVenta() {
+        double subtotal = 0.0;
+        int cantidadPrendas = 0;
+
+        for (DetalleVentaDTO d : detalles) {
+            subtotal += d.getSubtotal();
+            cantidadPrendas += d.getCantidadVendida();
+        }
+
+        // 3 prendas = 10% descuento
+        if (cantidadPrendas >= 3) {
+            return subtotal * 0.90; 
+        }
+
+        return subtotal;
+    }
+    
+    public boolean tieneDescuentoAplicado() {
+        int cantidadPrendas = 0;
+        for (DetalleVentaDTO d : detalles) {
+            cantidadPrendas += d.getCantidadVendida();
+        }
+        return cantidadPrendas >= 3;
+    }
+    
     public String getIdVenta() {
         return idVenta;
     }
@@ -71,10 +95,6 @@ public class VentaDTO {
 
     public void setFechaHoraVenta(Date fechaHoraVenta) {
         this.fechaHoraVenta = fechaHoraVenta;
-    }
-
-    public double getTotalVenta() {
-        return totalVenta;
     }
 
     public void setTotalVenta(double totalVenta) {
