@@ -7,14 +7,23 @@ package infraestructura;
 import java.util.Random;
 
 /**
- *
- * @author emiim
+ * Implementación concreta del sistema de pagos.
+ * Simula la comunicación con una API bancaria externa para procesar reembolsos.
+ * * @author emiim
  */
 public class SistemaPagos implements ISistemaPagos {
 
     public SistemaPagos() {
     }
 
+    /**
+     * Ejecuta una simulación de reembolso.
+     * Incluye un retraso artificial para simular latencia de red y 
+     * una probabilidad aleatoria de éxito/fracaso.
+     * * @param monto Monto a reembolsar.
+     * @param metodo Método de pago seleccionado.
+     * @return true si la "transacción bancaria" fue aprobada.
+     */
     @Override
     public boolean ejecutarReembolso(double monto, String metodo) {
         System.out.println("------------------------------------------------");
