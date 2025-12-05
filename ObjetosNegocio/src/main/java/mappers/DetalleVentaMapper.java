@@ -12,12 +12,16 @@ import org.bson.types.ObjectId;
 
 
 /**
- *
+ * Mapper para DetalleVenta.
+ * Convierte los ítems individuales de una venta.
  * @author garfi
  */
 public class DetalleVentaMapper {
     
-    
+    /**
+     * Convierte a entidad. 
+     * Nota: Si el DTO no tiene ID, genera uno nuevo automáticamente.
+     */
     public static DetalleVenta toEntity(DetalleVentaDTO dto) {
         if (dto == null) {
             return null;

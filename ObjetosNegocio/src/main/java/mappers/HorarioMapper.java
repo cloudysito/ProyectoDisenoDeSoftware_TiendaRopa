@@ -13,7 +13,8 @@ import objetosnegocio.dominioPojo.Horario;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad Horario.
+ * Utiliza Java Streams para convertir la lista de días (DiaHorario) contenida.
  * @author santi
  */
 public class HorarioMapper {

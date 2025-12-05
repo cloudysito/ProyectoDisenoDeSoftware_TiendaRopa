@@ -9,7 +9,7 @@ import objetosnegocio.dominioPojo.TemaCapacitacion;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad TemaCapacitacion.
  * @author riosr
  */
 public class TemaCapacitacionMapper {

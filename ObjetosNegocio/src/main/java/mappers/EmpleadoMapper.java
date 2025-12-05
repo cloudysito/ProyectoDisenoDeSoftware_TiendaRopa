@@ -11,7 +11,8 @@ import org.bson.types.ObjectId;
 
 
 /**
- *
+ * Mapper central para la entidad Empleado.
+ * Mapea datos personales, credenciales, horarios y capacitaciones asignadas.
  * @author garfi
  */
 public class EmpleadoMapper {

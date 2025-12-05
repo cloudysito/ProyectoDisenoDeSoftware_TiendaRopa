@@ -11,7 +11,9 @@ import objetosnegocio.dominioPojo.TemaCapacitacion;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad Capacitacion.
+ * Gestiona la conversión de datos de capacitación, incluyendo la relación
+ * con el Empleado y el Tema de la capacitación.
  * @author riosr
  */
 public class CapacitacionMapper {

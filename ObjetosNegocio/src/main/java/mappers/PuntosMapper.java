@@ -13,7 +13,8 @@ import objetosnegocio.dominioPojo.Ropa;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad Puntos.
+ * Relaciona la cantidad de puntos otorgados con una prenda específica (Ropa).
  * @author riosr
  */
 public class PuntosMapper {

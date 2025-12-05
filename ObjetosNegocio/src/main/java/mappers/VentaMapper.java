@@ -14,7 +14,9 @@ import objetosnegocio.dominioPojo.Venta;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad Venta.
+ * Convierte la transacción completa, incluyendo la lista de detalles de productos
+ * vendidos usando Streams para la transformación de listas.
  * @author garfi
  */
 public class VentaMapper {

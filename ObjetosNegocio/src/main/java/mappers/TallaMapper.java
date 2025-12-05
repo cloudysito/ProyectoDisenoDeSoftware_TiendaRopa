@@ -9,7 +9,7 @@ import objetosnegocio.dominioPojo.Talla;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad Talla.
  * @author garfi
  */
 public class TallaMapper {
