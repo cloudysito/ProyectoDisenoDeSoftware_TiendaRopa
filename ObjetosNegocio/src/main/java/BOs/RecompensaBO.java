@@ -13,7 +13,8 @@ import Interfaces.IRecompensaDAO;
 import objetosnegocio.dominioPojo.Recompensa;
 
 /**
- *
+ * Objeto de Negocio para la gestión de Recompensas.
+ * Permite crear y buscar recompensas disponibles para el sistema de fidelización de empleados.
  * @author riosr
  */
 public class RecompensaBO {
@@ -21,10 +22,17 @@ public class RecompensaBO {
 
     private IRecompensaDAO recompensaDAO;
 
+    /**
+     * Constructor privado. Inicializa el DAO de Recompensas.
+     */
     public RecompensaBO() {
         this.recompensaDAO = new RecompensaDAO() {};
     }
 
+    /**
+     * Obtiene la instancia única del Singleton.
+     * @return Instancia de RecompensaBO.
+     */
     public static RecompensaBO getInstance() {
         if (instance == null) {
             instance = new RecompensaBO();
@@ -32,6 +40,12 @@ public class RecompensaBO {
         return instance;
     }
     
+    /**
+     * Guarda una nueva recompensa en el sistema.
+     * @param recompensaDTO DTO con la información de la recompensa a crear.
+     * @return La recompensa guardada convertida a DTO.
+     * @throws BOException Si ocurre un error en la capa de persistencia.
+     */
     public RecompensaDTO guardarRecompensa(RecompensaDTO recompensaDTO) throws BOException {
         try {
             Recompensa recompensa = RecompensaMapper.toEntity(recompensaDTO);
@@ -45,6 +59,12 @@ public class RecompensaBO {
         }
     }
     
+    /**
+     * Busca una recompensa específica por su identificador.
+     * @param idRecompensa ID de la recompensa.
+     * @return DTO de la recompensa encontrada.
+     * @throws BOException Si ocurre un error durante la búsqueda.
+     */
     public RecompensaDTO buscarPorId(String idRecompensa) throws BOException {
         try {
 

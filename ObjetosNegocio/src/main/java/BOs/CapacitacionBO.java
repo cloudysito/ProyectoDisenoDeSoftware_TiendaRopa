@@ -13,8 +13,8 @@ import mappers.CapacitacionMapper;
 import objetosnegocio.dominioPojo.Capacitacion;
 
 /**
- *
- * @author riosr
+ * Objeto de Negocio para Capacitaciones.
+ * Maneja el ciclo de vida de las capacitaciones (creación, edición, búsqueda).
  */
 public class CapacitacionBO {
     private static CapacitacionBO instance;
@@ -32,6 +32,12 @@ public class CapacitacionBO {
         return instance;
     }
     
+    /**
+     * Registra una nueva capacitación.
+     * @param capacitacionDTO Datos de la capacitación.
+     * @return DTO registrado.
+     * @throws BOException Error en persistencia.
+     */
     public CapacitacionDTO guardarCapacitacion(CapacitacionDTO capacitacionDTO) throws BOException {
         try {
             Capacitacion capacitacion = CapacitacionMapper.toEntity(capacitacionDTO);

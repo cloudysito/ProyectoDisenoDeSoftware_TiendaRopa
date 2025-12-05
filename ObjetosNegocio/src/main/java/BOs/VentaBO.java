@@ -16,7 +16,8 @@ import objetosnegocio.dominioPojo.Venta;
 
 
 /**
- *
+ * Objeto de Negocio para la gestión de Ventas.
+ * Maneja el registro, modificación, eliminación y consulta del historial de ventas.
  * @author riosr
  */
 public class VentaBO {
@@ -36,7 +37,12 @@ public class VentaBO {
         return instance;
     }
     
-    //BO guardar venta
+    /**
+     * Registra una nueva venta en el sistema.
+     * @param ventaDTO DTO con los detalles de la venta (productos, cliente, total).
+     * @return La venta registrada con su ID y Folio generados.
+     * @throws BOException Error al guardar.
+     */
     public VentaDTO guardarVenta(VentaDTO ventaDTO) throws BOException{
         try{
             Venta venta = VentaMapper.toEntity(ventaDTO);
@@ -78,7 +84,12 @@ public class VentaBO {
         }
     }
     
-    //Buacar por id venta
+    /**
+     * Busca una venta por su ID único de base de datos.
+     * @param idVenta ID string.
+     * @return VentaDTO encontrada.
+     * @throws BOException Error en búsqueda.
+     */
     public VentaDTO buscarPorId(String idVenta) throws BOException{
         try{
             
@@ -89,6 +100,12 @@ public class VentaBO {
         }
     }
     
+    /**
+     * Busca una venta por su número de folio legible.
+     * @param folio Número de folio.
+     * @return VentaDTO encontrada.
+     * @throws BOException Error en búsqueda.
+     */
     public VentaDTO buscarPorFolio(int folio)throws BOException{
         try{
             
@@ -99,7 +116,11 @@ public class VentaBO {
         }
     }
     
-    //Bo para buscar todas las ventas
+    /**
+     * Recupera el historial completo de ventas.
+     * @return Lista de todas las ventas registradas.
+     * @throws BOException Error al consultar.
+     */
     public List<VentaDTO> buscarTodas() throws BOException {
         try {
             List<Venta> listaRopa = ventaDAO.buscarTodas();

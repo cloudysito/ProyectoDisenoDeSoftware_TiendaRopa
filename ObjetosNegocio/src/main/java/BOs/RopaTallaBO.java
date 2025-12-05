@@ -20,8 +20,7 @@ import objetosnegocio.dominioPojo.Ropa;
 import objetosnegocio.dominioPojo.RopaTalla;
 
 /**
- *
- * @author riosr
+ * BO para la gestión de Inventario (Ropa + Talla).
  */
 public class RopaTallaBO {
 

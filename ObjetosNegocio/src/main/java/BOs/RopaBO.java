@@ -15,7 +15,8 @@ import mappers.RopaMapper;
 import objetosnegocio.dominioPojo.Ropa;
 
 /**
- *
+ * Objeto de Negocio para la entidad Ropa.
+ * Gestiona el catálogo general de productos (creación, modificación, eliminación y consulta).
  * @author riosr
  */
 public class RopaBO {
@@ -34,7 +35,12 @@ public class RopaBO {
         return instance;
     }
     
-    //BO guardar ropa
+    /**
+     * Registra una nueva prenda en el catálogo general.
+     * @param ropaDTO Datos de la prenda.
+     * @return La prenda registrada como DTO.
+     * @throws BOException Error al guardar.
+     */
     public RopaDTO guardarRopa(RopaDTO ropaDTO) throws BOException{
         try{
             Ropa ropa = RopaMapper.toEntity(ropaDTO);
@@ -48,7 +54,12 @@ public class RopaBO {
         }
     }
         
-    //BO modificar ropa
+    /**
+     * Actualiza la información de una prenda existente.
+     * @param ropaDTO Datos actualizados.
+     * @return La prenda modificada.
+     * @throws BOException Error al modificar.
+     */
     public RopaDTO modificarRopa(RopaDTO ropaDTO) throws BOException{
         try{
             Ropa ropa = RopaMapper.toEntity(ropaDTO);
@@ -62,7 +73,12 @@ public class RopaBO {
         }
     }
     
-    //BO eliminar ropa
+    /**
+     * Elimina (física o lógicamente) una prenda del catálogo.
+     * @param ropaDTO Prenda a eliminar.
+     * @return La prenda eliminada.
+     * @throws BOException Error al eliminar.
+     */
     public RopaDTO eliminarRopa(RopaDTO ropaDTO) throws BOException{
         try{
             Ropa ropa = RopaMapper.toEntity(ropaDTO);
@@ -87,7 +103,12 @@ public class RopaBO {
         }
     }
     
-    //BO buscar por nombre ropa
+    /**
+     * Busca prendas que coincidan con un nombre específico.
+     * @param nombreArticulo Nombre o parte del nombre a buscar.
+     * @return Lista de prendas encontradas.
+     * @throws BOException Error en la búsqueda.
+     */
     public List<RopaDTO> buscarPorNombre(String nombreArticulo) throws BOException{
         try{
             List<Ropa> listaRopa = ropaDAO.buscarPorNombre(nombreArticulo);
@@ -105,7 +126,11 @@ public class RopaBO {
         }
     }
     
-    //BO buscar toda la ropa
+    /**
+     * Recupera el catálogo completo de ropa.
+     * @return Lista de todas las prendas.
+     * @throws BOException Error al consultar.
+     */
     public List<RopaDTO> buscarTodos() throws BOException {
         try {
             List<Ropa> listaRopa = ropaDAO.buscarTodos();

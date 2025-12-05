@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import mappers.TallaMapper;
 import objetosnegocio.dominioPojo.Talla;
+
 /**
- *
+ * Objeto de Negocio para la entidad Talla.
+ * Gestiona el catálogo de dimensiones/tallas disponibles para las prendas.
  * @author riosr
  */
 public class TallaBO {

@@ -22,8 +22,8 @@ import mappers.ReembolsoMapper;
 import objetosnegocio.dominioPojo.Empleado;
 
 /**
- *
- * @author emiim
+ * BO encargado del proceso de Reembolso.
+ * Integra validaciones, persistencia y sistema de pagos externos.
  */
 public class ReembolsoBO {
     private static ReembolsoBO instance;
@@ -64,11 +64,10 @@ public class ReembolsoBO {
         }
     }
     
+    /**
+     * Procesa la devolución: Pago -> Stock -> BD.
+     */
     public boolean procesarReembolso(SolicitudReembolsoDTO solicitudDTO, boolean  pagoExitoso) {
-       
-
-       
-        
         Reembolso devolucionEntity = ReembolsoMapper.toEntity(solicitudDTO);
 
         if (!pagoExitoso) {
