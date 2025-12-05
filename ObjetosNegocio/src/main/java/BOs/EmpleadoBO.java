@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author riosr
+ * Lógica de negocio para la gestión de Empleados.
+ * Incluye autenticación, altas, bajas, cambios y búsquedas avanzadas.
  */
 public class EmpleadoBO {
 
@@ -35,7 +35,12 @@ public class EmpleadoBO {
         return instance;
     }
 
-    //BO de guardar empleado.
+    /**
+     * Registra un nuevo empleado en la base de datos.
+     * @param empleadoDTO Datos del empleado.
+     * @return Empleado registrado.
+     * @throws BOException Si falla el guardado.
+     */
     public EmpleadoDTO guardarEmpleado(EmpleadoDTO empleadoDTO) throws BOException {
         try {
             Empleado empleado = EmpleadoMapper.toEntity(empleadoDTO);
@@ -87,6 +92,12 @@ public class EmpleadoBO {
         }
     }
 
+    /**
+     * Valida las credenciales de acceso para el inicio de sesión.
+     * @param correo Correo electrónico.
+     * @param contrasenia Contraseña.
+     * @return EmpleadoDTO si es válido, o null/excepción.
+     */
     public EmpleadoDTO iniciarSesion(String correo, String contrasenia) {
         try {
 

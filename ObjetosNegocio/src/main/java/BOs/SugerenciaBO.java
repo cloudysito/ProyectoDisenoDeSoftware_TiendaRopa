@@ -15,7 +15,8 @@ import mappers.SugerenciaMapper;
 import objetosnegocio.dominioPojo.Sugerencia;
 
 /**
- *
+ * Objeto de Negocio para gestionar Sugerencias.
+ * Permite a los empleados enviar sugerencias y a los administradores gestionarlas (filtrar, cambiar estado).
  * @author santi
  */
 public class SugerenciaBO {
@@ -35,6 +36,12 @@ public class SugerenciaBO {
         return instance;
     }
 
+    /**
+     * Guarda una nueva sugerencia en la base de datos.
+     * @param sugerenciaDTO Datos de la sugerencia.
+     * @return DTO guardado.
+     * @throws BOException Error al guardar.
+     */
     public SugerenciaDTO guardarSugerencia(SugerenciaDTO sugerenciaDTO) throws BOException {
         try {
             Sugerencia sugerencia = SugerenciaMapper.toEntity(sugerenciaDTO);
@@ -101,6 +108,12 @@ public class SugerenciaBO {
         }
     }
 
+    /**
+     * Filtra las sugerencias según su estado (ej. "Pendiente", "Aprobada").
+     * @param filtro Estado por el cual filtrar (puede incluir 's' final que se recorta).
+     * @return Lista de sugerencias que coinciden con el filtro.
+     * @throws BOException Error en el filtrado.
+     */
     public List<SugerenciaDTO> filtrarSugerencias(String filtro) throws BOException {
         try {
             List<Sugerencia> listaEntidades;
@@ -128,6 +141,12 @@ public class SugerenciaBO {
 
     }
 
+    /**
+     * Actualiza el estado de una sugerencia (ej. de "Enviada" a "Revisada").
+     * @param sugerencia DTO de la sugerencia.
+     * @param nuevoEstado Nuevo estado a asignar.
+     * @throws BOException Error al actualizar.
+     */
     public void cambiarEstado(SugerenciaDTO sugerencia, String nuevoEstado) throws BOException {
         try {
             sugerenciaDAO.actualizarEstado(sugerencia.getId(), nuevoEstado);

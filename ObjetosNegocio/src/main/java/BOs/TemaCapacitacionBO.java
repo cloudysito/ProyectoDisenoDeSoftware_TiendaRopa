@@ -13,7 +13,8 @@ import mappers.TemaCapacitacionMapper;
 import objetosnegocio.dominioPojo.TemaCapacitacion;
 
 /**
- *
+ * Objeto de Negocio para Temas de Capacitación.
+ * Permite registrar nuevos temas educativos para el personal.
  * @author riosr
  */
 public class TemaCapacitacionBO {
@@ -33,6 +34,12 @@ public class TemaCapacitacionBO {
         return instance;
     }
     
+    /**
+     * Registra un nuevo tema de capacitación.
+     * @param temaCapacitacionDTO DTO del tema.
+     * @return DTO guardado.
+     * @throws BOException Error de persistencia.
+     */
     public TemaCapacitacionDTO guardarTemaCapacitacion(TemaCapacitacionDTO temaCapacitacionDTO) throws BOException {
         try {
             TemaCapacitacion temaCapacitacion = TemaCapacitacionMapper.toEntity(temaCapacitacionDTO);

@@ -32,6 +32,9 @@ public class PuntosBO {
         return instance;
     }
     
+    /**
+     * Asigna puntos a un producto o transacción.
+     */
     public PuntosDTO guardarPuntos(PuntosDTO puntosDTO) throws BOException {
         try {
             Puntos puntos = PuntosMapper.toEntity(puntosDTO);
