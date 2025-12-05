@@ -7,18 +7,36 @@ package DisenoGUIs.GUIsCUIAgregarPrenda;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 
 /**
+ * Panel que representa la tarjeta visual de un producto individual en el catálogo.
+ * <p>
+ * Este componente se utiliza dinámicamente para renderizar cada ítem de la lista de ropa.
+ * Muestra información clave como el nombre, precio, talla y stock disponible.
+ * Expone sus botones de acción (Editar y Eliminar) para que el controlador o la ventana principal
+ * puedan asignarles el comportamiento específico.
+ * </p>
  *
  * @author garfi
+ * @version 1.0
  */
 public class panelPrenda extends javax.swing.JPanel {
 
     /**
-     * Creates new form panelPrenda
+     * Constructor del panel.
+     * Inicializa los componentes gráficos (labels, botones, colores de fondo).
      */
     public panelPrenda() {
         initComponents();
     }
 
+    /**
+     * Rellena la tarjeta con la información de un producto específico.
+     * <p>
+     * Actualiza las etiquetas de texto con los datos provenientes del DTO.
+     * Si el producto tiene una talla asignada, concatena el nombre de la talla al nombre del artículo
+     * (ej. "Camisa (M)").
+     * </p>
+     * * @param producto El objeto {@code RopaTallaDTO} que contiene los datos a visualizar.
+     */
     public void setDatos(RopaTallaDTO producto) {
 
         if (producto.getRopa() != null) {
@@ -31,7 +49,7 @@ public class panelPrenda extends javax.swing.JPanel {
 
             lblNombre.setText(nombre);
             lblPrecio.setText("$ " + producto.getRopa().getPrecio());
-            // Queda pendiente lo de cargar la imagen
+            // TODO: Implementar la carga de imagen desde ruta o bytes
         }
         lblStock.setText(String.valueOf(producto.getCantidad()));
     }
@@ -146,10 +164,27 @@ public class panelPrenda extends javax.swing.JPanel {
     private javax.swing.JLabel lblStock;
     // End of variables declaration//GEN-END:variables
 
+    
+    /**
+     * Obtiene la referencia al botón "Editar" de esta tarjeta.
+     * <p>
+     * Permite que el contenedor padre agregue un {@code ActionListener} personalizado
+     * para manejar la lógica de edición de este ítem específico.
+     * </p>
+     * * @return El componente {@code JButton} de edición.
+     */
     public javax.swing.JButton getBtnEditar() {
         return btnEditar;
     }
 
+    /**
+     * Obtiene la referencia al botón "Eliminar" de esta tarjeta.
+     * <p>
+     * Permite que el contenedor padre agregue un {@code ActionListener} personalizado
+     * para manejar la lógica de eliminación de este ítem específico.
+     * </p>
+     * * @return El componente {@code JButton} de eliminación.
+     */
     public javax.swing.JButton getBtnEliminar() {
         return btnEliminar;
     }
