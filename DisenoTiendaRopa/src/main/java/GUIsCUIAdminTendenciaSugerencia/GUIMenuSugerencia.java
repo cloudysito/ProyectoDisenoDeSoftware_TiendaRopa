@@ -15,38 +15,66 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
+ * Ventana gráfica para el menú principal de la Administración de Sugerencias.
+ * <p>
+ * Esta interfaz permite al usuario:
+ * <ul>
+ * <li>Visualizar todas las sugerencias en formato de tarjetas ({@code panelSugerencia}).</li>
+ * <li>Filtrar las sugerencias por estado (Pendientes, Aceptadas, Rechazadas, Todas).</li>
+ * <li>Navegar a los detalles de una sugerencia específica.</li>
+ * <li>Generar un reporte PDF de las sugerencias listadas según el filtro actual.</li>
+ * </ul>
+ * </p>
  *
  * @author garfi
+ * @version 1.0
  */
 public class GUIMenuSugerencia extends javax.swing.JFrame {
 
     /**
-     * Creates new form GUIGestionCatalogo
+     * Constructor de la ventana.
+     * <p>
+     * Inicializa componentes, centra la ventana y configura el diseño del panel de tarjetas
+     * (GridLayout, una columna por defecto) antes de cargar las sugerencias iniciales.
+     * </p>
      */
     public GUIMenuSugerencia() {
         initComponents();
         setLocationRelativeTo(null);
-        pnlSugerencias.setLayout(new java.awt.GridLayout(0, 1, 0, 10));
+        // Configura el panel para una sola columna con espaciado vertical
+        pnlSugerencias.setLayout(new java.awt.GridLayout(0, 1, 0, 10)); 
         cargarSugerencias();
     }
 
+    /**
+     * Carga y renderiza la lista de sugerencias en el panel visual, aplicando el filtro seleccionado.
+     * <p>
+     * El método obtiene el estado seleccionado del ComboBox, solicita los datos filtrados al 
+     * controlador y, por cada DTO, crea una tarjeta {@code panelSugerencia} y le asigna el 
+     * listener de navegación a detalles.
+     * </p>
+     */
     public void cargarSugerencias() {
         pnlSugerencias.removeAll();
 
+        // Obtiene el filtro del JComboBox
         String filtro = cmbEstadoSugerencias.getSelectedItem().toString();
 
+        // Llama al controlador para obtener los datos
         List<SugerenciaDTO> lista = ControlGestionarSugerencias.getInstance().obtenerSugerenciasFiltradas(filtro);
 
         for (SugerenciaDTO item : lista) {
-            panelSugerencia tarjeta = new panelSugerencia();
+            final panelSugerencia tarjeta = new panelSugerencia();
             tarjeta.setDatos(item);
 
+            // Asigna el evento de clic al botón "Detalles" de la tarjeta dinámica
             tarjeta.getBtnDetalles().addActionListener(e -> {
                 ControlGestionarSugerencias.getInstance().navegarDetalleSugerencia(this, item);
             });
 
             pnlSugerencias.add(tarjeta);
         }
+        // Refresca la interfaz gráfica para mostrar los nuevos elementos
         pnlSugerencias.revalidate();
         pnlSugerencias.repaint();
     }
@@ -251,11 +279,25 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción del botón "Empleados".
+     * Navega hacia la pantalla de gestión de empleados.
+     * @param evt El evento de acción.
+     */
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         // TODO add your handling code here:
         ControlEmpleados.getInstase().navegarEmpleados(this);
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
+    /**
+     * Acción del botón "Generar Reporte".
+     * <p>
+     * Abre un cuadro de diálogo para guardar el archivo y llama al controlador para generar el 
+     * reporte PDF de las sugerencias, filtrado por el valor actual del ComboBox.
+     * Si es exitoso, intenta abrir el archivo generado.
+     * </p>
+     * @param evt El evento de acción.
+     */
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Guardar Reporte de Sugerencias");
@@ -283,16 +325,33 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
+    /**
+     * Acción del botón "Regresar".
+     * Vuelve al menú de administración principal.
+     * @param evt El evento de acción.
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         ControlEmpleados.getInstase().navegarMenuAdmin(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    /**
+     * Acción del botón "Catalogo".
+     * Navega hacia la pantalla de gestión del catálogo de ropa.
+     * @param evt El evento de acción.
+     */
     private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
         // TODO add your handling code here:
         ControlRopa.getInstase().navegarGestionCatalogo(this);
     }//GEN-LAST:event_btnCatalogoActionPerformed
 
+    /**
+     * Acción que se ejecuta al cambiar la selección en el ComboBox de estado de sugerencias.
+     * <p>
+     * Llama a {@code cargarSugerencias()} para actualizar la lista mostrada con el nuevo filtro.
+     * </p>
+     * @param evt El evento de acción.
+     */
     private void cmbEstadoSugerenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoSugerenciasActionPerformed
         cargarSugerencias();
     }//GEN-LAST:event_cmbEstadoSugerenciasActionPerformed

@@ -13,37 +13,68 @@ import java.util.List;
 import javax.swing.JFileChooser;
 
 /**
+ * Ventana principal para la Gestión del Catálogo de Ropa.
+ * <p>
+ * Esta interfaz actúa como un "Dashboard" o panel de control donde el administrador puede:
+ * <ul>
+ * <li>Visualizar todas las prendas del inventario en formato de tarjetas.</li>
+ * <li>Buscar productos por nombre o código.</li>
+ * <li>Agregar nuevas prendas.</li>
+ * <li>Eliminar o Editar prendas existentes (a través de los botones en cada tarjeta).</li>
+ * <li>Generar reportes en PDF del inventario actual.</li>
+ * <li>Navegar a otros módulos (Empleados, Sugerencias).</li>
+ * </ul>
+ * </p>
  *
  * @author garfi
+ * @version 1.0
  */
 public class GUIGestionCatalogo extends javax.swing.JFrame {
 
     /**
-     * Creates new form GUIGestionCatalogo
+     * Constructor de la ventana.
+     * <p>
+     * Inicializa los componentes, centra la ventana, configura el diseño fluido (FlowLayout)
+     * para el panel de tarjetas y carga los datos iniciales del catálogo.
+     * </p>
      */
     public GUIGestionCatalogo() {
         initComponents();
         setLocationRelativeTo(null);
+        // Configura el panel para que los items se acomoden de izquierda a derecha con margen
         pnlCatalogo.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 20));
         cargarCatalogo();
         
     }
 
+    /**
+     * Configura la lógica de los botones "Editar" y "Eliminar" de una tarjeta de prenda específica.
+     * <p>
+     * Este método se llama dinámicamente cada vez que se crea una tarjeta visual ({@code panelPrenda})
+     * para asignarle el comportamiento correcto asociado al ítem que representa.
+     * </p>
+     *
+     * @param tarjeta El panel visual que representa la prenda.
+     * @param item El DTO con los datos de la prenda asociada a esa tarjeta.
+     */
     private void configurarBotonesTarjeta(panelPrenda tarjeta, com.mycompany.dto_negocio.RopaTallaDTO item) {
 
         // --- Botón ELIMINAR ---
+        // Asigna un listener lambda para manejar el evento de clic
         tarjeta.getBtnEliminar().addActionListener(e -> {
             int confirm = javax.swing.JOptionPane.showConfirmDialog(null,
                     "¿Estás seguro de eliminar " + item.getRopa().getNombreArticulo() + "?",
                     "Eliminar Prenda", javax.swing.JOptionPane.YES_NO_OPTION);
 
             if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+                // Llama al controlador para eliminar la prenda de la base de datos
                 boolean exito = ControlPantallas.ControlRopa.getInstase()
                         .getGestionCatalogo()
                         .eliminarRopa(item.getRopa());
 
                 if (exito) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Eliminado correctamente");
+                    // Recarga el catálogo para reflejar los cambios
                     cargarCatalogo();
                 } else {
                     javax.swing.JOptionPane.showMessageDialog(null, "Error al eliminar");
@@ -53,22 +84,36 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
 
         // --- Botón EDITAR ---
         tarjeta.getBtnEditar().addActionListener(e -> {
+            // Navega a la pantalla de edición pasando los datos del item seleccionado
             ControlPantallas.ControlRopa.getInstase()
                     .navegarEditarPrenda(this, item);
         });
     }
 
+    /**
+     * Recarga y renderiza el contenido visual del catálogo.
+     * <p>
+     * Realiza los siguientes pasos:
+     * <ol>
+     * <li>Limpia el panel de visualización.</li>
+     * <li>Agrega el botón fijo de "Añadir Prenda".</li>
+     * <li>Obtiene la lista completa del inventario desde el controlador.</li>
+     * <li>Por cada producto, crea un {@code panelPrenda}, configura sus datos y botones, y lo añade al panel.</li>
+     * <li>Refresca la interfaz gráfica.</li>
+     * </ol>
+     * </p>
+     */
     public void cargarCatalogo() {
         pnlCatalogo.removeAll();
-        pnlCatalogo.add(pnlAñadirPrenda);
+        pnlCatalogo.add(pnlAñadirPrenda); // Siempre mantener el botón de añadir al principio
         try {
             List<RopaTallaDTO> listaRopa = ControlRopa.getInstase().getGestionCatalogo().obtenerInventarioCompleto();
 
             for (RopaTallaDTO item : listaRopa) {
 
                 panelPrenda tarjeta = new panelPrenda();
-                tarjeta.setDatos(item);
-                configurarBotonesTarjeta(tarjeta, item);
+                tarjeta.setDatos(item); // Llena la tarjeta con info del DTO
+                configurarBotonesTarjeta(tarjeta, item); // Activa los botones de la tarjeta
                 pnlCatalogo.add(tarjeta);
             }
 
@@ -76,6 +121,7 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
             System.out.println("Error al cargar catálogo: " + e.getMessage());
         }
 
+        // Actualiza la UI para mostrar los nuevos componentes
         pnlCatalogo.revalidate();
         pnlCatalogo.repaint();
 
@@ -326,12 +372,26 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción del botón "Empleados".
+     * Navega hacia la pantalla de gestión de empleados.
+     * @param evt El evento de acción.
+     */
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         // TODO add your handling code here:
         final ControlEmpleados navegador = ControlEmpleados.getInstase();
         navegador.navegarEmpleados(this);
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
+    /**
+     * Acción del botón "Generar Reporte".
+     * <p>
+     * Abre un cuadro de diálogo para seleccionar la ubicación de guardado y 
+     * solicita al controlador la generación del reporte PDF del inventario actual.
+     * Si la generación es exitosa, intenta abrir el archivo automáticamente.
+     * </p>
+     * @param evt El evento de acción.
+     */
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Guardar Reporte de Inventario");
@@ -366,11 +426,24 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
+    /**
+     * Acción del botón "Regresar".
+     * Vuelve al menú principal del administrador.
+     * @param evt El evento de acción.
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         ControlEmpleados.getInstase().navegarMenuAdmin(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    /**
+     * Acción del botón "Buscar".
+     * <p>
+     * Filtra las prendas mostradas en el catálogo basándose en el texto ingresado en {@code txtBuscador}.
+     * Si el campo está vacío, recarga el catálogo completo.
+     * </p>
+     * @param evt El evento de acción.
+     */
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String texto = txtBuscador.getText().trim();
 
@@ -407,11 +480,21 @@ public class GUIGestionCatalogo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    /**
+     * Acción del botón "Sugerencia".
+     * Navega a la pantalla de gestión de sugerencias.
+     * @param evt El evento de acción.
+     */
     private void btnSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSugerenciaActionPerformed
         // TODO add your handling code here:
         ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
     }//GEN-LAST:event_btnSugerenciaActionPerformed
 
+    /**
+     * Acción del botón "Añadir Prenda".
+     * Navega a la pantalla de registro de nuevas prendas.
+     * @param evt El evento de acción.
+     */
     private void btnAñadirPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirPrendaActionPerformed
         // TODO add your handling code here:
         ControlRopa.getInstase().navegarAñadirPrenda(this);

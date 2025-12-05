@@ -8,25 +8,56 @@ import com.mycompany.dto_negocio.SugerenciaDTO;
 import javax.swing.JButton;
 
 /**
+ * Panel que representa la tarjeta de resumen visual para una Sugerencia individual.
+ * <p>
+ * Este componente es utilizado por la ventana {@code GUIMenuSugerencia} para mostrar 
+ * una lista filtrada de sugerencias, presentando la información esencial (fecha y estado) 
+ * y un botón para navegar a los detalles completos.
+ * </p>
  *
  * @author garfi
+ * @version 1.0
  */
 public class panelSugerencia extends javax.swing.JPanel {
 
+    /** Almacena la referencia al objeto de transferencia de datos de la sugerencia que se está visualizando. */
     private SugerenciaDTO sugerenciaActual;
     
+    /**
+     * Constructor del panel.
+     * Inicializa los componentes gráficos generados por el editor de formularios.
+     */
     public panelSugerencia() {
         initComponents();
     }
 
+    /**
+     * Carga y actualiza las etiquetas del panel con la información del DTO.
+     * * @param sugerencia El objeto {@code SugerenciaDTO} con los datos a visualizar.
+     */
     public void setDatos(SugerenciaDTO sugerencia) {
         this.sugerenciaActual = sugerencia;
         
-        lblFecha.setText(sugerencia.getFechaPublicacion().toString()); 
+        // Muestra la fecha de publicación
+        if (sugerencia.getFechaPublicacion() != null) {
+            lblFecha.setText(sugerencia.getFechaPublicacion().toString());
+        } else {
+             lblFecha.setText("-");
+        }
+        
         lblEstado.setText(sugerencia.getEstado());
         
     }
     
+    /**
+     * Obtiene la referencia al botón "Ver detalles".
+     * <p>
+     * Este método es utilizado por la ventana principal ({@code GUIMenuSugerencia}) para 
+     * asignar dinámicamente un {@code ActionListener} que navega a la vista de detalles
+     * al hacer clic.
+     * </p>
+     * * @return El componente {@code JButton} de ver detalles.
+     */
     public JButton getBtnDetalles() {
         return btnDetalles;
     }

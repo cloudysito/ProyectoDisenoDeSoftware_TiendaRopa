@@ -7,21 +7,39 @@ package DisenoGUIs.GUIsCUIAgregarPrenda;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 
 /**
+ * Ventana gráfica para la edición de una prenda existente en el catálogo.
+ * <p>
+ * Esta clase presenta un formulario pre-llenado con los datos de una prenda seleccionada.
+ * Permite modificar atributos generales (nombre, precio, descripción, etc.), pero 
+ * mantiene bloqueada la selección de talla para asegurar la consistencia del inventario.
+ * </p>
  *
  * @author garfi
+ * @version 1.0
  */
 public class GUIEditarPrenda extends javax.swing.JFrame {
 
+    /** Almacena la referencia al objeto de transferencia de datos de la prenda que se está editando. */
     private RopaTallaDTO prendaActual;
 
     /**
-     * Creates new form GUIGestionCatalogo
+     * Constructor de la ventana.
+     * Inicializa los componentes gráficos y centra la ventana en la pantalla.
      */
     public GUIEditarPrenda() {
         initComponents();
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Carga los datos de la prenda seleccionada en los campos del formulario.
+     * <p>
+     * Este método se llama desde el controlador antes de hacer visible la ventana.
+     * Rellena los campos de texto con la información del DTO y gestiona la visualización
+     * de la talla correspondiente.
+     * </p>
+     * * @param prenda El objeto {@code RopaTallaDTO} con la información a editar.
+     */
     public void setDatos(RopaTallaDTO prenda) {
         this.prendaActual = prenda;
 
@@ -35,12 +53,21 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
 
             if (prenda.getTalla() != null) {
                 String nombreTalla = prenda.getTalla().getNombreTalla();
-
+                // Marca la talla correcta y bloquea los botones para que no se cambien
                 seleccionarYBloquearTalla(nombreTalla);
             }
         }
     }
 
+    /**
+     * Gestiona el estado visual de los botones de talla.
+     * <p>
+     * Itera sobre los botones conocidos, seleccionando aquel que coincide con la talla
+     * de la prenda y deshabilitando todos para prevenir cambios de talla en esta vista
+     * (ya que cambiar la talla implicaría un producto distinto en el inventario).
+     * </p>
+     * * @param tallaDeLaPrenda El nombre de la talla actual (ej. "M", "L").
+     */
     private void seleccionarYBloquearTalla(String tallaDeLaPrenda) {
 
         configurarBoton(XXS, "XXS", tallaDeLaPrenda);
@@ -52,12 +79,22 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
         configurarBoton(XXL, "XXL", tallaDeLaPrenda);
     }
 
+    /**
+     * Método auxiliar para configurar un botón de talla específico.
+     * <p>
+     * Deshabilita el botón (setEnabled false) y lo marca como seleccionado solo si
+     * su etiqueta coincide con la talla de la prenda.
+     * </p>
+     * * @param btn El botón de alternancia (JToggleButton) a configurar.
+     * @param textoBoton El texto que representa la talla de ese botón.
+     * @param tallaActual La talla real de la prenda que se está cargando.
+     */
     private void configurarBoton(javax.swing.JToggleButton btn, String textoBoton, String tallaActual) {
         if (btn == null) {
             return;
         }
 
-        btn.setEnabled(false);
+        btn.setEnabled(false); // Se bloquea la edición de la talla
 
         if (textoBoton.equalsIgnoreCase(tallaActual)) {
             btn.setSelected(true);
@@ -423,6 +460,13 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    /**
+     * Acción del botón "Regresar".
+     * <p>
+     * Cancela la edición y navega de vuelta a la pantalla de gestión del catálogo.
+     * </p>
+     * * @param evt El evento de acción.
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         ControlPantallas.ControlRopa.getInstase().navegarGestionCatalogo(this);

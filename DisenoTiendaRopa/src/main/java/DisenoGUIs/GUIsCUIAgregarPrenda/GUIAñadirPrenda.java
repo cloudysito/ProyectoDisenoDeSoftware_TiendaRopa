@@ -9,18 +9,35 @@ import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.TallaDTO;
 
 /**
+ * Ventana gráfica para el registro de nuevas prendas en el inventario.
+ * <p>
+ * Esta clase permite al usuario ingresar los detalles de un producto (nombre, precio, 
+ * descripción, talla, stock, etc.). Se encarga de validar la entrada de datos, 
+ * solicitar la generación del código de barras y coordinar el guardado a través del controlador.
+ * </p>
  *
  * @author garfi
+ * @version 1.0
  */
 public class GUIAñadirPrenda extends javax.swing.JFrame {
 
     /**
-     * Creates new form GUIGestionCatalogo
+     * Constructor de la ventana.
+     * Inicializa los componentes gráficos generados por el editor de NetBeans.
      */
     public GUIAñadirPrenda() {
         initComponents();
     }
 
+    /**
+     * Método auxiliar para determinar qué talla ha seleccionado el usuario.
+     * <p>
+     * Verifica el estado de los botones de alternancia (ToggleButtons) de tallas (XXS a XXL).
+     * Crea y retorna un objeto DTO con la información de la talla seleccionada.
+     * </p>
+     * * @return Un objeto {@code TallaDTO} con el nombre y descripción de la talla, 
+     * o {@code null} si no se ha seleccionado ninguna opción.
+     */
     private TallaDTO obtenerTallaSeleccionada() {
         String nombreTalla = null;
 
@@ -426,6 +443,22 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción del botón "Guardar".
+     * <p>
+     * Realiza las siguientes operaciones:
+     * <ol>
+     * <li>Valida que los campos obligatorios (nombre, precio, stock, talla) no estén vacíos.</li>
+     * <li>Parsea los valores numéricos y maneja errores de formato.</li>
+     * <li>Solicita confirmación al usuario mediante un cuadro de diálogo.</li>
+     * <li>Crea los objetos DTO para la prenda y su relación con la talla.</li>
+     * <li>Genera el código de barras y guarda su imagen en disco.</li>
+     * <li>Llama al controlador para persistir la información en la base de datos.</li>
+     * <li>Muestra un mensaje de éxito con el código de barras generado y retorna al menú principal.</li>
+     * </ol>
+     * </p>
+     * * @param evt El evento de acción del botón.
+     */
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         // Validaciones 
@@ -536,6 +569,14 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    /**
+     * Acción del botón "Regresar".
+     * <p>
+     * Cancela la operación actual y utiliza el controlador para navegar de vuelta
+     * a la pantalla de gestión del catálogo.
+     * </p>
+     * * @param evt El evento de acción.
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         ControlPantallas.ControlRopa.getInstase().navegarGestionCatalogo(this);

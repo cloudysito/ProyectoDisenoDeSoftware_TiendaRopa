@@ -9,24 +9,46 @@ import com.mycompany.dto_negocio.SugerenciaDTO;
 import javax.swing.JOptionPane;
 
 /**
+ * Ventana gráfica para visualizar los detalles de una Sugerencia específica.
+ * <p>
+ * Esta pantalla permite al administrador revisar la información completa (autor, fecha, descripción)
+ * y tomar decisiones sobre la misma (Aprobar o Rechazar).
+ * </p>
+ * <p>
+ * Incluye lógica para bloquear las acciones si la sugerencia ya ha sido procesada previamente.
+ * </p>
  *
  * @author garfi
+ * @version 1.0
  */
 public class GUIDetallesSugerencia extends javax.swing.JFrame {
 
+    /** Objeto DTO que contiene la información de la sugerencia que se está visualizando. */
     private SugerenciaDTO sugerenciaActual;
 
     /**
-     * Creates new form GUIGestionCatalogo
+     * Constructor de la ventana.
+     * Inicializa los componentes gráficos y centra la ventana en la pantalla.
      */
     public GUIDetallesSugerencia() {
         initComponents();
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Carga la información de la sugerencia en los componentes visuales.
+     * <p>
+     * Además de poblar los campos de texto, este método evalúa el estado actual de la sugerencia.
+     * <b>Regla de Negocio:</b> Si el estado es diferente de "PENDIENTE" (es decir, ya fue Aceptada o Rechazada),
+     * los botones de acción se deshabilitan para evitar cambios inconsistentes.
+     * </p>
+     *
+     * @param sugerencia El objeto {@code SugerenciaDTO} con los datos a visualizar.
+     */
     public void setDatos(SugerenciaDTO sugerencia) {
         this.sugerenciaActual = sugerencia;
 
+        // Carga de datos del empleado (Manejo de anónimos)
         if (sugerencia.getEmpleadoDTO() != null) {
             String nombre = sugerencia.getEmpleadoDTO().getNombre();
             String apellido = sugerencia.getEmpleadoDTO().getApellidos();
@@ -35,6 +57,7 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
             lblNombreEmpleado.setText("Anónimo");
         }
 
+        // Carga de fecha
         if (sugerencia.getFechaPublicacion() != null) {
             lblFecha.setText(sugerencia.getFechaPublicacion().toString());
         } else {
@@ -43,11 +66,10 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
 
         lblDescripcion.setText(sugerencia.getDescripcion());
         
-
         String estado = sugerencia.getEstado();
-
         lblEstado.setText(estado);
         
+        // Lógica de habilitación de botones basada en el estado
         if (estado != null && !estado.equalsIgnoreCase("PENDIENTE")) {
             btnAprobar.setEnabled(false);
             btnRechazar.setEnabled(false);
@@ -314,10 +336,23 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción del botón "Regresar".
+     * Cierra la vista de detalles y regresa al menú de listado de sugerencias.
+     * @param evt El evento de acción.
+     */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    /**
+     * Acción del botón "Rechazar".
+     * <p>
+     * Solicita confirmación al usuario y, si se confirma, llama al controlador para cambiar
+     * el estado de la sugerencia a "Rechazada".
+     * </p>
+     * @param evt El evento de acción.
+     */
     private void btnRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechazarActionPerformed
         int confirm = JOptionPane.showConfirmDialog(this, 
                 "¿Estás seguro de querer Rechazar esta sugerencia?",
@@ -336,6 +371,14 @@ public class GUIDetallesSugerencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRechazarActionPerformed
 
+    /**
+     * Acción del botón "Aprobar".
+     * <p>
+     * Solicita confirmación al usuario y, si se confirma, llama al controlador para cambiar
+     * el estado de la sugerencia a "Aceptada".
+     * </p>
+     * @param evt El evento de acción.
+     */
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
         int confirm = JOptionPane.showConfirmDialog(this, 
                 "¿Estás seguro de querer Aprobar esta sugerencia?",
