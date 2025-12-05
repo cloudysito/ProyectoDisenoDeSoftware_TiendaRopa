@@ -9,7 +9,8 @@ import objetosnegocio.dominioPojo.Recompensa;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad Recompensa.
+ * Convierte los datos del catálogo de premios.
  * @author riosr
  */
 public class RecompensaMapper {

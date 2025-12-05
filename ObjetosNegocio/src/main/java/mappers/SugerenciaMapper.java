@@ -10,7 +10,7 @@ import objetosnegocio.dominioPojo.Sugerencia;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad Sugerencia.
  * @author santi
  */
 public class SugerenciaMapper {

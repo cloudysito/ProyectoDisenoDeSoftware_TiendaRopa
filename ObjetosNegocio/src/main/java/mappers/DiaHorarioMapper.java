@@ -9,7 +9,8 @@ import objetosnegocio.dominioPojo.DiaHorario;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para DiaHorario.
+ * Convierte la configuración de entrada/salida y día de la semana.
  * @author santi
  */
 public class DiaHorarioMapper {

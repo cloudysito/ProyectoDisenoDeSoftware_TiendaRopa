@@ -9,7 +9,9 @@ import objetosnegocio.dominioPojo.Ropa;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para la entidad Ropa.
+ * Convierte datos generales de la prenda (nombre, marca, precio base, etc.)
+ * sin incluir información de stock o tallas específicas.
  * @author garfi
  */
 public class RopaMapper {

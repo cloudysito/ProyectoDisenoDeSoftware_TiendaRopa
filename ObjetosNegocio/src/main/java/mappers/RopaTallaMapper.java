@@ -11,7 +11,8 @@ import objetosnegocio.dominioPojo.Talla;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para RopaTalla.
+ * Vincula una prenda (Ropa) con una talla específica y gestiona su stock y código de barras.
  * @author garfi
  */
 public class RopaTallaMapper {

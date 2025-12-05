@@ -15,7 +15,9 @@ import objetosnegocio.dominioPojo.RopaTalla;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Mapper para el proceso de Reembolso.
+ * Convierte una SolicitudReembolsoDTO (que viene de la UI/Lógica) a una entidad
+ * Reembolso para ser guardada en la base de datos, incluyendo la lista de detalles.
  * @author emiim
  */
 public class ReembolsoMapper {
