@@ -22,10 +22,12 @@ DisenoGUIs\GUIPagoEfectivo.class
 GUIDevolverPrenda\GUIConfirmacionReembolso.class
 AsignarHorario\PanelEmpleado.class
 DisenoGUIs\GUIPagoTransferencia$1.class
+ControlPantallas\ControlRecomendarPrenda.class
 DisenoGUIs\GUICambiarTalla$1.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$1.class
 GUIDevolverPrenda\GUIReembolsoPrenda$5.class
 GUIsCUIAdminTendenciaSugerencia\GUIMenuSugerencia$3.class
+GUIEnviarSugerencia\GUIEnviarSugerencia$4.class
 AsignarHorario\GUIModificarEmpleado1$5.class
 DisenoGUIs\GUIMenu$2.class
 GUIsCUIAdminTendenciaSugerencia\panelSugerencia.class
@@ -54,6 +56,7 @@ GUIDevolverPrenda\GUISeleccionMetodoReembolso$8.class
 RecomendarPrenda\GUIRecomendarPrenda$1.class
 DisenoGUIs\GUIProducto$14.class
 GUIsCUIAdminTendenciaSugerencia\GUIMenuSugerencia$2.class
+GUIEnviarSugerencia\GUIEnviarSugerencia$5.class
 AsignarHorario\GUIModificarEmpleado1$3.class
 AsignarHorario\GUIAgregarEmpleado$3.class
 GUIDevolverPrenda\GUIReembolsoPrenda$4.class
@@ -70,6 +73,7 @@ DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$5.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda$8.class
 DisenoGUIs\GUIProducto$2.class
 DisenoGUIs\GUIInicioSesion$1.class
+GUIEnviarSugerencia\GUIEnviarSugerencia$3.class
 GUIsCUIAdminTendenciaSugerencia\GUIMenuSugerencia$4.class
 DisenoGUIs\GUIProducto$12.class
 AsignarHorario\PanelEmpleado$2.class
@@ -94,6 +98,7 @@ DisenoGUIs\GUISeleccionMetodoPago$7.class
 AsignarHorario\GUIEmpleados.class
 RecomendarPrenda\GUIRecomendarPrenda.class
 GUIsCUIAdminTendenciaSugerencia\GUIMenuSugerencia$6.class
+GUIEnviarSugerencia\GUIEnviarSugerencia$1.class
 RecomendarPrenda\jPrendaPanel.class
 AsignarHorario\PanelEmpleado$1.class
 ControlPantallas\ControlRopa.class
@@ -108,6 +113,7 @@ GUIDevolverPrenda\GUIReembolsoPrenda$7.class
 GUIDevolverPrenda\GUIBuscarVenta$3.class
 AsignarHorario\GUIModificarEmpleado1$1.class
 GUIDevolverPrenda\GUIConfirmacionReembolso$2.class
+GUIEnviarSugerencia\GUIEnviarSugerencia$2.class
 DisenoGUIs\GUIProducto$11.class
 ControlPantallas\ControlPantallas.class
 AsignarHorario\GUIMenu1.class
@@ -192,6 +198,7 @@ RecomendarPrenda\GUIRecomendarPrenda$3.class
 GUIDevolverPrenda\GUISeleccionMetodoReembolso$9.class
 DisenoGUIs\GUICompraRealizada$1.class
 DisenoGUIs\GUIProducto$8.class
+GUIEnviarSugerencia\GUIEnviarSugerencia$6.class
 DisenoGUIs\GUIPagoEfectivo$5.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda$15.class
 DisenoGUIs\GUICompraRealizada$4.class
@@ -204,6 +211,7 @@ DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$2.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$1.class
 GUIsCUIAdminTendenciaSugerencia\GUIMenuSugerencia$1.class
 DisenoGUIs\GUICambiarTalla$5.class
+DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda$18.class
 DisenoGUIs\GUIProducto$5.class
 DisenoGUIs\GUIPagoTransferencia$2.class
 DisenoGUIs\GUISeleccionMetodoPago.class
@@ -220,6 +228,7 @@ AsignarHorario\GUIAsignarHorarios$5.class
 DisenoGUIs\GUIPagoEfectivo$2.class
 GUIDevolverPrenda\GUIBuscarVenta$7.class
 GUIDevolverPrenda\GUISeleccionMetodoReembolso$11.class
+GUIEnviarSugerencia\GUIEnviarSugerencia.class
 DisenoGUIs\GUIPagoTarjeta.class
 ControlPantallas\ControlGestionarSugerencias.class
 DisenoGUIs\GUIMenu$5.class

@@ -35,6 +35,7 @@ import com.mycompany.realizarventasubsystem.FachadaRealizarVenta;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -42,6 +43,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -250,7 +252,39 @@ public class ControlPantallas {
         return EmpleadoSistema;
     }
     
-    
+    public void mostrarImagenEnLabel(String ruta, JLabel label) {
+
+    SwingUtilities.invokeLater(() -> {
+        File archivo = new File(ruta);
+
+        if (!archivo.exists()) {
+            System.out.println("ERROR: La imagen no existe: " + ruta);
+            return;
+        }
+
+        int w = label.getWidth();
+        int h = label.getHeight();
+
+        if (w == 0 || h == 0) {
+            System.out.println("Label aún no tiene tamaño, intentando de nuevo...");
+            return; 
+        }
+
+        ImageIcon icon = new ImageIcon(ruta);
+
+        Image img = icon.getImage().getScaledInstance(
+                w,
+                h,
+                Image.SCALE_SMOOTH
+        );
+
+        label.setIcon(new ImageIcon(img));
+        label.revalidate();
+        label.repaint();
+    });
+}
+
+
     
     
 }

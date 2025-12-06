@@ -35,7 +35,9 @@ public class jPrendaPanel extends javax.swing.JPanel {
         jNombre.setText(ropaTalla.getRopa().getNombreArticulo());
         jTalla.setText(ropaTalla.getTalla().getNombreTalla());
         jPrecio.setText(Double.toString(ropaTalla.getRopa().getPrecio()));
-        
+        if(ropaTalla.getRopa().getUrlImagen() != null){
+             ControlPantallas.getInstase().mostrarImagenEnLabel(ropaTalla.getRopa().getUrlImagen(), jLabel3);
+            }
     }
 
     /**

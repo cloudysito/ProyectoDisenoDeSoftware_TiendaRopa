@@ -7,6 +7,10 @@ package DisenoGUIs.GUIsCUIAgregarPrenda;
 import com.mycompany.dto_negocio.RopaDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.TallaDTO;
+import java.awt.Component;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  * Ventana gráfica para el registro de nuevas prendas en el inventario.
@@ -25,6 +29,8 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
      * Constructor de la ventana.
      * Inicializa los componentes gráficos generados por el editor de NetBeans.
      */
+    
+    private String url;
     public GUIAñadirPrenda() {
         initComponents();
     }
@@ -188,6 +194,11 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
 
         btnAñadirImg.setBackground(new java.awt.Color(255, 213, 223));
         btnAñadirImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mas.png"))); // NOI18N
+        btnAñadirImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirImgActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nombre");
@@ -638,6 +649,55 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockActionPerformed
 
+    private void btnAñadirImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirImgActionPerformed
+        // TODO add your handling code here:
+        url = copiarImagenSeleccionada(this);
+        if (url != null) {
+            JOptionPane.showMessageDialog(this, "Imagen guardada en:\n" + url);
+        }
+    }//GEN-LAST:event_btnAñadirImgActionPerformed
+
+    private String copiarImagenSeleccionada(Component parent) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Selecciona una imagen");
+
+        // Filtrar solo imágenes
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
+                "Imágenes", "jpg", "jpeg", "png"));
+
+        int resultado = fileChooser.showOpenDialog(parent);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File imagenOriginal = fileChooser.getSelectedFile();
+
+            try {
+                // Crear carpeta interna
+                File carpetaDestino = new File("Producto");
+                if (!carpetaDestino.exists()) {
+                    carpetaDestino.mkdirs();
+                }
+
+                // Crear copia con mismo nombre
+                File copia = new File(carpetaDestino, imagenOriginal.getName());
+
+                // Copiar archivo
+                java.nio.file.Files.copy(
+                        imagenOriginal.toPath(),
+                        copia.toPath(),
+                        java.nio.file.StandardCopyOption.REPLACE_EXISTING
+                );
+
+                // Regresar ruta absoluta de la copia
+                return copia.getAbsolutePath();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null; // por si cancelan
+    }
+    
     /**
      * @param args the command line arguments
      */

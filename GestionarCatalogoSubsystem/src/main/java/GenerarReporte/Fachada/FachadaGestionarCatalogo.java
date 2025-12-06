@@ -42,6 +42,10 @@ public class FachadaGestionarCatalogo implements IGestionarCatalogo {
     @Override
     public boolean agregarRopa(RopaTallaDTO producto) {
         try {
+            if (producto.getRopa().getIdRopa()== null ) {
+                RopaBO.getInstance().guardarRopa(producto.getRopa());
+                
+            }
             RopaTallaBO.getInstance().guardar(producto);
             return true;
         } catch (Exception e) {

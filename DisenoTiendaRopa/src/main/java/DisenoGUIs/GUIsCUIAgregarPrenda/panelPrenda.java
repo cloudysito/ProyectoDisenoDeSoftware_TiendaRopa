@@ -4,6 +4,7 @@
  */
 package DisenoGUIs.GUIsCUIAgregarPrenda;
 
+import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 
 /**
@@ -49,7 +50,14 @@ public class panelPrenda extends javax.swing.JPanel {
 
             lblNombre.setText(nombre);
             lblPrecio.setText("$ " + producto.getRopa().getPrecio());
+
             // TODO: Implementar la carga de imagen desde ruta o bytes
+
+            // Queda pendiente lo de cargar la imagen
+            if(producto.getRopa().getUrlImagen() != null){
+             ControlPantallas.getInstase().mostrarImagenEnLabel(producto.getRopa().getUrlImagen(), lblImg);
+            }
+
         }
         lblStock.setText(String.valueOf(producto.getCantidad()));
     }
@@ -73,6 +81,11 @@ public class panelPrenda extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 213, 223));
         setPreferredSize(new java.awt.Dimension(164, 182));
+
+        lblImg.setMaximumSize(new java.awt.Dimension(5, 5));
+        lblImg.setMinimumSize(new java.awt.Dimension(5, 5));
+        lblImg.setName(""); // NOI18N
+        lblImg.setPreferredSize(new java.awt.Dimension(5, 5));
 
         lblNombre.setText("Nombre Prenda");
 
