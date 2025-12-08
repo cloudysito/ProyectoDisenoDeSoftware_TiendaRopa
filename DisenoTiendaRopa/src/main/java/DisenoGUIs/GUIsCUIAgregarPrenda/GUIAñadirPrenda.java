@@ -523,6 +523,7 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
             nuevaRopa.setMarca(txtMarca.getText());
             nuevaRopa.setMaterial(txtMaterial.getText());
             nuevaRopa.setPrecio(precio);
+            nuevaRopa.setUrlImagen(url);
 
             RopaTallaDTO productoFinal = new RopaTallaDTO();
             productoFinal.setIdRopaTalla(null);
@@ -683,8 +684,7 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
                         java.nio.file.StandardCopyOption.REPLACE_EXISTING
                 );
 
-                // 🔥 Ruta RELATIVA para la base de datos
-                return "Empleados/" + imagenOriginal.getName();
+                return "Producto/" + imagenOriginal.getName();
 
             } catch (Exception e) {
                 e.printStackTrace();

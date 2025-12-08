@@ -28,7 +28,7 @@ public class GUIPagoTarjeta extends javax.swing.JFrame {
         initComponents();
         this.empleado = empleado;
         this.venta = venta;
-//        configurarNavegacionPerfil();
+        configurarNavegacionPerfil();
         setLocationRelativeTo(null);
     }
 

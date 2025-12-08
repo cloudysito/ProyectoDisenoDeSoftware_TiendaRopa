@@ -5,9 +5,11 @@ C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Pe
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Implementaciones\TemaCapacitacionDAO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Implementaciones\CapacitacionDAO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Implementaciones\PuntosDAO.java
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Interfaces\IAdministradorDAO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Exceptions\DAOException.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Implementaciones\RopaTallaDAO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Interfaces\IRopaTallaDAO.java
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Implementaciones\AdministradorDAO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Implementaciones\EmpleadoDAO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Interfaces\IPuntosDAO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Persistencia\src\main\java\Implementaciones\SugerenciaDAO.java

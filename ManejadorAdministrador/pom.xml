@@ -11,4 +11,16 @@
         <exec.mainClass>com.mycompany.manejadoradministrador.ManejadorAdministrador</exec.mainClass>
     </properties>
     <name>ManejadorAdministradorSusbsystem</name>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>DTO_negocio</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ObjetosNegocio</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

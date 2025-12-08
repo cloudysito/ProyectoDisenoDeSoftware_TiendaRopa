@@ -582,7 +582,7 @@ public class GUIProducto extends javax.swing.JFrame {
          lblMarcaPrenda.setText(producto.getRopa().getMarca());
          lblMaterialPrenda.setText(producto.getRopa().getMaterial());
          if(producto.getRopa().getUrlImagen() != null){
-            ControlPantallas.getInstase().mostrarImagenEnLabel(empleado.getUrlImagen(), lblFotoPrenda);
+            ControlPantallas.getInstase().mostrarImagenEnLabel(producto.getRopa().getUrlImagen(), lblFotoPrenda);
         }
          
     

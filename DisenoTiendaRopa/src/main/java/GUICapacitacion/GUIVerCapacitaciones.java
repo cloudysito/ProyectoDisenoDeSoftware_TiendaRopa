@@ -24,7 +24,7 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
         
         initComponents();
         llenarEmpleado();
-        llenarLabels();
+        llenarLabels(); 
     }
     
     private void llenarEmpleado(){

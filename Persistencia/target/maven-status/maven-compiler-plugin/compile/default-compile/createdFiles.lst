@@ -1,7 +1,9 @@
+Interfaces\IAdministradorDAO.class
 Implementaciones\PuntosDAO.class
 Interfaces\ITemaCapacitacionDAO.class
 Implementaciones\RopaTallaDAO.class
 Interfaces\ISugerenciaDAO.class
+Implementaciones\AdministradorDAO.class
 Implementaciones\SugerenciaDAO.class
 Interfaces\ISistemaPagos.class
 Implementaciones\EmpleadoDAO.class

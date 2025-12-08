@@ -28,9 +28,13 @@ public class AdministradorMapper {
     }
     
     public static AdministradorDTO toDTO(Administrador administrador) {
-
+        if (administrador == null) {
+            return  null;
+        }
+        
         AdministradorDTO dto = new AdministradorDTO();
-
+        
+        
         if (administrador.getId() != null) {
             dto.setId(administrador.getId().toHexString());
         }

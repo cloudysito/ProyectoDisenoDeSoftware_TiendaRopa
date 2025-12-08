@@ -4,6 +4,7 @@ objetosnegocio\dominioPojo\Venta.class
 objetosnegocio\dominioPojo\DiaHorario.class
 objetosnegocio\dominioPojo\Horario.class
 objetosnegocio\dominioPojo\Recompensa.class
+objetosnegocio\dominioPojo\Administrador.class
 objetosnegocio\dominioPojo\DetalleVenta.class
 objetosnegocio\dominioPojo\Bonificacion.class
 objetosnegocio\dominioPojo\Capacitacion.class

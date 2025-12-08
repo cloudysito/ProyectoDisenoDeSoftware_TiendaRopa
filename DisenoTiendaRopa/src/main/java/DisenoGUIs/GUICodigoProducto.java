@@ -413,7 +413,9 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         String codigoProducto = jTextCodigo.getText();
         RopaTallaDTO producto = navegador.getEscanerSistema().encontrarProducto(codigoProducto);
         if (producto != null) {
-            webcam.close();
+            if (webcam != null && webcam.isOpen()) {
+                webcam.close();
+            }
             navegador.navegarProducto(this, empleado, producto, venta, ventaIniciada);
         }
         else{

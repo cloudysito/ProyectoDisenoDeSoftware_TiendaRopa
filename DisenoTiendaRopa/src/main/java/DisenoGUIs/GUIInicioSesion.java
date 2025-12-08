@@ -6,7 +6,9 @@ package DisenoGUIs;
 
 import ControlPantallas.ControlEmpleados;
 import ControlPantallas.ControlPantallas;
+import com.mycompany.dto_negocio.AdministradorDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
+import javax.swing.JOptionPane;
 /**
  *
  * @author emiim
@@ -141,18 +143,36 @@ public class GUIInicioSesion extends javax.swing.JFrame {
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
         // TODO add your handling code here:
-        final ControlPantallas navegador = ControlPantallas.getInstase();
-        String usuario = textFEmpleado.getText();
-        String contra = textFConstraseña.getText();
-        EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
-        System.out.println(empleado);
-        
-        if(empleado != null){
-        navegador.navegarMenuPrincipal(this, empleado);
+        if(textFEmpleado.getText() != "" &&  textFConstraseña.getText() != "" ){
+            final ControlPantallas navegador = ControlPantallas.getInstase();
+            String usuario = textFEmpleado.getText();
+            String contra = textFConstraseña.getText();
+            EmpleadoDTO empleado =  navegador.getEmpleadoSistema().recuperarEmpleado(usuario, contra);
+            System.out.println(empleado);
+            AdministradorDTO administrador = navegador.getManejadorAdministrador().iniciarSesion(usuario, contra);
+            if(empleado != null){
+                navegador.navegarMenuPrincipal(this, empleado);
+            }
+            else if(administrador != null){
+            System.out.println(empleado);
+            ControlEmpleados.getInstase().navegarMenuAdmin(this);
+            }
+            else{
+                JOptionPane.showMessageDialog(
+                this,  
+                "No se encontro el usuario",
+                "Error",                            
+                JOptionPane.ERROR_MESSAGE                   
+            );
+            }
         }
-        else {
-        System.out.println(empleado);
-        ControlEmpleados.getInstase().navegarMenuAdmin(this);
+        else{
+        JOptionPane.showMessageDialog(
+                this,  
+                "llene los valores para iniciar sesion",
+                "Error",                            
+                JOptionPane.ERROR_MESSAGE                   
+            );
         }
     }//GEN-LAST:event_btnAccederActionPerformed
 

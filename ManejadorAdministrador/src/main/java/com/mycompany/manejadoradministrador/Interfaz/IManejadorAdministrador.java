@@ -4,10 +4,12 @@
  */
 package com.mycompany.manejadoradministrador.Interfaz;
 
+import com.mycompany.dto_negocio.AdministradorDTO;
+
 /**
  *
  * @author santi
  */
 public interface IManejadorAdministrador {
-    
+    AdministradorDTO iniciarSesion(String correo, String contrasenia);
 }

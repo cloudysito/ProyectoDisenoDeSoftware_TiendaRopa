@@ -3,6 +3,7 @@ com\mycompany\dto_negocio\RopaDTO.class
 com\mycompany\dto_negocio\BonificacionDTO.class
 com\mycompany\dto_negocio\VentaDTO.class
 com\mycompany\dto_negocio\RopaTallaDTO.class
+com\mycompany\dto_negocio\AdministradorDTO.class
 com\mycompany\dto_negocio\DiaHorarioDTO.class
 com\mycompany\dto_negocio\ItemVentaDTO.class
 com\mycompany\dto_negocio\TallaDTO.class

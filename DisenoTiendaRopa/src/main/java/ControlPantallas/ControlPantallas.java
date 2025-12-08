@@ -29,6 +29,8 @@ import com.mycompany.dto_negocio.SolicitudReembolsoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
 import com.mycompany.escanearproductosubsystem.FachadaEscanearProducto;
 import com.mycompany.escanearproductosubsystem.Interfaz.IEscanearProducto;
+import com.mycompany.manejadoradministrador.Interfaz.IManejadorAdministrador;
+import com.mycompany.manejadoradministrador.ManejadorAdministrador;
 import com.mycompany.metodopagosubsystem.FachadaMetodoPago;
 import com.mycompany.metodopagosubsystem.Interfaz.IMetodoPago;
 import com.mycompany.realizarventasubsystem.Interfaz.IRealizarVenta;
@@ -57,6 +59,7 @@ public class ControlPantallas {
     private static IRealizarVenta realizarVentaSistema;
     private static IMetodoPago metodoPagoSistema;
     private static IAumentarVentaEmpleado EmpleadoSistema;
+    private static IManejadorAdministrador manejadorAdministrador;
     
     public static synchronized ControlPantallas getInstase() {
         if (instancia == null) {
@@ -65,6 +68,7 @@ public class ControlPantallas {
             realizarVentaSistema = new FachadaRealizarVenta();
             metodoPagoSistema = new FachadaMetodoPago();
             EmpleadoSistema = new FachadaAumentarVentaEmpleado();
+            manejadorAdministrador = new ManejadorAdministrador();
            
         }
         return instancia;
@@ -290,6 +294,10 @@ public class ControlPantallas {
         label.repaint();
     });
 }
+
+    public static IManejadorAdministrador getManejadorAdministrador() {
+        return manejadorAdministrador;
+    }
 
 
     

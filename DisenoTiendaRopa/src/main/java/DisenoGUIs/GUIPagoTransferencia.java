@@ -357,7 +357,7 @@ public class GUIPagoTransferencia extends javax.swing.JFrame {
             btnRegresar.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado, venta));
         }
         if (btnVender != null) {
-            
+             btnVender.addActionListener(evt -> navegador.navegarMenuPrincipal(this,empleado));        
         }
     }
 
