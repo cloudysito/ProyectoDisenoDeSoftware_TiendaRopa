@@ -70,6 +70,8 @@ public class CapacitacionDAO implements ICapacitacionDAO{
         }
     }
     
+    
+    
     /**
      *
      * @param idCapacitacion
