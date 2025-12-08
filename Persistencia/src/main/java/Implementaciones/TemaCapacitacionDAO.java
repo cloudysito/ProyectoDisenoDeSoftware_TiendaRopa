@@ -79,20 +79,19 @@ public class TemaCapacitacionDAO implements ITemaCapacitacionDAO {
      * @throws MongoException Si ocurre un error durante la consulta.
      */
     @Override
-    public TemaCapacitacion buscarPorId(String idTemaCapacitacion) throws MongoException {
+    public TemaCapacitacion buscarPorNombre(String nombreCapacitacion) throws MongoException {
         try (MongoClient client = connection.crearNuevoCliente()) {
 
             MongoCollection<TemaCapacitacion> collection = getCollection(client);
 
-            // Convierte el ID String a ObjectId para la búsqueda
-            Bson filtroId = eq("_id", new ObjectId(idTemaCapacitacion));
+            Bson filtroId = eq("temaCapacitacion", nombreCapacitacion);
 
             TemaCapacitacion temaCapacitacion = collection.find(filtroId).first();
 
             return temaCapacitacion;
 
         } catch (MongoException e) {
-            throw new MongoException("Error al buscar tema de capacitacion por ID: " + idTemaCapacitacion, e.getCause());
+            throw new MongoException("Error al buscar tema de capacitacion por nombre del tema: " + nombreCapacitacion, e.getCause());
         }
     }
 }

@@ -43,6 +43,8 @@ public interface ICapacitacionDAO {
      * @throws MongoException Si ocurre un problema durante la consulta.
      */
     Capacitacion buscarPorId(String idCapacitacion) throws MongoException;
+    
+    Capacitacion buscarPorNombreYTema(String nombreEmpleado, String temaCapacitacion) throws MongoException;
 
 }
 

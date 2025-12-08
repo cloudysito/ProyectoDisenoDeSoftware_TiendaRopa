@@ -232,6 +232,7 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnLibroActionPerformed
 
      private void llenarEmpleado(){

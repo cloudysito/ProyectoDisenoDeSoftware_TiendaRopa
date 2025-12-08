@@ -26,13 +26,7 @@ public interface ITemaCapacitacionDAO {
      */
     TemaCapacitacion guardarTemaCapacitacion(TemaCapacitacion temaCapacitacion) throws MongoException;
 
-    /**
-     * Busca un tema de capacitación por su identificador único.
-     *
-     * @param idCapacitacion ID del tema de capacitación que se desea consultar.
-     * @return El tema de capacitación correspondiente al ID, o null si no existe.
-     * @throws MongoException Si ocurre un error al realizar la consulta.
-     */
-    TemaCapacitacion buscarPorId(String idCapacitacion) throws MongoException;
+    
+    TemaCapacitacion buscarPorNombre(String nombreCapacitacion) throws MongoException;
 }
 
