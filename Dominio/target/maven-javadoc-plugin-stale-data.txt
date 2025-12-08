@@ -2,22 +2,23 @@
 -J-Duser.country=
 @options
 @packages
+--no-fonts
 -classpath
-'C:/Users/riosr/.m2/repository/org/mongodb/mongodb-driver-sync/4.11.1/mongodb-driver-sync-4.11.1.jar;C:/Users/riosr/.m2/repository/org/mongodb/bson/4.11.1/bson-4.11.1.jar;C:/Users/riosr/.m2/repository/org/mongodb/mongodb-driver-core/4.11.1/mongodb-driver-core-4.11.1.jar'
+'C:/Users/santi/.m2/repository/org/mongodb/mongodb-driver-sync/4.11.1/mongodb-driver-sync-4.11.1.jar;C:/Users/santi/.m2/repository/org/mongodb/bson/4.11.1/bson-4.11.1.jar;C:/Users/santi/.m2/repository/org/mongodb/mongodb-driver-core/4.11.1/mongodb-driver-core-4.11.1.jar'
 -encoding
 'UTF-8'
 -protected
 --release
 21
 -sourcepath
-'C:/Users/riosr/OneDrive/Documentos/GitHub/ProyectoDisenoDeSoftware_TiendaRopa/Dominio/src/main/java'
+'C:/Users/santi/OneDrive/Documentos/GitHub/ProyectoDisenoDeSoftware_TiendaRopa/Dominio/src/main/java'
 -author
 -bottom
 'Copyright &#169; 2025. All rights reserved.'
 -charset
 'UTF-8'
 -d
-'C:/Users/riosr/OneDrive/Documentos/GitHub/ProyectoDisenoDeSoftware_TiendaRopa/Dominio/target/reports/apidocs'
+'C:/Users/santi/OneDrive/Documentos/GitHub/ProyectoDisenoDeSoftware_TiendaRopa/Dominio/target/reports/apidocs'
 -docencoding
 'UTF-8'
 -doctitle
@@ -27,27 +28,27 @@
 -windowtitle
 'Dominio 1.0-SNAPSHOT API'
 objetosnegocio.dominioPojo
-C:\Users\riosr\.m2\repository\org\mongodb\mongodb-driver-sync\4.11.1\mongodb-driver-sync-4.11.1.jar = 1762910598730
-C:\Users\riosr\.m2\repository\org\mongodb\bson\4.11.1\bson-4.11.1.jar = 1762910599303
-C:\Users\riosr\.m2\repository\org\mongodb\mongodb-driver-core\4.11.1\mongodb-driver-core-4.11.1.jar = 1762910599070
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\src\main\java = 1764718070599
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\allclasses-index.html = 1765213679287
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\allpackages-index.html = 1765213679292
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\copy.svg = 1765213679403
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\element-list = 1765213678885
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\help-doc.html = 1765213679388
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\index-all.html = 1765213679371
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\index.html = 1765213679381
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\link.svg = 1765213679405
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\member-search-index.js = 1765213679307
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\module-search-index.js = 1765213679295
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\overview-tree.html = 1765213679236
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\package-search-index.js = 1765213679298
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\script.js = 1765213679398
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\search-page.js = 1765213679420
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\search.html = 1765213679376
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\search.js = 1765213679412
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\serialized-form.html = 1765213678948
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\stylesheet.css = 1765213679395
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\tag-search-index.js = 1765213679311
-C:\Users\riosr\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\type-search-index.js = 1765213679303
+C:\Users\santi\.m2\repository\org\mongodb\mongodb-driver-sync\4.11.1\mongodb-driver-sync-4.11.1.jar = 1763063757952
+C:\Users\santi\.m2\repository\org\mongodb\bson\4.11.1\bson-4.11.1.jar = 1763063758202
+C:\Users\santi\.m2\repository\org\mongodb\mongodb-driver-core\4.11.1\mongodb-driver-core-4.11.1.jar = 1763063758558
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\src\main\java = 1764218136670
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\allclasses-index.html = 1765213954896
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\allpackages-index.html = 1765213954898
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\copy.svg = 1765213891255
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\element-list = 1765213954782
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\help-doc.html = 1765213954932
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\index-all.html = 1765213954924
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\index.html = 1765213954928
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\link.svg = 1765213891259
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\member-search-index.js = 1765213954901
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\module-search-index.js = 1765213954898
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\overview-tree.html = 1765213954877
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\package-search-index.js = 1765213954899
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\script.js = 1765213891286
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\search-page.js = 1765213891286
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\search.html = 1765213954927
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\search.js = 1765213891287
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\serialized-form.html = 1765213954805
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\stylesheet.css = 1765213891288
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\tag-search-index.js = 1765213954902
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\Dominio\target\reports\apidocs\type-search-index.js = 1765213954900
