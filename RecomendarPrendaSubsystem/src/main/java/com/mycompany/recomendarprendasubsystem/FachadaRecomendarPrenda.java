@@ -14,7 +14,15 @@ import com.mycompany.recomendarprendasubsystem.Interfaz.IRecomendarPrenda;
  * @author santi
  */
 public class FachadaRecomendarPrenda implements IRecomendarPrenda {
-
+    /**
+     * Implementación del método que recomienda una prenda específica (incluyendo su talla)
+     * basándose en los criterios de búsqueda proporcionados.
+    *
+    * Delega la búsqueda de la prenda y su filtrado a la capa de Lógica de Negocio (BO).
+    *
+    * @param busqueda El DTO que contiene los parámetros para la búsqueda.
+    * @return Un objeto {@code RopaTallaDTO} que representa la prenda recomendada.
+    */
     @Override
     public RopaTallaDTO recomentarPrenda(BuscarPrendaDTO busqueda) {
         return RopaTallaBO.getInstance().buscarPorFiltro(busqueda);
