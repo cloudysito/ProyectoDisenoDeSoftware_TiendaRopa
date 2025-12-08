@@ -26,7 +26,19 @@ public interface ITemaCapacitacionDAO {
      */
     TemaCapacitacion guardarTemaCapacitacion(TemaCapacitacion temaCapacitacion) throws MongoException;
 
-    
+    /**
+    * Busca y recupera un objeto TemaCapacitacion de la fuente de datos utilizando 
+    * el nombre de la capacitación como criterio de búsqueda.
+    * * Este método se espera que forme parte de una interfaz de acceso a datos (DAO) 
+    * o de la capa de Lógica de Negocio (BO) dentro de un sistema que utiliza una
+    * base de datos NoSQL como MongoDB, dado que declara lanzar una MongoException.
+    *
+    * @param nombreCapacitacion El nombre exacto del tema de capacitación que se desea buscar.
+    * @return Un objeto {@code TemaCapacitacion} si se encuentra una coincidencia exacta. 
+    * Devuelve {@code null} si no existe ningún tema con ese nombre.
+    * @throws MongoException Si ocurre algún error durante la operación de acceso o 
+    * consulta a la base de datos MongoDB (ej. conexión, sintaxis de consulta).
+    */
     TemaCapacitacion buscarPorNombre(String nombreCapacitacion) throws MongoException;
 }
 

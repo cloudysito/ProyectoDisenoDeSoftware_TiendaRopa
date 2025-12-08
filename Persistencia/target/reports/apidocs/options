@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/riosr/.m2/repository/org/mongodb/mongodb-driver-sync/4.11.1/mongodb-driver-sync-4.11.1.jar;C:/Users/riosr/.m2/repository/org/mongodb/bson/4.11.1/bson-4.11.1.jar;C:/Users/riosr/.m2/repository/org/mongodb/mongodb-driver-core/4.11.1/mongodb-driver-core-4.11.1.jar;C:/Users/riosr/.m2/repository/com/mycompany/Dominio/1.0-SNAPSHOT/Dominio-1.0-SNAPSHOT.jar'
+-encoding
+'UTF-8'
+-protected
+--release
+21
+-sourcepath
+'C:/Users/riosr/OneDrive/Documentos/GitHub/ProyectoDisenoDeSoftware_TiendaRopa/Persistencia/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/riosr/OneDrive/Documentos/GitHub/ProyectoDisenoDeSoftware_TiendaRopa/Persistencia/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Persistencia 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Persistencia 1.0-SNAPSHOT API'

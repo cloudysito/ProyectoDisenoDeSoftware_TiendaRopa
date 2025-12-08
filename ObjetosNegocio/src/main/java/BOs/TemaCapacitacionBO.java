@@ -23,6 +23,10 @@ public class TemaCapacitacionBO {
     
     private ITemaCapacitacionDAO temaCapacitacionDAO;
 
+    /**
+    * Constructor privado para asegurar la implementación del patrón Singleton.
+    * Inicializa la referencia a la capa de acceso a datos (DAO).
+    */
     public TemaCapacitacionBO() {
         this.temaCapacitacionDAO = new TemaCapacitacionDAO();
     }

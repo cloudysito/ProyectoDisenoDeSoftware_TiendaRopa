@@ -30,6 +30,11 @@ public class VentaBO {
         this.ventaDAO = new VentaDAO();
     }
     
+    /**
+    * Obtiene la única instancia de la clase VentaBO (Patrón Singleton).
+    * Si la instancia no ha sido creada, la inicializa.
+    * * @return La instancia única de VentaBO.
+    */
     public static VentaBO getInstance(){
         if(instance == null){
             instance = new VentaBO();
@@ -56,7 +61,17 @@ public class VentaBO {
         }
     }
     
-    //BO modificar venta
+    /**
+    * Modifica una venta existente en el sistema.
+    * * Este método recibe un DTO (Data Transfer Object), lo convierte a una entidad 
+    * (Venta), invoca la operación de modificación en la capa DAO, y luego convierte 
+    * la entidad modificada de vuelta a un DTO para retornarla.
+    *
+    * @param ventaDTO El DTO que contiene los datos de la venta a modificar.
+    * @return Un VentaDTO que representa la venta modificada con los datos actualizados.
+    * @throws BOException Si ocurre un error al intentar modificar la venta en la
+    * capa de persistencia (ej: DAOException), encapsulándolo.
+    */
     public VentaDTO modificarVenta(VentaDTO ventaDTO) throws BOException{
         try{
             Venta venta = VentaMapper.toEntity(ventaDTO);
@@ -70,7 +85,19 @@ public class VentaBO {
         }
     }
     
-    //BO eliminar venta
+    /**
+    * Elimina lógicamente una venta en el sistema (asumiendo que DAO realiza una 
+    * eliminación lógica o física).
+    * * Recibe un DTO, lo convierte a una entidad (Venta), invoca la operación de 
+    * eliminación en la capa DAO, y retorna el DTO resultante. El valor retornado 
+    * podría ser la entidad eliminada o nula, dependiendo de la implementación del DAO.
+    *
+    * @param ventaDTO El DTO que contiene la información de la venta a eliminar (generalmente 
+    * solo se requiere el identificador).
+    * @return Un VentaDTO que representa la venta que ha sido eliminada.
+    * @throws BOException Si ocurre un error al intentar eliminar la venta en la
+    * capa de persistencia (ej: DAOException), encapsulándolo.
+    */
     public VentaDTO eliminarVenta(VentaDTO ventaDTO) throws BOException{
         try{
             Venta venta = VentaMapper.toEntity(ventaDTO);
