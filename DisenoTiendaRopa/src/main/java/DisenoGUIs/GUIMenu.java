@@ -5,7 +5,9 @@
 package DisenoGUIs;
 
 import ControlPantallas.ControlCalcularTalla;
+import ControlPantallas.ControlGuiaInteractivaEmpleado;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlRecomendarPrenda;
 import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
@@ -49,6 +51,7 @@ public class GUIMenu extends javax.swing.JFrame {
         btnEnviarSugerencia = new javax.swing.JButton();
         btnDescuento = new javax.swing.JButton();
         btnLibro = new javax.swing.JButton();
+        btnContinuar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 238, 242));
@@ -153,6 +156,14 @@ public class GUIMenu extends javax.swing.JFrame {
             }
         });
 
+        btnContinuar1.setBackground(new java.awt.Color(239, 207, 227));
+        btnContinuar1.setText("Regresar");
+        btnContinuar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -170,7 +181,9 @@ public class GUIMenu extends javax.swing.JFrame {
                 .addGap(16, 341, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(btnLibro)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnContinuar1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,8 +198,12 @@ public class GUIMenu extends javax.swing.JFrame {
                     .addComponent(btnEnviarSugerencia))
                 .addGap(27, 27, 27)
                 .addComponent(btnDescuento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(btnLibro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLibro, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnContinuar1)
+                        .addGap(24, 24, 24))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,16 +241,24 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
         // TODO add your handling code here:
+        ControlPantallas.getInstase().navegarEnviarSugerencia(this, empleado);
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescuentoActionPerformed
         // TODO add your handling code here:
+        ControlRecomendarPrenda.getInstance().navegarRecomendarPrenda(this, empleado);
     }//GEN-LAST:event_btnDescuentoActionPerformed
 
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
-        
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnLibroActionPerformed
+
+    private void btnContinuar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuar1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        ControlPantallas.getInstase().iniciarFlujo();
+    }//GEN-LAST:event_btnContinuar1ActionPerformed
 
      private void llenarEmpleado(){
         lblNombreEmpleado.setText(empleado.getNombre());
@@ -244,6 +269,7 @@ public class GUIMenu extends javax.swing.JFrame {
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcularTalla;
+    private javax.swing.JButton btnContinuar1;
     private javax.swing.JButton btnDescuento;
     private javax.swing.JButton btnDevolverPrenda;
     private javax.swing.JButton btnEnviarSugerencia;

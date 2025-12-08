@@ -4,6 +4,8 @@
  */
 package RecomendarPrenda;
 
+import ControlPantallas.ControlCalcularTalla;
+import ControlPantallas.ControlGuiaInteractivaEmpleado;
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
 import ControlPantallas.ControlRecomendarPrenda;
@@ -53,7 +55,6 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btnCalcularTalla = new javax.swing.JButton();
         btnEnviarSugerencia = new javax.swing.JButton();
-        btnDevolverPrenda = new javax.swing.JButton();
         btnLibro = new javax.swing.JButton();
         lblNombreProducto = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
@@ -141,14 +142,6 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
             }
         });
 
-        btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnDevolverPrenda.setText("Devolver prendas");
-        btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolverPrendaActionPerformed(evt);
-            }
-        });
-
         btnLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libro.png"))); // NOI18N
         btnLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,9 +159,7 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
                     .addComponent(btnCalcularTalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDevolverPrenda, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(btnEnviarSugerencia)))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(btnLibro)
@@ -177,9 +168,7 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnDevolverPrenda)
-                .addGap(18, 18, 18)
+                .addGap(67, 67, 67)
                 .addComponent(btnCalcularTalla)
                 .addGap(18, 18, 18)
                 .addComponent(btnEnviarSugerencia)
@@ -342,18 +331,17 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
         // TODO add your handling code here:
+        ControlPantallas.getInstase().navegarEnviarSugerencia(this, empleado);
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
+         ControlCalcularTalla.getIntase().navegarCalcularTalla(this, empleado);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
-
-    private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDevolverPrendaActionPerformed
 
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
@@ -386,7 +374,6 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
     private javax.swing.JButton btnCalcularTalla;
-    private javax.swing.JButton btnDevolverPrenda;
     private javax.swing.JButton btnEnviarSugerencia;
     private javax.swing.JButton btnLibro;
     private javax.swing.JButton btnRegresar;

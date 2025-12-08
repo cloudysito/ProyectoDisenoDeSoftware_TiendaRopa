@@ -661,7 +661,6 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Selecciona una imagen");
 
-        // Filtrar solo imágenes
         fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
                 "Imágenes", "jpg", "jpeg", "png"));
 
@@ -671,70 +670,31 @@ public class GUIAñadirPrenda extends javax.swing.JFrame {
             File imagenOriginal = fileChooser.getSelectedFile();
 
             try {
-                // Crear carpeta interna
-                File carpetaDestino = new File("Producto");
+                File carpetaDestino = new File("Producto"); // carpeta interna
                 if (!carpetaDestino.exists()) {
                     carpetaDestino.mkdirs();
                 }
 
-                // Crear copia con mismo nombre
                 File copia = new File(carpetaDestino, imagenOriginal.getName());
 
-                // Copiar archivo
                 java.nio.file.Files.copy(
                         imagenOriginal.toPath(),
                         copia.toPath(),
                         java.nio.file.StandardCopyOption.REPLACE_EXISTING
                 );
 
-                // Regresar ruta absoluta de la copia
-                return copia.getAbsolutePath();
+                // 🔥 Ruta RELATIVA para la base de datos
+                return "Empleados/" + imagenOriginal.getName();
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        return null; // por si cancelan
+        return null;
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIAñadirPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIAñadirPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIAñadirPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIAñadirPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIAñadirPrenda().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton L;

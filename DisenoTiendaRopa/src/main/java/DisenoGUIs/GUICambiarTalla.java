@@ -60,7 +60,6 @@ public class GUICambiarTalla extends javax.swing.JDialog {
         XL = new javax.swing.JToggleButton();
         XXL = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
-        btnCalcularTalla = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnCambiarTalla = new javax.swing.JButton();
 
@@ -168,20 +167,9 @@ public class GUICambiarTalla extends javax.swing.JDialog {
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Seleccionar talla:");
 
-        btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
-        btnCalcularTalla.setForeground(new java.awt.Color(0, 0, 0));
-        btnCalcularTalla.setText("Calcular talla");
-        btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalcularTallaActionPerformed(evt);
-            }
-        });
-
         btnCancelar.setBackground(new java.awt.Color(239, 207, 227));
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,7 +178,6 @@ public class GUICambiarTalla extends javax.swing.JDialog {
         });
 
         btnCambiarTalla.setBackground(new java.awt.Color(239, 207, 227));
-        btnCambiarTalla.setForeground(new java.awt.Color(0, 0, 0));
         btnCambiarTalla.setText("Cambiar talla");
         btnCambiarTalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,9 +195,7 @@ public class GUICambiarTalla extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCalcularTalla)
-                        .addGap(18, 18, 18)
+                        .addGap(134, 134, 134)
                         .addComponent(btnCambiarTalla))
                     .addComponent(jLabel1))
                 .addContainerGap(50, Short.MAX_VALUE))
@@ -230,7 +215,6 @@ public class GUICambiarTalla extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
-                    .addComponent(btnCalcularTalla)
                     .addComponent(btnCambiarTalla))
                 .addGap(81, 81, 81))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,10 +270,6 @@ public class GUICambiarTalla extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCalcularTallaActionPerformed
-
     private void btnCambiarTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarTallaActionPerformed
 //        boolean hayStock = false;
 //    if (!hayStock) {
@@ -334,7 +314,6 @@ public class GUICambiarTalla extends javax.swing.JDialog {
     private javax.swing.JToggleButton XS;
     private javax.swing.JToggleButton XXL;
     private javax.swing.JToggleButton XXS;
-    private javax.swing.JButton btnCalcularTalla;
     private javax.swing.JButton btnCambiarTalla;
     private javax.swing.JButton btnCancelar;
     private javax.swing.ButtonGroup buttonGroup1;

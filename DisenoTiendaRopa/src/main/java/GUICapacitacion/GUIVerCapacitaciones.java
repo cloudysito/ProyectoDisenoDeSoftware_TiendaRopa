@@ -15,15 +15,20 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
 public class GUIVerCapacitaciones extends javax.swing.JFrame {
 
     private EmpleadoDTO empleado;
-    private CapacitacionDTO capacitacion;
     
     /**
      * Creates new form GUIVerCapacitaciones
      */
-    public GUIVerCapacitaciones(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+    public GUIVerCapacitaciones(EmpleadoDTO empleado) {
         this.empleado = empleado;
-        this.capacitacion = capacitacion;
+        
         initComponents();
+        llenarEmpleado();
+        llenarLabels();
+    }
+    
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**
@@ -265,10 +270,18 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
-        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado, capacitacion);
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 
+    private void llenarLabels(){
+    capacitacionClienteAgresivo.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agresivos").getEstado());
+    capacitacionEmergenciaMedica.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "emergenciaMedica").getEstado());
+    capacitacionDevolverPrenda.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "devolverPrenda").getEstado());
+    capacitacionAgregarPrenda.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agregarStock").getEstado());
+    capacitacionRobosAmenazas.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "robos").getEstado());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel capacitacionAgregarPrenda;

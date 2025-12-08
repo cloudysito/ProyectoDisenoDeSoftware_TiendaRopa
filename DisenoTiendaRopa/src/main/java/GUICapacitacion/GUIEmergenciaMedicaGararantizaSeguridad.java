@@ -24,6 +24,11 @@ public class GUIEmergenciaMedicaGararantizaSeguridad extends javax.swing.JFrame 
         this.empleado = empleado;
         this.capacitacion = capacitacion;
         initComponents();
+        llenarEmpleado();
+    }
+    
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**
@@ -229,7 +234,7 @@ public class GUIEmergenciaMedicaGararantizaSeguridad extends javax.swing.JFrame 
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado, capacitacion);
+         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 

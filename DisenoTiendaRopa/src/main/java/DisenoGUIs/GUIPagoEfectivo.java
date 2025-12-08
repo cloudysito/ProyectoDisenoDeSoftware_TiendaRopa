@@ -4,7 +4,9 @@
  */
 package DisenoGUIs;
 
+import ControlPantallas.ControlCalcularTalla;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.PagoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
@@ -314,14 +316,18 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
         // TODO add your handling code here:
+        ControlPantallas.getInstase().navegarEnviarSugerencia(this, empleado);
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
+         ControlCalcularTalla.getIntase().navegarCalcularTalla(this, empleado);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
     private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
         // TODO add your handling code here:
+        ControlReembolso.getInstase().iniciarFlujo(this, empleado);
+
     }//GEN-LAST:event_btnDevolverPrendaActionPerformed
 
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed

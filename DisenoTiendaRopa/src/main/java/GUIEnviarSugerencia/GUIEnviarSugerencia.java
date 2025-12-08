@@ -4,7 +4,9 @@
  */
 package GUIEnviarSugerencia;
 
+import ControlPantallas.ControlCalcularTalla;
 import ControlPantallas.ControlGestionarSugerencias;
+import ControlPantallas.ControlGuiaInteractivaEmpleado;
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.EmpleadoDTO;
@@ -51,8 +53,6 @@ public class GUIEnviarSugerencia extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         btnCalcularTalla = new javax.swing.JButton();
-        btnEnviarSugerencia = new javax.swing.JButton();
-        btnDevolverPrenda = new javax.swing.JButton();
         btnLibro = new javax.swing.JButton();
         lblNombreProducto = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
@@ -126,22 +126,6 @@ public class GUIEnviarSugerencia extends javax.swing.JFrame {
             }
         });
 
-        btnEnviarSugerencia.setBackground(new java.awt.Color(239, 207, 227));
-        btnEnviarSugerencia.setText("Enviar sugerencia");
-        btnEnviarSugerencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviarSugerenciaActionPerformed(evt);
-            }
-        });
-
-        btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnDevolverPrenda.setText("Devolver prendas");
-        btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolverPrendaActionPerformed(evt);
-            }
-        });
-
         btnLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libro.png"))); // NOI18N
         btnLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,29 +138,19 @@ public class GUIEnviarSugerencia extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCalcularTalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDevolverPrenda, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(btnLibro)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCalcularTalla, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnDevolverPrenda)
-                .addGap(18, 18, 18)
+                .addGap(67, 67, 67)
                 .addComponent(btnCalcularTalla)
-                .addGap(18, 18, 18)
-                .addComponent(btnEnviarSugerencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLibro))
         );
 
@@ -217,7 +191,7 @@ public class GUIEnviarSugerencia extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
                         .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(120, 120, 120))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -237,7 +211,7 @@ public class GUIEnviarSugerencia extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,23 +238,20 @@ public class GUIEnviarSugerencia extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-        final ControlPantallas navegador = ControlPantallas.getInstase();
+        ControlPantallas.getInstase().navegarMenuPrincipal(this, empleado);
+        
     }//GEN-LAST:event_btnRegresarActionPerformed
-
-    private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCalcularTallaActionPerformed
+        ControlCalcularTalla.getIntase().navegarCalcularTalla(this, empleado);
 
-    private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDevolverPrendaActionPerformed
+    }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
+
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
@@ -307,8 +278,6 @@ public class GUIEnviarSugerencia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcularTalla;
-    private javax.swing.JButton btnDevolverPrenda;
-    private javax.swing.JButton btnEnviarSugerencia;
     private javax.swing.JButton btnLibro;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnVender;

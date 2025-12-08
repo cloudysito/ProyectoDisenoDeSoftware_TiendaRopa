@@ -130,7 +130,7 @@ public class GUICalcularTalla extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(179, 222, 226));
 
         btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
-        btnCalcularTalla.setText("Calcular talla");
+        btnCalcularTalla.setText("VenderPrenda");
         btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalcularTallaActionPerformed(evt);
@@ -184,10 +184,10 @@ public class GUICalcularTalla extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(btnDevolverPrenda)
                 .addGap(18, 18, 18)
-                .addComponent(btnCalcularTalla)
+                .addComponent(btnCalcularTalla, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEnviarSugerencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addComponent(btnLibro))
         );
 
@@ -339,6 +339,7 @@ public class GUICalcularTalla extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        ControlPantallas.getInstase().navegarMenuPrincipal(this, empleado);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
@@ -347,6 +348,10 @@ public class GUICalcularTalla extends javax.swing.JFrame {
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
+        final ControlPantallas navegador = ControlPantallas.getInstase();
+        VentaDTO venta = new VentaDTO();
+        venta.setEmpleado(empleado);
+        navegador.navegarCodigoProducto(this, empleado, venta, false);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
     private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed

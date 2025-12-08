@@ -4,7 +4,9 @@
  */
 package DisenoGUIs;
 
+import ControlPantallas.ControlCalcularTalla;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.PagoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
@@ -48,10 +50,10 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
         lblNombreEmpleado = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        btnLibro = new javax.swing.JButton();
+        btnDevolverPrenda = new javax.swing.JButton();
         btnCalcularTalla = new javax.swing.JButton();
         btnEnviarSugerencia = new javax.swing.JButton();
-        btnDevolverPrenda = new javax.swing.JButton();
-        btnLibro = new javax.swing.JButton();
         lblNombreProducto = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -117,6 +119,21 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(179, 222, 226));
 
+        btnLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libro.png"))); // NOI18N
+        btnLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLibroActionPerformed(evt);
+            }
+        });
+
+        btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
+        btnDevolverPrenda.setText("Devolver prendas");
+        btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolverPrendaActionPerformed(evt);
+            }
+        });
+
         btnCalcularTalla.setBackground(new java.awt.Color(239, 207, 227));
         btnCalcularTalla.setText("Calcular talla");
         btnCalcularTalla.addActionListener(new java.awt.event.ActionListener() {
@@ -133,43 +150,25 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
             }
         });
 
-        btnDevolverPrenda.setBackground(new java.awt.Color(239, 207, 227));
-        btnDevolverPrenda.setText("Devolver prendas");
-        btnDevolverPrenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolverPrendaActionPerformed(evt);
-            }
-        });
-
-        btnLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libro.png"))); // NOI18N
-        btnLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLibroActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(btnLibro)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCalcularTalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDevolverPrenda, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addComponent(btnDevolverPrenda, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(btnLibro)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(btnDevolverPrenda)
                 .addGap(18, 18, 18)
                 .addComponent(btnCalcularTalla)
@@ -184,7 +183,6 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
         lblNombreProducto.setText("Pago con Paypal");
 
         btnRegresar.setBackground(new java.awt.Color(226, 115, 150));
-        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Users\\garfi\\OneDrive\\Documentos\\GitHub\\ProyectoDisenoDeSoftware_TiendaRopa\\DisenoTiendaRopa\\src\\main\\resources\\flecha.png")); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -273,18 +271,6 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
         navegador.navegarSeleccionMetodoPago(this, empleado, venta);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
-
-    private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCalcularTallaActionPerformed
-
-    private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDevolverPrendaActionPerformed
-
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLibroActionPerformed
@@ -298,6 +284,21 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
          navegador.getRealizarVentaSistema().registrarVenta(venta1);
          navegador.mostrarYGuardarTicketComoImagen(venta, this);
     }//GEN-LAST:event_btnVenderActionPerformed
+
+    private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
+        // TODO add your handling code here:
+        ControlReembolso.getInstase().iniciarFlujo(this, empleado);
+    }//GEN-LAST:event_btnDevolverPrendaActionPerformed
+
+    private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
+        // TODO add your handling code here:
+        ControlCalcularTalla.getIntase().navegarCalcularTalla(this, empleado);
+    }//GEN-LAST:event_btnCalcularTallaActionPerformed
+
+    private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
+        // TODO add your handling code here:
+        ControlPantallas.getInstase().navegarEnviarSugerencia(this, empleado);
+    }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

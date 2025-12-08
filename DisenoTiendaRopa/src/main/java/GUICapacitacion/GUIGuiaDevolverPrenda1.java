@@ -24,6 +24,11 @@ public class GUIGuiaDevolverPrenda1 extends javax.swing.JFrame {
         this.empleado = empleado;
         this.capacitacion = capacitacion;
         initComponents();
+        llenarEmpleado();
+    }
+    
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**
@@ -228,7 +233,7 @@ public class GUIGuiaDevolverPrenda1 extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
-        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado, capacitacion);
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 

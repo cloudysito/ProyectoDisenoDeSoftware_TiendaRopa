@@ -15,17 +15,18 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
 public class GUIMenuGuia extends javax.swing.JFrame {
 
     private EmpleadoDTO empleado;
-    private CapacitacionDTO capacitacion;
     
     /**
      * Creates new form GUIMenuGuia
      */
-    public GUIMenuGuia(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+    public GUIMenuGuia(EmpleadoDTO empleado) {
         this.empleado = empleado;
-        this.capacitacion = capacitacion;
-        initComponents();
+        llenarEmpleado();
     }
-
+    
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombre());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -220,39 +221,46 @@ public class GUIMenuGuia extends javax.swing.JFrame {
 
     private void btnGuiaAgregarPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaAgregarPrendaActionPerformed
         // TODO add your handling code here:
+        CapacitacionDTO  capacitacion = ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agregarStock");
         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIGuiaAgregarPrenda1(this, empleado, capacitacion);
         
     }//GEN-LAST:event_btnGuiaAgregarPrendaActionPerformed
 
     private void btnGuiaDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaDevolverPrendaActionPerformed
         // TODO add your handling code here:
+        CapacitacionDTO  capacitacion = ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "devolverPrenda");
         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIGuiaDevolverPrenda1(this, empleado, capacitacion);
 
     }//GEN-LAST:event_btnGuiaDevolverPrendaActionPerformed
 
     private void btnGuiaManejoRobosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaManejoRobosActionPerformed
         // TODO add your handling code here:
+        CapacitacionDTO  capacitacion = ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "robos");
         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIRobosOAmenazasCooperar(this, empleado, capacitacion);
         
     }//GEN-LAST:event_btnGuiaManejoRobosActionPerformed
 
     private void btnGuiaClientesAgresivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaClientesAgresivosActionPerformed
         // TODO add your handling code here:
+        CapacitacionDTO  capacitacion = ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agresivos");
         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIClientesAgresivosMantenerCalma(this, empleado, capacitacion);
     }//GEN-LAST:event_btnGuiaClientesAgresivosActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        
         ControlPantallas.ControlPantallas.getInstase().navegarMenuPrincipal(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnVerCapacitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCapacitacionesActionPerformed
         // TODO add your handling code here:
-        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIVerCapacitaciones(this, empleado, capacitacion);
+        
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIVerCapacitaciones(this, empleado);
     }//GEN-LAST:event_btnVerCapacitacionesActionPerformed
 
     private void btnGuiaEmergenciasMedicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaEmergenciasMedicasActionPerformed
         // TODO add your handling code here:
+        CapacitacionDTO  capacitacion = ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "emergenciaMedica");
         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIEmergenciaMedicaGararantizaSeguridad(this, empleado, capacitacion);
     }//GEN-LAST:event_btnGuiaEmergenciasMedicasActionPerformed
 

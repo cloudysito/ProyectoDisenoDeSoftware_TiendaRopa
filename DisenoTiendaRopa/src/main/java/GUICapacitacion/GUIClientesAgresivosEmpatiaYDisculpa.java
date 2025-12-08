@@ -23,6 +23,12 @@ public class GUIClientesAgresivosEmpatiaYDisculpa extends javax.swing.JFrame {
         this.empleado = empleado;
         this.capacitacion = capacitacion;
         initComponents();
+        llenarEmpleado();
+
+    }
+    
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**

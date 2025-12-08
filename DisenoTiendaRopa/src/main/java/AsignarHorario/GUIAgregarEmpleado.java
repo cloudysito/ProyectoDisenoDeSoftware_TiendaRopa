@@ -5,8 +5,10 @@
 package AsignarHorario;
 
 import ControlPantallas.ControlEmpleados;
+import ControlPantallas.ControlGestionarSugerencias;
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlRopa;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import java.awt.Component;
 import java.io.File;
@@ -392,10 +394,12 @@ public class GUIAgregarEmpleado extends javax.swing.JFrame {
 
     private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
         // TODO add your handling code here:
+        ControlRopa.getInstase().navegarGestionCatalogo(this);
     }//GEN-LAST:event_btnCatalogoActionPerformed
 
     private void btnInfrestructuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfrestructuraActionPerformed
         // TODO add your handling code here:
+        ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
     }//GEN-LAST:event_btnInfrestructuraActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -464,7 +468,6 @@ public class GUIAgregarEmpleado extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Selecciona una imagen");
 
-        // Filtrar solo imágenes
         fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
                 "Imágenes", "jpg", "jpeg", "png"));
 
@@ -474,32 +477,30 @@ public class GUIAgregarEmpleado extends javax.swing.JFrame {
             File imagenOriginal = fileChooser.getSelectedFile();
 
             try {
-                // Crear carpeta interna
-                File carpetaDestino = new File("Empleados");
+                File carpetaDestino = new File("Empleados"); // carpeta interna
                 if (!carpetaDestino.exists()) {
                     carpetaDestino.mkdirs();
                 }
 
-                // Crear copia con mismo nombre
                 File copia = new File(carpetaDestino, imagenOriginal.getName());
 
-                // Copiar archivo
                 java.nio.file.Files.copy(
                         imagenOriginal.toPath(),
                         copia.toPath(),
                         java.nio.file.StandardCopyOption.REPLACE_EXISTING
                 );
 
-                // Regresar ruta absoluta de la copia
-                return copia.getAbsolutePath();
+                // 🔥 Ruta RELATIVA para la base de datos
+                return "Empleados/" + imagenOriginal.getName();
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        return null; // por si cancelan
+        return null;
     }
+
 
     
     /**

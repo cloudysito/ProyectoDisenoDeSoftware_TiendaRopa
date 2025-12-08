@@ -24,6 +24,11 @@ public class GUIGuiaAgregarPrenda4 extends javax.swing.JFrame {
         this.empleado = empleado;
         this.capacitacion = capacitacion;
         initComponents();
+        llenarEmpleado();
+    }
+    
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**
@@ -221,7 +226,8 @@ public class GUIGuiaAgregarPrenda4 extends javax.swing.JFrame {
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
-        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado, capacitacion);
+        ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().cambiarEstado(capacitacion);
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed

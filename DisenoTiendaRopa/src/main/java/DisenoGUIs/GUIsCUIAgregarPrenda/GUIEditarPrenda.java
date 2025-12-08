@@ -4,7 +4,9 @@
  */
 package DisenoGUIs.GUIsCUIAgregarPrenda;
 
+import com.mycompany.dto_negocio.RopaDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
+import com.mycompany.dto_negocio.TallaDTO;
 
 /**
  * Ventana gráfica para la edición de una prenda existente en el catálogo.
@@ -142,6 +144,8 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
         L = new javax.swing.JToggleButton();
         XL = new javax.swing.JToggleButton();
         XXL = new javax.swing.JToggleButton();
+        jLabel10 = new javax.swing.JLabel();
+        txtStock = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -221,6 +225,11 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
         });
 
         btnEditarImg.setBackground(new java.awt.Color(255, 213, 223));
+        btnEditarImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarImgActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nombre");
@@ -335,6 +344,15 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setText("Stock ");
+
+        txtStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStockActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -347,38 +365,49 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
                         .addComponent(lblNombreProducto)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addComponent(txtTemporada))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(txtMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addComponent(txtMarca)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(XXS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(XS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(S)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(M)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(L)
-                                .addGap(12, 12, 12)
-                                .addComponent(XL)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(XXL))
-                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel5)
+                                            .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                            .addComponent(txtTemporada))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel8)
+                                            .addComponent(txtMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                            .addComponent(txtMarca)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(15, 15, 15)
+                                                .addComponent(jLabel9))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(XXS)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(XS)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(S)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(M)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(L)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(XL)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(XXL))
+                                    .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -389,14 +418,18 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNombreProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel10))
+                .addGap(4, 4, 4)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblNombreProducto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addGap(4, 4, 4)
@@ -410,7 +443,7 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTemporada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
@@ -450,7 +483,7 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
         );
 
         pack();
@@ -458,6 +491,113 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        
+        // Validaciones 
+        if (txtNombre.getText().isEmpty() || txtPrecio.getText().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El nombre y el precio son obligatorios.");
+            return;
+        }
+
+        TallaDTO tallaSeleccionada = obtenerTallaSeleccionada();
+        if (tallaSeleccionada == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debes seleccionar una talla.");
+            return;
+        }
+
+        double precio = 0;
+        try {
+            precio = Double.parseDouble(txtPrecio.getText());
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El precio debe ser un número válido.");
+            return;
+        }
+
+        int stock = 0;
+        try {
+            stock = Integer.parseInt(txtStock.getText());
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El stock debe ser un número entero.");
+            return;
+        }
+
+        // Cuadro de texto de validacion
+        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(
+                this,
+                "¿Está seguro de querer añadir esta prenda?",
+                "Confirmar Guardado",
+                javax.swing.JOptionPane.YES_NO_OPTION,
+                javax.swing.JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (confirmacion != javax.swing.JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+
+            RopaDTO nuevaRopa = prendaActual.getRopa();
+            nuevaRopa.setIdRopa(null);
+            nuevaRopa.setNombreArticulo(txtNombre.getText());
+            nuevaRopa.setDescripcion(txtDescripcion.getText());
+            nuevaRopa.setTemporada(txtTemporada.getText());
+            nuevaRopa.setMarca(txtMarca.getText());
+            nuevaRopa.setMaterial(txtMaterial.getText());
+            nuevaRopa.setPrecio(precio);
+
+            RopaTallaDTO productoFinal = new RopaTallaDTO();
+            productoFinal.setIdRopaTalla(null);
+            productoFinal.setRopa(nuevaRopa);
+            productoFinal.setTalla(tallaSeleccionada);
+            productoFinal.setCantidad(stock);
+
+            //Generar codigo de barras en formato texto
+            String codigoGenerado = ControlPantallas.ControlRopa.getInstase()
+                    .getGenerarCodigoBarras().generarCodigoBarras();
+            productoFinal.setCodigoBarras(codigoGenerado);
+
+            //Guardar img de codigo de barras en carpeta
+            String rutaGuardado = "imagenesCodigosBarras";
+            ControlPantallas.ControlRopa.getInstase()
+                    .getGenerarCodigoBarras()
+                    .guardarCodigoEnRuta(codigoGenerado, rutaGuardado);
+
+            //Guardar en base datos
+            boolean exito = ControlPantallas.ControlRopa.getInstase()
+                    .getGestionCatalogo()
+                    .agregarRopa(productoFinal);
+
+            //Mensaje de confirmacion con imagen del codigo de barras
+            if (exito) {
+                try {
+                    java.awt.image.BufferedImage imgEnMemoria = ControlPantallas.ControlRopa.getInstase()
+                            .getGenerarCodigoBarras()
+                            .generarImagenCodigo(codigoGenerado);
+
+                    javax.swing.ImageIcon icono = new javax.swing.ImageIcon(imgEnMemoria);
+
+                    Object[] mensaje = {
+                        "Prenda añadida exitosamente",
+                        " ",
+                        icono,
+                        "Código: " + codigoGenerado
+                    };
+
+                    javax.swing.JOptionPane.showMessageDialog(this, mensaje, "Éxito", javax.swing.JOptionPane.PLAIN_MESSAGE);
+
+                } catch (Exception ex) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Prenda guardada con éxito.");
+                }
+
+                ControlPantallas.ControlRopa.getInstase().navegarGestionCatalogo(this);
+
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Hubo un error al guardar en la base de datos.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error en GUI: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
@@ -524,46 +664,45 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MActionPerformed
 
+    private void btnEditarImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarImgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarImgActionPerformed
+
+    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStockActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIEditarPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIEditarPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIEditarPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIEditarPrenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private TallaDTO obtenerTallaSeleccionada() {
+        String nombreTalla = null;
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIEditarPrenda().setVisible(true);
-            }
-        });
+        if (XXS.isSelected()) {
+            nombreTalla = "XXS";
+        } else if (XS.isSelected()) {
+            nombreTalla = "XS";
+        } else if (S.isSelected()) {
+            nombreTalla = "S";
+        } else if (M.isSelected()) {
+            nombreTalla = "M";
+        } else if (L.isSelected()) {
+            nombreTalla = "L";
+        } else if (XL.isSelected()) {
+            nombreTalla = "XL";
+        } else if (XXL.isSelected()) {
+            nombreTalla = "XXL";
+        }
+
+        if (nombreTalla != null) {
+            TallaDTO talla = new TallaDTO();
+            talla.setIdTalla(null);
+            talla.setNombreTalla(nombreTalla);
+            talla.setDescripcion("Talla estándar " + nombreTalla);
+            return talla;
+        }
+
+        return null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -578,6 +717,7 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -595,6 +735,7 @@ public class GUIEditarPrenda extends javax.swing.JFrame {
     private javax.swing.JTextField txtMaterial;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtTemporada;
     // End of variables declaration//GEN-END:variables
 }

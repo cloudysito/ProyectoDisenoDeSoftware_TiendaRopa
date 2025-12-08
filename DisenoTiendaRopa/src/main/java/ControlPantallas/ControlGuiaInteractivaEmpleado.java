@@ -61,15 +61,15 @@ public class ControlGuiaInteractivaEmpleado {
         }
     }
     
-    public void navegarGUIVerCapacitaciones(JFrame frameActual, EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+    public void navegarGUIVerCapacitaciones(JFrame frameActual, EmpleadoDTO empleado) {
         cerrarFrameActual(frameActual);
-        GUIVerCapacitaciones guia = new GUIVerCapacitaciones(empleado, capacitacion);
+        GUIVerCapacitaciones guia = new GUIVerCapacitaciones(empleado);
         guia.setVisible(true);
     }
     
-    public void navegarGUIMenuGuia(JFrame frameActual, EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+    public void navegarGUIMenuGuia(JFrame frameActual, EmpleadoDTO empleado) {
         cerrarFrameActual(frameActual);
-        GUIMenuGuia guia = new GUIMenuGuia(empleado, capacitacion);
+        GUIMenuGuia guia = new GUIMenuGuia(empleado);
         guia.setVisible(true);
     }
     
@@ -234,8 +234,7 @@ public class ControlGuiaInteractivaEmpleado {
         GUIGuiaDevolverPrenda4 guia = new GUIGuiaDevolverPrenda4(empleado, capacitacion);
         guia.setVisible(true);
     }
-    
-    
+   
     
     public static IGuiaInteractivaEmpleado getGuiaInteractiva() {
         return guiaInteractiva;

@@ -5,8 +5,10 @@
 package AsignarHorario;
 
 import ControlPantallas.ControlEmpleados;
+import ControlPantallas.ControlGestionarSugerencias;
 import DisenoGUIs.*;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlRopa;
 import com.mycompany.dto_negocio.DiaHorarioDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.HorarioDTO;
@@ -360,10 +362,12 @@ public class GUIAsignarHorarios extends javax.swing.JFrame {
 
     private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
         // TODO add your handling code here:
+        ControlRopa.getInstase().navegarGestionCatalogo(this);
     }//GEN-LAST:event_btnCatalogoActionPerformed
 
     private void btnInfrestructuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfrestructuraActionPerformed
         // TODO add your handling code here:
+        ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
     }//GEN-LAST:event_btnInfrestructuraActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed

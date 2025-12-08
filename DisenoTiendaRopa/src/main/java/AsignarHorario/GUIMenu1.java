@@ -40,6 +40,7 @@ public class GUIMenu1 extends javax.swing.JFrame {
         btnVenderPrenda = new javax.swing.JButton();
         btnDevolverPrenda = new javax.swing.JButton();
         btnCalcularTalla = new javax.swing.JButton();
+        btnContinuar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 238, 242));
@@ -103,6 +104,14 @@ public class GUIMenu1 extends javax.swing.JFrame {
             }
         });
 
+        btnContinuar1.setBackground(new java.awt.Color(239, 207, 227));
+        btnContinuar1.setText("Regresar");
+        btnContinuar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -114,7 +123,11 @@ public class GUIMenu1 extends javax.swing.JFrame {
                     .addComponent(btnVenderPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(btnDevolverPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnContinuar1)
+                .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +138,9 @@ public class GUIMenu1 extends javax.swing.JFrame {
                     .addComponent(btnDevolverPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addComponent(btnCalcularTalla, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(btnContinuar1)
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,12 +178,19 @@ public class GUIMenu1 extends javax.swing.JFrame {
         ControlGestionarSugerencias.getInstance().navegarMenuSugerencias(this);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
+    private void btnContinuar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuar1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        ControlPantallas.getInstase().iniciarFlujo();
+    }//GEN-LAST:event_btnContinuar1ActionPerformed
+
     
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcularTalla;
+    private javax.swing.JButton btnContinuar1;
     private javax.swing.JButton btnDevolverPrenda;
     private javax.swing.JButton btnVenderPrenda;
     private javax.swing.JLabel jLabel1;

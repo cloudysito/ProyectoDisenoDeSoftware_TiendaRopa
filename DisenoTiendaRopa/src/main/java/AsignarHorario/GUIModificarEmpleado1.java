@@ -470,7 +470,6 @@ public class GUIModificarEmpleado1 extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Selecciona una imagen");
 
-        // Filtrar solo imágenes
         fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
                 "Imágenes", "jpg", "jpeg", "png"));
 
@@ -480,31 +479,28 @@ public class GUIModificarEmpleado1 extends javax.swing.JFrame {
             File imagenOriginal = fileChooser.getSelectedFile();
 
             try {
-                // Crear carpeta interna
-                File carpetaDestino = new File("Empleados");
+                File carpetaDestino = new File("Empleados"); // carpeta interna
                 if (!carpetaDestino.exists()) {
                     carpetaDestino.mkdirs();
                 }
 
-                // Crear copia con mismo nombre
                 File copia = new File(carpetaDestino, imagenOriginal.getName());
 
-                // Copiar archivo
                 java.nio.file.Files.copy(
                         imagenOriginal.toPath(),
                         copia.toPath(),
                         java.nio.file.StandardCopyOption.REPLACE_EXISTING
                 );
 
-                // Regresar ruta absoluta de la copia
-                return copia.getAbsolutePath();
+                // 🔥 Ruta RELATIVA para la base de datos
+                return "Empleados/" + imagenOriginal.getName();
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        return null; // por si cancelan
+        return null;
     }
     
     /**

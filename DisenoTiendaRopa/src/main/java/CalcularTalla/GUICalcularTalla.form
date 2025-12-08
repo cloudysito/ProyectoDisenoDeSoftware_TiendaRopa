@@ -254,10 +254,10 @@
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="btnDevolverPrenda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCalcularTalla" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCalcularTalla" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnEnviarSugerencia" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="133" max="32767" attributes="0"/>
                       <Component id="btnLibro" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -269,7 +269,7 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="cf" red="ef" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Calcular talla"/>
+                <Property name="text" type="java.lang.String" value="VenderPrenda"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcularTallaActionPerformed"/>

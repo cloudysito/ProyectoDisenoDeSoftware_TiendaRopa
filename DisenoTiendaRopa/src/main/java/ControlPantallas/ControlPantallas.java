@@ -19,6 +19,7 @@ import GUIDevolverPrenda.GUIBuscarVenta;
 import GUIDevolverPrenda.GUIConfirmacionReembolso;
 import GUIDevolverPrenda.GUIReembolsoPrenda;
 import GUIDevolverPrenda.GUISeleccionMetodoReembolso;
+import GUIEnviarSugerencia.GUIEnviarSugerencia;
 import com.mycompany.aumentarventaempleado.Fachada.FachadaAumentarVentaEmpleado;
 import com.mycompany.aumentarventaempleado.Interfaz.IAumentarVentaEmpleado;
 import com.mycompany.dto_negocio.DetalleVentaDTO;
@@ -96,6 +97,12 @@ public class ControlPantallas {
         cerrarFrameActual(frameActual);
         GUIProducto producto = new GUIProducto(empleado, productodto, venta , ven);
         producto.setVisible(true);
+    }
+    
+    public void navegarEnviarSugerencia(JFrame frameActual,EmpleadoDTO empleado) {
+        cerrarFrameActual(frameActual);
+        GUIEnviarSugerencia sugerencia = new GUIEnviarSugerencia(empleado);
+        sugerencia.setVisible(true);
     }
 
     public void navegarVenderPrenda(JFrame frameActual,EmpleadoDTO empleado, VentaDTO venta) {

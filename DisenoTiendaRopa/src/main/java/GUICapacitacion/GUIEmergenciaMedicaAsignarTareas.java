@@ -23,9 +23,13 @@ public class GUIEmergenciaMedicaAsignarTareas extends javax.swing.JFrame {
     public GUIEmergenciaMedicaAsignarTareas(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
         this.empleado = empleado;
         this.capacitacion = capacitacion;
+       llenarEmpleado();
         initComponents();
     }
-
+    
+    private void llenarEmpleado(){
+        lblNombreEmpleado.setText(empleado.getNombre());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -4,7 +4,10 @@
  */
 package DisenoGUIs;
 
+import ControlPantallas.ControlCalcularTalla;
+import ControlPantallas.ControlGuiaInteractivaEmpleado;
 import ControlPantallas.ControlPantallas;
+import ControlPantallas.ControlReembolso;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.mycompany.dto_negocio.EmpleadoDTO;
@@ -66,6 +69,7 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextCodigo = new javax.swing.JTextField();
         btnContinuar = new javax.swing.JButton();
+        btnContinuar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,6 +216,14 @@ public class GUICodigoProducto extends javax.swing.JFrame {
             }
         });
 
+        btnContinuar1.setBackground(new java.awt.Color(239, 207, 227));
+        btnContinuar1.setText("Regresar");
+        btnContinuar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -220,17 +232,23 @@ public class GUICodigoProducto extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(JPanelCamara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnContinuar))))
-                .addGap(0, 72, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(JPanelCamara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnContinuar))))
+                        .addGap(0, 72, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnContinuar1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,6 +269,8 @@ public class GUICodigoProducto extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(JPanelCamara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(btnContinuar1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -277,24 +297,33 @@ public class GUICodigoProducto extends javax.swing.JFrame {
 
     private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
         // TODO add your handling code here:
+        ControlReembolso.getInstase().iniciarFlujo(this, empleado);
     }//GEN-LAST:event_btnDevolverPrendaActionPerformed
 
     private void btnCalcularTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularTallaActionPerformed
         // TODO add your handling code here:
+         ControlCalcularTalla.getIntase().navegarCalcularTalla(this, empleado);
     }//GEN-LAST:event_btnCalcularTallaActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
         // TODO add your handling code here:
+        ControlPantallas.getInstase().navegarEnviarSugerencia(this, empleado);
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
         configurarNavegacionPerfil();
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void btnContinuar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuar1ActionPerformed
+        // TODO add your handling code here:
+        ControlPantallas.getInstase().navegarMenuPrincipal(this, empleado);
+    }//GEN-LAST:event_btnContinuar1ActionPerformed
 
     private void llenarEmpleado(){
         lblNombreEmpleado.setText(empleado.getNombre());
@@ -307,6 +336,7 @@ public class GUICodigoProducto extends javax.swing.JFrame {
     private javax.swing.JPanel JPanelCamara;
     private javax.swing.JButton btnCalcularTalla;
     private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton btnContinuar1;
     private javax.swing.JButton btnDevolverPrenda;
     private javax.swing.JButton btnEnviarSugerencia;
     private javax.swing.JButton btnLibro;
@@ -326,6 +356,14 @@ public class GUICodigoProducto extends javax.swing.JFrame {
         final ControlPantallas navegador = ControlPantallas.getInstase();
 
         webcam = Webcam.getDefault();
+        
+        if (webcam == null) {
+            JOptionPane.showMessageDialog(panelCamara,
+                    "No se encontró ninguna cámara.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;  // Detener el método
+        }
         webcam.setViewSize(new Dimension(640, 480));
         webcam.open();
 
