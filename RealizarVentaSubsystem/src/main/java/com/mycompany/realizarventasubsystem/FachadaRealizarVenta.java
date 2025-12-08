@@ -28,7 +28,13 @@ public class FachadaRealizarVenta implements IRealizarVenta {
 
     private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  // Letras y números
 
-    
+    /**
+    * Crea una nueva entidad de venta en la base de datos o en la sesión de trabajo.
+    * Se encarga de generar un folio único para la venta.
+    *
+    * @param venta El DTO de la venta con la información inicial.
+    * @return El DTO de la venta actualizado con su ID/Folio generado y la fecha/hora.
+    */
     @Override
     public VentaDTO crearVenta(VentaDTO venta) {
         int folio;
@@ -48,6 +54,13 @@ public class FachadaRealizarVenta implements IRealizarVenta {
         return venta;
     }
 
+    /**
+    * Reduce la cantidad de stock disponible para la prenda especificada en el detalle,
+    * delegando la operación a la capa de negocio (RopaTallaBO).
+    *
+    * @param detalleVenta El DTO que indica la prenda, talla y cantidad a reducir.
+    * @return El DTO del detalle de venta.
+    */
     @Override
     public DetalleVentaDTO reducirStock(DetalleVentaDTO detalleVenta) {
        
@@ -56,12 +69,25 @@ public class FachadaRealizarVenta implements IRealizarVenta {
     }
 
     
-    
+    /**
+    * Obtiene la lista completa de tallas disponibles en el sistema,
+    * delegando la operación a la capa de negocio (TallaBO).
+    *
+    * @return Una lista de objetos TallaDTO.
+        */
     @Override
     public List<TallaDTO> obtenerTallas(){
         return TallaBO.getInstance().buscarTodos();
     }
 
+    /**
+    * Persiste la venta completa y sus detalles en la base de datos.
+    * Itera sobre los detalles de la venta para reducir el stock de cada producto
+    * antes de guardar la venta final.
+    *
+    * @param venta El DTO de la venta completada.
+    * @return {@code true} si la venta se registra exitosamente.
+    */
     @Override
     public boolean registrarVenta(VentaDTO venta) {
         for (DetalleVentaDTO detalleVentaDTO : venta.getDetalles()) {
@@ -72,6 +98,15 @@ public class FachadaRealizarVenta implements IRealizarVenta {
         return true;
     }
 
+    
+    /**
+    * Cambia la talla seleccionada para una prenda específica, buscando el stock
+    * disponible para esa nueva combinación Ropa-Talla en la capa de negocio.
+    *
+    * @param dto El DTO de la prenda original (RopaDTO).
+    * @param nombreTalla El nombre de la nueva talla a buscar.
+    * @return Un nuevo DTO de RopaTallaDTO con el stock de la talla solicitada.
+    */
     @Override
     public RopaTallaDTO cambiarTallaDisponible(RopaDTO dto, String nombreTalla) {
         return RopaTallaBO.getInstance().buscarRopaTalla(dto, nombreTalla);
