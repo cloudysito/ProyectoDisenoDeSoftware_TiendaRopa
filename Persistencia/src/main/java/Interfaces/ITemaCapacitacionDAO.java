@@ -14,5 +14,5 @@ import objetosnegocio.dominioPojo.TemaCapacitacion;
 public interface ITemaCapacitacionDAO {
     TemaCapacitacion guardarTemaCapacitacion(TemaCapacitacion temaCapacitacion) throws MongoException;
     
-    TemaCapacitacion buscarPorId(String idCapacitacion) throws MongoException;
+    TemaCapacitacion buscarPorNombre(String nombreCapacitacion) throws MongoException;
 }

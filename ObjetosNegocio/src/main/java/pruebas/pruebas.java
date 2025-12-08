@@ -31,4 +31,6 @@ public class pruebas {
         VentaBO.getInstance().guardarVenta(ventaDTO);
     }
     
+    
+    
 }

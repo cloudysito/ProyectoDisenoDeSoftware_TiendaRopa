@@ -46,10 +46,10 @@ public class TemaCapacitacionBO {
         }
     }
     
-    public TemaCapacitacionDTO buscarPorId(String idTemaCapacitacion) throws BOException{
+    public TemaCapacitacionDTO buscarPorNombre(String temaCapacitacion) throws BOException{
         try{
             
-            return TemaCapacitacionMapper.toDTO(temaCapacitacionDAO.buscarPorId(idTemaCapacitacion));
+            return TemaCapacitacionMapper.toDTO(temaCapacitacionDAO.buscarPorNombre(temaCapacitacion));
             
         }catch(DAOException e){
             throw new BOException("Error al buscar por id tema de capacitacion", e);

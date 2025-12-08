@@ -4,16 +4,25 @@
  */
 package GUICapacitacion;
 
+import ControlPantallas.ControlGuiaInteractivaEmpleado;
+import com.mycompany.dto_negocio.CapacitacionDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+
 /**
  *
  * @author riosr
  */
-public class GUIRobosOAmenazasCooperar extends javax.swing.JPanel {
+public class GUIRobosOAmenazasCooperar extends javax.swing.JFrame {
 
+    private EmpleadoDTO empleado;
+    private CapacitacionDTO capacitacion;
+    
     /**
      * Creates new form GUIRobosOAmenazasCooperar
      */
-    public GUIRobosOAmenazasCooperar() {
+    public GUIRobosOAmenazasCooperar(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+        this.empleado = empleado;
+        this.capacitacion = capacitacion;
         initComponents();
     }
 
@@ -226,10 +235,12 @@ public class GUIRobosOAmenazasCooperar extends javax.swing.JPanel {
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIRobosOAmenazasSeguridadTodo(this, empleado, capacitacion);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado, capacitacion);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 

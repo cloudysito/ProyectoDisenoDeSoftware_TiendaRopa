@@ -67,4 +67,14 @@ public class CapacitacionBO {
             throw new BOException("Error al buscar por id capacitacion", e);
         }
     }
+    
+    public CapacitacionDTO buscarPorNombreYTema(String nombreEmpleado, String temaCapacitacion) throws BOException{
+        try {
+
+            return CapacitacionMapper.toDTO(capacitacionDAO.buscarPorNombreYTema(nombreEmpleado, temaCapacitacion));
+
+        } catch (DAOException e) {
+            throw new BOException("Error al buscar por id capacitacion", e);
+        }
+    }
 }

@@ -19,4 +19,6 @@ public interface ICapacitacionDAO {
     
     Capacitacion buscarPorId(String idCapacitacion) throws MongoException;
     
+    Capacitacion buscarPorNombreYTema(String nombreEmpleado, String temaCapacitacion) throws MongoException;
+    
 }

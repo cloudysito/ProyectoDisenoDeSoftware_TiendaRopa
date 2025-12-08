@@ -4,16 +4,25 @@
  */
 package GUICapacitacion;
 
+import ControlPantallas.ControlGuiaInteractivaEmpleado;
+import com.mycompany.dto_negocio.CapacitacionDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+
 /**
  *
  * @author riosr
  */
-public class GUIEmergenciaMedicaLlamarEmergencias extends javax.swing.JPanel {
+public class GUIEmergenciaMedicaLlamarEmergencias extends javax.swing.JFrame {
 
+    private EmpleadoDTO empleado;
+    private CapacitacionDTO capacitacion;
+    
     /**
      * Creates new form GUIEmergenciaMedicaLlamarEmergencias
      */
-    public GUIEmergenciaMedicaLlamarEmergencias() {
+    public GUIEmergenciaMedicaLlamarEmergencias(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+        this.empleado = empleado;
+        this.capacitacion = capacitacion;
         initComponents();
     }
 
@@ -229,11 +238,11 @@ public class GUIEmergenciaMedicaLlamarEmergencias extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIEmergenciaMedicaAsistenciaLlegada(this, empleado, capacitacion);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIEmergenciaMedicaAplicarPrimerosAuxilios(this, empleado, capacitacion);
     }//GEN-LAST:event_btnVolverActionPerformed
 
 

@@ -4,16 +4,25 @@
  */
 package GUICapacitacion;
 
+import ControlPantallas.ControlGuiaInteractivaEmpleado;
+import com.mycompany.dto_negocio.CapacitacionDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+
 /**
  *
  * @author riosr
  */
-public class GUIMenuGuia extends javax.swing.JPanel {
+public class GUIMenuGuia extends javax.swing.JFrame {
 
+    private EmpleadoDTO empleado;
+    private CapacitacionDTO capacitacion;
+    
     /**
      * Creates new form GUIMenuGuia
      */
-    public GUIMenuGuia() {
+    public GUIMenuGuia(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+        this.empleado = empleado;
+        this.capacitacion = capacitacion;
         initComponents();
     }
 
@@ -211,33 +220,40 @@ public class GUIMenuGuia extends javax.swing.JPanel {
 
     private void btnGuiaAgregarPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaAgregarPrendaActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIGuiaAgregarPrenda1(this, empleado, capacitacion);
         
     }//GEN-LAST:event_btnGuiaAgregarPrendaActionPerformed
 
     private void btnGuiaDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaDevolverPrendaActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIGuiaDevolverPrenda1(this, empleado, capacitacion);
 
     }//GEN-LAST:event_btnGuiaDevolverPrendaActionPerformed
 
     private void btnGuiaManejoRobosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaManejoRobosActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIRobosOAmenazasCooperar(this, empleado, capacitacion);
         
     }//GEN-LAST:event_btnGuiaManejoRobosActionPerformed
 
     private void btnGuiaClientesAgresivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaClientesAgresivosActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIClientesAgresivosMantenerCalma(this, empleado, capacitacion);
     }//GEN-LAST:event_btnGuiaClientesAgresivosActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        ControlPantallas.ControlPantallas.getInstase().navegarMenuPrincipal(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnVerCapacitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCapacitacionesActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIVerCapacitaciones(this, empleado, capacitacion);
     }//GEN-LAST:event_btnVerCapacitacionesActionPerformed
 
     private void btnGuiaEmergenciasMedicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiaEmergenciasMedicasActionPerformed
         // TODO add your handling code here:
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIEmergenciaMedicaGararantizaSeguridad(this, empleado, capacitacion);
     }//GEN-LAST:event_btnGuiaEmergenciasMedicasActionPerformed
 
 

@@ -4,16 +4,24 @@
  */
 package GUICapacitacion;
 
+import com.mycompany.dto_negocio.CapacitacionDTO;
+import com.mycompany.dto_negocio.EmpleadoDTO;
+
 /**
  *
  * @author riosr
  */
-public class GUIClientesAgresivosEmpatiaYDisculpa extends javax.swing.JPanel {
+public class GUIClientesAgresivosEmpatiaYDisculpa extends javax.swing.JFrame {
 
+    private EmpleadoDTO empleado;
+    private CapacitacionDTO capacitacion;
+    
     /**
      * Creates new form GUIClientesAgresivosDocumentacion
      */
-    public GUIClientesAgresivosEmpatiaYDisculpa() {
+    public GUIClientesAgresivosEmpatiaYDisculpa(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+        this.empleado = empleado;
+        this.capacitacion = capacitacion;
         initComponents();
     }
 
