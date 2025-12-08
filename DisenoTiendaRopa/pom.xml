@@ -88,8 +88,7 @@
         </dependency>
         <dependency>
             <groupId>com.mycompany</groupId>
-
-            <artifactId>GuiaInteractivaEmpleadoSubsystem</artifactId>
+            <artifactId>RecomendarPrendaSubsystem</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
