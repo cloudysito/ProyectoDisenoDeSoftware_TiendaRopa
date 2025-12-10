@@ -11,6 +11,12 @@
             <artifactId>ObjetosNegocio</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.rolandopalermo.facturacion.ec</groupId>
+            <artifactId>veronica-dto</artifactId>
+            <version>1.0.7</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
