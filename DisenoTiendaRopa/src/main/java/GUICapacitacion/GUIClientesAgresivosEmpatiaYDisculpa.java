@@ -1,9 +1,10 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUICapacitacion;
 
+import ControlPantallas.ControlGuiaInteractivaEmpleado;
 import com.mycompany.dto_negocio.CapacitacionDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 
@@ -13,11 +14,13 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
  */
 public class GUIClientesAgresivosEmpatiaYDisculpa extends javax.swing.JFrame {
 
+    /**
+     * Creates new form q
+     */
     private EmpleadoDTO empleado;
     private CapacitacionDTO capacitacion;
-    
     /**
-     * Creates new form GUIClientesAgresivosDocumentacion
+     * Creates new form GUIClientesAgresivosAislar
      */
     public GUIClientesAgresivosEmpatiaYDisculpa(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
         this.empleado = empleado;
@@ -55,6 +58,8 @@ public class GUIClientesAgresivosEmpatiaYDisculpa extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(234, 154, 178));
 
@@ -236,16 +241,52 @@ public class GUIClientesAgresivosEmpatiaYDisculpa extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
+        
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIClientesAgresivosEstableceLimites(this, empleado, capacitacion);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIClientesAgresivosAislar(this, empleado, capacitacion);
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GUIClientesAgresivosEmpatiaYDisculpa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUIClientesAgresivosEmpatiaYDisculpa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUIClientesAgresivosEmpatiaYDisculpa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUIClientesAgresivosEmpatiaYDisculpa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSiguiente;
