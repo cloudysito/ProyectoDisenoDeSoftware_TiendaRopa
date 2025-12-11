@@ -31,7 +31,7 @@ public class GUIGuiaAgregarPrenda2 extends javax.swing.JFrame {
     }
     
     private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombre());
+        //lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**
@@ -236,7 +236,7 @@ public class GUIGuiaAgregarPrenda2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        ControlGuiaInteractivaEmpleado.getIntase().GUIGuiaAgregarPrenda3(this, empleado, capacitacion);
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIGuiaAgregarPrenda3(this, empleado, capacitacion);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed

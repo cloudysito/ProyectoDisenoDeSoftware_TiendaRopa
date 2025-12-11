@@ -124,4 +124,33 @@ public class CapacitacionDTO {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+    
+    public String getNombreEmpleadoTexto() {
+        if (this.nombreEmpleado != null) {
+            // Asumiendo que EmpleadoDTO tiene un método getNombre()
+            return this.nombreEmpleado.getNombre(); 
+        }
+        return "Sin empleado asignado";
+    }
+
+    /**
+     * Obtiene solo el nombre del tema como String.
+     */
+    public String getTemaCapacitacionTexto() {
+        if (this.temaCapacitacion != null) {
+            // Asumiendo que TemaCapacitacionDTO tiene getNombre() o getTema()
+            // Ajusta "getNombre()" al getter real que tengas en TemaCapacitacionDTO
+            return this.temaCapacitacion.getTemaCapacitacion(); 
+        }
+        return "Sin tema";
+    }
+    
+    /**
+     * Sobreescribir toString ayuda si pones el objeto directo en un JComboBox
+     */
+    @Override
+    public String toString() {
+        return getTemaCapacitacionTexto() + " - " + getNombreEmpleadoTexto();
+    }
+    
 }

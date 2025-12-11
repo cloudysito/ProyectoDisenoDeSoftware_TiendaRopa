@@ -22,9 +22,20 @@ public class FachadaGuiaInteractivaEmpleado implements IGuiaInteractivaEmpleado{
 
     @Override
     public CapacitacionDTO cambiarEstado(CapacitacionDTO capacitacion) {
-        capacitacion.setEstado("capacitado");
-        
-        return CapacitacionBO.getInstance().modificarCapacitacion(capacitacion);
+        CapacitacionDTO capacitacionCompleta = CapacitacionBO.getInstance().buscarPorNombreYTema(
+        capacitacion.getNombreEmpleadoTexto(),
+        capacitacion.getTemaCapacitacionTexto());
+
+     if (capacitacionCompleta != null) {
+            // 2. Modificamos solo el estado
+         capacitacionCompleta.setEstado("capacitado");
+            // 3. Guardamos el objeto completo
+            return CapacitacionBO.getInstance().modificarCapacitacion(capacitacionCompleta);
+        }
+      return null;
+    ///capacitacion.setEstado("capacitado");
+////        
+////        return CapacitacionBO.getInstance().modificarCapacitacion(capacitacion);
     }
    
 }

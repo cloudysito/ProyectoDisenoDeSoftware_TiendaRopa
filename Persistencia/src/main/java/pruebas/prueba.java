@@ -38,20 +38,22 @@ public class prueba {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        // 1. Inicialización del DAO de Empleados
-        IEmpleadoDAO daoEmpleado = new EmpleadoDAO();
+//        // 1. Inicialización del DAO de Empleados
+//        IEmpleadoDAO daoEmpleado = new EmpleadoDAO();
+//        
+//        // 2. Intento de inicio de sesión
+//        Empleado empleado = daoEmpleado.iniciarSesion("Santiago", "santi");
+//        
+//        // 3. Creación de la sugerencia, asignando empleado, estado y fecha/hora actual
+//        Sugerencia sugerencia = new Sugerencia(empleado, "Limpiar mas seguido la terrasa", "Pendiente", Date.from(Instant.now()));
+//        
+//        // 4. Inicialización del DAO de Sugerencias
+//        ISugerenciaDAO sugerenciaDAO = new SugerenciaDAO();
+//        
+//        // 5. Persistencia de la sugerencia en la base de datos
+//        sugerenciaDAO.guardarSugerencia(sugerencia);
+
         
-        // 2. Intento de inicio de sesión
-        Empleado empleado = daoEmpleado.iniciarSesion("Santiago", "santi");
-        
-        // 3. Creación de la sugerencia, asignando empleado, estado y fecha/hora actual
-        Sugerencia sugerencia = new Sugerencia(empleado, "Limpiar mas seguido la terrasa", "Pendiente", Date.from(Instant.now()));
-        
-        // 4. Inicialización del DAO de Sugerencias
-        ISugerenciaDAO sugerenciaDAO = new SugerenciaDAO();
-        
-        // 5. Persistencia de la sugerencia en la base de datos
-        sugerenciaDAO.guardarSugerencia(sugerencia);
     }
     
 }

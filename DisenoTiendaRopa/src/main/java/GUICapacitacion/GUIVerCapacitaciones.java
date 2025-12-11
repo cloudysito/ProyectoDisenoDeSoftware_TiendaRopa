@@ -5,6 +5,7 @@
 package GUICapacitacion;
 
 import ControlPantallas.ControlGuiaInteractivaEmpleado;
+import com.mycompany.dto_negocio.CapacitacionDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 
 /**
@@ -17,12 +18,14 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
      * Creates new form GUIVerCapacitaciones
      */
     private EmpleadoDTO empleado;
-    
+    private String[] estadosCapacitaciones; // Nueva variable para guardar los datos simples
+
     /**
-     * Creates new form GUIVerCapacitaciones
+     * Constructor modificado: ahora recibe los estados como String[]
      */
-    public GUIVerCapacitaciones(EmpleadoDTO empleado) {
+    public GUIVerCapacitaciones(EmpleadoDTO empleado, String[] estadosRecibidos) {
         this.empleado = empleado;
+        this.estadosCapacitaciones = estadosRecibidos; // Guardamos lo que nos dio el control
         
         initComponents();
         llenarEmpleado();
@@ -30,7 +33,28 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
     }
     
     private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombre());
+        //lblNombreEmpleado.setText(empleado.getNombre());
+    }
+
+    // Método corregido: Solo asigna texto, no llama a lógica externa
+    private void llenarLabels(){
+        // Arreglo de tus componentes gráficos (Labels)
+        javax.swing.JLabel[] labels = {
+            capacitacionClienteAgresivo, 
+            capacitacionEmergenciaMedica, 
+            capacitacionAgregarPrenda, 
+            capacitacionDevolverPrenda, 
+            capacitacionRobosAmenazas
+        };
+
+        // Recorremos y asignamos. Si el arreglo viene corto, evitamos errores.
+        for (int i = 0; i < labels.length; i++) {
+            if (estadosCapacitaciones != null && i < estadosCapacitaciones.length) {
+                labels[i].setText(estadosCapacitaciones[i]);
+            } else {
+                labels[i].setText("Info no disponible");
+            }
+        }
     }
 
     /**
@@ -45,8 +69,6 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblNombreEmpleado = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -72,12 +94,6 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Cuidado con el Kitten");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usuario.png"))); // NOI18N
-        jLabel3.setText("\n");
-
-        lblNombreEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreEmpleado.setText("Nombre Empleado");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -87,11 +103,7 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblNombreEmpleado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,12 +114,7 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblNombreEmpleado)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
@@ -279,13 +286,13 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void llenarLabels(){
-    capacitacionClienteAgresivo.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agresivos").getEstado());
-    capacitacionEmergenciaMedica.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "emergenciaMedica").getEstado());
-    capacitacionDevolverPrenda.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "devolverPrenda").getEstado());
-    capacitacionAgregarPrenda.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agregarStock").getEstado());
-    capacitacionRobosAmenazas.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "robos").getEstado());
-    }
+//    private void llenarLabels(){
+//    capacitacionClienteAgresivo.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agresividad").getEstado());
+//    capacitacionEmergenciaMedica.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "emergenciaMedica").getEstado());
+//    capacitacionDevolverPrenda.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "devolverPrenda").getEstado());
+//    capacitacionAgregarPrenda.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agregarStock").getEstado());
+//    capacitacionRobosAmenazas.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "robos").getEstado());
+//    }
     /**
      * @param args the command line arguments
      */
@@ -329,7 +336,6 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -339,6 +345,5 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblNombreEmpleado;
     // End of variables declaration//GEN-END:variables
 }

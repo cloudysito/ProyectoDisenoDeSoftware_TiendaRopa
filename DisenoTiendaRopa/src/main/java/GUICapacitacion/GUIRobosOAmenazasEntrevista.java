@@ -4,6 +4,7 @@
  */
 package GUICapacitacion;
 import ControlPantallas.ControlGuiaInteractivaEmpleado;
+import ControlPantallas.ControlPantallas;
 import com.mycompany.dto_negocio.CapacitacionDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 
@@ -30,7 +31,7 @@ public class GUIRobosOAmenazasEntrevista extends javax.swing.JFrame {
     }
     
     private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombre());
+       // lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**
@@ -243,7 +244,7 @@ public class GUIRobosOAmenazasEntrevista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
+
         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIRobosOAmenazasNoTocarNada(this, empleado, capacitacion);
     }//GEN-LAST:event_btnVolverActionPerformed
 

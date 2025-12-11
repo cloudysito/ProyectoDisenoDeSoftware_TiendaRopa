@@ -32,7 +32,7 @@ public class GUIEmergenciaMedicaAplicarPrimerosAuxilios extends javax.swing.JFra
     }
     
     private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombre());
+        //lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**

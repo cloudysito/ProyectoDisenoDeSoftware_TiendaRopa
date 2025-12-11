@@ -63,8 +63,23 @@ public class ControlGuiaInteractivaEmpleado {
     }
     
     public void navegarGUIVerCapacitaciones(JFrame frameActual, EmpleadoDTO empleado) {
+        String[] temas = {"agresivos", "emergenciaMedica", "agregarStock", "devolverPrenda", "robos"};
+        String[] estadosTexto = new String[temas.length];
+    
+        // Usamos la fachada para obtener la info
+        var facade = getGuiaInteractiva(); 
+    
+        for (int i = 0; i < temas.length; i++) {
+            CapacitacionDTO cap = facade.capacitacionTema(empleado, temas[i]);
+            if (cap != null) {
+                estadosTexto[i] = cap.getEstado();
+            } else {
+                estadosTexto[i] = "capacitado"; // Manejo de nulos seguro
+            }
+        }
+        
         cerrarFrameActual(frameActual);
-        GUIVerCapacitaciones guia = new GUIVerCapacitaciones(empleado);
+        GUIVerCapacitaciones guia = new GUIVerCapacitaciones(empleado, estadosTexto);
         guia.setVisible(true);
     }
     
@@ -200,9 +215,9 @@ public class ControlGuiaInteractivaEmpleado {
         guia.setVisible(true);
     }
     
-    public void GUIGuiaAgregarPrenda3(JFrame frameActual, EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+    public void navegarGUIGuiaAgregarPrenda3(JFrame frameActual, EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
         cerrarFrameActual(frameActual);
-        GUIGuiaDevolverPrenda1 guia = new GUIGuiaDevolverPrenda1(empleado, capacitacion);
+        GUIGuiaAgregarPrenda3 guia = new GUIGuiaAgregarPrenda3(empleado, capacitacion);
         guia.setVisible(true);
     }
     

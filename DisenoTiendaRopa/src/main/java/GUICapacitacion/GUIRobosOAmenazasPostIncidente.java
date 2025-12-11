@@ -30,7 +30,7 @@ public class GUIRobosOAmenazasPostIncidente extends javax.swing.JFrame {
     }
     
     private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombre());
+       // lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**

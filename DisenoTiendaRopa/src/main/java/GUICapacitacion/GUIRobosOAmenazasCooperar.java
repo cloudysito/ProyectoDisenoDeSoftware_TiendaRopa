@@ -25,11 +25,11 @@ public class GUIRobosOAmenazasCooperar extends javax.swing.JFrame {
     public GUIRobosOAmenazasCooperar(EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
         this.empleado = empleado;
         this.capacitacion = capacitacion;
-       llenarEmpleado();
+        llenarEmpleado();
     }
     
     private void llenarEmpleado(){
-        lblNombreEmpleado.setText(empleado.getNombre());
+        //lblNombreEmpleado.setText(empleado.getNombre());
     }
 
     /**
