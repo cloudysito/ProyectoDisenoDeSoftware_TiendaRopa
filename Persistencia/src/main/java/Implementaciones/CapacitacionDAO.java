@@ -116,6 +116,8 @@ public class CapacitacionDAO implements ICapacitacionDAO {
         }
     }
     
+    
+    
     /**
      * Busca una Capacitación por su identificador único.
      *
