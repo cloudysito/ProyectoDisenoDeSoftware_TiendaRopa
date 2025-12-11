@@ -1,11 +1,10 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUICapacitacion;
 
 import ControlPantallas.ControlGuiaInteractivaEmpleado;
-import com.mycompany.dto_negocio.CapacitacionDTO;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 
 /**
@@ -14,6 +13,9 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
  */
 public class GUIVerCapacitaciones extends javax.swing.JFrame {
 
+    /**
+     * Creates new form GUIVerCapacitaciones
+     */
     private EmpleadoDTO empleado;
     
     /**
@@ -60,6 +62,8 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
         capacitacionAgregarPrenda = new javax.swing.JLabel();
         capacitacionDevolverPrenda = new javax.swing.JLabel();
         capacitacionRobosAmenazas = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(234, 154, 178));
 
@@ -189,11 +193,11 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(capacitacionRobosAmenazas)
                                 .addGap(21, 21, 21))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(capacitacionAgregarPrenda)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(capacitacionDevolverPrenda)
-                                    .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(capacitacionAgregarPrenda)
+                                    .addComponent(capacitacionDevolverPrenda))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -219,7 +223,7 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(capacitacionDevolverPrenda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(capacitacionRobosAmenazas))
@@ -250,8 +254,8 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -266,13 +270,14 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
         ControlGuiaInteractivaEmpleado.getIntase().navegarGUIMenuGuia(this, empleado);
     }//GEN-LAST:event_btnVolverActionPerformed
-
 
     private void llenarLabels(){
     capacitacionClienteAgresivo.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agresivos").getEstado());
@@ -281,7 +286,39 @@ public class GUIVerCapacitaciones extends javax.swing.JFrame {
     capacitacionAgregarPrenda.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "agregarStock").getEstado());
     capacitacionRobosAmenazas.setText(ControlGuiaInteractivaEmpleado.getIntase().getGuiaInteractiva().capacitacionTema(empleado, "robos").getEstado());
     }
-    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GUIVerCapacitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUIVerCapacitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUIVerCapacitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUIVerCapacitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        //</editor-fold>
+
+        /* Create and display the form */
+         
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel capacitacionAgregarPrenda;

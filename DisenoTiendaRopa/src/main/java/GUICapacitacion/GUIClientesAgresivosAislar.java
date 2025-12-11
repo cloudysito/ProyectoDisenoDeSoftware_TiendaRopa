@@ -244,7 +244,7 @@ public class GUIClientesAgresivosAislar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSiguiente)
                 .addContainerGap())
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -278,7 +278,7 @@ public class GUIClientesAgresivosAislar extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         //        ControlPantallas.getInstase().getControlReembolso().cancelar(this);
-        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIClientesAgresivosEmpatiaYDisculpa(this, empleado, capacitacion);
+        ControlGuiaInteractivaEmpleado.getIntase().navegarGUIClientesAgresivosEscucharActivamente(this, empleado, capacitacion);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     
