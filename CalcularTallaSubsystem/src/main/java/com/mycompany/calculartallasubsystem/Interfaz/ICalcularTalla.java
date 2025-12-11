@@ -11,7 +11,7 @@ package com.mycompany.calculartallasubsystem.Interfaz;
  * y la determinación algorítmica de la talla de ropa más adecuada (ej. XS, M, L).
  * </p>
  *
- * @author santi
+ * @author c
  * @version 1.0
  */
 public interface ICalcularTalla {

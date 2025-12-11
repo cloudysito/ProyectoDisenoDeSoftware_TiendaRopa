@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author emiim
+ * @author c
  */
 public class GUIEnviarSugerencia extends javax.swing.JFrame {
 

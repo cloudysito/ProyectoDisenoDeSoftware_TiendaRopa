@@ -15,7 +15,7 @@ import com.mycompany.calculartallasubsystem.Interfaz.ICalcularTalla;
  * tallas masculinas y femeninas.
  * </p>
  *
- * @author santi
+ * @author c
  * @version 1.0
  */
 public class FachadaCalcularTalla implements ICalcularTalla{
