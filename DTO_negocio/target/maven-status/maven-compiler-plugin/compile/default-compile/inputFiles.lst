@@ -8,7 +8,9 @@ C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DT
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\SolicitudReembolsoDTO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\TemaCapacitacionDTO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\PagoDTO.java
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\PagoPaypalDTO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\CapacitacionDTO.java
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\PagoTransferenciaDTO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\BonificacionDTO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\DetalleReembolsoDTO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\AdministradorDTO.java
@@ -19,3 +21,4 @@ C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DT
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\RopaTallaDTO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\RecompensaDTO.java
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\PagoEfectivoDTO.java
+C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoDisenoDeSoftware_TiendaRopa\DTO_negocio\src\main\java\com\mycompany\dto_negocio\PagoTarjetaDTO.java

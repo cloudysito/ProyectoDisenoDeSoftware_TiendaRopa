@@ -9,7 +9,10 @@ import ControlPantallas.ControlPantallas;
 import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.PagoDTO;
+import com.mycompany.dto_negocio.PagoEfectivoDTO;
+import com.mycompany.dto_negocio.PagoPaypalDTO;
 import com.mycompany.dto_negocio.VentaDTO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -204,6 +207,12 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
             }
         });
 
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -277,12 +286,32 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         // TODO add your handling code here:
-        final ControlPantallas navegador = ControlPantallas.getInstase();
-         PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoPaypal(venta.getTotalVenta());
+        try {
+             final ControlPantallas navegador = ControlPantallas.getInstase();
+        PagoPaypalDTO pagoPaypal = new PagoPaypalDTO(venta.getTotalVenta(), 
+                                                    txtCorreo.getText(), 
+                                                    txtContraseña.getText());
+         PagoDTO pagoRealizado = navegador.getMetodoPagoSistema().procesarPagoPaypal(pagoPaypal);
+         if (pagoRealizado.isExitoso()){
          VentaDTO venta1 = navegador.getRealizarVentaSistema().crearVenta(venta);
-         venta1.setMetodoPago(pago.getMetodo());
+         venta1.setMetodoPago(pagoRealizado.getMetodo());
          navegador.getRealizarVentaSistema().registrarVenta(venta1);
          navegador.mostrarYGuardarTicketComoImagen(venta, this);
+         
+         }
+         else{
+             JOptionPane.showMessageDialog(this,
+                    "No se pudo realizar la pregunta.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+             
+         }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "No se pudo realizar la pregunta.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnDevolverPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverPrendaActionPerformed
@@ -299,6 +328,10 @@ public class GUIPagoPaypal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControlPantallas.getInstase().navegarEnviarSugerencia(this, empleado);
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
+
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

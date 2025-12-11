@@ -8,10 +8,12 @@ com\mycompany\dto_negocio\DiaHorarioDTO.class
 com\mycompany\dto_negocio\ItemVentaDTO.class
 com\mycompany\dto_negocio\TallaDTO.class
 com\mycompany\dto_negocio\EmpleadoDTO.class
+com\mycompany\dto_negocio\PagoTransferenciaDTO.class
 com\mycompany\dto_negocio\BuscarPrendaDTO.class
 com\mycompany\dto_negocio\CapacitacionDTO.class
 com\mycompany\dto_negocio\PagoEfectivoDTO.class
 com\mycompany\dto_negocio\SugerenciaDTO.class
+com\mycompany\dto_negocio\PagoTarjetaDTO.class
 com\mycompany\dto_negocio\DetalleReembolsoDTO.class
 com\mycompany\dto_negocio\TemaCapacitacionDTO.class
 com\mycompany\dto_negocio\DetalleVentaDTO.class
@@ -19,3 +21,4 @@ com\mycompany\dto_negocio\PuntosDTO.class
 com\mycompany\dto_negocio\SolicitudReembolsoDTO.class
 com\mycompany\dto_negocio\HorarioDTO.class
 com\mycompany\dto_negocio\PagoDTO.class
+com\mycompany\dto_negocio\PagoPaypalDTO.class

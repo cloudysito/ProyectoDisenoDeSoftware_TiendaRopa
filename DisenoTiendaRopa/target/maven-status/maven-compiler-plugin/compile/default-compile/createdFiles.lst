@@ -349,6 +349,7 @@ AsignarHorario\GUIModificarEmpleado1$9.class
 GUICapacitacion\GUIMenuGuia.class
 GUIDevolverPrenda\GUISeleccionMetodoReembolso$11.class
 GUIEnviarSugerencia\GUIEnviarSugerencia.class
+DisenoGUIs\GUIPagoPaypal$7.class
 ControlPantallas\ControlGestionarSugerencias.class
 RecomendarPrenda\GUIRecomendarPrenda$6.class
 AsignarHorario\GUIModificarEmpleado1$6.class

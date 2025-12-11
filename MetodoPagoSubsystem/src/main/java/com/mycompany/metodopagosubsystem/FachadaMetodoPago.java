@@ -5,6 +5,10 @@
 package com.mycompany.metodopagosubsystem;
 
 import com.mycompany.dto_negocio.PagoDTO;
+import com.mycompany.dto_negocio.PagoEfectivoDTO;
+import com.mycompany.dto_negocio.PagoPaypalDTO;
+import com.mycompany.dto_negocio.PagoTarjetaDTO;
+import com.mycompany.dto_negocio.PagoTransferenciaDTO;
 import com.mycompany.metodopagosubsystem.Interfaz.IMetodoPago;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
