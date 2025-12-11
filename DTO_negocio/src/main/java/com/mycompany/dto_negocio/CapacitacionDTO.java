@@ -112,6 +112,7 @@ public class CapacitacionDTO {
      * @return estado de la capacitación
      */
     public String getEstado() {
+        
         return estado;
     }
 

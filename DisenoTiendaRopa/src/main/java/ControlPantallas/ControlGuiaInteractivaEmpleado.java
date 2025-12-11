@@ -14,6 +14,7 @@ import GUICapacitacion.GUIEmergenciaMedicaAplicarPrimerosAuxilios;
 import GUICapacitacion.GUIEmergenciaMedicaAsignarTareas;
 import GUICapacitacion.GUIEmergenciaMedicaAsistenciaLlegada;
 import GUICapacitacion.GUIEmergenciaMedicaGararantizaSeguridad;
+import GUICapacitacion.GUIGuiaDevolverPrenda1;
 import GUICapacitacion.GUIEmergenciaMedicaLlamarEmergencias;
 import GUICapacitacion.GUIEmergenciaMedicaPostEmergencia;
 import GUICapacitacion.GUIGuiaAgregarPrenda1;
@@ -199,9 +200,9 @@ public class ControlGuiaInteractivaEmpleado {
         guia.setVisible(true);
     }
     
-    public void navegarGUIGuiaAgregarPrenda3(JFrame frameActual, EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
+    public void GUIGuiaAgregarPrenda3(JFrame frameActual, EmpleadoDTO empleado, CapacitacionDTO capacitacion) {
         cerrarFrameActual(frameActual);
-        GUIGuiaAgregarPrenda3 guia = new GUIGuiaAgregarPrenda3(empleado, capacitacion);
+        GUIGuiaDevolverPrenda1 guia = new GUIGuiaDevolverPrenda1(empleado, capacitacion);
         guia.setVisible(true);
     }
     
