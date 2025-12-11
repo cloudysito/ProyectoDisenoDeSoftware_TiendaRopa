@@ -1,14 +1,17 @@
 GUICapacitacion\GUIRobosOAmenazasCooperar$2.class
+GUICapacitacion\D$1.class
 DisenoGUIs\GUIPagoPaypal$6.class
 RecomendarPrenda\jPrendaPanel$1.class
 DisenoGUIs\GUIMenu$1.class
 GUICapacitacion\GUIClientesAgresivosMantenerCalma$2.class
 RecomendarPrenda\GUIRecomendarPrenda$2.class
 AsignarHorario\GUIAgregarEmpleado$7.class
+GUICapacitacion\G$1.class
 DisenoGUIs\GUIProducto$9.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$3.class
 DisenoGUIs\GUIMenu.class
 DisenoGUIs\GUIPagoEfectivo.class
+GUICapacitacion\C.class
 AsignarHorario\PanelEmpleado.class
 DisenoGUIs\GUIPagoTransferencia$1.class
 ControlPantallas\ControlRecomendarPrenda.class
@@ -25,7 +28,6 @@ DisenoGUIs\GUIProducto$13.class
 GUICapacitacion\GUIGuiaDevolverPrenda3$2.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda$7.class
 AsignarHorario\GUIModificarEmpleado1$4.class
-GUICapacitacion\GUIEmergenciaMedicaGararantizaSeguridad$1.class
 DisenoGUIs\GUISeleccionMetodoPago$4.class
 DisenoGUIs\GUIProducto$4.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$14.class
@@ -52,6 +54,7 @@ GUIEnviarSugerencia\GUIEnviarSugerencia$3.class
 GUIsCUIAdminTendenciaSugerencia\GUIMenuSugerencia$4.class
 AsignarHorario\PanelEmpleado$2.class
 DisenoGUIs\GUIPagoTarjeta$6.class
+GUICapacitacion\C$2.class
 GUIDevolverPrenda\GUISeleccionMetodoReembolso$6.class
 DisenoGUIs\GUIVenderPrenda.class
 GUICapacitacion\GUIGuiaDevolverPrenda4$1.class
@@ -118,6 +121,7 @@ DisenoGUIs\GUICambiarTalla.class
 AsignarHorario\GUIAsignarHorarios$6.class
 DisenoGUIs\GUICodigoProducto$5.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$3.class
+GUICapacitacion\C$1.class
 DisenoGUIs\GUICambiarTalla$4.class
 DisenoGUIs\GUIPagoEfectivo$6.class
 GUIDevolverPrenda\GUIReembolsoPrenda$3.class
@@ -127,6 +131,7 @@ GUIDevolverPrenda\GUIConfirmacionReembolso$4.class
 GUIDevolverPrenda\GUIBuscarVenta$5.class
 GUICapacitacion\GUIGuiaAgregarPrenda1$1.class
 DisenoGUIs\GUIMenu$3.class
+GUICapacitacion\A.class
 AsignarHorario\GUIAsignarHorarios$7.class
 DisenoGUIs\GUICambiarTalla$3.class
 GUICapacitacion\GUIGuiaAgregarPrenda1.class
@@ -186,6 +191,7 @@ AsignarHorario\GUIAgregarEmpleado$9.class
 AsignarHorario\GUIAsignarHorarios$4.class
 DisenoGUIs\GUIMenu$7.class
 DisenoGUIs\GUIPagoEfectivo$4.class
+GUICapacitacion\D$2.class
 AsignarHorario\GUIMenu1$1.class
 DisenoGUIs\GUICambiarTalla$6.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda$17.class
@@ -194,6 +200,7 @@ AsignarHorario\GUIEmpleados$1.class
 DisenoGUIs\GUISeleccionMetodoPago$5.class
 GUIDevolverPrenda\GUISeleccionMetodoReembolso$10.class
 DisenoGUIs\GUIVenderPrenda$6.class
+GUICapacitacion\A$2.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$13.class
 GUIDevolverPrenda\GUISeleccionMetodoReembolso$2.class
 DisenoGUIs\GUISeleccionMetodoPago$10.class
@@ -232,6 +239,7 @@ DisenoGUIs\GUIProducto$14.class
 AsignarHorario\GUIModificarEmpleado1$3.class
 GUICapacitacion\GUIRobosOAmenazasActivarAlarmaSilenciosa.class
 AsignarHorario\GUIAgregarEmpleado$3.class
+GUICapacitacion\B.class
 GUIDevolverPrenda\GUIReembolsoPrenda$4.class
 GUICapacitacion\GUIClientesAgresivosEmpatiaYDisculpa$1.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo.class
@@ -247,6 +255,7 @@ DisenoGUIs\GUIProducto$12.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$7.class
 GUICapacitacion\GUIRobosOAmenazasNoTocarNada$2.class
 GUIDevolverPrenda\GUIConfirmacionReembolso$3.class
+GUICapacitacion\B$1.class
 Main\DisenoTiendaRopa.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda$10.class
 AsignarHorario\GUIAgregarEmpleado$1.class
@@ -267,6 +276,7 @@ GUIDevolverPrenda\GUISeleccionMetodoReembolso$5.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda$11.class
 GUIDevolverPrenda\GUIBuscarVenta$3.class
 GUICapacitacion\GUIGuiaDevolverPrenda4$2.class
+GUICapacitacion\D.class
 GUIEnviarSugerencia\GUIEnviarSugerencia$2.class
 DisenoGUIs\GUIProducto$11.class
 ControlPantallas\ControlPantallas.class
@@ -299,6 +309,7 @@ DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda.class
 DisenoGUIs\GUISeleccionMetodoPago$3.class
 DisenoGUIs\GUIPagoTarjeta$5.class
 AsignarHorario\GUIAgregarEmpleado$10.class
+GUICapacitacion\G.class
 GUICapacitacion\GUIClientesAgresivosEmpatiaYDisculpa.class
 DisenoGUIs\GUIInicioSesion$3.class
 GUIDevolverPrenda\GUIReembolsoPrenda$9.class
@@ -310,6 +321,7 @@ DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$5.class
 GUICapacitacion\GUIGuiaAgregarPrenda4$1.class
 GUIsCUIAdminTendenciaSugerencia\GUIDetallesSugerencia$3.class
 DisenoGUIs\GUIPagoTransferencia$3.class
+GUICapacitacion\B$2.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIEditarPrenda$9.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIAñadirPrenda.class
 DisenoGUIs\GUIPagoPaypal$2.class
@@ -320,7 +332,6 @@ GUICapacitacion\GUIEmergenciaMedicaPostEmergencia$2.class
 RecomendarPrenda\GUIRecomendarPrenda$3.class
 DisenoGUIs\GUICompraRealizada$1.class
 DisenoGUIs\GUIProducto$8.class
-GUICapacitacion\GUIEmergenciaMedicaGararantizaSeguridad$2.class
 DisenoGUIs\GUICompraRealizada$4.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$4.class
 GUICapacitacion\GUIGuiaAgregarPrenda3$2.class
@@ -361,4 +372,5 @@ DisenoGUIs\GUIsCUIAgregarPrenda\panelPrenda$1.class
 GUIDevolverPrenda\GUIBuscarVenta.class
 DisenoGUIs\GUIsCUIAgregarPrenda\GUIGestionCatalogo$2.class
 GUICapacitacion\GUIClientesAgresivosAislar.class
+GUICapacitacion\A$1.class
 GUICapacitacion\GUIEmergenciaMedicaPostEmergencia$1.class

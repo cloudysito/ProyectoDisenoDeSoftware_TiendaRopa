@@ -35,12 +35,7 @@ public class FachadaAumentarVentaEmpleado implements IAumentarVentaEmpleado {
      */
     @Override
     public EmpleadoDTO recuperarEmpleado(String email, String contrasenia) {
-        if(email != ""){
-        
-        }
-        if(contrasenia != "") {
-        
-        }
+       
         // Delega la lógica de autenticación al Business Object
         return EmpleadoBO.getInstance().iniciarSesion(email, contrasenia);
     }

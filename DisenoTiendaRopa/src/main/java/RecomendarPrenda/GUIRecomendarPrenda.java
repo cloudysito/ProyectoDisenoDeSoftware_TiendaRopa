@@ -15,6 +15,7 @@ import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.PagoDTO;
 import com.mycompany.dto_negocio.RopaTallaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
+import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 
 /**
@@ -346,24 +347,38 @@ public class GUIRecomendarPrenda extends javax.swing.JFrame {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-        BuscarPrendaDTO busqueda = new BuscarPrendaDTO();
-        busqueda.setMarca(txtMarca.getText());
-        busqueda.setMaterial(txtMaterial.getText());
-        busqueda.setTemporada(txtTemporada.getText());
         
-        RopaTallaDTO ropaTalla = ControlRecomendarPrenda.getInstance().getRecomendarPrenda().recomentarPrenda(busqueda);
-        
-        if (ropaTalla != null) {
-            jPanel5.add(new jPrendaPanel(empleado, ropaTalla, this));
-        }
-        else{
-            JOptionPane.showMessageDialog(
-                    this,  
-                    "Lo sentimos no encontramos una prenda con sus especificaciones",
-                    "Cambiar talla",                            
-                    JOptionPane.ERROR_MESSAGE                   
+            BuscarPrendaDTO busqueda = new BuscarPrendaDTO();
+            busqueda.setMarca(txtMarca.getText());
+            busqueda.setMaterial(txtMaterial.getText());
+            busqueda.setTemporada(txtTemporada.getText());
+
+            RopaTallaDTO ropaTalla = ControlRecomendarPrenda.getInstance()
+                    .getRecomendarPrenda()
+                    .recomentarPrenda(busqueda);
+
+            if (ropaTalla != null) {
+
+                // LIMPIAR PANELES PREVIOS
+                jPanel5.removeAll();
+
+                // CAMBIAR LAYOUT A DINÁMICO
+                jPanel5.setLayout(new BoxLayout(jPanel5, BoxLayout.Y_AXIS));
+
+                // AGREGAR PANEL
+                jPanel5.add(new jPrendaPanel(empleado, ropaTalla, this));
+
+                jPanel5.revalidate();
+                jPanel5.repaint();
+            }
+            else{
+                JOptionPane.showMessageDialog(
+                        this,  
+                        "Lo sentimos no encontramos una prenda con sus especificaciones",
+                        "Cambiar talla",                            
+                        JOptionPane.ERROR_MESSAGE                   
                 );
-        }
+            }
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
