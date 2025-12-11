@@ -9,7 +9,9 @@ import ControlPantallas.ControlPantallas;
 import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.PagoDTO;
+import com.mycompany.dto_negocio.PagoEfectivoDTO;
 import com.mycompany.dto_negocio.VentaDTO;
+import javax.swing.JOptionPane;
 /**
  *
  * @author emiim
@@ -340,12 +342,31 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         // TODO add your handling code here:
-        final ControlPantallas navegador = ControlPantallas.getInstase();
-         PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoPaypal(venta.getTotalVenta());
+          try {
+             final ControlPantallas navegador = ControlPantallas.getInstase();
+        PagoEfectivoDTO pago = new PagoEfectivoDTO(venta.getTotalVenta());
+         PagoDTO pagoRealizado = navegador.getMetodoPagoSistema().procesarPagoEfectivo(pago);
+         if (pagoRealizado.isExitoso()){
          VentaDTO venta1 = navegador.getRealizarVentaSistema().crearVenta(venta);
-         venta1.setMetodoPago(pago.getMetodo());
+         venta1.setMetodoPago(pagoRealizado.getMetodo());
          navegador.getRealizarVentaSistema().registrarVenta(venta1);
          navegador.mostrarYGuardarTicketComoImagen(venta, this);
+         
+         }
+         else{
+             JOptionPane.showMessageDialog(this,
+                    "No se pudo realizar la pregunta.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+             
+         }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "No se pudo realizar la pregunta.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnVenderActionPerformed
 
     
@@ -378,12 +399,8 @@ public class GUIPagoEfectivo extends javax.swing.JFrame {
     private void configurarNavegacionPerfil() {
         final ControlPantallas navegador = ControlPantallas.getInstase();
         if (btnRegresar != null) {
-            btnRegresar.addActionListener(evt -> navegador.navegarSeleccionMetodoPago(this,empleado, venta));
-            PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoEfectivo(venta.getTotalVenta());
-            venta.setMetodoPago(pago.getMetodo());
-            VentaDTO ventaCompleta = navegador.getRealizarVentaSistema().crearVenta(venta);
-        }
-        if (btnVender != null) {
+            
+        }        if (btnVender != null) {
             btnVender.addActionListener(evt -> navegador.navegarMenuPrincipal(this,empleado));
         }
     }

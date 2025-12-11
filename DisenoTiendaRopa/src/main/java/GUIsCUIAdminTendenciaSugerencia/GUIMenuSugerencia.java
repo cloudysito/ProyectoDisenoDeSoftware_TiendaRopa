@@ -217,7 +217,7 @@ public class GUIMenuSugerencia extends javax.swing.JFrame {
             }
         });
 
-        cmbEstadoSugerencias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendientes", "Aceptadas", "Rechazadas", "Todas" }));
+        cmbEstadoSugerencias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Aceptada", "Rechazada", "Todas" }));
         cmbEstadoSugerencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEstadoSugerenciasActionPerformed(evt);

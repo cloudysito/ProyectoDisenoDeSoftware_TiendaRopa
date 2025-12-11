@@ -9,7 +9,10 @@ import ControlPantallas.ControlPantallas;
 import ControlPantallas.ControlReembolso;
 import com.mycompany.dto_negocio.EmpleadoDTO;
 import com.mycompany.dto_negocio.PagoDTO;
+import com.mycompany.dto_negocio.PagoEfectivoDTO;
+import com.mycompany.dto_negocio.PagoTarjetaDTO;
 import com.mycompany.dto_negocio.VentaDTO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -321,12 +324,34 @@ public class GUIPagoTarjeta extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         // TODO add your handling code here:
-        final ControlPantallas navegador = ControlPantallas.getInstase();
-         PagoDTO pago = navegador.getMetodoPagoSistema().procesarPagoTarjeta(venta.getTotalVenta());
+          try {
+             final ControlPantallas navegador = ControlPantallas.getInstase();
+        PagoTarjetaDTO pagoTarjeta =new PagoTarjetaDTO(venta.getTotalVenta(), 
+                txtNumTarjeta.getText(), 
+                txtNombreTitular.getText(), 
+                txtFechaVencimiento.getText(), 
+                txtCVV.getText());
+         PagoDTO pagoRealizado = navegador.getMetodoPagoSistema().procesarPagoTarjeta(pagoTarjeta);
+         if (pagoRealizado.isExitoso()){
          VentaDTO venta1 = navegador.getRealizarVentaSistema().crearVenta(venta);
-         venta1.setMetodoPago(pago.getMetodo());
+         venta1.setMetodoPago(pagoRealizado.getMetodo());
          navegador.getRealizarVentaSistema().registrarVenta(venta1);
          navegador.mostrarYGuardarTicketComoImagen(venta, this);
+         
+         }
+         else{
+             JOptionPane.showMessageDialog(this,
+                    "No se pudo realizar la pregunta.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+             
+         }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "No se pudo realizar la pregunta.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void txtFechaVencimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaVencimientoActionPerformed
